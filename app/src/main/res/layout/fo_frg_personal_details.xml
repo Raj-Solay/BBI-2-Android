@@ -18,11 +18,6 @@
         </LinearLayout>
 
         <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/fullname"
-            style="@style/inputBox"
-            android:hint="@string/ct_writefullname" />
-
-        <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/edtfathername"
             style="@style/inputBox"
             android:hint="@string/ct_writefathername" />
@@ -36,12 +31,6 @@
             android:id="@+id/edtdob"
             style="@style/inputBox"
             android:text="Date of Birth" />
-
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/edtContactNumber"
-            style="@style/inputBox"
-            android:hint="@string/ct_contactnumber"
-            android:inputType="number" />
 
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/edtplaceofbirth"
@@ -135,12 +124,6 @@
             android:inputType="number" />
 
         <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/edtemailid"
-            style="@style/inputBox"
-            android:hint="@string/ct_writeemail"
-            android:inputType="textEmailAddress" />
-
-        <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/permAddress"
             style="@style/inputBox"
             android:hint="@string/ct_writepermenentadrs"
@@ -209,18 +192,6 @@
             android:hint="@string/ct_writeemergencycontact"
             android:inputType="number" />
 
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/permProofSubmitted"
-            style="@style/inputBox"
-            android:hint="@string/ct_writeproofsub"
-            android:inputType="text" />
-
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/permDocumentNumber"
-            style="@style/inputBox"
-            android:hint="@string/ct_writedcnumber"
-            android:inputType="text" />
-
         <androidx.appcompat.widget.AppCompatTextView
             style="@style/subTitle"
             android:layout_marginTop="12dp"
@@ -237,6 +208,18 @@
             android:overScrollMode="always"
             android:scrollbarStyle="insideInset"
             android:scrollbars="vertical" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/edtState"
+            style="@style/inputBox"
+            android:hint="State"
+            android:inputType="number" />
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/edtZip"
+            style="@style/inputBox"
+            android:hint="Zip"
+            android:inputType="number" />
+
 
         <LinearLayout
             style="@style/subTitleWithLayout"
@@ -291,17 +274,6 @@
             android:hint="@string/ct_writeemergencycontact"
             android:inputType="number" />
 
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/presProofSubmitted"
-            style="@style/inputBox"
-            android:hint="@string/ct_writeproofsub"
-            android:inputType="text" />
-
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/presDocumentNumber"
-            style="@style/inputBox"
-            android:hint="@string/ct_writedcnumber"
-            android:inputType="text" />
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/stepSubmit"
             android:layout_width="wrap_content"

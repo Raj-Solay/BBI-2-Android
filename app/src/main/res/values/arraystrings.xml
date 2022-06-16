@@ -56,9 +56,10 @@
     </string-array>
 
     <string-array name="financialAssistance">
-        <item>@string/pvtLimited</item>
-        <item>@string/partnership</item>
-        <item>@string/proprietor</item>
+        <item>@string/fullInvestment</item>
+        <item>@string/partialLoan</item>
+        <item>@string/fullLoan</item>
+        <item>@string/seekingInvestor</item>
     </string-array>
 
     <string-array name="businessPlaceType">

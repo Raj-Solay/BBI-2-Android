@@ -7,6 +7,7 @@ import com.bbi.bizbulls.data.health.HealthDetailsSaveResponse
 import com.bbi.bizbulls.data.signin.SigninResponse
 import com.bbi.bizbulls.data.signupresponse.SignupResponse
 import com.google.gson.JsonObject
+import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -27,18 +28,20 @@ interface APIService {
     @FormUrlEncoded
     fun personalDetailsPost(
         @Header("Authorization") token: String,
-        @FieldMap data: Map<String, String>
-    ): Call<PersonalDetailsSaveResponse>
+        @FieldMap data: Map<String, String>): Call<PersonalDetailsSaveResponse>
 
     @POST("/api/me/health")
     fun healthDetailsPost(
         @Header("Authorization") token: String,
-        @Body jsonObject: JsonObject
-    ): Call<HealthDetailsSaveResponse>
+        @Body jsonObject: JsonObject): Call<HealthDetailsSaveResponse>
 
     @POST("/api/me/express_interest")
     fun expressionInterestDetailsPost(
         @Header("Authorization") token: String,
-        @Body jsonObject: JsonObject
-    ): Call<ExpressionOfInterest>
+        @Body jsonObject: JsonObject): Call<ExpressionOfInterest>
+
+    @POST("/api/me/checklist")
+    fun checkListDetailsPost(
+        @Header("Authorization") token: String,
+        @Body jsonObject: JsonObject): Call<ResponseBody>
 }

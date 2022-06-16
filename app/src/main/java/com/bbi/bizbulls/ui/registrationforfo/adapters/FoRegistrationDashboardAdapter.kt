@@ -32,7 +32,7 @@ class FoRegistrationDashboardAdapter(
         val model = registrationsSteps[position]
         holder.itemBinding.itemName.text = model.linkName
         Picasso.get().load(model.linkIcon).into(holder.itemBinding.itemIcon)
-        if(model.profileUpdatedOn.isNullOrEmpty()){
+        if(model.profileUpdatedOn.isEmpty()){
             holder.itemBinding.itemName.setBackgroundResource(R.color.status_red)
         }else{
             holder.itemBinding.itemName.setBackgroundResource(R.color.status_green)

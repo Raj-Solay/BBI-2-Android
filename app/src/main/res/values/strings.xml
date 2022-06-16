@@ -263,11 +263,12 @@
     <string name="owned">Owned</string>
     <string name="leased">Leased</string>
     <string name="rented">Rented</string>
-    <string name="pvtLimited">Pvt Limited</string>
-    <string name="partnership">Partnership</string>
-    <string name="proprietor">Proprietor</string>
+    <string name="fullInvestment">Full Investment</string>
+    <string name="partialLoan">Partial Loan</string>
+    <string name="fullLoan">Full Loan</string>
+    <string name="seekingInvestor">Seeking Investor</string>
 
-    <string name="bizbullsindia_url">https://www.bizbullsindia.com</string>
+    <string name="bizBullsIndia_url">https://www.bizbullsindia.com</string>
     <string name="logout">Logout Successfully!</string>
     <string name="unAuthenticated">Secession is Expired, Please Login again</string>
     <string name="inValidData">The given data was invalid.</string>
@@ -276,4 +277,6 @@
     <string name="personal_details">Personal details saved successfully!</string>
     <string name="health_details">Health details saved successfully!</string>
     <string name="expression_details">Expression of interest details saved successfully!</string>
+    <string name="checkBoxSelection">Please read the check list and select the chek box</string>
+    <string name="checkList_details">Check list details saved successfully!</string>
 </resources>

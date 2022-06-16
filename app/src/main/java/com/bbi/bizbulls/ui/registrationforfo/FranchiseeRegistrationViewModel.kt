@@ -14,6 +14,7 @@ import com.bbi.bizbulls.remote.RetrofitClient
 import com.bbi.bizbulls.sharedpref.SharedPrefsManager
 import com.bbi.bizbulls.utils.MyProcessDialog
 import com.google.gson.JsonObject
+import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -167,4 +168,39 @@ class FranchiseeRegistrationViewModel : ViewModel() {
         })
     }
 
+    /**
+     * Post check list detail
+     */
+    fun sendCheckListDetail(context: Context, jsonObject: JsonObject) {
+        val sharedPrefsHelper by lazy { SharedPrefsManager(context) }
+
+        val call: Call<ResponseBody> =
+            RetrofitClient.getUrl().checkListDetailsPost(sharedPrefsHelper.authToken, jsonObject)
+        println("________URL ::${call.request().url}")
+        println("________Details $jsonObject")
+        MyProcessDialog.showProgressBar(context, 0)
+        call.enqueue(object : Callback<ResponseBody> {
+            override
+            fun onResponse(
+                call: Call<ResponseBody>,
+                responseObject: Response<ResponseBody>
+            ) {
+                if (responseObject.code() == 201) {
+                    FranchiseeRegistrationActivity.activityCalling(
+                        context,
+                        context.resources.getString(R.string.checkList_details)
+                    )
+                } else {
+                    RetrofitClient.showResponseMessage(context, responseObject.code())
+                }
+                MyProcessDialog.dismiss()
+            }
+
+            override
+            fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+                MyProcessDialog.dismiss()
+                RetrofitClient.showFailedMessage(context, t)
+            }
+        })
+    }
 }
