@@ -209,6 +209,18 @@
             android:scrollbarStyle="insideInset"
             android:scrollbars="vertical" />
 
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/edtState"
+            style="@style/inputBox"
+            android:hint="State"
+            android:inputType="number" />
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/edtZip"
+            style="@style/inputBox"
+            android:hint="Zip"
+            android:inputType="number" />
+
+
         <LinearLayout
             style="@style/subTitleWithLayout"
             android:layout_width="match_parent"

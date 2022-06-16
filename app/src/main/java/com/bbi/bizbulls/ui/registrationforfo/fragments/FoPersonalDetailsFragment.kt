@@ -82,8 +82,11 @@ class FoPersonalDetailsFragment : Fragment() {
         params["permanent_acco_since"] = binding.permAccommodationSince.text.toString()
         params["permanent_emergency_no"] = binding.permEmergencyContact.text.toString()
 
+
         //present address
         params["present_add"] = binding.presAddress.text.toString()
+        params["state"] = binding.edtState.text.toString()
+        params["zip"] = binding.edtZip.text.toString()
         var presentAccoType = ""
         if (binding.radioPresOwn.isChecked) {
             presentAccoType = "Own"

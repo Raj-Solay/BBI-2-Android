@@ -263,9 +263,10 @@
     <string name="owned">Owned</string>
     <string name="leased">Leased</string>
     <string name="rented">Rented</string>
-    <string name="pvtLimited">Pvt Limited</string>
-    <string name="partnership">Partnership</string>
-    <string name="proprietor">Proprietor</string>
+    <string name="fullInvestment">Full Investment</string>
+    <string name="partialLoan">Partial Loan</string>
+    <string name="fullLoan">Full Loan</string>
+    <string name="seekingInvestor">Seeking Investor</string>
 
     <string name="bizBullsIndia_url">https://www.bizbullsindia.com</string>
     <string name="logout">Logout Successfully!</string>
