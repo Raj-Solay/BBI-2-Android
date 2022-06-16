@@ -1,9 +1,6 @@
 package com.bbi.bizbulls.remote
 
-import com.bbi.bizbulls.data.expression.ExpressionOfInterest
 import com.bbi.bizbulls.data.foregistration.steps.FoRegistrationSteps
-import com.bbi.bizbulls.data.franchiseregresponse.personaldetailscreate.PersonalDetailsSaveResponse
-import com.bbi.bizbulls.data.health.HealthDetailsSaveResponse
 import com.bbi.bizbulls.data.signin.SigninResponse
 import com.bbi.bizbulls.data.signupresponse.SignupResponse
 import com.google.gson.JsonObject
@@ -28,20 +25,35 @@ interface APIService {
     @FormUrlEncoded
     fun personalDetailsPost(
         @Header("Authorization") token: String,
-        @FieldMap data: Map<String, String>): Call<PersonalDetailsSaveResponse>
+        @FieldMap data: Map<String, String>): Call<ResponseBody>
 
     @POST("/api/me/health")
     fun healthDetailsPost(
         @Header("Authorization") token: String,
-        @Body jsonObject: JsonObject): Call<HealthDetailsSaveResponse>
+        @Body jsonObject: JsonObject): Call<ResponseBody>
 
     @POST("/api/me/express_interest")
     fun expressionInterestDetailsPost(
         @Header("Authorization") token: String,
-        @Body jsonObject: JsonObject): Call<ExpressionOfInterest>
+        @Body jsonObject: JsonObject): Call<ResponseBody>
 
     @POST("/api/me/checklist")
     fun checkListDetailsPost(
+        @Header("Authorization") token: String,
+        @Body jsonObject: JsonObject): Call<ResponseBody>
+
+    @POST("/api/me/education")
+    fun educationDetailsPost(
+        @Header("Authorization") token: String,
+        @Body jsonObject: JsonObject): Call<ResponseBody>
+
+    @POST("/api/me/social_identity")
+    fun socialIdentityDetailsPost(
+        @Header("Authorization") token: String,
+        @Body jsonObject: JsonObject): Call<ResponseBody>
+
+    @POST("/api/me/bankinfo")
+    fun bankDetailsPost(
         @Header("Authorization") token: String,
         @Body jsonObject: JsonObject): Call<ResponseBody>
 }

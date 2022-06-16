@@ -46,11 +46,13 @@ class FoRegistrationDashBoardActivity : AppCompatActivity(), IFoRegistrationStep
         adapter.notifyDataSetChanged()
     }
 
-    override fun onStepsClickListener(name: String, position: Int) {
+    override fun onStepsClickListener(name: String, status: String, position: Int) {
         //Create the bundle
         val bundle = Bundle()
         val i = Intent(this, FranchiseeRegistrationActivity::class.java)
         //Add your data to bundle
+        bundle.putString("name", name)
+        bundle.putString("status", status)
         bundle.putInt("position", position)
         //Add the bundle to the intent
         i.putExtras(bundle)

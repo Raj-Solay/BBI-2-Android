@@ -13,7 +13,9 @@ import com.bbi.bizbulls.ui.registrationforfo.fragments.*
 
 class FranchiseeRegistrationActivity : AppCompatActivity() {
     private lateinit var binding: FoActivityRegistrationBinding
-    private var clickedPosition = 0
+    private var stepName = ""
+    private var stepStatus = ""
+    private var stepPosition = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = FoActivityRegistrationBinding.inflate(layoutInflater)
@@ -29,8 +31,11 @@ class FranchiseeRegistrationActivity : AppCompatActivity() {
     private fun init() {
         //Get the bundle
         val bundle = intent.extras
-        bundle?.getInt("position")?.also { clickedPosition = it }
-        when (clickedPosition) {
+        bundle?.getString("name")?.also { stepName = it }
+        bundle?.getString("status")?.also { stepStatus = it }
+        bundle?.getInt("position")?.also { stepPosition = it }
+
+        when (stepPosition) {
             1 -> {
                 fragmentCalling(FoHealthDetailsFragment())
             }

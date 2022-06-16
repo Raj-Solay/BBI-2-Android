@@ -68,4 +68,13 @@
         <item>@string/rented</item>
     </string-array>
 
+    <string-array name="banks">
+        <item>@string/b_1</item>
+        <item>@string/b_2</item>
+        <item>@string/b_3</item>
+        <item>@string/b_4</item>
+        <item>@string/b_5</item>
+        <item>@string/b_6</item>
+    </string-array>
+
 </resources>

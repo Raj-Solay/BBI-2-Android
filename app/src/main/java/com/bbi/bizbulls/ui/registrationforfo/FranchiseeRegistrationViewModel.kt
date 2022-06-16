@@ -5,11 +5,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.bbi.bizbulls.R
-import com.bbi.bizbulls.data.expression.ExpressionOfInterest
 import com.bbi.bizbulls.data.foregistration.steps.Data
 import com.bbi.bizbulls.data.foregistration.steps.FoRegistrationSteps
-import com.bbi.bizbulls.data.franchiseregresponse.personaldetailscreate.PersonalDetailsSaveResponse
-import com.bbi.bizbulls.data.health.HealthDetailsSaveResponse
 import com.bbi.bizbulls.remote.RetrofitClient
 import com.bbi.bizbulls.sharedpref.SharedPrefsManager
 import com.bbi.bizbulls.utils.MyProcessDialog
@@ -65,18 +62,18 @@ class FranchiseeRegistrationViewModel : ViewModel() {
     fun sendPersonalDetail(context: Context, params: MutableMap<String, String> = HashMap()) {
         val sharedPrefsHelper by lazy { SharedPrefsManager(context) }
 
-        val call: Call<PersonalDetailsSaveResponse> =
+        val call: Call<ResponseBody> =
             RetrofitClient.getUrl().personalDetailsPost(sharedPrefsHelper.authToken, params)
         println("________URL ::${call.request().url}")
         println("________Details $params")
         MyProcessDialog.showProgressBar(context, 0)
-        call.enqueue(object : Callback<PersonalDetailsSaveResponse> {
+        call.enqueue(object : Callback<ResponseBody> {
             override
             fun onResponse(
-                call: Call<PersonalDetailsSaveResponse>,
-                responseObject: Response<PersonalDetailsSaveResponse>) {
+                call: Call<ResponseBody>,
+                responseObject: Response<ResponseBody>) {
                 if (responseObject.code() == 201) {
-                    sharedPrefsHelper.personalDetailID = responseObject.body()?.data?.id.toString()
+                   // sharedPrefsHelper.personalDetailID = responseObject.body()?.data?.id.toString()
                     FranchiseeRegistrationActivity.activityCalling(
                         context,
                         context.resources.getString(R.string.personal_details)
@@ -89,7 +86,7 @@ class FranchiseeRegistrationViewModel : ViewModel() {
             }
 
             override
-            fun onFailure(call: Call<PersonalDetailsSaveResponse>, t: Throwable) {
+            fun onFailure(call: Call<ResponseBody>, t: Throwable) {
                 MyProcessDialog.dismiss()
                 RetrofitClient.showFailedMessage(context, t)
             }
@@ -102,16 +99,16 @@ class FranchiseeRegistrationViewModel : ViewModel() {
     fun sendHealthDetail(context: Context, jsonObject: JsonObject) {
         val sharedPrefsHelper by lazy { SharedPrefsManager(context) }
 
-        val call: Call<HealthDetailsSaveResponse> =
+        val call: Call<ResponseBody> =
             RetrofitClient.getUrl().healthDetailsPost(sharedPrefsHelper.authToken, jsonObject)
         println("________URL ::${call.request().url}")
         println("________Details $jsonObject")
         MyProcessDialog.showProgressBar(context, 0)
-        call.enqueue(object : Callback<HealthDetailsSaveResponse> {
+        call.enqueue(object : Callback<ResponseBody> {
             override
             fun onResponse(
-                call: Call<HealthDetailsSaveResponse>,
-                responseObject: Response<HealthDetailsSaveResponse>
+                call: Call<ResponseBody>,
+                responseObject: Response<ResponseBody>
             ) {
                 if (responseObject.code() == 201) {
                     FranchiseeRegistrationActivity.activityCalling(
@@ -125,7 +122,7 @@ class FranchiseeRegistrationViewModel : ViewModel() {
             }
 
             override
-            fun onFailure(call: Call<HealthDetailsSaveResponse>, t: Throwable) {
+            fun onFailure(call: Call<ResponseBody>, t: Throwable) {
                 MyProcessDialog.dismiss()
                 RetrofitClient.showFailedMessage(context, t)
             }
@@ -138,16 +135,16 @@ class FranchiseeRegistrationViewModel : ViewModel() {
     fun sendExpressionOfInterestDetail(context: Context, jsonObject: JsonObject) {
         val sharedPrefsHelper by lazy { SharedPrefsManager(context) }
 
-        val call: Call<ExpressionOfInterest> =
+        val call: Call<ResponseBody> =
             RetrofitClient.getUrl().expressionInterestDetailsPost(sharedPrefsHelper.authToken, jsonObject)
         println("________URL ::${call.request().url}")
         println("________Details $jsonObject")
         MyProcessDialog.showProgressBar(context, 0)
-        call.enqueue(object : Callback<ExpressionOfInterest> {
+        call.enqueue(object : Callback<ResponseBody> {
             override
             fun onResponse(
-                call: Call<ExpressionOfInterest>,
-                responseObject: Response<ExpressionOfInterest>
+                call: Call<ResponseBody>,
+                responseObject: Response<ResponseBody>
             ) {
                 if (responseObject.code() == 201) {
                     FranchiseeRegistrationActivity.activityCalling(
@@ -161,7 +158,7 @@ class FranchiseeRegistrationViewModel : ViewModel() {
             }
 
             override
-            fun onFailure(call: Call<ExpressionOfInterest>, t: Throwable) {
+            fun onFailure(call: Call<ResponseBody>, t: Throwable) {
                 MyProcessDialog.dismiss()
                 RetrofitClient.showFailedMessage(context, t)
             }
@@ -189,6 +186,115 @@ class FranchiseeRegistrationViewModel : ViewModel() {
                     FranchiseeRegistrationActivity.activityCalling(
                         context,
                         context.resources.getString(R.string.checkList_details)
+                    )
+                } else {
+                    RetrofitClient.showResponseMessage(context, responseObject.code())
+                }
+                MyProcessDialog.dismiss()
+            }
+
+            override
+            fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+                MyProcessDialog.dismiss()
+                RetrofitClient.showFailedMessage(context, t)
+            }
+        })
+    }
+
+
+    /**
+     * Post academic education detail
+     */
+    fun sendEducationDetail(context: Context, jsonObject: JsonObject) {
+        val sharedPrefsHelper by lazy { SharedPrefsManager(context) }
+
+        val call: Call<ResponseBody> =
+            RetrofitClient.getUrl().educationDetailsPost(sharedPrefsHelper.authToken, jsonObject)
+        println("________URL ::${call.request().url}")
+        println("________Details $jsonObject")
+        MyProcessDialog.showProgressBar(context, 0)
+        call.enqueue(object : Callback<ResponseBody> {
+            override
+            fun onResponse(
+                call: Call<ResponseBody>,
+                responseObject: Response<ResponseBody>
+            ) {
+                if (responseObject.code() == 201) {
+                    FranchiseeRegistrationActivity.activityCalling(
+                        context,
+                        context.resources.getString(R.string.education_details)
+                    )
+                } else {
+                    RetrofitClient.showResponseMessage(context, responseObject.code())
+                }
+                MyProcessDialog.dismiss()
+            }
+
+            override
+            fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+                MyProcessDialog.dismiss()
+                RetrofitClient.showFailedMessage(context, t)
+            }
+        })
+    }
+
+    /**
+     * Post social Identity detail
+     */
+    fun sendSocialIdentityDetail(context: Context, jsonObject: JsonObject) {
+        val sharedPrefsHelper by lazy { SharedPrefsManager(context) }
+
+        val call: Call<ResponseBody> =
+            RetrofitClient.getUrl().socialIdentityDetailsPost(sharedPrefsHelper.authToken, jsonObject)
+        println("________URL ::${call.request().url}")
+        println("________Details $jsonObject")
+        MyProcessDialog.showProgressBar(context, 0)
+        call.enqueue(object : Callback<ResponseBody> {
+            override
+            fun onResponse(
+                call: Call<ResponseBody>,
+                responseObject: Response<ResponseBody>
+            ) {
+                if (responseObject.code() == 201) {
+                    FranchiseeRegistrationActivity.activityCalling(
+                        context,
+                        context.resources.getString(R.string.socialIdentity_details)
+                    )
+                } else {
+                    RetrofitClient.showResponseMessage(context, responseObject.code())
+                }
+                MyProcessDialog.dismiss()
+            }
+
+            override
+            fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+                MyProcessDialog.dismiss()
+                RetrofitClient.showFailedMessage(context, t)
+            }
+        })
+    }
+
+    /**
+     * Post bank detail
+     */
+    fun sendBankDetail(context: Context, jsonObject: JsonObject) {
+        val sharedPrefsHelper by lazy { SharedPrefsManager(context) }
+
+        val call: Call<ResponseBody> =
+            RetrofitClient.getUrl().bankDetailsPost(sharedPrefsHelper.authToken, jsonObject)
+        println("________URL ::${call.request().url}")
+        println("________Details $jsonObject")
+        MyProcessDialog.showProgressBar(context, 0)
+        call.enqueue(object : Callback<ResponseBody> {
+            override
+            fun onResponse(
+                call: Call<ResponseBody>,
+                responseObject: Response<ResponseBody>
+            ) {
+                if (responseObject.code() == 201) {
+                    FranchiseeRegistrationActivity.activityCalling(
+                        context,
+                        context.resources.getString(R.string.bank_details)
                     )
                 } else {
                     RetrofitClient.showResponseMessage(context, responseObject.code())

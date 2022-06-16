@@ -39,7 +39,7 @@ class FoRegistrationDashboardAdapter(
         }
 
         holder.itemView.setOnClickListener {
-            stepsClickListener.onStepsClickListener(model.id, position)
+            stepsClickListener.onStepsClickListener(model.linkName, model.profileUpdatedOn, position)
         }
     }
 

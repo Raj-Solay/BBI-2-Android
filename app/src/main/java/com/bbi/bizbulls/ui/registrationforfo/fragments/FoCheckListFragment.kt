@@ -47,7 +47,7 @@ class FoCheckListFragment : Fragment() {
         jsonObject.addProperty("no_relation_clients", "Yes")
         jsonObject.addProperty("your_responsibility", "Yes")
 
-        // Call remote Api service to save the Health Details
+        // Call remote Api service to save the Check List Details
         FranchiseeRegistrationViewModel().sendCheckListDetail(requireActivity(), jsonObject)
     }
 

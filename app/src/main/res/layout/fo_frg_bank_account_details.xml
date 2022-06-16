@@ -24,7 +24,7 @@
             android:inputType="number" />
 
         <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/edtbankname"
+            android:id="@+id/edtbankAccountentName"
             style="@style/inputBox"
             android:hint="@string/ct_bankactname" />
 
@@ -48,15 +48,16 @@
             style="@style/subTitle"
             android:text="Account Type" />
 
-        <LinearLayout style="@style/spinnerLayout">
+        <RelativeLayout style="@style/spinnerLayout">
 
             <com.bbi.bizbulls.utils.CustomSpinner
                 android:id="@+id/spnrAccountType"
-                style="@style/customSpinner" />
+                style="@style/customSpinner"
+                android:entries="@array/banks"/>
 
             <ImageView style="@style/customSpinnerDropDown" />
 
-        </LinearLayout>
+        </RelativeLayout>
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/stepSubmit"
             android:layout_width="wrap_content"

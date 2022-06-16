@@ -267,6 +267,12 @@
     <string name="partialLoan">Partial Loan</string>
     <string name="fullLoan">Full Loan</string>
     <string name="seekingInvestor">Seeking Investor</string>
+    <string name="b_1">Axis Bank</string>
+    <string name="b_2">Bank of India</string>
+    <string name="b_3">Canara Bank</string>
+    <string name="b_4">HDFC Bank</string>
+    <string name="b_5">ICICI Bank</string>
+    <string name="b_6">IDFC FIRST Bank</string>
 
     <string name="bizBullsIndia_url">https://www.bizbullsindia.com</string>
     <string name="logout">Logout Successfully!</string>
@@ -279,4 +285,7 @@
     <string name="expression_details">Expression of interest details saved successfully!</string>
     <string name="checkBoxSelection">Please read the check list and select the chek box</string>
     <string name="checkList_details">Check list details saved successfully!</string>
+    <string name="education_details">Academic education details saved successfully!</string>
+    <string name="socialIdentity_details">Social Identity details saved successfully!</string>
+    <string name="bank_details">Bank details saved successfully!</string>
 </resources>
