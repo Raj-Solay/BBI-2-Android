@@ -7,7 +7,6 @@ import android.view.LayoutInflater
 import com.bbi.bizbulls.R
 import com.bbi.bizbulls.databinding.DialogMessagesBinding
 import com.bbi.bizbulls.sharedpref.SharedPrefsManager
-import com.bbi.bizbulls.ui.registrationforfo.FranchiseeRegistrationVIewModel
 import com.bbi.bizbulls.utils.Globals
 import okhttp3.OkHttpClient
 import retrofit2.HttpException

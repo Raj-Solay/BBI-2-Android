@@ -1,7 +1,5 @@
 package com.bbi.bizbulls.ui.registrationforfo.fragments
 
-import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,13 +7,12 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.bbi.bizbulls.databinding.FoFrgPersonalDetailsBinding
-import com.bbi.bizbulls.ui.registrationforfo.FoRegistrationDashBoardActivity
-import com.bbi.bizbulls.ui.registrationforfo.FranchiseeRegistrationVIewModel
+import com.bbi.bizbulls.ui.registrationforfo.FranchiseeRegistrationViewModel
 import com.bbi.bizbulls.utils.CommonUtils
 
 class FoPersonalDetailsFragment : Fragment() {
     private lateinit var binding: FoFrgPersonalDetailsBinding
-    private lateinit var franchiseeVIewModel: FranchiseeRegistrationVIewModel
+    private lateinit var franchiseeVIewModel: FranchiseeRegistrationViewModel
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -24,7 +21,7 @@ class FoPersonalDetailsFragment : Fragment() {
 
         binding = FoFrgPersonalDetailsBinding.inflate(inflater, container, false)
         franchiseeVIewModel =
-            ViewModelProvider(requireActivity())[FranchiseeRegistrationVIewModel::class.java]
+            ViewModelProvider(requireActivity())[FranchiseeRegistrationViewModel::class.java]
 
         // personal details
         binding.edtdob.setOnClickListener {
