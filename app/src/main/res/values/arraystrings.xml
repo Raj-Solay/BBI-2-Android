@@ -31,6 +31,11 @@
     </integer-array>
 
     <string-array name="YesNo">
+        <item>@string/yes</item>
+        <item>@string/no</item>
+    </string-array>
+
+    <string-array name="NoYes">
         <item>@string/no</item>
         <item>@string/yes</item>
     </string-array>
@@ -48,6 +53,18 @@
         <item>@string/oMinus</item>
         <item>@string/bMinus</item>
         <item>@string/abMinus</item>
+    </string-array>
+
+    <string-array name="financialAssistance">
+        <item>@string/pvtLimited</item>
+        <item>@string/partnership</item>
+        <item>@string/proprietor</item>
+    </string-array>
+
+    <string-array name="businessPlaceType">
+        <item>@string/owned</item>
+        <item>@string/leased</item>
+        <item>@string/rented</item>
     </string-array>
 
 </resources>

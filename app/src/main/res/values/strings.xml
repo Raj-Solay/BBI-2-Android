@@ -260,6 +260,12 @@
     <string name="oMinus">O-</string>
     <string name="bMinus">B-</string>
     <string name="abMinus">AB-</string>
+    <string name="owned">Owned</string>
+    <string name="leased">Leased</string>
+    <string name="rented">Rented</string>
+    <string name="pvtLimited">Pvt Limited</string>
+    <string name="partnership">Partnership</string>
+    <string name="proprietor">Proprietor</string>
 
     <string name="bizbullsindia_url">https://www.bizbullsindia.com</string>
     <string name="logout">Logout Successfully!</string>

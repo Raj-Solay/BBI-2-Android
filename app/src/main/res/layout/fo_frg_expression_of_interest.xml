@@ -40,7 +40,7 @@
             <com.bbi.bizbulls.utils.CustomSpinner
                 android:id="@+id/spnrFinancialAssistance"
                 style="@style/customSpinner"
-                android:entries="@array/bloodGroup"/>
+                android:entries="@array/financialAssistance" />
 
             <ImageView style="@style/customSpinnerDropDown" />
 
@@ -71,7 +71,7 @@
             <com.bbi.bizbulls.utils.CustomSpinner
                 android:id="@+id/spnrBusinessPlaceType"
                 style="@style/customSpinner"
-                android:entries="@array/bloodGroup"/>
+                android:entries="@array/businessPlaceType" />
 
             <ImageView style="@style/customSpinnerDropDown" />
 

@@ -96,7 +96,7 @@
             <com.bbi.bizbulls.utils.CustomSpinner
                 android:id="@+id/spnrhandicapped"
                 style="@style/customSpinner"
-                android:entries="@array/YesNo"/>
+                android:entries="@array/NoYes" />
 
             <ImageView style="@style/customSpinnerDropDown" />
 
@@ -116,7 +116,7 @@
             <com.bbi.bizbulls.utils.CustomSpinner
                 android:id="@+id/spnrsurgeries"
                 style="@style/customSpinner"
-                android:entries="@array/YesNo"/>
+                android:entries="@array/NoYes"/>
 
             <ImageView style="@style/customSpinnerDropDown" />
 
@@ -136,7 +136,7 @@
             <com.bbi.bizbulls.utils.CustomSpinner
                 android:id="@+id/spnrhealthissued"
                 style="@style/customSpinner"
-                android:entries="@array/YesNo"/>
+                android:entries="@array/NoYes"/>
 
             <ImageView style="@style/customSpinnerDropDown" />
 
@@ -156,7 +156,7 @@
             <com.bbi.bizbulls.utils.CustomSpinner
                 android:id="@+id/spnrhabbit"
                 style="@style/customSpinner"
-                android:entries="@array/YesNo"/>
+                android:entries="@array/NoYes"/>
 
             <ImageView style="@style/customSpinnerDropDown" />
 
