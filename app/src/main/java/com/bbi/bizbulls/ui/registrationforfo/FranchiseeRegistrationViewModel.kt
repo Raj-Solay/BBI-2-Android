@@ -1,8 +1,13 @@
 package com.bbi.bizbulls.ui.registrationforfo
 
 import android.content.Context
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.bbi.bizbulls.R
+import com.bbi.bizbulls.data.expression.ExpressionOfInterest
+import com.bbi.bizbulls.data.foregistration.steps.Data
+import com.bbi.bizbulls.data.foregistration.steps.FoRegistrationSteps
 import com.bbi.bizbulls.data.franchiseregresponse.personaldetailscreate.PersonalDetailsSaveResponse
 import com.bbi.bizbulls.data.health.HealthDetailsSaveResponse
 import com.bbi.bizbulls.remote.RetrofitClient
@@ -16,7 +21,42 @@ import retrofit2.Response
 /**
  * Created by Daniel.
  */
-class FranchiseeRegistrationVIewModel : ViewModel() {
+class FranchiseeRegistrationViewModel : ViewModel() {
+    private var _allSteps = MutableLiveData<List<Data>>()
+    val allSteps: LiveData<List<Data>> get() = _allSteps
+
+    /**
+     * Get Fo registration steps
+     */
+    fun getFoRegistrationSteps(context: Context) {
+        val sharedPrefsHelper by lazy { SharedPrefsManager(context) }
+
+        val call: Call<FoRegistrationSteps> =
+            RetrofitClient.getUrl().foRegistrationSteps(sharedPrefsHelper.authToken)
+        println("________URL ::${call.request().url}")
+        println("________authToken ::${sharedPrefsHelper.authToken}")
+        MyProcessDialog.showProgressBar(context, 0)
+        call.enqueue(object : Callback<FoRegistrationSteps> {
+            override
+            fun onResponse(
+                call: Call<FoRegistrationSteps>,
+                responseObject: Response<FoRegistrationSteps>) {
+                if (responseObject.isSuccessful) {
+                    _allSteps.value = responseObject.body()?.data as ArrayList<Data>
+                } else {
+                    RetrofitClient.showResponseMessage(context, responseObject.code())
+                }
+                MyProcessDialog.dismiss()
+            }
+
+            override
+            fun onFailure(call: Call<FoRegistrationSteps>, t: Throwable) {
+                MyProcessDialog.dismiss()
+                RetrofitClient.showFailedMessage(context, t)
+            }
+        })
+    }
+
 
     /**
      * Post Personal details
@@ -33,8 +73,7 @@ class FranchiseeRegistrationVIewModel : ViewModel() {
             override
             fun onResponse(
                 call: Call<PersonalDetailsSaveResponse>,
-                responseObject: Response<PersonalDetailsSaveResponse>
-            ) {
+                responseObject: Response<PersonalDetailsSaveResponse>) {
                 if (responseObject.code() == 201) {
                     sharedPrefsHelper.personalDetailID = responseObject.body()?.data?.id.toString()
                     FranchiseeRegistrationActivity.activityCalling(
@@ -74,7 +113,6 @@ class FranchiseeRegistrationVIewModel : ViewModel() {
                 responseObject: Response<HealthDetailsSaveResponse>
             ) {
                 if (responseObject.code() == 201) {
-                    sharedPrefsHelper.personalDetailID = responseObject.body()?.data?.id.toString()
                     FranchiseeRegistrationActivity.activityCalling(
                         context,
                         context.resources.getString(R.string.health_details)
@@ -87,6 +125,42 @@ class FranchiseeRegistrationVIewModel : ViewModel() {
 
             override
             fun onFailure(call: Call<HealthDetailsSaveResponse>, t: Throwable) {
+                MyProcessDialog.dismiss()
+                RetrofitClient.showFailedMessage(context, t)
+            }
+        })
+    }
+
+    /**
+     * Post expression of interest detail
+     */
+    fun sendExpressionOfInterestDetail(context: Context, jsonObject: JsonObject) {
+        val sharedPrefsHelper by lazy { SharedPrefsManager(context) }
+
+        val call: Call<ExpressionOfInterest> =
+            RetrofitClient.getUrl().expressionInterestDetailsPost(sharedPrefsHelper.authToken, jsonObject)
+        println("________URL ::${call.request().url}")
+        println("________Details $jsonObject")
+        MyProcessDialog.showProgressBar(context, 0)
+        call.enqueue(object : Callback<ExpressionOfInterest> {
+            override
+            fun onResponse(
+                call: Call<ExpressionOfInterest>,
+                responseObject: Response<ExpressionOfInterest>
+            ) {
+                if (responseObject.code() == 201) {
+                    FranchiseeRegistrationActivity.activityCalling(
+                        context,
+                        context.resources.getString(R.string.expression_details)
+                    )
+                } else {
+                    RetrofitClient.showResponseMessage(context, responseObject.code())
+                }
+                MyProcessDialog.dismiss()
+            }
+
+            override
+            fun onFailure(call: Call<ExpressionOfInterest>, t: Throwable) {
                 MyProcessDialog.dismiss()
                 RetrofitClient.showFailedMessage(context, t)
             }

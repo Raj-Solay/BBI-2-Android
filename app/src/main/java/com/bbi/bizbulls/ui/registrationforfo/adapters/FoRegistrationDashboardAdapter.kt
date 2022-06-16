@@ -6,51 +6,40 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bbi.bizbulls.R
+import com.bbi.bizbulls.data.foregistration.steps.Data
 import com.bbi.bizbulls.databinding.FoAdapterDashboardBinding
 import com.bbi.bizbulls.ui.registrationforfo.interfaces.IFoRegistrationStepsClickListener
+import com.squareup.picasso.Picasso
 
 /**
  * Created by Daniel.
  */
 class FoRegistrationDashboardAdapter(
     private val mContext: Context,
+    private val registrationsSteps: List<Data>,
     private val stepsClickListener: IFoRegistrationStepsClickListener
 ) : RecyclerView.Adapter<FoRegistrationDashboardAdapter.FoRegistrationDashboardViewHolder>() {
-    private var itemNames =  mContext.resources.getStringArray(R.array.FoRegistrationStepsNames)
-   // private var itemIcons = mContext.resources.getIntArray(R.array.FoRegistrationStepsIons)
-    private var itemIcons = intArrayOf(
-        R.drawable.delivery,
-        R.drawable.g_services,
-        R.drawable.cab,
-        R.drawable.maintaince,
-        R.drawable.property_broker,
-        R.drawable.property_broker,
-        R.drawable.property_broker,
-        R.drawable.property_broker,
-        R.drawable.property_broker,
-        R.drawable.property_broker,
-        R.drawable.property_broker,
-        R.drawable.schedule
-    )
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FoRegistrationDashboardViewHolder {
         val itemBinding = FoAdapterDashboardBinding.inflate(LayoutInflater.from(mContext), parent, false)
         return FoRegistrationDashboardViewHolder(itemBinding)
     }
 
-    override fun getItemCount(): Int = itemNames.size
+    override fun getItemCount(): Int = registrationsSteps.size
 
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: FoRegistrationDashboardViewHolder, position: Int) {
-        val name = itemNames[position]
-        val icon = itemIcons[position]
-        holder.itemBinding.itemName.text = name
-        holder.itemBinding.itemIcon.setImageResource(icon)
-
-//        Picasso.get().load(model.avatar).into(holder.itemBinding.profilePic)
+        val model = registrationsSteps[position]
+        holder.itemBinding.itemName.text = model.linkName
+        Picasso.get().load(model.linkIcon).into(holder.itemBinding.itemIcon)
+        if(model.profileUpdatedOn.isNullOrEmpty()){
+            holder.itemBinding.itemName.setBackgroundResource(R.color.status_red)
+        }else{
+            holder.itemBinding.itemName.setBackgroundResource(R.color.status_green)
+        }
 
         holder.itemView.setOnClickListener {
-            stepsClickListener.onStepsClickListener(itemNames[position].toString(), position)
+            stepsClickListener.onStepsClickListener(model.id, position)
         }
     }
 
