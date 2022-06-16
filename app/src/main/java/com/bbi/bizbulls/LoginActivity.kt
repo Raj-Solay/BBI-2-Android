@@ -38,7 +38,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onClick(view: View) {
         if (view === binding!!.txtloginweblink) {
-            val uriUrl = Uri.parse(this@LoginActivity.getString(R.string.bizbullsindia_url))
+            val uriUrl = Uri.parse(this@LoginActivity.getString(R.string.bizBullsIndia_url))
             val launchBrowser = Intent(Intent.ACTION_VIEW, uriUrl)
             launchBrowser.addCategory(Intent.CATEGORY_BROWSABLE)
             startActivity(launchBrowser)

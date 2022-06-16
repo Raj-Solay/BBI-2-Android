@@ -78,10 +78,7 @@ object RetrofitClient {
         }
 
         //now that the dialog is set up, it's time to show it
-        try {
-            dialog.show()
-        } catch (e: Exception) {
-        }
+         dialog.show()
     }
 
     /**

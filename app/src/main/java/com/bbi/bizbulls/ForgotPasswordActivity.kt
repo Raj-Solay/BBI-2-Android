@@ -31,7 +31,7 @@ class ForgotPasswordActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onClick(view: View) {
         if (view === binding!!.txtforgotweblink) {
-            val uriUrl = Uri.parse(this@ForgotPasswordActivity.getString(R.string.bizbullsindia_url))
+            val uriUrl = Uri.parse(this@ForgotPasswordActivity.getString(R.string.bizBullsIndia_url))
             val launchBrowser = Intent(Intent.ACTION_VIEW, uriUrl)
             launchBrowser.addCategory(Intent.CATEGORY_BROWSABLE)
             startActivity(launchBrowser)

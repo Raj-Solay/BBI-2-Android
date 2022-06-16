@@ -42,7 +42,6 @@ class FoPersonalDetailsFragment : Fragment() {
 
     private fun sendPersonalDetail() {
         val params: MutableMap<String, String> = HashMap()
-        params["fullname"] = binding.fullname.text.toString()
         params["fathersname"] = binding.edtfathername.text.toString()
         params["mothersname"] = binding.edtmothersmaidensname.text.toString()
         params["dob"] = binding.edtdob.text.toString()
@@ -64,7 +63,6 @@ class FoPersonalDetailsFragment : Fragment() {
             maritalstatus = "Widowed"
         }
         params["maritalstatus"] = maritalstatus
-        params["contactnumber"] = binding.edtContactNumber.text.toString()
         params["alternatenumber"] = binding.edtaltnumber.text.toString()
         params["whatsappnumber"] = binding.edtwhatsappnumber.text.toString()
 
@@ -82,8 +80,7 @@ class FoPersonalDetailsFragment : Fragment() {
         }
         params["permanent_acco_type"] = permanentAccoType
         params["permanent_acco_since"] = binding.permAccommodationSince.text.toString()
-        // params["permanent_proof"] = ""
-        params["permanent_document_no"] = binding.permDocumentNumber.text.toString()
+        params["permanent_emergency_no"] = binding.permEmergencyContact.text.toString()
 
         //present address
         params["present_add"] = binding.presAddress.text.toString()
@@ -99,8 +96,7 @@ class FoPersonalDetailsFragment : Fragment() {
         }
         params["present_acco_type"] = presentAccoType
         params["present_acco_since"] = binding.presAccommodationSince.text.toString()
-        // params["present_proof"] = ""
-        params["present_document_no"] = binding.presDocumentNumber.text.toString()
+        params["present_emergency_no"] = binding.permEmergencyContact.text.toString()
 
         // Call remote Api service to save the Personal Details
         franchiseeVIewModel.sendPersonalDetail(requireActivity(), params)
