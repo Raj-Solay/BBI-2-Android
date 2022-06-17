@@ -1,13 +1,16 @@
 package com.bbi.bizbulls.remote
 
 import com.bbi.bizbulls.data.foregistration.steps.FoRegistrationSteps
-import com.bbi.bizbulls.data.signin.LoginResponse
 import com.bbi.bizbulls.data.signin.ForgotPasswordResponse
+import com.bbi.bizbulls.data.signin.LoginResponse
 import com.bbi.bizbulls.data.signupresponse.SignupResponse
 import com.google.gson.JsonObject
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.http.*
+
 
 interface APIService {
     @POST("/api/register")
@@ -73,6 +76,27 @@ interface APIService {
         @Header("Authorization") token: String,
         @Body jsonObject: JsonObject): Call<ResponseBody>
 
+////////////////////////////
+    // TODO
+    @POST("/api/me/kyc/upload")
+    @FormUrlEncoded
+    fun attachmentsDetailsParams(
+        @Header("Authorization") token: String,
+        @FieldMap data: Map<String, String>): Call<ResponseBody>
+
+
+    @Multipart
+    @POST("/api/me/kyc/upload")
+    fun attachmentsDetailsPost(
+        @Header("Authorization") token: String,
+        @Part image: MultipartBody.Part): Call<ResponseBody>
+
+    @POST("/api/me/kyc/upload")
+    fun createPost(
+        @Header("Authorization") token: String,
+        @Body body: RequestBody): Call<ResponseBody>
+
+//////////////////////////////
     @POST("/api/me/authorization")
     fun authorizationDetailsPost(
         @Header("Authorization") token: String,

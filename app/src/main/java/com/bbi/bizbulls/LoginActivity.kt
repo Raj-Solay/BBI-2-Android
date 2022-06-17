@@ -114,10 +114,10 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
                         startActivity(i)
                         CommonUtils.toast(this@LoginActivity, "Login Successfully!")
                     } else {
-                        CommonUtils.toast(this@LoginActivity, this@LoginActivity.resources.getString(R.string.network_error))
+                        CommonUtils.toast(this@LoginActivity, this@LoginActivity.resources.getString(R.string.something_wrong))
                     }
                 } else {
-                    CommonUtils.toast(this@LoginActivity, this@LoginActivity.resources.getString(R.string.network_error))
+                    CommonUtils.toast(this@LoginActivity, this@LoginActivity.resources.getString(R.string.something_wrong))
                 }
                 MyProcessDialog.dismiss()
             }

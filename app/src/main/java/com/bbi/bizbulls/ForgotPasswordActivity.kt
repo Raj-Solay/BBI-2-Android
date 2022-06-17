@@ -69,10 +69,10 @@ class ForgotPasswordActivity : AppCompatActivity(), View.OnClickListener {
                         startActivity(fp)
                         finish()
                     } else {
-                        CommonUtils.toast(this@ForgotPasswordActivity, this@ForgotPasswordActivity.resources.getString(R.string.network_error))
+                        CommonUtils.toast(this@ForgotPasswordActivity, this@ForgotPasswordActivity.resources.getString(R.string.something_wrong))
                     }
                 } else {
-                    CommonUtils.toast(this@ForgotPasswordActivity, this@ForgotPasswordActivity.resources.getString(R.string.network_error))
+                    CommonUtils.toast(this@ForgotPasswordActivity, this@ForgotPasswordActivity.resources.getString(R.string.something_wrong))
                 }
                 MyProcessDialog.dismiss()
             }

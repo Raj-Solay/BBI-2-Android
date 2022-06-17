@@ -64,7 +64,7 @@ object RetrofitClient {
                 binding.textMessage.text = context.resources.getString(R.string.inValidData)
             }
             else -> {
-                binding.textMessage.text = context.resources.getString(R.string.network_error)
+                binding.textMessage.text = context.resources.getString(R.string.something_wrong)
             }
 
         }
@@ -96,7 +96,7 @@ object RetrofitClient {
         dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
         val errorMessage = when (t) {
             is IOException -> context.resources.getString(R.string.no_internet)
-            is HttpException -> context.resources.getString(R.string.network_error)
+            is HttpException -> context.resources.getString(R.string.something_wrong)
             else -> t.localizedMessage
         }
         binding.textMessage.text = errorMessage

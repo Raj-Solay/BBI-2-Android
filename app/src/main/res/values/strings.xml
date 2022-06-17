@@ -185,11 +185,11 @@
     <string name="ct_checkten">Whether you understand that a franchisee shall completely be your responsibility under the company guidelines and terms of operation.</string>
     <!--     Attachments to be enclosed, with this form -->
     <string name="ct_attachmentinfo">Please attach legible counter signed true copies of the following documents. Please tick the concerned box, before the attachment that you are enclosing.</string>
-    <string name="ct_checkeleven">PAN Card</string>
-    <string name="ct_checktwelve">Aadhaar Card</string>
-    <string name="ct_checkthirteen">Residential Address Proof</string>
-    <string name="ct_checkfourtin">Recent Photograph of applicant</string>
-    <string name="ct_checkfiftin">Individually filled &amp; signed copies of this form (in case of partnership)</string>
+    <string name="attachmentPanCard">PAN Card</string>
+    <string name="attachmentAadhaar">Aadhaar Card</string>
+    <string name="attachmentResidential">Residential Address Proof</string>
+    <string name="attachmentPhoto">Recent Photograph of applicant</string>
+    <string name="attachmentIndividuallyField">Individually filled &amp; signed copies of this form (in case of partnership)</string>
     <!--     Authorization -->
     <string name="ct_authinfo">I certify that all the information given in this application is true to the best of my knowledge.</string>
     <string name="ct_authinfoone">Should any information stated by me in this application be in-correct, my association / License with you is liable to immediate termination without refund of any payment.</string>
@@ -279,7 +279,7 @@
     <string name="unAuthenticated">Secession is Expired, Please Login again</string>
     <string name="inValidData">The given data was invalid.</string>
     <string name="no_internet">No internet connection</string>
-    <string name="network_error">Something went wrong, please try again</string>
+    <string name="something_wrong">Something went wrong, please try again</string>
     <string name="personal_details">Personal details saved successfully!</string>
     <string name="health_details">Health details saved successfully!</string>
     <string name="expression_details">Expression of interest details saved successfully!</string>

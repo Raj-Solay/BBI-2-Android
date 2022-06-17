@@ -1,6 +1,8 @@
 package com.bbi.bizbulls.ui.registrationforfo
 
 import android.content.Context
+import android.util.Log
+import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -11,6 +13,9 @@ import com.bbi.bizbulls.remote.RetrofitClient
 import com.bbi.bizbulls.sharedpref.SharedPrefsManager
 import com.bbi.bizbulls.utils.MyProcessDialog
 import com.google.gson.JsonObject
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Callback
@@ -195,4 +200,105 @@ class FranchiseeRegistrationViewModel : ViewModel() {
         }
         FranchiseeRegistrationActivity.activityCalling(context,message)
     }
+
+  /*    // TODO *//**
+     * Post attachment documents
+     *//*
+    fun postAttachmentParams(context: Context, params: MutableMap<String, String> = HashMap()) {
+        val sharedPrefsHelper by lazy { SharedPrefsManager(context) }
+
+        val call: Call<ResponseBody> =
+            RetrofitClient.getUrl().attachmentsDetailsParams(sharedPrefsHelper.authToken, params)
+        println("________URL ::${call.request().url}")
+        println("________authToken ::${sharedPrefsHelper.authToken}")
+        println("________Body ::${params}")
+        MyProcessDialog.showProgressBar(context, 0)
+        call.enqueue(object : Callback<ResponseBody> {
+            override
+            fun onResponse(
+                call: Call<ResponseBody>,
+                responseObject: Response<ResponseBody>) {
+                println("__________________File Response ${responseObject.toString()}")
+                if (responseObject.code() == 201) {
+                     Toast.makeText(context, context.resources.getString(R.string.attachments_details), Toast.LENGTH_LONG).show()
+                } else {
+                    RetrofitClient.showResponseMessage(context, responseObject.code())
+                }
+                MyProcessDialog.dismiss()
+            }
+
+            override
+            fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+                MyProcessDialog.dismiss()
+                RetrofitClient.showFailedMessage(context, t)
+            }
+        })
+    }
+
+    *//**
+     * Post attachment documents
+     *//*
+    fun postAttachmentDocuments(context: Context, image: MultipartBody.Part) {
+        val sharedPrefsHelper by lazy { SharedPrefsManager(context) }
+
+        val call: Call<ResponseBody> =
+            RetrofitClient.getUrl().attachmentsDetailsPost(sharedPrefsHelper.authToken, image)
+        println("________URL ::${call.request().url}")
+        println("________authToken ::${sharedPrefsHelper.authToken}")
+        println("________Body ::${image.body.contentLength()}")
+        MyProcessDialog.showProgressBar(context, 0)
+        call.enqueue(object : Callback<ResponseBody> {
+            override
+            fun onResponse(
+                call: Call<ResponseBody>,
+                responseObject: Response<ResponseBody>) {
+                println("________Daniel Succ ::${responseObject}")
+                if (responseObject.isSuccessful) {
+                   // Toast.makeText(context, context.resources.getString(R.string.attachments_details), Toast.LENGTH_LONG).show()
+                } else {
+                    RetrofitClient.showResponseMessage(context, responseObject.code())
+                }
+                MyProcessDialog.dismiss()
+            }
+
+            override
+            fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+                MyProcessDialog.dismiss()
+                println("________Daniel Erro ::${t.cause}")
+                RetrofitClient.showFailedMessage(context, t)
+            }
+        })
+    }
+
+    fun createPost(context: Context,  body: RequestBody) {
+        val sharedPrefsHelper by lazy { SharedPrefsManager(context) }
+
+        val call: Call<ResponseBody> =
+            RetrofitClient.getUrl().createPost(sharedPrefsHelper.authToken, body)
+        println("________URL ::${call.request().url}")
+        println("________authToken ::${sharedPrefsHelper.authToken}")
+        println("________Body ::${body.contentLength()}")
+        MyProcessDialog.showProgressBar(context, 0)
+        call.enqueue(object : Callback<ResponseBody> {
+            override
+            fun onResponse(
+                call: Call<ResponseBody>,
+                responseObject: Response<ResponseBody>) {
+                println("________Daniel Succ ::${responseObject}")
+                if (responseObject.isSuccessful) {
+                   // Toast.makeText(context, context.resources.getString(R.string.attachments_details), Toast.LENGTH_LONG).show()
+                } else {
+                    RetrofitClient.showResponseMessage(context, responseObject.code())
+                }
+                MyProcessDialog.dismiss()
+            }
+
+            override
+            fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+                MyProcessDialog.dismiss()
+                println("________Daniel Erro ::${t.cause}")
+                RetrofitClient.showFailedMessage(context, t)
+            }
+        })
+    }*/
 }
