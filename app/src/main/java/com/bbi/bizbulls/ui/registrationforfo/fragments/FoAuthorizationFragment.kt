@@ -23,10 +23,13 @@ class FoAuthorizationFragment(private val stepPosition: Int) : Fragment() {
         binding = FoFrgAuthorizationBinding.inflate(inflater, container, false)
 
         binding.stepSubmit.setOnClickListener {
-            if(isCheckListChecked) {
+            if (isCheckListChecked) {
                 sendAuthorizationDetail()
-            }else{
-                CommonUtils.showError(requireActivity(), requireActivity().resources.getString(R.string.checkBoxSelection))
+            } else {
+                CommonUtils.showError(
+                    requireActivity(),
+                    requireActivity().resources.getString(R.string.checkBoxSelection)
+                )
             }
         }
         binding.checkAuthorization.setOnCheckedChangeListener { _, isChecked ->
@@ -38,12 +41,12 @@ class FoAuthorizationFragment(private val stepPosition: Int) : Fragment() {
     private fun sendAuthorizationDetail() {
 
         val jsonObject = JsonObject()
-        jsonObject.addProperty("meet_eligibility_criteria", "Yes")
-        jsonObject.addProperty("spend_required_amount", "Yes")
-        jsonObject.addProperty("business_registration_support", "Yes")
+        jsonObject.addProperty("authorization", "Yes")
+        jsonObject.addProperty("ip_address", CommonUtils.getDeviceId(requireActivity()))
 
         // Call remote Api service to save the Check List Details
         val params: MutableMap<String, String> = HashMap()
         FranchiseeRegistrationViewModel().sendDetailPostRequest(requireActivity(), params, jsonObject, stepPosition)
     }
+
 }

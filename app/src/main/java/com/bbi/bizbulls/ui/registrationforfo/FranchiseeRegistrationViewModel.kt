@@ -9,7 +9,6 @@ import com.bbi.bizbulls.data.foregistration.steps.Data
 import com.bbi.bizbulls.data.foregistration.steps.FoRegistrationSteps
 import com.bbi.bizbulls.remote.RetrofitClient
 import com.bbi.bizbulls.sharedpref.SharedPrefsManager
-import com.bbi.bizbulls.utils.Globals
 import com.bbi.bizbulls.utils.MyProcessDialog
 import com.google.gson.JsonObject
 import okhttp3.ResponseBody
@@ -69,7 +68,8 @@ class FranchiseeRegistrationViewModel : ViewModel() {
      * 7 == Family details
      * 8 == Children details
      * 9 == Personal references details
-     * 10 == Authorization details
+     * 10 == Attachment details
+     * 11 == Authorization details
      */
 
     fun sendDetailPostRequest(context: Context, params: MutableMap<String, String> = HashMap(), jsonObject: JsonObject, stepPosition: Any) {
@@ -117,6 +117,10 @@ class FranchiseeRegistrationViewModel : ViewModel() {
                     .personalReferencesDetailsPost(sharedPrefsHelper.authToken, jsonObject)
             }
             10 -> {
+//                call = RetrofitClient.getUrl()
+//                    .authorizationDetailsPost(sharedPrefsHelper.authToken, jsonObject)
+            }
+            11 -> {
                 call = RetrofitClient.getUrl()
                     .authorizationDetailsPost(sharedPrefsHelper.authToken, jsonObject)
             }
@@ -183,6 +187,9 @@ class FranchiseeRegistrationViewModel : ViewModel() {
                 message = context.resources.getString(R.string.personalReferences_details)
             }
             10 -> {
+             //   message = context.resources.getString(R.string.attachments_details)
+            }
+            11 -> {
                 message = context.resources.getString(R.string.authorization_details)
             }
         }

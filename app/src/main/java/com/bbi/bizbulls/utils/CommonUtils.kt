@@ -7,6 +7,7 @@ import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.os.Build
+import android.provider.Settings
 import android.text.TextUtils
 import android.util.Patterns
 import android.view.Gravity
@@ -19,6 +20,7 @@ import com.bbi.bizbulls.enums.Environment
 import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*
+
 
 object CommonUtils {
 
@@ -96,6 +98,14 @@ object CommonUtils {
             else -> false
         }
         return result
+    }
+
+    /**
+     *  This function used to get the device IP
+     */
+    @SuppressLint("HardwareIds")
+    fun getDeviceId(context: Context): String {
+        return Settings.Secure.getString(context.contentResolver, Settings.Secure.ANDROID_ID)
     }
 
     /**

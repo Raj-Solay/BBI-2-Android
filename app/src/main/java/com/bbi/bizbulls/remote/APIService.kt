@@ -72,7 +72,7 @@ interface APIService {
         @Header("Authorization") token: String,
         @Body jsonObject: JsonObject): Call<ResponseBody>
 
-    @POST("/api/me/reference")
+    @POST("/api/me/authorization")
     fun authorizationDetailsPost(
         @Header("Authorization") token: String,
         @Body jsonObject: JsonObject): Call<ResponseBody>
