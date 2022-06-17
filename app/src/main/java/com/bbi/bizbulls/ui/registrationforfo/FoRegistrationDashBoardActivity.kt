@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import com.bbi.bizbulls.DashboardActivity
+import com.bbi.bizbulls.ProjectInfoActivity
 import com.bbi.bizbulls.R
 import com.bbi.bizbulls.data.foregistration.steps.Data
 import com.bbi.bizbulls.databinding.FoActivityDashboardBinding
@@ -62,7 +63,7 @@ class FoRegistrationDashBoardActivity : AppCompatActivity(), IFoRegistrationStep
 
     override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
         return if (keyCode == KeyEvent.KEYCODE_BACK) {
-            val i = Intent(this, DashboardActivity::class.java)
+            val i = Intent(this, ProjectInfoActivity::class.java)
             i.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(i)
             finish()

@@ -7,7 +7,7 @@ import android.net.Uri
 import android.view.View
 import com.bbi.bizbulls.utils.MyProcessDialog
 import com.google.gson.JsonObject
-import com.bbi.bizbulls.data.signin.SigninResponse
+import com.bbi.bizbulls.data.signin.ForgotPasswordResponse
 import com.bbi.bizbulls.databinding.ActivityForgotpasswordBinding
 import com.bbi.bizbulls.remote.RetrofitClient
 import com.bbi.bizbulls.utils.CommonUtils
@@ -53,11 +53,11 @@ class ForgotPasswordActivity : AppCompatActivity(), View.OnClickListener {
         MyProcessDialog.showProgressBar(this, 0)
         val jsonObject = JsonObject()
         jsonObject.addProperty("email", binding!!.etUsername.text.toString().trim { it <= ' ' })
-        val call: Call<SigninResponse> = RetrofitClient.getUrl().reset( jsonObject)
-        call.enqueue(object : Callback<SigninResponse> {
+        val call: Call<ForgotPasswordResponse> = RetrofitClient.getUrl().reset( jsonObject)
+        call.enqueue(object : Callback<ForgotPasswordResponse> {
             override fun onResponse(
-                call: Call<SigninResponse>,
-                response: Response<SigninResponse>
+                call: Call<ForgotPasswordResponse>,
+                response: Response<ForgotPasswordResponse>
             ) {
                 if (response.code() == 200) {
                     if (response.body()!!.expiresIn!! > 0) {
@@ -77,7 +77,7 @@ class ForgotPasswordActivity : AppCompatActivity(), View.OnClickListener {
                 MyProcessDialog.dismiss()
             }
 
-            override fun onFailure(call: Call<SigninResponse>, t: Throwable) {
+            override fun onFailure(call: Call<ForgotPasswordResponse>, t: Throwable) {
                 MyProcessDialog.dismiss()
                 RetrofitClient.showFailedMessage(this@ForgotPasswordActivity, t)
             }

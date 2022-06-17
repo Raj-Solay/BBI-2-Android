@@ -1,6 +1,5 @@
 package com.bbi.bizbulls
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -43,7 +42,7 @@ class DashboardActivity : AppCompatActivity(), View.OnClickListener {
         binding = ActivityDashboardBinding.inflate(layoutInflater)
         setContentView(binding!!.root)
         init()
-        println("________NAME ::${sharedPrefsHelper.userFirstName}")
+        println("________NAME ::${sharedPrefsHelper.userName}")
         println("________EMAIL  ::${sharedPrefsHelper.email}")
         println("________PHONE  ::${sharedPrefsHelper.phone}")
         println("________TOKEN_ID  ::${sharedPrefsHelper.tokenID}")
@@ -67,9 +66,9 @@ class DashboardActivity : AppCompatActivity(), View.OnClickListener {
         val lm = hView.findViewById<LinearProgressIndicator>(R.id.progressBarprofileupdate)
         lm.progress = 25
         val nav_user = hView.findViewById<AppCompatTextView>(R.id.txtfoname)
-        nav_user.text = sharedPrefsHelper.userFirstName
+        nav_user.text = sharedPrefsHelper.userName
         val nav_mobile = hView.findViewById<AppCompatTextView>(R.id.txtfomobile)
-        nav_mobile.text = sharedPrefsHelper.phone.toString()
+        nav_mobile.text = sharedPrefsHelper.phone
         val nav_email = hView.findViewById<AppCompatTextView>(R.id.txtfoemail)
         nav_email.text = sharedPrefsHelper.email
         myAccount = hView.findViewById(R.id.myAccount)

@@ -124,8 +124,8 @@ class SignupActivity : AppCompatActivity(), View.OnClickListener {
                 if (response.code() == 201) {
                     if (!response.body()!!.data?.id?.isEmpty()!!) {
                         sharedPrefsHelper.tokenID = response.body()?.data?.id.toString()
-                        sharedPrefsHelper.userFirstName = response.body()?.data?.name.toString()
-                        sharedPrefsHelper.userLastName = response.body()?.data?.name.toString()
+                        sharedPrefsHelper.userName = response.body()?.data?.name.toString()
+                        sharedPrefsHelper.userPicture = response.body()?.data?.name.toString()
 
                         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
                         MyProcessDialog.dismiss()

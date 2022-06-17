@@ -7,7 +7,6 @@ import android.util.Log
 import com.bbi.bizbulls.LoginActivity
 import com.bbi.bizbulls.utils.Globals
 import com.bbi.bizbulls.R
-import com.bbi.bizbulls.SignupActivity
 import com.bbi.bizbulls.utils.CommonUtils
 
 /**
@@ -49,12 +48,12 @@ class SharedPrefsManager constructor(private val myContext: Context) {
         set(value) {
             sharedPrefs[KEY_TOKEN_ID] = value
         }
-    var userFirstName: String
+    var userName: String
         get() = sharedPrefs[KEY_FIRST_NAME] ?: ""
         set(value) {
             sharedPrefs[KEY_FIRST_NAME] = value
         }
-    var userLastName: String
+    var userPicture: String
         get() = sharedPrefs[KEY_LAST_NAME] ?: ""
         set(value) {
             sharedPrefs[KEY_LAST_NAME] = value
@@ -64,8 +63,8 @@ class SharedPrefsManager constructor(private val myContext: Context) {
         set(value) {
             sharedPrefs[KEY_EMAIL] = value
         }
-    var phone: Int
-        get() = sharedPrefs[KEY_PHONE] ?: 0
+    var phone: String
+        get() = sharedPrefs[KEY_PHONE] ?: ""
         set(value) {
             sharedPrefs[KEY_PHONE] = value
         }
@@ -138,10 +137,10 @@ class SharedPrefsManager constructor(private val myContext: Context) {
         isLogin = false
         authToken = ""
         tokenID = ""
-        userFirstName = ""
-        userLastName = ""
+        userName = ""
+        userPicture = ""
         email = ""
-        phone = 0
+        phone = ""
         personalDetailID = ""
 
     }

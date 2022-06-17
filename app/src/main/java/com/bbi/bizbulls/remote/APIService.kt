@@ -1,7 +1,8 @@
 package com.bbi.bizbulls.remote
 
 import com.bbi.bizbulls.data.foregistration.steps.FoRegistrationSteps
-import com.bbi.bizbulls.data.signin.SigninResponse
+import com.bbi.bizbulls.data.signin.LoginResponse
+import com.bbi.bizbulls.data.signin.ForgotPasswordResponse
 import com.bbi.bizbulls.data.signupresponse.SignupResponse
 import com.google.gson.JsonObject
 import okhttp3.ResponseBody
@@ -13,10 +14,10 @@ interface APIService {
     fun register(@Body model: JsonObject): Call<SignupResponse>
 
     @POST("/oauth/token")
-    fun login(@Body jsonObject: JsonObject): Call<SigninResponse>
+    fun login(@Body jsonObject: JsonObject): Call<LoginResponse>
 
     @POST("/api/passwords/reset")
-    fun reset(@Body jsonObject: JsonObject): Call<SigninResponse>
+    fun reset(@Body jsonObject: JsonObject): Call<ForgotPasswordResponse>
 
     @GET("/api/me/profile_links")
     fun foRegistrationSteps(@Header("Authorization") token: String): Call<FoRegistrationSteps>

@@ -9,7 +9,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.bbi.bizbulls.utils.MyProcessDialog
-import com.bbi.bizbulls.data.signin.SigninResponse
+import com.bbi.bizbulls.data.signin.LoginResponse
 import com.bbi.bizbulls.databinding.ActivityLoginBinding
 import com.bbi.bizbulls.remote.RetrofitClient
 import com.bbi.bizbulls.sharedpref.SharedPrefsManager
@@ -90,16 +90,20 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
         jsonObject.addProperty("client_secret", "Uc54V4JnJ7fw95UwZ9IWoRxQafMh0TZy2f5L83kI")
         jsonObject.addProperty("username", binding!!.etUsername.text.toString().trim { it <= ' ' })
         jsonObject.addProperty("password", binding!!.etPassword.text.toString().trim { it <= ' ' })
-        val call: Call<SigninResponse> = RetrofitClient.getUrl().login( jsonObject)
-            call.enqueue(object : Callback<SigninResponse> {
+        val call: Call<LoginResponse> = RetrofitClient.getUrl().login( jsonObject)
+            call.enqueue(object : Callback<LoginResponse> {
             override fun onResponse(
-                call: Call<SigninResponse>,
-                response: Response<SigninResponse>
+                call: Call<LoginResponse>,
+                response: Response<LoginResponse>
             ) {
                 if (response.code() == 200) {
-                    if (response.body()!!.expiresIn!! > 0) {
+                    if (response.body()!!.expiresIn > 0) {
                         sharedPrefsHelper.isLogin = true
                         sharedPrefsHelper.authToken = response.body()?.tokenType + " " + response.body()?.accessToken
+                        sharedPrefsHelper.userName = response.body()?.user?.data?.name.toString()
+                        sharedPrefsHelper.phone = response.body()?.user?.data?.phone.toString()
+                        sharedPrefsHelper.email = response.body()?.user?.data?.email.toString()
+                        sharedPrefsHelper.userPicture = response.body()?.user?.data?.profilePic.toString()
                         MyProcessDialog.dismiss()
                         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
                         finish()
@@ -118,7 +122,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
                 MyProcessDialog.dismiss()
             }
 
-            override fun onFailure(call: Call<SigninResponse>, t: Throwable) {
+            override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
                 MyProcessDialog.dismiss()
                 RetrofitClient.showFailedMessage(this@LoginActivity, t)
 

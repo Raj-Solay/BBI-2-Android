@@ -2,7 +2,7 @@ package com.bbi.bizbulls.data.signin
 
 import com.google.gson.annotations.SerializedName
 
-class SigninResponse {
+class ForgotPasswordResponse {
     @SerializedName("access_token")
     val accessToken: String? = null
 
