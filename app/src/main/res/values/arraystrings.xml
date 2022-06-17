@@ -77,4 +77,14 @@
         <item>@string/b_6</item>
     </string-array>
 
+    <string-array name="gender">
+        <item>@string/ct_male</item>
+        <item>@string/ct_female</item>
+    </string-array>
+
+    <string-array name="relations">
+        <item>Father</item>
+        <item>Mother</item>
+    </string-array>
+
 </resources>

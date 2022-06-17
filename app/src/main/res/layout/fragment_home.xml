@@ -132,15 +132,14 @@
                     <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/tv_registration"
                         style="@style/fontregular"
-                        android:layout_width="@dimen/cardsize"
-                        android:layout_height="@dimen/smallbutton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="35dp"
                         android:layout_gravity="center"
                         android:background="@drawable/button"
                         android:gravity="center"
                         android:text="Register"
                         android:textAllCaps="false"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/extrasmall_font" />
+                        android:textColor="@color/white" />
                 </LinearLayout>
 
             </LinearLayout>

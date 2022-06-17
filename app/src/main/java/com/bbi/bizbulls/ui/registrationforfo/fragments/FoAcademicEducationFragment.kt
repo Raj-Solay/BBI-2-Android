@@ -9,7 +9,7 @@ import com.bbi.bizbulls.databinding.FoFrgAcademicEducationDetailsBinding
 import com.bbi.bizbulls.ui.registrationforfo.FranchiseeRegistrationViewModel
 import com.google.gson.JsonObject
 
-class FoAcademicEducationFragment : Fragment() {
+class FoAcademicEducationFragment(private val stepPosition: Int, private val stepName: String) : Fragment() {
     private lateinit var binding: FoFrgAcademicEducationDetailsBinding
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -17,6 +17,7 @@ class FoAcademicEducationFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FoFrgAcademicEducationDetailsBinding.inflate(inflater, container, false)
+        FranchiseeRegistrationViewModel()._selectedStepName.value = stepName
 
         binding.stepSubmit.setOnClickListener {
             senEducationDetail()
@@ -33,7 +34,8 @@ class FoAcademicEducationFragment : Fragment() {
         jsonObject.addProperty("percentage", binding.percent.text.toString().trim())
 
         // Call remote Api service to save the Education Detail
-        FranchiseeRegistrationViewModel().sendEducationDetail(requireActivity(), jsonObject)
+        val params: MutableMap<String, String> = HashMap()
+        FranchiseeRegistrationViewModel().sendDetailPostRequest(requireActivity(), params, jsonObject, stepPosition)
     }
 
 }

@@ -5,14 +5,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import com.bbi.bizbulls.databinding.FoFrgPersonalDetailsBinding
 import com.bbi.bizbulls.ui.registrationforfo.FranchiseeRegistrationViewModel
 import com.bbi.bizbulls.utils.CommonUtils
+import com.google.gson.JsonObject
 
-class FoPersonalDetailsFragment : Fragment() {
+class FoPersonalDetailsFragment(private val stepPosition: Int, private val stepName: String) : Fragment() {
     private lateinit var binding: FoFrgPersonalDetailsBinding
-    private lateinit var franchiseeVIewModel: FranchiseeRegistrationViewModel
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -20,9 +19,7 @@ class FoPersonalDetailsFragment : Fragment() {
     ): View {
 
         binding = FoFrgPersonalDetailsBinding.inflate(inflater, container, false)
-        franchiseeVIewModel =
-            ViewModelProvider(requireActivity())[FranchiseeRegistrationViewModel::class.java]
-
+        FranchiseeRegistrationViewModel()._selectedStepName.value = stepName
         // personal details
         binding.edtdob.setOnClickListener {
             CommonUtils.commonDatePickerDialog(
@@ -102,6 +99,7 @@ class FoPersonalDetailsFragment : Fragment() {
         params["present_emergency_no"] = binding.permEmergencyContact.text.toString()
 
         // Call remote Api service to save the Personal Details
-        franchiseeVIewModel.sendPersonalDetail(requireActivity(), params)
+        val jsonObject = JsonObject()
+        FranchiseeRegistrationViewModel().sendDetailPostRequest(requireActivity(), params, jsonObject, stepPosition)
     }
 }

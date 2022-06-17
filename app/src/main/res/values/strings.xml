@@ -288,4 +288,7 @@
     <string name="education_details">Academic education details saved successfully!</string>
     <string name="socialIdentity_details">Social Identity details saved successfully!</string>
     <string name="bank_details">Bank details saved successfully!</string>
+    <string name="family_details">Family details saved successfully!</string>
+    <string name="children_details">Children details saved successfully!</string>
+    <string name="personalReferences_details">Personal References details saved successfully!</string>
 </resources>

@@ -91,7 +91,7 @@
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/card"
                 android:layout_width="100dp"
-                android:layout_height="100dp"
+                android:layout_height="110dp"
                 app:cardCornerRadius="@dimen/overrallspacing"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -100,7 +100,7 @@
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/imgCard"
                     android:layout_width="100dp"
-                    android:layout_height="100dp"
+                    android:layout_height="match_parent"
                     android:background="@drawable/biz_bulls"
                     android:scaleType="fitCenter" />
             </com.google.android.material.card.MaterialCardView>
@@ -197,13 +197,12 @@
                     android:id="@+id/tvRegister"
                     style="@style/fontregular"
                     android:layout_width="wrap_content"
-                    android:layout_height="@dimen/smallbutton"
+                    android:layout_height="35dp"
                     android:layout_margin="@dimen/minimumspacing"
                     android:background="@drawable/button"
                     android:text="Register"
                     android:textAllCaps="false"
                     android:textColor="@color/white"
-                    android:textSize="@dimen/extrasmall_font"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     tools:ignore="TouchTargetSizeCheck" />

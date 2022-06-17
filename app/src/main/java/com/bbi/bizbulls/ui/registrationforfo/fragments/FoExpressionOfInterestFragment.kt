@@ -9,7 +9,7 @@ import com.bbi.bizbulls.databinding.FoFrgExpressionOfInterestBinding
 import com.bbi.bizbulls.ui.registrationforfo.FranchiseeRegistrationViewModel
 import com.google.gson.JsonObject
 
-class FoExpressionOfInterestFragment : Fragment() {
+class FoExpressionOfInterestFragment(private val stepPosition: Int, private val stepName: String) : Fragment() {
     private lateinit var binding: FoFrgExpressionOfInterestBinding
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -17,6 +17,7 @@ class FoExpressionOfInterestFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FoFrgExpressionOfInterestBinding.inflate(inflater, container, false)
+        FranchiseeRegistrationViewModel()._selectedStepName.value = stepName
 
         binding.stepSubmit.setOnClickListener {
             sendExpressionDetail()
@@ -40,7 +41,7 @@ class FoExpressionOfInterestFragment : Fragment() {
         jsonObject.addProperty("business_place_size", binding.businessPlaceSize.text.toString().trim())
 
         // Call remote Api service to save the Health Details
-        FranchiseeRegistrationViewModel().sendExpressionOfInterestDetail(requireActivity(), jsonObject)
-    }
+        val params: MutableMap<String, String> = HashMap()
+        FranchiseeRegistrationViewModel().sendDetailPostRequest(requireActivity(), params, jsonObject, stepPosition)    }
 
 }

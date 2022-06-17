@@ -26,21 +26,23 @@
             android:id="@+id/childAge"
             style="@style/inputBox"
             android:hint="Age"
+            android:maxLength="2"
             android:inputType="number" />
 
         <androidx.appcompat.widget.AppCompatTextView
             style="@style/subTitle"
             android:text="Sex" />
 
-        <LinearLayout style="@style/spinnerLayout">
+        <RelativeLayout style="@style/spinnerLayout">
 
             <com.bbi.bizbulls.utils.CustomSpinner
                 android:id="@+id/spnrChildSex"
-                style="@style/customSpinner" />
+                style="@style/customSpinner"
+                android:entries="@array/gender"/>
 
             <ImageView style="@style/customSpinnerDropDown" />
 
-        </LinearLayout>
+        </RelativeLayout>
 
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/staysWith"

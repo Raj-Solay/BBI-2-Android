@@ -24,7 +24,7 @@ object Globals {
     var Item_Type = 1
     var SEE_ALL_TAG = "See All>>"
 
-    const val SELECT = "Select"
+    const val franchiseRegistration = "Franchise Registration"
     const val SELECT_HAND_USE = "Select regular hand usage"
     const val SELECT_BLOOD_GROUP = "Select your blood group"
     const val SELECT_PH = "Physically handicapped?"

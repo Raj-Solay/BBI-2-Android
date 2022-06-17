@@ -4,14 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
 import androidx.fragment.app.Fragment
-import com.bbi.bizbulls.R
 import com.bbi.bizbulls.databinding.FoFrgHealthDetailsBinding
 import com.bbi.bizbulls.ui.registrationforfo.FranchiseeRegistrationViewModel
 import com.google.gson.JsonObject
 
-class FoHealthDetailsFragment : Fragment() {
+class FoHealthDetailsFragment(private val stepPosition: Int, private val stepName: String) : Fragment() {
     private lateinit var binding: FoFrgHealthDetailsBinding
 
     override fun onCreateView(
@@ -20,7 +18,7 @@ class FoHealthDetailsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FoFrgHealthDetailsBinding.inflate(inflater, container, false)
-
+        FranchiseeRegistrationViewModel()._selectedStepName.value = stepName
         binding.stepSubmit.setOnClickListener {
             sendHealthDetail()
         }
@@ -62,7 +60,7 @@ class FoHealthDetailsFragment : Fragment() {
         jsonObject.addProperty("habbitdetails", binding.edttypeofhabbits.text.toString().trim())
 
         // Call remote Api service to save the Health Details
-          FranchiseeRegistrationViewModel().sendHealthDetail(requireActivity(), jsonObject)
-    }
+        val params: MutableMap<String, String> = HashMap()
+        FranchiseeRegistrationViewModel().sendDetailPostRequest(requireActivity(), params, jsonObject, stepPosition)    }
 
 }

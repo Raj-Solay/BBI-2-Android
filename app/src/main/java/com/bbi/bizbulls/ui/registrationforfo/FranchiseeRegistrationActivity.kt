@@ -7,12 +7,14 @@ import android.view.KeyEvent
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import com.bbi.bizbulls.R
 import com.bbi.bizbulls.databinding.FoActivityRegistrationBinding
 import com.bbi.bizbulls.ui.registrationforfo.fragments.*
 
 class FranchiseeRegistrationActivity : AppCompatActivity() {
     private lateinit var binding: FoActivityRegistrationBinding
+    private lateinit var foRegistrationViewModel: FranchiseeRegistrationViewModel
     private var stepName = ""
     private var stepStatus = ""
     private var stepPosition = 0
@@ -20,7 +22,12 @@ class FranchiseeRegistrationActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = FoActivityRegistrationBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        foRegistrationViewModel = ViewModelProvider(this)[FranchiseeRegistrationViewModel::class.java]
         init()
+
+        foRegistrationViewModel.selectedStepName.observe(this) { stepsName ->
+            binding.foStepHeaderName.text = stepsName
+        }
 
         binding.foBack.setOnClickListener {
             activityCalling()
@@ -37,40 +44,40 @@ class FranchiseeRegistrationActivity : AppCompatActivity() {
 
         when (stepPosition) {
             1 -> {
-                fragmentCalling(FoHealthDetailsFragment())
+                fragmentCalling(FoHealthDetailsFragment(stepPosition, stepName))
             }
             2 -> {
-                fragmentCalling(FoExpressionOfInterestFragment())
+                fragmentCalling(FoExpressionOfInterestFragment(stepPosition, stepName))
             }
             3 -> {
-                fragmentCalling(FoCheckListFragment())
+                fragmentCalling(FoCheckListFragment(stepPosition, stepName))
             }
             4 -> {
-                fragmentCalling(FoAcademicEducationFragment())
+                fragmentCalling(FoAcademicEducationFragment(stepPosition, stepName))
             }
             5 -> {
-                fragmentCalling(FoSocialIdentityFragment())
+                fragmentCalling(FoSocialIdentityFragment(stepPosition, stepName))
             }
             6 -> {
-                fragmentCalling(FoBankAccountFragment())
+                fragmentCalling(FoBankAccountFragment(stepPosition, stepName))
             }
             7 -> {
-                fragmentCalling(FoFamilyFragment())
+                fragmentCalling(FoFamilyFragment(stepPosition, stepName))
             }
             8 -> {
-                fragmentCalling(FoChildDetailsFragment())
+                fragmentCalling(FoChildDetailsFragment(stepPosition, stepName))
             }
             9 -> {
-                fragmentCalling(FoPersonalReferenceFragment())
+                fragmentCalling(FoPersonalReferenceFragment(stepPosition, stepName))
             }
             10 -> {
-                fragmentCalling(FoAttachmentsFragment())
+                fragmentCalling(FoAttachmentsFragment(stepPosition, stepName))
             }
             11 -> {
-                fragmentCalling(FoAuthorizationFragment())
+                fragmentCalling(FoAuthorizationFragment(stepPosition, stepName))
             }
             else -> {
-                fragmentCalling(FoPersonalDetailsFragment())
+                fragmentCalling(FoPersonalDetailsFragment(stepPosition, stepName))
             }
         }
 

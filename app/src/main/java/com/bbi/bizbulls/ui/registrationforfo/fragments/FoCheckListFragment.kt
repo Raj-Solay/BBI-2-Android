@@ -11,7 +11,7 @@ import com.bbi.bizbulls.ui.registrationforfo.FranchiseeRegistrationViewModel
 import com.bbi.bizbulls.utils.CommonUtils
 import com.google.gson.JsonObject
 
-class FoCheckListFragment : Fragment() {
+class FoCheckListFragment(private val stepPosition: Int, private val stepName: String) : Fragment() {
     private lateinit var binding: FoFrgChecklistUnderstandingBinding
     private var isCheckListChecked = false
     override fun onCreateView(
@@ -20,6 +20,7 @@ class FoCheckListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FoFrgChecklistUnderstandingBinding.inflate(inflater, container, false)
+        FranchiseeRegistrationViewModel()._selectedStepName.value = stepName
 
         binding.stepSubmit.setOnClickListener {
             if(isCheckListChecked) {
@@ -48,7 +49,8 @@ class FoCheckListFragment : Fragment() {
         jsonObject.addProperty("your_responsibility", "Yes")
 
         // Call remote Api service to save the Check List Details
-        FranchiseeRegistrationViewModel().sendCheckListDetail(requireActivity(), jsonObject)
+        val params: MutableMap<String, String> = HashMap()
+        FranchiseeRegistrationViewModel().sendDetailPostRequest(requireActivity(), params, jsonObject, stepPosition)
     }
 
 }

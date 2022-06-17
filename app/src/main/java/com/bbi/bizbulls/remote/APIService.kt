@@ -56,4 +56,19 @@ interface APIService {
     fun bankDetailsPost(
         @Header("Authorization") token: String,
         @Body jsonObject: JsonObject): Call<ResponseBody>
+
+    @POST("/api/me/family")
+    fun familyDetailsPost(
+        @Header("Authorization") token: String,
+        @Body jsonObject: JsonObject): Call<ResponseBody>
+
+    @POST("/api/me/children")
+    fun childrenDetailsPost(
+        @Header("Authorization") token: String,
+        @Body jsonObject: JsonObject): Call<ResponseBody>
+
+    @POST("/api/me/reference")
+    fun personalReferencesDetailsPost(
+        @Header("Authorization") token: String,
+        @Body jsonObject: JsonObject): Call<ResponseBody>
 }

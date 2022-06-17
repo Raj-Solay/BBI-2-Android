@@ -6,8 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.bbi.bizbulls.databinding.FoFrgAuthorizationBinding
+import com.bbi.bizbulls.ui.registrationforfo.FranchiseeRegistrationViewModel
 
-class FoAuthorizationFragment : Fragment() {
+class FoAuthorizationFragment(private val stepPosition: Int, private val stepName: String) : Fragment() {
     private lateinit var binding: FoFrgAuthorizationBinding
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -15,7 +16,7 @@ class FoAuthorizationFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FoFrgAuthorizationBinding.inflate(inflater, container, false)
-
+        FranchiseeRegistrationViewModel()._selectedStepName.value = stepName
 
 
 

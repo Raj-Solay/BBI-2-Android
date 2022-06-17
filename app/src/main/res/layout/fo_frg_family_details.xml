@@ -26,21 +26,23 @@
             style="@style/subTitle"
             android:text="Relation Type" />
 
-        <LinearLayout style="@style/spinnerLayout">
+        <RelativeLayout style="@style/spinnerLayout">
 
             <com.bbi.bizbulls.utils.CustomSpinner
                 android:id="@+id/spnrRelationType"
-                style="@style/customSpinner" />
+                style="@style/customSpinner"
+                android:entries="@array/relations" />
 
             <ImageView style="@style/customSpinnerDropDown" />
 
-        </LinearLayout>
+        </RelativeLayout>
 
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/age"
             style="@style/inputBox"
             android:hint="Age"
-            android:inputType="number" />
+            android:inputType="number"
+            android:maxLength="2"/>
 
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/education"
@@ -55,12 +57,14 @@
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/monthlyIncome"
             style="@style/inputBox"
-            android:hint="Monthly Income" />
+            android:hint="Monthly Income"
+            android:inputType="number"/>
 
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/contactNoFamily"
             style="@style/inputBox"
-            android:hint="Contact No." />
+            android:hint="Contact No."
+            android:inputType="number"/>
 
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/permanentAddressFamily"

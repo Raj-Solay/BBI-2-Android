@@ -9,7 +9,7 @@ import com.bbi.bizbulls.databinding.FoFrgSocialIdentityDetailsBinding
 import com.bbi.bizbulls.ui.registrationforfo.FranchiseeRegistrationViewModel
 import com.google.gson.JsonObject
 
-class FoSocialIdentityFragment : Fragment() {
+class FoSocialIdentityFragment(private val stepPosition: Int, private val stepName: String) : Fragment() {
     private lateinit var binding: FoFrgSocialIdentityDetailsBinding
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -17,6 +17,7 @@ class FoSocialIdentityFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FoFrgSocialIdentityDetailsBinding.inflate(inflater, container, false)
+        FranchiseeRegistrationViewModel()._selectedStepName.value = stepName
 
         binding.stepSubmit.setOnClickListener {
             senSocialIdentityDetail()
@@ -35,6 +36,6 @@ class FoSocialIdentityFragment : Fragment() {
         jsonObject.addProperty("ration_card_number", binding.rationCard.text.toString().trim())
 
         // Call remote Api service to save the Social Identity Detail
-        FranchiseeRegistrationViewModel().sendSocialIdentityDetail(requireActivity(), jsonObject)
-    }
+        val params: MutableMap<String, String> = HashMap()
+        FranchiseeRegistrationViewModel().sendDetailPostRequest(requireActivity(), params, jsonObject, stepPosition)    }
 }
