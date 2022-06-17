@@ -9,7 +9,7 @@ import com.bbi.bizbulls.databinding.FoFrgAcademicEducationDetailsBinding
 import com.bbi.bizbulls.ui.registrationforfo.FranchiseeRegistrationViewModel
 import com.google.gson.JsonObject
 
-class FoAcademicEducationFragment(private val stepPosition: Int, private val stepName: String) : Fragment() {
+class FoAcademicEducationFragment(private val stepPosition: Int) : Fragment() {
     private lateinit var binding: FoFrgAcademicEducationDetailsBinding
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -17,7 +17,6 @@ class FoAcademicEducationFragment(private val stepPosition: Int, private val ste
         savedInstanceState: Bundle?
     ): View {
         binding = FoFrgAcademicEducationDetailsBinding.inflate(inflater, container, false)
-        FranchiseeRegistrationViewModel()._selectedStepName.value = stepName
 
         binding.stepSubmit.setOnClickListener {
             senEducationDetail()

@@ -7,6 +7,8 @@ import android.view.KeyEvent
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModelProvider
 import com.bbi.bizbulls.R
 import com.bbi.bizbulls.databinding.FoActivityRegistrationBinding
@@ -15,6 +17,8 @@ import com.bbi.bizbulls.ui.registrationforfo.fragments.*
 class FranchiseeRegistrationActivity : AppCompatActivity() {
     private lateinit var binding: FoActivityRegistrationBinding
     private lateinit var foRegistrationViewModel: FranchiseeRegistrationViewModel
+    private var _selectedStepName = MutableLiveData<String>()
+    private val selectedStepName: LiveData<String> get() = _selectedStepName
     private var stepName = ""
     private var stepStatus = ""
     private var stepPosition = 0
@@ -25,7 +29,7 @@ class FranchiseeRegistrationActivity : AppCompatActivity() {
         foRegistrationViewModel = ViewModelProvider(this)[FranchiseeRegistrationViewModel::class.java]
         init()
 
-        foRegistrationViewModel.selectedStepName.observe(this) { stepsName ->
+        selectedStepName.observe(this) { stepsName ->
             binding.foStepHeaderName.text = stepsName
         }
 
@@ -44,40 +48,40 @@ class FranchiseeRegistrationActivity : AppCompatActivity() {
 
         when (stepPosition) {
             1 -> {
-                fragmentCalling(FoHealthDetailsFragment(stepPosition, stepName))
+                fragmentCalling(FoHealthDetailsFragment(stepPosition))
             }
             2 -> {
-                fragmentCalling(FoExpressionOfInterestFragment(stepPosition, stepName))
+                fragmentCalling(FoExpressionOfInterestFragment(stepPosition))
             }
             3 -> {
-                fragmentCalling(FoCheckListFragment(stepPosition, stepName))
+                fragmentCalling(FoCheckListFragment(stepPosition))
             }
             4 -> {
-                fragmentCalling(FoAcademicEducationFragment(stepPosition, stepName))
+                fragmentCalling(FoAcademicEducationFragment(stepPosition))
             }
             5 -> {
-                fragmentCalling(FoSocialIdentityFragment(stepPosition, stepName))
+                fragmentCalling(FoSocialIdentityFragment(stepPosition))
             }
             6 -> {
-                fragmentCalling(FoBankAccountFragment(stepPosition, stepName))
+                fragmentCalling(FoBankAccountFragment(stepPosition))
             }
             7 -> {
-                fragmentCalling(FoFamilyFragment(stepPosition, stepName))
+                fragmentCalling(FoFamilyFragment(stepPosition))
             }
             8 -> {
-                fragmentCalling(FoChildDetailsFragment(stepPosition, stepName))
+                fragmentCalling(FoChildDetailsFragment(stepPosition))
             }
             9 -> {
-                fragmentCalling(FoPersonalReferenceFragment(stepPosition, stepName))
+                fragmentCalling(FoPersonalReferenceFragment(stepPosition))
             }
             10 -> {
-                fragmentCalling(FoAttachmentsFragment(stepPosition, stepName))
+                fragmentCalling(FoAttachmentsFragment(stepPosition))
             }
             11 -> {
-                fragmentCalling(FoAuthorizationFragment(stepPosition, stepName))
+                fragmentCalling(FoAuthorizationFragment(stepPosition))
             }
             else -> {
-                fragmentCalling(FoPersonalDetailsFragment(stepPosition, stepName))
+                fragmentCalling(FoPersonalDetailsFragment(stepPosition))
             }
         }
 
@@ -85,6 +89,7 @@ class FranchiseeRegistrationActivity : AppCompatActivity() {
 
     private fun fragmentCalling(fragment: Fragment) {
         supportFragmentManager.beginTransaction().replace(R.id.container, fragment).commit()
+        _selectedStepName.value = stepName
     }
 
     private fun activityCalling() {

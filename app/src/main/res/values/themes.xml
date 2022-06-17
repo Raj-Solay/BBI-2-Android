@@ -13,6 +13,7 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <item name="android:textCursorDrawable">@drawable/color_cursor</item>
         <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">17sp</item>
         <!-- Customize your theme here. -->
     </style>
 
@@ -381,6 +382,7 @@
         <item name="android:layout_height">@dimen/_28sdp</item>
         <item name="android:background">@null</item>
         <item name="android:dropDownWidth">wrap_content</item>
+        <item name="android:textSize">@dimen/small_font</item>
         <item name="android:dropDownVerticalOffset">?attr/dropdownListPreferredItemHeight</item>
         <item name="android:popupBackground">@color/white</item>
         <item name="android:popupElevation">4dp</item>

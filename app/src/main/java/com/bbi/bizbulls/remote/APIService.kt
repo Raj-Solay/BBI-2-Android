@@ -71,4 +71,9 @@ interface APIService {
     fun personalReferencesDetailsPost(
         @Header("Authorization") token: String,
         @Body jsonObject: JsonObject): Call<ResponseBody>
+
+    @POST("/api/me/reference")
+    fun authorizationDetailsPost(
+        @Header("Authorization") token: String,
+        @Body jsonObject: JsonObject): Call<ResponseBody>
 }

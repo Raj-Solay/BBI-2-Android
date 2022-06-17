@@ -9,15 +9,6 @@
         android:id="@+id/elevenLayout"
         style="@style/regLLAll">
 
-        <LinearLayout style="@style/titleLayoutNew">
-
-            <androidx.appcompat.widget.AppCompatTextView
-                style="@style/titleNewFranchise"
-                android:text="@string/f_attachmentEnClosed" />
-
-            <androidx.appcompat.widget.AppCompatImageView style="@style/regDropdown" />
-        </LinearLayout>
-
         <androidx.appcompat.widget.AppCompatTextView
             style="@style/titleBox"
             android:text="@string/ct_attachmentinfo" />

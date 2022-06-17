@@ -283,7 +283,7 @@
     <string name="personal_details">Personal details saved successfully!</string>
     <string name="health_details">Health details saved successfully!</string>
     <string name="expression_details">Expression of interest details saved successfully!</string>
-    <string name="checkBoxSelection">Please read the check list and select the chek box</string>
+    <string name="checkBoxSelection">Please read the list and select the chek box</string>
     <string name="checkList_details">Check list details saved successfully!</string>
     <string name="education_details">Academic education details saved successfully!</string>
     <string name="socialIdentity_details">Social Identity details saved successfully!</string>
@@ -291,4 +291,5 @@
     <string name="family_details">Family details saved successfully!</string>
     <string name="children_details">Children details saved successfully!</string>
     <string name="personalReferences_details">Personal References details saved successfully!</string>
+    <string name="authorization_details">Personal References details saved successfully!</string>
 </resources>

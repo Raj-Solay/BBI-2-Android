@@ -9,7 +9,7 @@ import com.bbi.bizbulls.databinding.FoFrgBankAccountDetailsBinding
 import com.bbi.bizbulls.ui.registrationforfo.FranchiseeRegistrationViewModel
 import com.google.gson.JsonObject
 
-class FoBankAccountFragment(private val stepPosition: Int, private val stepName: String) : Fragment() {
+class FoBankAccountFragment(private val stepPosition: Int) : Fragment() {
     private lateinit var binding: FoFrgBankAccountDetailsBinding
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -17,7 +17,6 @@ class FoBankAccountFragment(private val stepPosition: Int, private val stepName:
         savedInstanceState: Bundle?
     ): View {
         binding = FoFrgBankAccountDetailsBinding.inflate(inflater, container, false)
-        FranchiseeRegistrationViewModel()._selectedStepName.value = stepName
 
         binding.stepSubmit.setOnClickListener {
             senBankDetail()

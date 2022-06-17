@@ -9,7 +9,7 @@ import com.bbi.bizbulls.databinding.FoFrgSocialIdentityDetailsBinding
 import com.bbi.bizbulls.ui.registrationforfo.FranchiseeRegistrationViewModel
 import com.google.gson.JsonObject
 
-class FoSocialIdentityFragment(private val stepPosition: Int, private val stepName: String) : Fragment() {
+class FoSocialIdentityFragment(private val stepPosition: Int) : Fragment() {
     private lateinit var binding: FoFrgSocialIdentityDetailsBinding
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -17,7 +17,6 @@ class FoSocialIdentityFragment(private val stepPosition: Int, private val stepNa
         savedInstanceState: Bundle?
     ): View {
         binding = FoFrgSocialIdentityDetailsBinding.inflate(inflater, container, false)
-        FranchiseeRegistrationViewModel()._selectedStepName.value = stepName
 
         binding.stepSubmit.setOnClickListener {
             senSocialIdentityDetail()

@@ -8,14 +8,6 @@
         android:id="@+id/expressOfInterestLayout"
         style="@style/regLLAll">
 
-        <LinearLayout style="@style/titleLayoutNew">
-
-            <androidx.appcompat.widget.AppCompatTextView
-                style="@style/titleNewFranchise"
-                android:text="@string/f_exInterest" />
-
-            <androidx.appcompat.widget.AppCompatImageView style="@style/regDropdown" />
-        </LinearLayout>
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/interestedProjectName"
             style="@style/inputBox"

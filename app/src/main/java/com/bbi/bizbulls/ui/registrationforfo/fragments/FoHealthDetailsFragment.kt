@@ -9,7 +9,7 @@ import com.bbi.bizbulls.databinding.FoFrgHealthDetailsBinding
 import com.bbi.bizbulls.ui.registrationforfo.FranchiseeRegistrationViewModel
 import com.google.gson.JsonObject
 
-class FoHealthDetailsFragment(private val stepPosition: Int, private val stepName: String) : Fragment() {
+class FoHealthDetailsFragment(private val stepPosition: Int) : Fragment() {
     private lateinit var binding: FoFrgHealthDetailsBinding
 
     override fun onCreateView(
@@ -18,7 +18,7 @@ class FoHealthDetailsFragment(private val stepPosition: Int, private val stepNam
         savedInstanceState: Bundle?
     ): View {
         binding = FoFrgHealthDetailsBinding.inflate(inflater, container, false)
-        FranchiseeRegistrationViewModel()._selectedStepName.value = stepName
+
         binding.stepSubmit.setOnClickListener {
             sendHealthDetail()
         }

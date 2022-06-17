@@ -9,7 +9,7 @@ import com.bbi.bizbulls.databinding.FoFrgPersonalReferencesBinding
 import com.bbi.bizbulls.ui.registrationforfo.FranchiseeRegistrationViewModel
 import com.google.gson.JsonObject
 
-class FoPersonalReferenceFragment(private val stepPosition: Int, private val stepName: String) : Fragment() {
+class FoPersonalReferenceFragment(private val stepPosition: Int) : Fragment() {
     private lateinit var binding: FoFrgPersonalReferencesBinding
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -17,7 +17,6 @@ class FoPersonalReferenceFragment(private val stepPosition: Int, private val ste
         savedInstanceState: Bundle?
     ): View {
         binding = FoFrgPersonalReferencesBinding.inflate(inflater, container, false)
-        FranchiseeRegistrationViewModel()._selectedStepName.value = stepName
 
         binding.stepSubmit.setOnClickListener {
             senPersonalReferenceDetail()

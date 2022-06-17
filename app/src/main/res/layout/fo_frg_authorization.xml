@@ -13,15 +13,6 @@
             android:id="@+id/twelveLayout"
             style="@style/regLLAll">
 
-            <LinearLayout style="@style/titleLayoutNew">
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    style="@style/titleNewFranchise"
-                    android:text="@string/f_auth" />
-
-                <androidx.appcompat.widget.AppCompatImageView style="@style/regDropdown" />
-            </LinearLayout>
-
             <LinearLayout
                 style="@style/checkAndTextLayout"
                 android:orientation="horizontal">

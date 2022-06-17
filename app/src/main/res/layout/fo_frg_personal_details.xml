@@ -8,15 +8,6 @@
         android:id="@+id/personalDetailLayout"
         style="@style/regLLAll">
 
-        <LinearLayout style="@style/titleLayoutNew">
-
-            <androidx.appcompat.widget.AppCompatTextView
-                style="@style/titleNewFranchise"
-                android:text="@string/f_personalDetail" />
-
-            <androidx.appcompat.widget.AppCompatImageView style="@style/regDropdown" />
-        </LinearLayout>
-
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/edtfathername"
             style="@style/inputBox"

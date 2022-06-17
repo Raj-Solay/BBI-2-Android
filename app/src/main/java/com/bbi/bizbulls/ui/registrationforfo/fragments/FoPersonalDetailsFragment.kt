@@ -10,16 +10,15 @@ import com.bbi.bizbulls.ui.registrationforfo.FranchiseeRegistrationViewModel
 import com.bbi.bizbulls.utils.CommonUtils
 import com.google.gson.JsonObject
 
-class FoPersonalDetailsFragment(private val stepPosition: Int, private val stepName: String) : Fragment() {
+class FoPersonalDetailsFragment(private val stepPosition: Int) : Fragment() {
     private lateinit var binding: FoFrgPersonalDetailsBinding
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
         binding = FoFrgPersonalDetailsBinding.inflate(inflater, container, false)
-        FranchiseeRegistrationViewModel()._selectedStepName.value = stepName
+
         // personal details
         binding.edtdob.setOnClickListener {
             CommonUtils.commonDatePickerDialog(

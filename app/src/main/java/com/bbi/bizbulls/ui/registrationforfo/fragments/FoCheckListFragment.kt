@@ -11,7 +11,7 @@ import com.bbi.bizbulls.ui.registrationforfo.FranchiseeRegistrationViewModel
 import com.bbi.bizbulls.utils.CommonUtils
 import com.google.gson.JsonObject
 
-class FoCheckListFragment(private val stepPosition: Int, private val stepName: String) : Fragment() {
+class FoCheckListFragment(private val stepPosition: Int) : Fragment() {
     private lateinit var binding: FoFrgChecklistUnderstandingBinding
     private var isCheckListChecked = false
     override fun onCreateView(
@@ -20,7 +20,6 @@ class FoCheckListFragment(private val stepPosition: Int, private val stepName: S
         savedInstanceState: Bundle?
     ): View {
         binding = FoFrgChecklistUnderstandingBinding.inflate(inflater, container, false)
-        FranchiseeRegistrationViewModel()._selectedStepName.value = stepName
 
         binding.stepSubmit.setOnClickListener {
             if(isCheckListChecked) {

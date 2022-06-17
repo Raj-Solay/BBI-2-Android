@@ -9,7 +9,7 @@ import com.bbi.bizbulls.databinding.FoFrgExpressionOfInterestBinding
 import com.bbi.bizbulls.ui.registrationforfo.FranchiseeRegistrationViewModel
 import com.google.gson.JsonObject
 
-class FoExpressionOfInterestFragment(private val stepPosition: Int, private val stepName: String) : Fragment() {
+class FoExpressionOfInterestFragment(private val stepPosition: Int) : Fragment() {
     private lateinit var binding: FoFrgExpressionOfInterestBinding
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -17,7 +17,6 @@ class FoExpressionOfInterestFragment(private val stepPosition: Int, private val 
         savedInstanceState: Bundle?
     ): View {
         binding = FoFrgExpressionOfInterestBinding.inflate(inflater, container, false)
-        FranchiseeRegistrationViewModel()._selectedStepName.value = stepName
 
         binding.stepSubmit.setOnClickListener {
             sendExpressionDetail()

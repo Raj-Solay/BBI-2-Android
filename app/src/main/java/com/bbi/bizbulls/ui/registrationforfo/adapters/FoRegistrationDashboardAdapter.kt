@@ -20,8 +20,12 @@ class FoRegistrationDashboardAdapter(
     private val stepsClickListener: IFoRegistrationStepsClickListener
 ) : RecyclerView.Adapter<FoRegistrationDashboardAdapter.FoRegistrationDashboardViewHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FoRegistrationDashboardViewHolder {
-        val itemBinding = FoAdapterDashboardBinding.inflate(LayoutInflater.from(mContext), parent, false)
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int
+    ): FoRegistrationDashboardViewHolder {
+        val itemBinding =
+            FoAdapterDashboardBinding.inflate(LayoutInflater.from(mContext), parent, false)
         return FoRegistrationDashboardViewHolder(itemBinding)
     }
 
@@ -32,14 +36,22 @@ class FoRegistrationDashboardAdapter(
         val model = registrationsSteps[position]
         holder.itemBinding.itemName.text = model.linkName
         Picasso.get().load(model.linkIcon).into(holder.itemBinding.itemIcon)
-        if(model.profileUpdatedOn.isEmpty()){
+
+        if (model.profileUpdatedOn.isEmpty()) {
+            holder.itemBinding.itemName.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.status_failed, 0)
             holder.itemBinding.itemName.setBackgroundResource(R.color.status_red)
-        }else{
+        } else {
+            holder.itemBinding.itemName.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.status_success, 0)
             holder.itemBinding.itemName.setBackgroundResource(R.color.status_green)
         }
 
+
         holder.itemView.setOnClickListener {
-            stepsClickListener.onStepsClickListener(model.linkName, model.profileUpdatedOn, position)
+            stepsClickListener.onStepsClickListener(
+                model.linkName,
+                model.profileUpdatedOn,
+                position
+            )
         }
     }
 

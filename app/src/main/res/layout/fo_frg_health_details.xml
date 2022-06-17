@@ -8,15 +8,6 @@
         android:id="@+id/healthDetailsLayout"
         style="@style/regLLAll">
 
-        <LinearLayout style="@style/titleLayoutNew">
-
-            <androidx.appcompat.widget.AppCompatTextView
-                style="@style/titleNewFranchise"
-                android:text="@string/f_healthDetail" />
-
-            <androidx.appcompat.widget.AppCompatImageView style="@style/regDropdown" />
-        </LinearLayout>
-
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/edtbirthmarkesone"
             style="@style/inputBox"
@@ -48,7 +39,7 @@
             <com.bbi.bizbulls.utils.CustomSpinner
                 android:id="@+id/spnrhanduse"
                 style="@style/customSpinner"
-                android:entries="@array/handUsed"/>
+                android:entries="@array/handUsed" />
 
             <ImageView style="@style/customSpinnerDropDown" />
 

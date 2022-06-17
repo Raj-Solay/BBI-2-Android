@@ -9,7 +9,7 @@ import com.bbi.bizbulls.databinding.FoFrgFamilyDetailsBinding
 import com.bbi.bizbulls.ui.registrationforfo.FranchiseeRegistrationViewModel
 import com.google.gson.JsonObject
 
-class FoFamilyFragment(private val stepPosition: Int, private val stepName: String) : Fragment() {
+class FoFamilyFragment(private val stepPosition: Int) : Fragment() {
     private lateinit var binding: FoFrgFamilyDetailsBinding
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -17,7 +17,6 @@ class FoFamilyFragment(private val stepPosition: Int, private val stepName: Stri
         savedInstanceState: Bundle?
     ): View {
         binding = FoFrgFamilyDetailsBinding.inflate(inflater, container, false)
-        FranchiseeRegistrationViewModel()._selectedStepName.value = stepName
 
         binding.stepSubmit.setOnClickListener {
             senFamilyDetail()

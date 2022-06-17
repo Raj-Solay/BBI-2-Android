@@ -21,10 +21,6 @@ import retrofit2.Response
  * Created by Daniel.
  */
 class FranchiseeRegistrationViewModel : ViewModel() {
-    var _selectedStepName = MutableLiveData<String>().apply {
-        value = Globals.franchiseRegistration
-    }
-    val selectedStepName: LiveData<String> get() = _selectedStepName
 
     private var _allSteps = MutableLiveData<List<Data>>()
     val allSteps: LiveData<List<Data>> get() = _allSteps
@@ -61,7 +57,6 @@ class FranchiseeRegistrationViewModel : ViewModel() {
         })
     }
 
-
     /**
      * Post the details into server
      * 0 == Post Personal details
@@ -74,6 +69,7 @@ class FranchiseeRegistrationViewModel : ViewModel() {
      * 7 == Family details
      * 8 == Children details
      * 9 == Personal references details
+     * 10 == Authorization details
      */
 
     fun sendDetailPostRequest(context: Context, params: MutableMap<String, String> = HashMap(), jsonObject: JsonObject, stepPosition: Any) {
@@ -119,6 +115,10 @@ class FranchiseeRegistrationViewModel : ViewModel() {
             9 -> {
                 call = RetrofitClient.getUrl()
                     .personalReferencesDetailsPost(sharedPrefsHelper.authToken, jsonObject)
+            }
+            10 -> {
+                call = RetrofitClient.getUrl()
+                    .authorizationDetailsPost(sharedPrefsHelper.authToken, jsonObject)
             }
         }
 
@@ -181,6 +181,9 @@ class FranchiseeRegistrationViewModel : ViewModel() {
             }
             9 -> {
                 message = context.resources.getString(R.string.personalReferences_details)
+            }
+            10 -> {
+                message = context.resources.getString(R.string.authorization_details)
             }
         }
         FranchiseeRegistrationActivity.activityCalling(context,message)
