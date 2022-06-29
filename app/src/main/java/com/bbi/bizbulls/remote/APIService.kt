@@ -4,6 +4,7 @@ import com.bbi.bizbulls.data.foregistration.steps.FoRegistrationSteps
 import com.bbi.bizbulls.data.signin.ForgotPasswordResponse
 import com.bbi.bizbulls.data.signin.LoginResponse
 import com.bbi.bizbulls.data.signupresponse.SignupResponse
+import com.bbi.bizbulls.model.StatusData
 import com.google.gson.JsonObject
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -101,4 +102,8 @@ interface APIService {
     fun authorizationDetailsPost(
         @Header("Authorization") token: String,
         @Body jsonObject: JsonObject): Call<ResponseBody>
+
+    @GET("/api/status")
+    fun getStatus(@Header("Authorization") token: String): Call<StatusData>
+
 }

@@ -1,13 +1,22 @@
 package com.bbi.bizbulls.ui.fragment
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.bbi.bizbulls.R
+import com.bbi.bizbulls.data.foregistration.steps.Data
+import com.bbi.bizbulls.data.foregistration.steps.FoRegistrationSteps
 import com.bbi.bizbulls.databinding.FragmentStatusBinding
+import com.bbi.bizbulls.model.StatusData
+import com.bbi.bizbulls.remote.RetrofitClient
 import com.bbi.bizbulls.sharedpref.SharedPrefsManager
+import com.bbi.bizbulls.utils.MyProcessDialog
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class CustomerFOStatusFragment : Fragment(), View.OnClickListener {
     private val sharedPrefsHelper by lazy { SharedPrefsManager(requireActivity()) }
@@ -83,5 +92,38 @@ class CustomerFOStatusFragment : Fragment(), View.OnClickListener {
         binding.laoutregistercomplete.visibility = View.VISIBLE
         binding.layoutlocationidentityincomplete.visibility = View.VISIBLE
         binding.imgregisterstatus.setImageResource(R.drawable.ic_done)
+    }
+    /**
+     * Get Fo registration steps
+     */
+    fun geSteps(context: Context) {
+        val sharedPrefsHelper by lazy { SharedPrefsManager(context) }
+
+        val call: Call<StatusData> =
+            RetrofitClient.getUrl().getStatus(sharedPrefsHelper.authToken)
+        println("________URL ::${call.request().url}")
+        println("________authToken ::${sharedPrefsHelper.authToken}")
+        MyProcessDialog.showProgressBar(context, 0)
+        call.enqueue(object : Callback<StatusData> {
+            override
+            fun onResponse(
+                call: Call<StatusData>,
+                responseObject: Response<StatusData>
+            ) {
+                if (responseObject.isSuccessful) {
+                   val data =  responseObject.body()
+
+                } else {
+                    RetrofitClient.showResponseMessage(context, responseObject.code())
+                }
+                MyProcessDialog.dismiss()
+            }
+
+            override
+            fun onFailure(call: Call<StatusData>, t: Throwable) {
+                MyProcessDialog.dismiss()
+                RetrofitClient.showFailedMessage(context, t)
+            }
+        })
     }
 }

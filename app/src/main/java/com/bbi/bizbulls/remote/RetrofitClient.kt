@@ -9,11 +9,13 @@ import com.bbi.bizbulls.databinding.DialogMessagesBinding
 import com.bbi.bizbulls.sharedpref.SharedPrefsManager
 import com.bbi.bizbulls.utils.Globals
 import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.HttpException
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.io.IOException
 import java.util.concurrent.TimeUnit
+
 
 object RetrofitClient {
 
@@ -34,7 +36,9 @@ object RetrofitClient {
     }
 
     private fun okHttpClient(): OkHttpClient {
-        return OkHttpClient.Builder()
+        val logging = HttpLoggingInterceptor()
+        logging.setLevel(HttpLoggingInterceptor.Level.BODY)
+        return OkHttpClient.Builder().addInterceptor(logging)
             .connectTimeout(2, TimeUnit.MINUTES)
             .readTimeout(2, TimeUnit.MINUTES)
             .build()
