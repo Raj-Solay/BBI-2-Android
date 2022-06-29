@@ -4,12 +4,15 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.ImageView
+import androidx.appcompat.widget.PopupMenu
 import androidx.recyclerview.widget.RecyclerView
 import com.bbi.bizbulls.R
 import com.bbi.bizbulls.data.foregistration.steps.Data
 import com.bbi.bizbulls.databinding.FoAdapterDashboardBinding
 import com.bbi.bizbulls.ui.registrationforfo.interfaces.IFoRegistrationStepsClickListener
-import com.squareup.picasso.Picasso
+import com.bbi.bizbulls.utils.CommonUtils
+
 
 /**
  * Created by Daniel.
@@ -35,7 +38,18 @@ class FoRegistrationDashboardAdapter(
     override fun onBindViewHolder(holder: FoRegistrationDashboardViewHolder, position: Int) {
         val model = registrationsSteps[position]
         holder.itemBinding.itemName.text = model.linkName
-        Picasso.get().load(model.linkIcon).into(holder.itemBinding.itemIcon)
+
+        //val imgId = model.linkIcon.toInt()
+        holder.itemBinding.itemIcon.setImageResource(model.linkIcon)
+
+        holder.itemBinding.icnMenu.setOnClickListener {
+           showPopupMenu(holder.itemBinding.icnMenu,model,position)
+        }
+
+        holder.itemBinding.itemProgress.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0)
+        holder.itemBinding.itemProgress.setBackgroundResource(com.bbi.bizbulls.R.color.status_green)
+
+       /* Picasso.get().load(model.linkIcon).into(holder.itemBinding.itemIcon)
 
         if (model.profileUpdatedOn.isEmpty()) {
             holder.itemBinding.itemName.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.status_failed, 0)
@@ -43,16 +57,48 @@ class FoRegistrationDashboardAdapter(
         } else {
             holder.itemBinding.itemName.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.status_success, 0)
             holder.itemBinding.itemName.setBackgroundResource(R.color.status_green)
-        }
+        }*/
 
 
         holder.itemView.setOnClickListener {
             stepsClickListener.onStepsClickListener(
-                model.linkName,
-                model.profileUpdatedOn,
-                position
+                    model.linkName,
+                    model.profileUpdatedOn,
+                    position,
+                    CommonUtils.ACTION_TYPE_VIEW
             )
         }
+    }
+    fun showPopupMenu(icnMenu: ImageView, model: Data, position: Int) {
+        val popup = PopupMenu(mContext, icnMenu)
+        //Inflating the Popup using xml file
+        //Inflating the Popup using xml file
+        popup.getMenuInflater()
+                .inflate(com.bbi.bizbulls.R.menu.popup_menu, popup.getMenu())
+
+        //registering popup with OnMenuItemClickListener
+
+        //registering popup with OnMenuItemClickListener
+        popup.setOnMenuItemClickListener { item ->
+            var actionType = CommonUtils.ACTION_TYPE_VIEW
+            when (item?.itemId) {
+                R.id.edit -> {
+                    actionType = CommonUtils.ACTION_TYPE_EDIT
+                }
+                R.id.delete -> {
+                    actionType = CommonUtils.ACTION_TYPE_DELETE
+                }
+            }
+            stepsClickListener.onStepsClickListener(
+                    model.linkName,
+                    model.profileUpdatedOn,
+                    position,actionType
+            )
+
+            true
+        }
+
+        popup.show()
     }
 
 

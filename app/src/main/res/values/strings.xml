@@ -76,6 +76,8 @@
     <string name="ct_female">Female</string>
     <string name="ct_placeofbirth">Place of Birth</string>
     <string name="ct_writeplaceofbirth">Place of birth</string>
+    <string name="ct_age">Age</string>
+    <string name="ct_emailid">Email Id</string>
     <string name="ct_mothertongue">Mother Tongue</string>
     <string name="ct_writemothertongue">Mother tongue</string>
     <string name="ct_maritalstatus">Marital Status</string>
@@ -89,7 +91,6 @@
     <string name="ct_writealtnumber">Alternate number</string>
     <string name="ct_whatnumber">Whatsapp Number</string>
     <string name="ct_writewhatsupnumber">Whatsapp number</string>
-    <string name="ct_emailid">Email ID</string>
     <string name="ct_writeemail">Email id</string>
     <string name="ct_permenentadrs">Permanent Address</string>
     <string name="ct_writepermenentadrs">Residential address</string>

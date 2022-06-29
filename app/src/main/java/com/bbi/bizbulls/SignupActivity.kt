@@ -114,6 +114,7 @@ class SignupActivity : AppCompatActivity(), View.OnClickListener {
         jsonObject.addProperty(
             "password_confirmation",
             binding!!.etConformPassword.text.toString().trim { it <= ' ' })
+
         MyProcessDialog.showProgressBar(this, 0)
         val call: Call<SignupResponse> = RetrofitClient.getUrl().register( jsonObject)
         call.enqueue(object : Callback<SignupResponse> {

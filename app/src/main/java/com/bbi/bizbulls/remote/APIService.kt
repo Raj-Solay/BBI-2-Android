@@ -26,10 +26,9 @@ interface APIService {
     fun foRegistrationSteps(@Header("Authorization") token: String): Call<FoRegistrationSteps>
 
     @POST("/api/me/personal")
-    @FormUrlEncoded
     fun personalDetailsPost(
         @Header("Authorization") token: String,
-        @FieldMap data: Map<String, String>): Call<ResponseBody>
+        @Body jsonObject: JsonObject): Call<ResponseBody>
 
     @POST("/api/me/health")
     fun healthDetailsPost(

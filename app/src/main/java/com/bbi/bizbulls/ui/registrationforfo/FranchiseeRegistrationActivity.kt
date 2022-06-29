@@ -22,6 +22,7 @@ class FranchiseeRegistrationActivity : AppCompatActivity() {
     private var stepName = ""
     private var stepStatus = ""
     private var stepPosition = 0
+    private var actionType = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = FoActivityRegistrationBinding.inflate(layoutInflater)
@@ -45,10 +46,11 @@ class FranchiseeRegistrationActivity : AppCompatActivity() {
         bundle?.getString("name")?.also { stepName = it }
         bundle?.getString("status")?.also { stepStatus = it }
         bundle?.getInt("position")?.also { stepPosition = it }
+        bundle?.getInt("actionType")?.also { actionType = it }
 
         when (stepPosition) {
             1 -> {
-                fragmentCalling(FoHealthDetailsFragment(stepPosition))
+                fragmentCalling(FoHealthDetailsFragment(stepPosition,actionType))
             }
             2 -> {
                 fragmentCalling(FoExpressionOfInterestFragment(stepPosition))

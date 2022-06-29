@@ -8,7 +8,11 @@ import androidx.fragment.app.Fragment
 import com.bbi.bizbulls.databinding.FoFrgPersonalDetailsBinding
 import com.bbi.bizbulls.ui.registrationforfo.FranchiseeRegistrationViewModel
 import com.bbi.bizbulls.utils.CommonUtils
+import com.google.gson.Gson
+import com.google.gson.JsonElement
 import com.google.gson.JsonObject
+import com.google.gson.JsonParser
+
 
 class FoPersonalDetailsFragment(private val stepPosition: Int) : Fragment() {
     private lateinit var binding: FoFrgPersonalDetailsBinding
@@ -38,16 +42,20 @@ class FoPersonalDetailsFragment(private val stepPosition: Int) : Fragment() {
 
     private fun sendPersonalDetail() {
         val params: MutableMap<String, String> = HashMap()
-        params["fathersname"] = binding.edtfathername.text.toString()
-        params["mothersname"] = binding.edtmothersmaidensname.text.toString()
-        params["dob"] = binding.edtdob.text.toString()
+        val jsonObject = JsonObject()
+        jsonObject.addProperty("fullname" , binding.edtfullname.text.toString())
+        jsonObject.addProperty("fathersname" , binding.edtfathername.text.toString())
+        jsonObject.addProperty("mothersname", binding.edtmothersmaidensname.text.toString())
+        jsonObject.addProperty("dob" , binding.edtdob.text.toString())
+        jsonObject.addProperty("age" , binding.edtage.text.toString())
+        jsonObject.addProperty("emailid" , binding.edtEmailid.text.toString())
         if (binding.radiomale.isChecked) {
-            params["gender"] = "Male"
+            jsonObject.addProperty("gender", "Male")
         } else {
-            params["gender"] = "Female"
+            jsonObject.addProperty("gender" , "Female")
         }
-        params["pob"] = binding.edtplaceofbirth.text.toString()
-        params["mothertongue"] = binding.edtmothertongue.text.toString()
+        jsonObject.addProperty("pob", binding.edtplaceofbirth.text.toString())
+        jsonObject.addProperty("mothertongue", binding.edtmothertongue.text.toString())
         var maritalstatus = ""
         if (binding.radiosingle.isChecked) {
             maritalstatus = "Single"
@@ -58,12 +66,12 @@ class FoPersonalDetailsFragment(private val stepPosition: Int) : Fragment() {
         } else if (binding.radiowidowed.isChecked) {
             maritalstatus = "Widowed"
         }
-        params["maritalstatus"] = maritalstatus
-        params["alternatenumber"] = binding.edtaltnumber.text.toString()
-        params["whatsappnumber"] = binding.edtwhatsappnumber.text.toString()
+        jsonObject.addProperty("maritalstatus", maritalstatus)
+        jsonObject.addProperty("alternatenumber", binding.edtaltnumber.text.toString())
+        jsonObject.addProperty("whatsappnumber", binding.edtwhatsappnumber.text.toString())
 
         //permanent  address
-        params["permanent_add"] = binding.permAddress.text.toString()
+        jsonObject.addProperty("permanent_add",binding.permAddress.text.toString())
         var permanentAccoType = ""
         if (binding.radioPermOwn.isChecked) {
             permanentAccoType = "Own"
@@ -74,15 +82,15 @@ class FoPersonalDetailsFragment(private val stepPosition: Int) : Fragment() {
         } else if (binding.radioPermBachelor.isChecked) {
             permanentAccoType = "Bachelor"
         }
-        params["permanent_acco_type"] = permanentAccoType
-        params["permanent_acco_since"] = binding.permAccommodationSince.text.toString()
-        params["permanent_emergency_no"] = binding.permEmergencyContact.text.toString()
+        jsonObject.addProperty("permanent_acco_type", permanentAccoType)
+        jsonObject.addProperty("permanent_acco_since",binding.permAccommodationSince.text.toString())
+        jsonObject.addProperty("permanent_emergency_no", binding.permEmergencyContact.text.toString())
 
 
         //present address
-        params["present_add"] = binding.presAddress.text.toString()
-        params["state"] = binding.edtState.text.toString()
-        params["zip"] = binding.edtZip.text.toString()
+        jsonObject.addProperty("present_add", binding.presAddress.text.toString())
+        jsonObject.addProperty("state", binding.edtState.text.toString())
+        jsonObject.addProperty("zip", binding.edtZip.text.toString())
         var presentAccoType = ""
         if (binding.radioPresOwn.isChecked) {
             presentAccoType = "Own"
@@ -93,12 +101,11 @@ class FoPersonalDetailsFragment(private val stepPosition: Int) : Fragment() {
         } else if (binding.radioPresBachelor.isChecked) {
             presentAccoType = "Bachelor"
         }
-        params["present_acco_type"] = presentAccoType
-        params["present_acco_since"] = binding.presAccommodationSince.text.toString()
-        params["present_emergency_no"] = binding.permEmergencyContact.text.toString()
+        jsonObject.addProperty("present_acco_type", presentAccoType)
+        jsonObject.addProperty("present_acco_since", binding.presAccommodationSince.text.toString())
+        jsonObject.addProperty("present_emergency_no", binding.permEmergencyContact.text.toString())
 
         // Call remote Api service to save the Personal Details
-        val jsonObject = JsonObject()
         FranchiseeRegistrationViewModel().sendDetailPostRequest(requireActivity(), params, jsonObject, stepPosition)
     }
 }

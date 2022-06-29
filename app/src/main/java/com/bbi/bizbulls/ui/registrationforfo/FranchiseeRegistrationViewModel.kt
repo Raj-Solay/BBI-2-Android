@@ -39,6 +39,7 @@ class FranchiseeRegistrationViewModel : ViewModel() {
             RetrofitClient.getUrl().foRegistrationSteps(sharedPrefsHelper.authToken)
         println("________URL ::${call.request().url}")
         println("________authToken ::${sharedPrefsHelper.authToken}")
+        var token = sharedPrefsHelper.authToken;
         MyProcessDialog.showProgressBar(context, 0)
         call.enqueue(object : Callback<FoRegistrationSteps> {
             override
@@ -83,7 +84,7 @@ class FranchiseeRegistrationViewModel : ViewModel() {
         when (stepPosition) {
             0 -> {
                 call =
-                    RetrofitClient.getUrl().personalDetailsPost(sharedPrefsHelper.authToken, params)
+                    RetrofitClient.getUrl().personalDetailsPost(sharedPrefsHelper.authToken, jsonObject)
             }
             1 -> {
                 call = RetrofitClient.getUrl()
