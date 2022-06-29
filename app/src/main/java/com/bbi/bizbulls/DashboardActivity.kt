@@ -16,9 +16,7 @@ import android.view.View
 import android.widget.RelativeLayout
 import androidx.fragment.app.Fragment
 import com.bbi.bizbulls.databinding.ActivityDashboardBinding
-import com.bbi.bizbulls.menu.AboutUsActivity
-import com.bbi.bizbulls.menu.MyOfferActivity
-import com.bbi.bizbulls.menu.NotificationActivity
+import com.bbi.bizbulls.menu.*
 import com.bbi.bizbulls.sharedpref.SharedPrefsManager
 import com.bbi.bizbulls.utils.CommonUtils
 
@@ -138,6 +136,9 @@ class DashboardActivity : AppCompatActivity(), View.OnClickListener {
             startActivity(intent)
         }
         if (view.id == R.id.myWallet) {
+            binding!!.drawerfomainlayout.closeDrawer(GravityCompat.START)
+            val intent = Intent(this, MyWalletActivity::class.java)
+            startActivity(intent)
         }
         if (view.id == R.id.about) {
             binding!!.drawerfomainlayout.closeDrawer(GravityCompat.START)
@@ -145,10 +146,19 @@ class DashboardActivity : AppCompatActivity(), View.OnClickListener {
             startActivity(intent)
         }
         if (view.id == R.id.termsAndCondition) {
+            binding!!.drawerfomainlayout.closeDrawer(GravityCompat.START)
+            val intent = Intent(this, TermsConditionActivity::class.java)
+            startActivity(intent)
         }
         if (view.id == R.id.privacyPolicy) {
+            binding!!.drawerfomainlayout.closeDrawer(GravityCompat.START)
+            val intent = Intent(this, PrivacyPolicyActivity::class.java)
+            startActivity(intent)
         }
         if (view.id == R.id.registerComplaint) {
+            binding!!.drawerfomainlayout.closeDrawer(GravityCompat.START)
+            val intent = Intent(this, RegisterComplianActivity::class.java)
+            startActivity(intent)
         }
         if (view.id == R.id.contactUs) {
         }

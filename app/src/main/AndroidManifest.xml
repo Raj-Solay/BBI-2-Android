@@ -16,6 +16,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BizBullsIndia">
         <activity
+            android:name=".menu.MyWalletActivity"
+            android:exported="false" />
+        <activity
+            android:name=".menu.RegisterComplianActivity"
+            android:exported="false" />
+        <activity
+            android:name=".menu.TermsConditionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".menu.PrivacyPolicyActivity"
+            android:exported="false" />
+        <activity
             android:name=".SplashScreenActivity"
             android:exported="true"
             android:noHistory="true">
@@ -38,33 +50,33 @@
         <activity
             android:name=".SignupActivity"
             android:exported="true"
-            android:noHistory="true"/>
+            android:noHistory="true" />
         <activity
             android:name=".DashboardActivity"
-            android:exported="true"/>
+            android:exported="true" />
         <activity
             android:name=".ForgotPasswordActivity"
             android:exported="true"
-            android:noHistory="true"/>
+            android:noHistory="true" />
         <activity
             android:name=".CreateNewPasswordActivity"
             android:exported="true"
-            android:noHistory="true"/>
+            android:noHistory="true" />
         <activity
             android:name=".LoginActivity"
             android:exported="true"
-            android:noHistory="true"/>
+            android:noHistory="true" />
         <activity
             android:name=".ProjectInfoActivity"
             android:exported="true"
-            android:noHistory="true"/>
+            android:noHistory="true" />
         <activity
             android:name=".ui.registrationforfo.FoRegistrationDashBoardActivity"
             android:exported="true"
-            android:noHistory="true"/>
+            android:noHistory="true" />
         <activity
             android:name=".ui.registrationforfo.FranchiseeRegistrationActivity"
-            android:exported="true"/>
+            android:exported="true" />
 
         <provider
             android:name="androidx.core.content.FileProvider"
@@ -75,7 +87,6 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths" />
         </provider>
-
     </application>
 
 </manifest>

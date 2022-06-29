@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".menu.AboutUsActivity">
+
+    <include
+        android:id="@+id/custom_title_layout"
+        layout="@layout/hader"
+        app:layout_constraintTop_toTopOf="@+id/posts" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="@dimen/_5dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/source_semibold"
+                android:gravity="left|top"
+                android:paddingHorizontal="@dimen/_5dp"
+                android:text="@string/terms_condition1"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_16sdp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/source_semibold"
+                android:gravity="left|top"
+                android:paddingHorizontal="@dimen/_5dp"
+                android:text="@string/Interpretation_and_Definitions"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_16sdp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/source_semibold"
+                android:gravity="left|top"
+                android:paddingHorizontal="@dimen/_5dp"
+                android:text="@string/Interpretation1"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_16sdp" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/source_regular"
+                android:gravity="left|top"
+                android:text="@string/Interpretation2"
+                android:paddingHorizontal="@dimen/_5dp"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_14sdp" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/source_semibold"
+                android:gravity="left|top"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:paddingHorizontal="@dimen/_5dp"
+                android:text="@string/Interpretation3"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_16sdp" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/source_regular"
+                android:gravity="left|top"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:paddingHorizontal="@dimen/_5dp"
+                android:text="@string/Interpretation4"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_16sdp" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/source_semibold"
+                android:gravity="left|top"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:paddingHorizontal="@dimen/_5dp"
+                android:text="@string/Acknowledgment"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_16sdp" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/source_regular"
+                android:gravity="left|top"
+                android:paddingHorizontal="@dimen/_5dp"
+                android:text="@string/Acknowledgment1"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_16sdp" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/source_semibold"
+                android:gravity="left|top"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:paddingHorizontal="@dimen/_5dp"
+                android:text="@string/What_you_can_expect_from_us"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_16sdp" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/source_regular"
+                android:gravity="left|top"
+                android:paddingHorizontal="@dimen/_5dp"
+                android:text="@string/What_you_can_expect_from_us1"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_16sdp" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/source_semibold"
+                android:gravity="left|top"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:paddingHorizontal="@dimen/_5dp"
+                android:text="@string/Links_to_Other_Websites"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_16sdp" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/source_regular"
+                android:gravity="left|top"
+                android:paddingHorizontal="@dimen/_5dp"
+                android:text="@string/Links_to_Other_Websites1"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_16sdp" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/source_semibold"
+                android:gravity="left|top"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:paddingHorizontal="@dimen/_5dp"
+                android:text="@string/Termination"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_16sdp" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/source_regular"
+                android:gravity="left|top"
+                android:paddingHorizontal="@dimen/_5dp"
+                android:text="@string/Termination1"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_16sdp" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/source_semibold"
+                android:gravity="left|top"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:paddingHorizontal="@dimen/_5dp"
+                android:text="@string/Limitation_of_Liability"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_16sdp" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/source_regular"
+                android:gravity="left|top"
+                android:paddingHorizontal="@dimen/_5dp"
+                android:text="@string/Limitation_of_Liability1"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_16sdp" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/source_semibold"
+                android:gravity="left|top"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:paddingHorizontal="@dimen/_5dp"
+                android:text="@string/Disclaimer"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_16sdp" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/source_regular"
+                android:gravity="left|top"
+                android:paddingHorizontal="@dimen/_5dp"
+                android:text="@string/Disclaimer1"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_16sdp" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/source_semibold"
+                android:gravity="left|top"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:paddingHorizontal="@dimen/_5dp"
+                android:text="@string/Governing_Law"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_16sdp" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/source_regular"
+                android:gravity="left|top"
+                android:paddingHorizontal="@dimen/_5dp"
+                android:text="@string/Governing_Law1"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_16sdp" />
+              <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/source_regular"
+                android:gravity="left|top"
+                android:paddingHorizontal="@dimen/_5dp"
+                android:text="@string/Disputes_Resolution1"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_16sdp" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/source_semibold"
+                android:gravity="left|top"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:paddingHorizontal="@dimen/_5dp"
+                android:text="@string/Severability"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_16sdp" />
+    <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/source_regular"
+                android:gravity="left|top"
+                android:paddingHorizontal="@dimen/_5dp"
+                android:text="@string/Severability1"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_16sdp" />
+    <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/source_semibold"
+                android:gravity="left|top"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:paddingHorizontal="@dimen/_5dp"
+                android:text="@string/Waiver"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_16sdp" />
+    <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/source_regular"
+                android:gravity="left|top"
+                android:paddingHorizontal="@dimen/_5dp"
+                android:text="@string/Waiver1"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_16sdp" />
+ <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/source_semibold"
+                android:gravity="left|top"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:paddingHorizontal="@dimen/_5dp"
+                android:text="@string/Translation_Interpretation"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_16sdp" />
+    <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/source_regular"
+                android:gravity="left|top"
+                android:paddingHorizontal="@dimen/_5dp"
+                android:text="@string/Translation_Interpretation1"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_16sdp" />
+ <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/source_semibold"
+                android:gravity="left|top"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:paddingHorizontal="@dimen/_5dp"
+                android:text="@string/Changes_to_These_Terms_and_Conditions"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_16sdp" />
+    <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/source_regular"
+                android:gravity="left|top"
+                android:paddingHorizontal="@dimen/_5dp"
+                android:text="@string/Changes_to_These_Terms_and_Conditions1"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_16sdp" />
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</LinearLayout>
