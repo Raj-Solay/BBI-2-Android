@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".menu.AboutUsActivity">
+    <include
+        android:id="@+id/custom_title_layout"
+        layout="@layout/hader"
+        app:layout_constraintTop_toTopOf="@+id/posts" />
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="@dimen/_5dp">
+        <TextView
+            android:id="@+id/tv_about_us"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fontFamily="@font/source_regular"
+            android:gravity="left|top"
+            android:text="@string/about_us"
+            android:paddingHorizontal="@dimen/_5dp"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_16sdp" />
+    </androidx.core.widget.NestedScrollView>
+</LinearLayout>

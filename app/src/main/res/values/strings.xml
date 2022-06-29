@@ -21,6 +21,7 @@
     <string name="menurateus">Rate us</string>
     <string name="menusetting">Settings</string>
     <string name="menulogout">Logout</string>
+    <string name="about_us">Kotlin is an open-source, general-purpose, statically typed programming language. It is JVM-based and may be used in all projects where Java is currently used. It may be used to create Android apps, server-side apps, and a variety of other applications. It is an improved version of Java and is completely interoperable with it. We can even mix Kotlin and Java in the same project. It blends Object Oriented Programming (OOPs) and functional programming in a platform that is unlimited, self-contained, and unique. It also enables functional twinning using microcodes. The JetBrains team created Kotlin. The language was initially launched in February 2016 after a project began in 2010 to develop it. The Apache 2.0 license was used to create Kotlin. Programs written in Kotlin do not require semicolons. This makes the code more readable and easy to understand. This language enables the interchange and usage of Java in a variety of ways. Furthermore, code written in Java and Kotlin can coexist in the same project. The type system of Kotlin is designed to eliminate NullPointerException from code. Writing new code in Kotlin will take you less time. Kotlin code is even easier to deploy and manage at scale.</string>
 
     <!--     MENU -->
     <string name="fo_home">Home</string>

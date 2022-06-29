@@ -1,5 +1,6 @@
 package com.bbi.bizbulls
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -12,8 +13,12 @@ import androidx.core.view.GravityCompat
 import android.view.Gravity
 import android.view.KeyEvent
 import android.view.View
+import android.widget.RelativeLayout
 import androidx.fragment.app.Fragment
 import com.bbi.bizbulls.databinding.ActivityDashboardBinding
+import com.bbi.bizbulls.menu.AboutUsActivity
+import com.bbi.bizbulls.menu.MyOfferActivity
+import com.bbi.bizbulls.menu.NotificationActivity
 import com.bbi.bizbulls.sharedpref.SharedPrefsManager
 import com.bbi.bizbulls.utils.CommonUtils
 
@@ -34,6 +39,7 @@ class DashboardActivity : AppCompatActivity(), View.OnClickListener {
     var rateUs: ConstraintLayout? = null
     var settings: ConstraintLayout? = null
     var logout: ConstraintLayout? = null
+    var layoutnotification: RelativeLayout?=null
     var count = 0
     var homeCustomerFragment: HomeCustomerFragment? = null
     var customerFOStatusFragment: CustomerFOStatusFragment? = null
@@ -97,6 +103,8 @@ class DashboardActivity : AppCompatActivity(), View.OnClickListener {
         settings?.setOnClickListener(this)
         logout = hView.findViewById(R.id.logout)
         logout?.setOnClickListener(this)
+        layoutnotification=findViewById(R.id.layoutnotification);
+        layoutnotification?.setOnClickListener(this)
         binding!!.layoutdraweropen.setOnClickListener(this)
         homeCustomerFragment = HomeCustomerFragment()
         customerFOStatusFragment = CustomerFOStatusFragment()
@@ -125,10 +133,16 @@ class DashboardActivity : AppCompatActivity(), View.OnClickListener {
         if (view.id == R.id.myRefer) {
         }
         if (view.id == R.id.myOffer) {
+            binding!!.drawerfomainlayout.closeDrawer(GravityCompat.START)
+            val intent = Intent(this, MyOfferActivity::class.java)
+            startActivity(intent)
         }
         if (view.id == R.id.myWallet) {
         }
         if (view.id == R.id.about) {
+            binding!!.drawerfomainlayout.closeDrawer(GravityCompat.START)
+            val intent = Intent(this, AboutUsActivity::class.java)
+            startActivity(intent)
         }
         if (view.id == R.id.termsAndCondition) {
         }
@@ -143,6 +157,10 @@ class DashboardActivity : AppCompatActivity(), View.OnClickListener {
         if (view.id == R.id.rateUs) {
         }
         if (view.id == R.id.settings) {
+        }
+        if (view.id == R.id.layoutnotification) {
+            val intent = Intent(this, NotificationActivity::class.java)
+            startActivity(intent)
         }
         if (view.id == R.id.logout) {
             finish()
