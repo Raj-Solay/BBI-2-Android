@@ -17,7 +17,7 @@ class TermsConditionActivity : AppCompatActivity() {
     }
 
     private fun initView() {
-        binding?.customTitleLayout?.tvTitle?.setText("Privacy Policy")
+        binding?.customTitleLayout?.tvTitle?.setText("Terms And Conditions")
         binding?.customTitleLayout?.ivBack?.setOnClickListener { onBackPressed() }
 
     }

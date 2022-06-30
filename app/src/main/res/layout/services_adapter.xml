@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:elevation="@dimen/_10sdp"
+    android:layout_margin="@dimen/_5dp"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/ll_row"
+        android:layout_width="@dimen/_50sdp"
+        android:layout_height="@dimen/_50sdp"
+        android:orientation="horizontal"
+        android:paddingVertical="@dimen/_5dp"
+        app:cardCornerRadius="@dimen/_12dp"
+        android:background="@color/orange_100"
+        android:backgroundTint="@color/orange_100">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fontFamily="@font/source_regular"
+            android:gravity="center"
+            android:paddingHorizontal="@dimen/_10sdp"
+            android:textColor="@color/orange_700"
+            android:textSize="@dimen/_14sdp"
+            android:src="@drawable/biz_bulls"/>
+    </androidx.cardview.widget.CardView>
+    <TextView
+        android:id="@+id/tv_cat_name"
+        android:layout_width="wrap_content"
+        android:maxWidth="@dimen/_90sdp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/source_regular"
+        android:gravity="center"
+        android:paddingHorizontal="@dimen/_10sdp"
+        android:text="yugal"
+        android:maxLines="2"
+        android:ellipsize="end"
+        android:textColor="@color/orange_700"
+        android:textSize="@dimen/_12dp" />
+</LinearLayout>

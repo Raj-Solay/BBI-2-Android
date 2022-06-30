@@ -1,6 +1,9 @@
 package com.bbi.bizbulls
 
+import android.Manifest
 import android.content.Intent
+import android.content.pm.PackageManager
+import android.location.Location
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -13,12 +16,27 @@ import androidx.core.view.GravityCompat
 import android.view.Gravity
 import android.view.KeyEvent
 import android.view.View
+import android.webkit.PermissionRequest
 import android.widget.RelativeLayout
+import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
 import com.bbi.bizbulls.databinding.ActivityDashboardBinding
 import com.bbi.bizbulls.menu.*
 import com.bbi.bizbulls.sharedpref.SharedPrefsManager
 import com.bbi.bizbulls.utils.CommonUtils
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
+import com.google.android.gms.maps.CameraUpdateFactory
+import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.OnMapReadyCallback
+import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.MarkerOptions
+import com.google.android.gms.tasks.OnSuccessListener
+import com.karumi.dexter.Dexter
+import com.karumi.dexter.PermissionToken
+import com.karumi.dexter.listener.PermissionDeniedResponse
+import com.karumi.dexter.listener.PermissionGrantedResponse
+import com.karumi.dexter.listener.single.PermissionListener
 
 class DashboardActivity : AppCompatActivity(), View.OnClickListener {
     private val sharedPrefsHelper by lazy { SharedPrefsManager(this@DashboardActivity) }
@@ -38,9 +56,11 @@ class DashboardActivity : AppCompatActivity(), View.OnClickListener {
     var settings: ConstraintLayout? = null
     var logout: ConstraintLayout? = null
     var layoutnotification: RelativeLayout?=null
+    var layouthelp:RelativeLayout?=null
     var count = 0
     var homeCustomerFragment: HomeCustomerFragment? = null
     var customerFOStatusFragment: CustomerFOStatusFragment? = null
+    lateinit var client: FusedLocationProviderClient
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDashboardBinding.inflate(layoutInflater)
@@ -104,6 +124,7 @@ class DashboardActivity : AppCompatActivity(), View.OnClickListener {
         layoutnotification=findViewById(R.id.layoutnotification);
         layoutnotification?.setOnClickListener(this)
         binding!!.layoutdraweropen.setOnClickListener(this)
+        binding!!.layouthelp.setOnClickListener(this)
         homeCustomerFragment = HomeCustomerFragment()
         customerFOStatusFragment = CustomerFOStatusFragment()
         binding!!.bottomNavigationView.selectedItemId = R.id.navigation_fohome
@@ -123,12 +144,16 @@ class DashboardActivity : AppCompatActivity(), View.OnClickListener {
                 binding!!.drawerfomainlayout.openDrawer(GravityCompat.START)
             }
         }
+        getCurrentLOcation(this@DashboardActivity)
     }
 
     override fun onClick(view: View) {
         if (view.id == R.id.myAccount) {
         }
         if (view.id == R.id.myRefer) {
+            binding!!.drawerfomainlayout.closeDrawer(GravityCompat.START)
+            val intent = Intent(this, MyReferralsActivity::class.java)
+            startActivity(intent)
         }
         if (view.id == R.id.myOffer) {
             binding!!.drawerfomainlayout.closeDrawer(GravityCompat.START)
@@ -168,6 +193,10 @@ class DashboardActivity : AppCompatActivity(), View.OnClickListener {
         }
         if (view.id == R.id.settings) {
         }
+        if (view.id == R.id.layouthelp) {
+            val intent = Intent(this, HelpActivity::class.java)
+            startActivity(intent)
+        }
         if (view.id == R.id.layoutnotification) {
             val intent = Intent(this, NotificationActivity::class.java)
             startActivity(intent)
@@ -203,5 +232,52 @@ class DashboardActivity : AppCompatActivity(), View.OnClickListener {
 
     companion object {
         private const val TAG = "Dashboard"
+    }
+
+    fun getCurrentLOcation(dashboardActivity: DashboardActivity) {
+        client= LocationServices.getFusedLocationProviderClient(this@DashboardActivity)
+        Dexter.withContext(dashboardActivity)
+            .withPermission(Manifest.permission.ACCESS_FINE_LOCATION)
+            .withListener(object : PermissionListener {
+                override fun onPermissionGranted(response: PermissionGrantedResponse) {
+                    getmyLocation()
+                }
+
+                override fun onPermissionDenied(response: PermissionDeniedResponse) { /* ... */
+                }
+
+                override fun onPermissionRationaleShouldBeShown(p0: com.karumi.dexter.listener.PermissionRequest?,token: PermissionToken? ) {
+                    token?.continuePermissionRequest()
+                }
+
+            }).check()
+    }
+    fun getmyLocation(){
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return
+        }
+        var tast= client.lastLocation
+        tast.addOnSuccessListener(object: OnSuccessListener<Location> {
+            override fun onSuccess(location: Location?) {
+                /*smf.getMapAsync( object : OnMapReadyCallback {
+                    override fun onMapReady(googleMap: GoogleMap) {
+                        var latLng= location?.let { LatLng(it?.latitude,location?.longitude) }
+                        var markerOptions= MarkerOptions().position(latLng).title("You are here ......!!")
+                        googleMap.addMarker(markerOptions)
+                        googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15F))
+                    }
+
+                })*/
+
+            }
+
+        })
     }
 }

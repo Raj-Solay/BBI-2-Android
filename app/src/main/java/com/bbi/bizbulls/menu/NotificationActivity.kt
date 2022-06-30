@@ -16,7 +16,7 @@ class NotificationActivity : AppCompatActivity() {
     }
 
     private fun initView() {
-        binding?.customTitleLayout?.tvTitle?.text="My Offer"
+        binding?.customTitleLayout?.tvTitle?.text="Notification"
         binding?.customTitleLayout?.ivBack?.setOnClickListener { onBackPressed() }
         var myOfferAdapter= MyOfferAdapter()
         binding?.rcyNotification?.adapter=myOfferAdapter
