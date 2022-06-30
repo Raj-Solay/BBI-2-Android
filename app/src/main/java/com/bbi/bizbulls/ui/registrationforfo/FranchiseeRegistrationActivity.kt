@@ -13,6 +13,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.bbi.bizbulls.R
 import com.bbi.bizbulls.databinding.FoActivityRegistrationBinding
 import com.bbi.bizbulls.ui.registrationforfo.fragments.*
+import com.bbi.bizbulls.utils.CommonUtils
 
 class FranchiseeRegistrationActivity : AppCompatActivity() {
     private lateinit var binding: FoActivityRegistrationBinding
@@ -22,7 +23,7 @@ class FranchiseeRegistrationActivity : AppCompatActivity() {
     private var stepName = ""
     private var stepStatus = ""
     private var stepPosition = 0
-    private var actionType = 0
+    private var actionType = CommonUtils.ACTION_TYPE_ADD
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = FoActivityRegistrationBinding.inflate(layoutInflater)
@@ -53,7 +54,7 @@ class FranchiseeRegistrationActivity : AppCompatActivity() {
                 fragmentCalling(FoHealthDetailsFragment(stepPosition,actionType))
             }
             2 -> {
-                fragmentCalling(FoExpressionOfInterestFragment(stepPosition))
+                fragmentCalling(FoExpressionOfInterestFragment(stepPosition,actionType))
             }
             3 -> {
                 fragmentCalling(FoCheckListFragment(stepPosition))
@@ -83,7 +84,7 @@ class FranchiseeRegistrationActivity : AppCompatActivity() {
                 fragmentCalling(FoAuthorizationFragment(stepPosition))
             }
             else -> {
-                fragmentCalling(FoPersonalDetailsFragment(stepPosition))
+                fragmentCalling(FoPersonalDetailsFragment(stepPosition,actionType))
             }
         }
 

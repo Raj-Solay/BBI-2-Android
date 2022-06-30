@@ -31,9 +31,9 @@ object CommonUtils {
         else -> Environment.DEVELOPMENT
     }
 
-    const val  ACTION_TYPE_VIEW = 0
-    const val  ACTION_TYPE_EDIT = 1
-    const val  ACTION_TYPE_DELETE = 2
+    const val  ACTION_TYPE_ADD = 0
+    const val  ACTION_TYPE_VIEW = 1
+    const val  ACTION_TYPE_EDIT = 2
 
     fun toast(context: Context?, message: String?) {
         Toast.makeText(context, message, Toast.LENGTH_LONG).show()

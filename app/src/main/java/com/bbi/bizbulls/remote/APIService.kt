@@ -4,6 +4,8 @@ import com.bbi.bizbulls.data.foregistration.steps.FoRegistrationSteps
 import com.bbi.bizbulls.data.signin.ForgotPasswordResponse
 import com.bbi.bizbulls.data.signin.LoginResponse
 import com.bbi.bizbulls.data.signupresponse.SignupResponse
+import com.bbi.bizbulls.model.HealthDetailsViewRes
+import com.bbi.bizbulls.model.PersonalDetailsViewRes
 import com.google.gson.JsonObject
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -25,20 +27,50 @@ interface APIService {
     @GET("/api/me/profile_links")
     fun foRegistrationSteps(@Header("Authorization") token: String): Call<FoRegistrationSteps>
 
+    /*--Personal Details api--*/
     @POST("/api/me/personal")
     fun personalDetailsPost(
         @Header("Authorization") token: String,
         @Body jsonObject: JsonObject): Call<ResponseBody>
 
+    @GET("/api/me/personal")
+    fun personalDetailsGet(
+            @Header("Authorization") token: String): Call<PersonalDetailsViewRes>
+
+    @PUT("/api/me/personal")
+    fun personalDetailsPut(
+            @Header("Authorization") token: String,
+            @Body jsonObject: JsonObject): Call<ResponseBody>
+
+    /*--Health Details api--*/
     @POST("/api/me/health")
     fun healthDetailsPost(
         @Header("Authorization") token: String,
         @Body jsonObject: JsonObject): Call<ResponseBody>
 
+    @GET("/api/me/health")
+    fun healthDetailsGet(
+            @Header("Authorization") token: String): Call<HealthDetailsViewRes>
+
+    @PUT("/api/me/health")
+    fun healthDetailsPut(
+            @Header("Authorization") token: String,
+            @Body jsonObject: JsonObject): Call<ResponseBody>
+
+    /*--Express interest api--*/
     @POST("/api/me/express_interest")
     fun expressionInterestDetailsPost(
         @Header("Authorization") token: String,
         @Body jsonObject: JsonObject): Call<ResponseBody>
+
+    @GET("/api/me/express_interest")
+    fun expressionInterestDetailsGet(
+            @Header("Authorization") token: String): Call<ResponseBody>
+
+    @PUT("/api/me/express_interest")
+    fun expressionInterestDetailsPut(
+            @Header("Authorization") token: String,
+            @Body jsonObject: JsonObject): Call<ResponseBody>
 
     @POST("/api/me/checklist")
     fun checkListDetailsPost(

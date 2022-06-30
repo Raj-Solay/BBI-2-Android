@@ -282,7 +282,9 @@
     <string name="no_internet">No internet connection</string>
     <string name="something_wrong">Something went wrong, please try again</string>
     <string name="personal_details">Personal details saved successfully!</string>
+    <string name="personal_details_update">Personal details update successfully!</string>
     <string name="health_details">Health details saved successfully!</string>
+    <string name="health_details_update">Health details update successfully!</string>
     <string name="expression_details">Expression of interest details saved successfully!</string>
     <string name="checkBoxSelection">Please read the list and select the chek box</string>
     <string name="checkList_details">Check list details saved successfully!</string>

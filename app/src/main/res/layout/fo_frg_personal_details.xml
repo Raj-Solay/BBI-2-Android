@@ -219,7 +219,7 @@
             android:id="@+id/edtState"
             style="@style/inputBox"
             android:hint="State"
-            android:inputType="number" />
+            android:inputType="text" />
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/edtZip"
             style="@style/inputBox"

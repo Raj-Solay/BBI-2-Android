@@ -65,7 +65,7 @@ class FoRegistrationDashboardAdapter(
                     model.linkName,
                     model.profileUpdatedOn,
                     position,
-                    CommonUtils.ACTION_TYPE_VIEW
+                    CommonUtils.ACTION_TYPE_ADD
             )
         }
     }
@@ -82,11 +82,14 @@ class FoRegistrationDashboardAdapter(
         popup.setOnMenuItemClickListener { item ->
             var actionType = CommonUtils.ACTION_TYPE_VIEW
             when (item?.itemId) {
+                R.id.view -> {
+                    actionType = CommonUtils.ACTION_TYPE_VIEW
+                }
                 R.id.edit -> {
                     actionType = CommonUtils.ACTION_TYPE_EDIT
                 }
-                R.id.delete -> {
-                    actionType = CommonUtils.ACTION_TYPE_DELETE
+                R.id.add -> {
+                    actionType = CommonUtils.ACTION_TYPE_ADD
                 }
             }
             stepsClickListener.onStepsClickListener(
