@@ -56,9 +56,6 @@ class FoPersonalDetailsFragment(private val stepPosition: Int, private var actio
             }
         }
 
-
-
-
         return binding.root
     }
 
@@ -71,10 +68,9 @@ class FoPersonalDetailsFragment(private val stepPosition: Int, private var actio
             fun onResponse(
                     call: Call<PersonalDetailsViewRes>,
                     responseObject: Response<PersonalDetailsViewRes>) {
-                Log.d("ResponseViewData", "" + responseObject.body()!!.data[0].age)
-                if (responseObject.code() == 200) {
-                    if (responseObject.body()!!.data[0] != null) {
-                        setUpDataInUI(responseObject.body()!!.data[0])
+              if (responseObject.code() == 200) {
+                    if (responseObject.body()!!.data?.get(0)  != null) {
+                        responseObject.body()!!.data?.get(0)?.let { setUpDataInUI(it) }
                     }
                 } else {
                     RetrofitClient.showResponseMessage(requireContext(), responseObject.code())
@@ -93,7 +89,7 @@ class FoPersonalDetailsFragment(private val stepPosition: Int, private var actio
     }
 
     private fun setUpDataInUI(data: PersonalDetailsViewRes.Data) {
-        uid = data.id
+        uid = data.id.toString()
         binding.edtfullname.setText("" + data.fullname)
         binding.edtfathername.setText("" + data.fathersname)
         binding.edtmothersmaidensname.setText("" + data.mothersname)

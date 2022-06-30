@@ -59,10 +59,10 @@ class FoHealthDetailsFragment(private val stepPosition: Int,private var actionTy
                     call: Call<HealthDetailsViewRes>,
                     responseObject: Response<HealthDetailsViewRes>) {
                 if (responseObject.code() == 200) {
-                    if (responseObject.body()!!.data[0] != null) {
+                    if (responseObject.body()!!.data?.get(0)  != null) {
                         var list = responseObject.body()!!.data
-                        var health = list.last()
-                        setUpDataInUI(health)
+                        var health = list?.last()
+                        setUpDataInUI(health!!)
                     }
                 } else {
                     RetrofitClient.showResponseMessage(requireContext(), responseObject.code())
@@ -92,7 +92,7 @@ class FoHealthDetailsFragment(private val stepPosition: Int,private var actionTy
 
     private fun setUpDataInUI(health: HealthDetailsViewRes.Data) {
 
-        uid = health.id
+        uid = health.id.toString()
         binding.edtbirthmarkesone.setText(""+health.birthidentificationmarks)
         binding.edtbirthmarketwo.setText(""+health.birthidentificationmarks2)
 
@@ -105,7 +105,7 @@ class FoHealthDetailsFragment(private val stepPosition: Int,private var actionTy
         binding.edtheight.setText("")
         binding.edtweight.setText(""+health.weight)
 
-        binding.spnrbloodgroup.setSelection(getIndex(binding.spnrbloodgroup,health.bloodgroup))
+        binding.spnrbloodgroup.setSelection(getIndex(binding.spnrbloodgroup,health.bloodgroup!!))
 
         binding.edtwillingdonate.setText(""+ health.willingtodonate)
         binding.edttypeofph.setText(""+ health.typeofph)
@@ -113,9 +113,9 @@ class FoHealthDetailsFragment(private val stepPosition: Int,private var actionTy
 
         binding.spnrhandicapped.setSelection(0)
 
-        binding.spnrsurgeries.setSelection(getIndex(binding.spnrsurgeries,health.surgelesstreatmentundergo))
+        binding.spnrsurgeries.setSelection(getIndex(binding.spnrsurgeries,health.surgelesstreatmentundergo!!))
         binding.edttypeofsurgery.setText(""+health.typeofsurgery)
-        binding.spnrhealthissued.setSelection(getIndex(binding.spnrhealthissued,health.anyotherhealthissue))
+        binding.spnrhealthissued.setSelection(getIndex(binding.spnrhealthissued,health.anyotherhealthissue!!))
         binding.edttypeofhealthissue.setText(""+health.otherissuesdetail)
         binding.spnrhabbit.setSelection(0)
         binding.edttypeofhabbits.setText(""+health.habbitdetails)

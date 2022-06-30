@@ -57,8 +57,8 @@ class FoExpressionOfInterestFragment(private val stepPosition: Int,private var a
                     call: Call<ExpressionDetailsViewRes>,
                     responseObject: Response<ExpressionDetailsViewRes>) {
                 if (responseObject.code() == 200) {
-                    if (responseObject.body()!!.data[0] != null) {
-                        setUpDataInUI(responseObject.body()!!.data[0])
+                    if (responseObject.body()?.data?.get(0)  != null) {
+                        setUpDataInUI(responseObject.body()?.data!![0])
                     }
                 } else {
                     RetrofitClient.showResponseMessage(requireContext(), responseObject.code())
@@ -76,19 +76,19 @@ class FoExpressionOfInterestFragment(private val stepPosition: Int,private var a
 
     }
     private fun setUpDataInUI(data: ExpressionDetailsViewRes.Data) {
-        uid = data.id
+        uid = data.id.toString()
 
         binding.interestedProjectName.setText(data.projectName)
         binding.industryOfProject.setText(data.industry)
         binding.locationOfInterest.setText(data.locationInterest)
 
-        binding.spnrFinancialAssistance.setSelection(CommonUtils.getIndex(binding.spnrFinancialAssistance,data.financialAssistance))
+        binding.spnrFinancialAssistance.setSelection(CommonUtils.getIndex(binding.spnrFinancialAssistance,data.financialAssistance!!))
 
         binding.registrationFee.setText(data.registrationFee)
         binding.franchisePlanningFor.setText(data.franchiseePlanningFor)
         binding.franchisePlanningAs.setText(data.franchiseePlanningAs)
 
-        binding.spnrBusinessPlaceType.setSelection(CommonUtils.getIndex(binding.spnrBusinessPlaceType,data.businessPlaceType))
+        binding.spnrBusinessPlaceType.setSelection(CommonUtils.getIndex(binding.spnrBusinessPlaceType,data.businessPlaceType!!))
         binding.businessPlaceSize.setText(data.businessPlaceSize)
 
         var isEditable = false

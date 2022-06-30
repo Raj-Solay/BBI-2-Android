@@ -4,9 +4,7 @@ import com.bbi.bizbulls.data.foregistration.steps.FoRegistrationSteps
 import com.bbi.bizbulls.data.signin.ForgotPasswordResponse
 import com.bbi.bizbulls.data.signin.LoginResponse
 import com.bbi.bizbulls.data.signupresponse.SignupResponse
-import com.bbi.bizbulls.model.ExpressionDetailsViewRes
-import com.bbi.bizbulls.model.HealthDetailsViewRes
-import com.bbi.bizbulls.model.PersonalDetailsViewRes
+import com.bbi.bizbulls.model.*
 import com.google.gson.JsonObject
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -100,8 +98,8 @@ interface APIService {
             @Body jsonObject: JsonObject,@Path(value = "user_id", encoded = true) userId : String): Call<ResponseBody>
 
     @GET("/api/me/education")
-    fun educationDetailsPost(
-            @Header("Authorization") token: String): Call<ResponseBody>
+    fun educationDetailsGet(
+            @Header("Authorization") token: String): Call<EducationDetailsViewRes>
 
     /*--social_identity--*/
 
@@ -132,7 +130,7 @@ interface APIService {
 
     @GET("/api/me/bankinfo")
     fun bankDetailsGet(
-            @Header("Authorization") token: String): Call<ResponseBody>
+            @Header("Authorization") token: String): Call<BranchDetailsViewRes>
 
     /*--family--*/
     @POST("/api/me/family")
@@ -147,7 +145,7 @@ interface APIService {
 
     @GET("/api/me/family")
     fun familyDetailsGet(
-            @Header("Authorization") token: String): Call<ResponseBody>
+            @Header("Authorization") token: String): Call<FamilyDetailsViewRes>
 
     /*--children--*/
     @POST("/api/me/children")
@@ -162,7 +160,7 @@ interface APIService {
 
     @GET("/api/me/children")
     fun childrenDetailsGet(
-            @Header("Authorization") token: String): Call<ResponseBody>
+            @Header("Authorization") token: String): Call<ChildrenDetailsViewRes>
 
     /*--refrence--*/
     @POST("/api/me/reference")

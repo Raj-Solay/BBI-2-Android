@@ -57,31 +57,31 @@ class FranchiseeRegistrationActivity : AppCompatActivity() {
                 fragmentCalling(FoExpressionOfInterestFragment(stepPosition,actionType))
             }
             3 -> {
-                fragmentCalling(FoCheckListFragment(stepPosition,actionType))
+                fragmentCalling(FoCheckListFragment(stepPosition,actionType)) //Pending
             }
             4 -> {
-                fragmentCalling(FoAcademicEducationFragment(stepPosition))
+                fragmentCalling(FoAcademicEducationFragment(stepPosition,actionType))
             }
             5 -> {
-                fragmentCalling(FoSocialIdentityFragment(stepPosition))
+                fragmentCalling(FoSocialIdentityFragment(stepPosition,actionType)) //Pending
             }
             6 -> {
-                fragmentCalling(FoBankAccountFragment(stepPosition))
+                fragmentCalling(FoBankAccountFragment(stepPosition,actionType))
             }
             7 -> {
-                fragmentCalling(FoFamilyFragment(stepPosition))
+                fragmentCalling(FoFamilyFragment(stepPosition,actionType))
             }
             8 -> {
-                fragmentCalling(FoChildDetailsFragment(stepPosition))
+                fragmentCalling(FoChildDetailsFragment(stepPosition,actionType))
             }
             9 -> {
-                fragmentCalling(FoPersonalReferenceFragment(stepPosition))
+                fragmentCalling(FoPersonalReferenceFragment(stepPosition,actionType)) //Pending
             }
             10 -> {
-                fragmentCalling(FoAttachmentsFragment())
+                fragmentCalling(FoAttachmentsFragment()) //Pending
             }
             11 -> {
-                fragmentCalling(FoAuthorizationFragment(stepPosition))
+                fragmentCalling(FoAuthorizationFragment(stepPosition,actionType)) //Pending
             }
             else -> {
                 fragmentCalling(FoPersonalDetailsFragment(stepPosition,actionType))
