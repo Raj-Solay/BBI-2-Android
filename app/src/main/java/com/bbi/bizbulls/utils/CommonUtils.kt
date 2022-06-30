@@ -13,6 +13,7 @@ import android.util.Patterns
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.widget.DatePicker
+import android.widget.Spinner
 import android.widget.Toast
 import androidx.viewbinding.BuildConfig
 import com.bbi.bizbulls.databinding.DialogMessagesBinding
@@ -132,6 +133,16 @@ object CommonUtils {
 
         //now that the dialog is set up, it's time to show it
         dialog.show()
+    }
+
+    //private method of your class
+    fun getIndex(spinner: Spinner, myString: String): Int {
+        for (i in 0 until spinner.count) {
+            if (spinner.getItemAtPosition(i).toString().equals(myString, ignoreCase = true)) {
+                return i
+            }
+        }
+        return 0
     }
 
 }

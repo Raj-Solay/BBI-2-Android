@@ -286,14 +286,23 @@
     <string name="health_details">Health details saved successfully!</string>
     <string name="health_details_update">Health details update successfully!</string>
     <string name="expression_details">Expression of interest details saved successfully!</string>
+    <string name="expression_details_update">Expression of interest details update successfully!</string>
     <string name="checkBoxSelection">Please read the list and select the chek box</string>
     <string name="checkList_details">Check list details saved successfully!</string>
+    <string name="checkList_details_update">Check list details update successfully!</string>
     <string name="education_details">Academic education details saved successfully!</string>
+    <string name="education_details_update">Academic education details update successfully!</string>
     <string name="socialIdentity_details">Social Identity details saved successfully!</string>
+    <string name="socialIdentity_details_update">Social Identity details update successfully!</string>
     <string name="bank_details">Bank details saved successfully!</string>
+    <string name="bank_details_update">Bank details update successfully!</string>
     <string name="family_details">Family details saved successfully!</string>
+    <string name="family_details_update">Family details update successfully!</string>
     <string name="children_details">Children details saved successfully!</string>
+    <string name="children_details_update">Children details update successfully!</string>
     <string name="personalReferences_details">Personal References details saved successfully!</string>
+    <string name="personalReferences_details_update">Personal References details update successfully!</string>
     <string name="attachments_details">Attachments saved successfully!</string>
     <string name="authorization_details">Authorization saved successfully!</string>
+    <string name="authorization_details_update">Authorization update successfully!</string>
 </resources>

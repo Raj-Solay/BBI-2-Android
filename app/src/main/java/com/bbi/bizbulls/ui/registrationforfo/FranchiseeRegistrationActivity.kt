@@ -57,7 +57,7 @@ class FranchiseeRegistrationActivity : AppCompatActivity() {
                 fragmentCalling(FoExpressionOfInterestFragment(stepPosition,actionType))
             }
             3 -> {
-                fragmentCalling(FoCheckListFragment(stepPosition))
+                fragmentCalling(FoCheckListFragment(stepPosition,actionType))
             }
             4 -> {
                 fragmentCalling(FoAcademicEducationFragment(stepPosition))

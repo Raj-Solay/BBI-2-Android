@@ -22,6 +22,7 @@ import retrofit2.Response
 class FoHealthDetailsFragment(private val stepPosition: Int,private var actionType : Int) : Fragment() {
     private lateinit var binding: FoFrgHealthDetailsBinding
 
+    private var uid : String = ""
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -91,6 +92,7 @@ class FoHealthDetailsFragment(private val stepPosition: Int,private var actionTy
 
     private fun setUpDataInUI(health: HealthDetailsViewRes.Data) {
 
+        uid = health.id
         binding.edtbirthmarkesone.setText(""+health.birthidentificationmarks)
         binding.edtbirthmarketwo.setText(""+health.birthidentificationmarks2)
 
@@ -194,6 +196,6 @@ class FoHealthDetailsFragment(private val stepPosition: Int,private var actionTy
 
         // Call remote Api service to save the Health Details
         val params: MutableMap<String, String> = HashMap()
-        FranchiseeRegistrationViewModel().sendDetailPostRequest(requireActivity(), params, jsonObject, stepPosition,actionType)    }
+        FranchiseeRegistrationViewModel().sendDetailPostRequest(requireActivity(), params, jsonObject, stepPosition,actionType,uid)    }
 
 }

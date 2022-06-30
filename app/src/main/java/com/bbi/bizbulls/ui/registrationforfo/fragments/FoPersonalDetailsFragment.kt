@@ -21,6 +21,7 @@ import retrofit2.Response
 
 class FoPersonalDetailsFragment(private val stepPosition: Int, private var actionType: Int) : Fragment() {
     private lateinit var binding: FoFrgPersonalDetailsBinding
+    private var uid : String = ""
     override fun onCreateView(
             inflater: LayoutInflater,
             container: ViewGroup?,
@@ -92,6 +93,7 @@ class FoPersonalDetailsFragment(private val stepPosition: Int, private var actio
     }
 
     private fun setUpDataInUI(data: PersonalDetailsViewRes.Data) {
+        uid = data.id
         binding.edtfullname.setText("" + data.fullname)
         binding.edtfathername.setText("" + data.fathersname)
         binding.edtmothersmaidensname.setText("" + data.mothersname)
@@ -278,6 +280,6 @@ class FoPersonalDetailsFragment(private val stepPosition: Int, private var actio
         jsonObject.addProperty("present_emergency_no", binding.permEmergencyContact.text.toString())
 
         // Call remote Api service to save the Personal Details
-        FranchiseeRegistrationViewModel().sendDetailPostRequest(requireActivity(), params, jsonObject, stepPosition, actionType)
+        FranchiseeRegistrationViewModel().sendDetailPostRequest(requireActivity(), params, jsonObject, stepPosition, actionType,uid)
     }
 }
