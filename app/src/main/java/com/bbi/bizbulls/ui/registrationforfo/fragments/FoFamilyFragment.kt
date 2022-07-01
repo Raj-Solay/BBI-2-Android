@@ -53,7 +53,7 @@ class FoFamilyFragment(private val stepPosition: Int,private var actionType: Int
             fun onResponse(
                     call: Call<FamilyDetailsViewRes>,
                     responseObject: Response<FamilyDetailsViewRes>) {
-                if (responseObject.code() == 200) {
+                if (responseObject.code() == 200 || responseObject.code() == 201) {
                     if (responseObject.body()!!.data?.get(0)   != null) {
                         responseObject.body()!!.data?.get(0)?.let { setUpDataInUI(it) }
                     }

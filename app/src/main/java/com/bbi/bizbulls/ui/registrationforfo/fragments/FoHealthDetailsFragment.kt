@@ -58,7 +58,7 @@ class FoHealthDetailsFragment(private val stepPosition: Int,private var actionTy
             fun onResponse(
                     call: Call<HealthDetailsViewRes>,
                     responseObject: Response<HealthDetailsViewRes>) {
-                if (responseObject.code() == 200) {
+                if (responseObject.code() == 200 || responseObject.code() == 201) {
                     if (responseObject.body()!!.data?.get(0)  != null) {
                         var list = responseObject.body()!!.data
                         var health = list?.last()

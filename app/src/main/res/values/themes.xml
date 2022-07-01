@@ -154,6 +154,16 @@
         <item name="android:textSize">@dimen/medium_font</item>
     </style>
 
+    <style name="inputBoxNormal">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:fontFamily">@font/source_regular</item>
+        <item name="android:color">@color/heading</item>
+        <item name="android:textColor">@color/heading</item>
+        <item name="android:textColorHint">@color/heading</item>
+        <item name="android:textSize">@dimen/medium_font</item>
+    </style>
+
     <style name="radioBtn">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">@dimen/_25sdp</item>

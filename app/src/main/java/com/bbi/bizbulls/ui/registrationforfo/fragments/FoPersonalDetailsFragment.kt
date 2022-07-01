@@ -68,7 +68,7 @@ class FoPersonalDetailsFragment(private val stepPosition: Int, private var actio
             fun onResponse(
                     call: Call<PersonalDetailsViewRes>,
                     responseObject: Response<PersonalDetailsViewRes>) {
-              if (responseObject.code() == 200) {
+              if (responseObject.code() == 200 || responseObject.code() == 201) {
                     if (responseObject.body()!!.data?.get(0)  != null) {
                         responseObject.body()!!.data?.get(0)?.let { setUpDataInUI(it) }
                     }

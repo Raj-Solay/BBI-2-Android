@@ -79,7 +79,7 @@ interface APIService {
 
     @GET("/api/me/checklist")
     fun checkListDetailsGET(
-            @Header("Authorization") token: String): Call<ResponseBody>
+            @Header("Authorization") token: String): Call<CheckListDetailsViewRes>
 
     @PUT("/api/me/checklist/{user_id}")
     fun checkListDetailsPut(
@@ -115,7 +115,7 @@ interface APIService {
 
     @GET("/api/me/social_identity")
     fun socialIdentityDetailsGet(
-            @Header("Authorization") token: String): Call<ResponseBody>
+            @Header("Authorization") token: String): Call<SocialIdentifyViewRes>
 
     /*--bank info--*/
     @POST("/api/me/bankinfo")

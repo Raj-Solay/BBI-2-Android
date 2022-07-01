@@ -56,7 +56,7 @@ class FoAcademicEducationFragment(private val stepPosition: Int,private var acti
             fun onResponse(
                     call: Call<EducationDetailsViewRes>,
                     responseObject: Response<EducationDetailsViewRes>) {
-               if (responseObject.code() == 200) {
+               if (responseObject.code() == 200 || responseObject.code() == 201) {
                     if (responseObject.body()!!.data?.get(0) != null) {
                         var res = responseObject.body()!!.data?.last()
                         setUpDataInUI(res!!)

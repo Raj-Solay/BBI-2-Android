@@ -1,21 +1,19 @@
 package com.bbi.bizbulls.ui.registrationforfo.fragments
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.bbi.bizbulls.R
 import com.bbi.bizbulls.databinding.FoFrgChecklistUnderstandingBinding
-import com.bbi.bizbulls.model.PersonalDetailsViewRes
+import com.bbi.bizbulls.model.CheckListDetailsViewRes
 import com.bbi.bizbulls.remote.RetrofitClient
 import com.bbi.bizbulls.sharedpref.SharedPrefsManager
 import com.bbi.bizbulls.ui.registrationforfo.FranchiseeRegistrationViewModel
 import com.bbi.bizbulls.utils.CommonUtils
 import com.bbi.bizbulls.utils.MyProcessDialog
 import com.google.gson.JsonObject
-import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -23,6 +21,7 @@ import retrofit2.Response
 class FoCheckListFragment(private val stepPosition: Int,private var actionType: Int) : Fragment() {
     private lateinit var binding: FoFrgChecklistUnderstandingBinding
     private var isCheckListChecked = false
+    private var uid : String = ""
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -58,29 +57,54 @@ class FoCheckListFragment(private val stepPosition: Int,private var actionType: 
         MyProcessDialog.showProgressBar(requireContext(), 0)
         val sharedPrefsHelper by lazy { SharedPrefsManager(requireContext()) }
         val call = RetrofitClient.getUrl().checkListDetailsGET(sharedPrefsHelper.authToken)
-        call?.enqueue(object : Callback<ResponseBody> {
+        call?.enqueue(object : Callback<CheckListDetailsViewRes> {
             override
             fun onResponse(
-                    call: Call<ResponseBody>,
-                    responseObject: Response<ResponseBody>) {
-               /* if (responseObject.code() == 200) {
-                    if (responseObject.body()!!.data[0] != null) {
-                        setUpDataInUI(responseObject.body()!!.data[0])
+                    call: Call<CheckListDetailsViewRes>,
+                    responseObject: Response<CheckListDetailsViewRes>) {
+                if (responseObject.code() == 200) {
+                    if (responseObject.body()!!.data?.get(0)  != null) {
+                        responseObject.body()!!.data?.get(0)?.let { setUpDataInUI(it) }
                     }
                 } else {
                     RetrofitClient.showResponseMessage(requireContext(), responseObject.code())
 
-                }*/
+                }
                 MyProcessDialog.dismiss()
             }
 
             override
-            fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+            fun onFailure(call: Call<CheckListDetailsViewRes>, t: Throwable) {
                 MyProcessDialog.dismiss()
                 RetrofitClient.showFailedMessage(requireContext(), t)
             }
         })
 
+    }
+    private fun setUpDataInUI(data: CheckListDetailsViewRes.Data) {
+        uid = data.id.toString()
+        if(data.acceptCompanyReferredSetup == "Yes" &&
+                data.acceptCompanyReferredSetup == "Yes" &&
+                data.yourResponsibility == "Yes"){
+            binding.checklistForFranchise.isChecked = true
+        }
+
+        var isEditable = false
+        when (actionType) {
+            CommonUtils.ACTION_TYPE_VIEW -> {
+                isEditable = false
+                binding.stepSubmit.visibility = View.INVISIBLE
+            }
+            CommonUtils.ACTION_TYPE_EDIT -> {
+                isEditable = true
+                binding.stepSubmit.visibility = View.VISIBLE
+            }
+            CommonUtils.ACTION_TYPE_ADD -> {
+                isEditable = true
+                binding.stepSubmit.visibility = View.VISIBLE
+            }
+        }
+        binding.checklistForFranchise.isEnabled = isEditable
     }
 
     private fun senCheckListDetail() {
@@ -98,7 +122,7 @@ class FoCheckListFragment(private val stepPosition: Int,private var actionType: 
 
         // Call remote Api service to save the Check List Details
         val params: MutableMap<String, String> = HashMap()
-        FranchiseeRegistrationViewModel().sendDetailPostRequest(requireActivity(), params, jsonObject, stepPosition)
+        FranchiseeRegistrationViewModel().sendDetailPostRequest(requireActivity(), params, jsonObject, stepPosition,actionType,uid)
     }
 
 }
