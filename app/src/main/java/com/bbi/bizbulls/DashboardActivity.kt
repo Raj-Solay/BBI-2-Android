@@ -149,6 +149,9 @@ class DashboardActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onClick(view: View) {
         if (view.id == R.id.myAccount) {
+            binding!!.drawerfomainlayout.closeDrawer(GravityCompat.START)
+            val intent = Intent(this, MyProfileActivity::class.java)
+            startActivity(intent)
         }
         if (view.id == R.id.myRefer) {
             binding!!.drawerfomainlayout.closeDrawer(GravityCompat.START)

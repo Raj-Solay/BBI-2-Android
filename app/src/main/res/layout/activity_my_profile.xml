@@ -97,9 +97,11 @@
             android:textColor="@color/grey_mono"
             android:textSize="@dimen/_16sdp" />
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rcy_payment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/_10sdp"/>
+            android:layout_marginHorizontal="@dimen/_10sdp"
+            />
         <TextView
             android:layout_width="match_parent"
             android:layout_height="1dp"
