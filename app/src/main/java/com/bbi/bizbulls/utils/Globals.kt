@@ -8,7 +8,7 @@ import com.bbi.bizbulls.enums.Environment
 object Globals {
 
     // Base URLs by Environment
-    private const val BASE_URL_PROD = "https://bizbulls.beurboss.com/"
+        private const val BASE_URL_PROD = "https://bizbulls.beurboss.com/"
     private const val BASE_URL_QA = "https://bizbulls.beurboss.com/"
     private const val BASE_URL_DEV = "https://bizbulls.beurboss.com/"
 

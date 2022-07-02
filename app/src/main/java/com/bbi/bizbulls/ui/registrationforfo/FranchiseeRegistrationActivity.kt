@@ -13,6 +13,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.bbi.bizbulls.R
 import com.bbi.bizbulls.databinding.FoActivityRegistrationBinding
 import com.bbi.bizbulls.ui.registrationforfo.fragments.*
+import com.bbi.bizbulls.utils.CommonUtils
 
 class FranchiseeRegistrationActivity : AppCompatActivity() {
     private lateinit var binding: FoActivityRegistrationBinding
@@ -22,6 +23,7 @@ class FranchiseeRegistrationActivity : AppCompatActivity() {
     private var stepName = ""
     private var stepStatus = ""
     private var stepPosition = 0
+    private var actionType = CommonUtils.ACTION_TYPE_ADD
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = FoActivityRegistrationBinding.inflate(layoutInflater)
@@ -45,43 +47,44 @@ class FranchiseeRegistrationActivity : AppCompatActivity() {
         bundle?.getString("name")?.also { stepName = it }
         bundle?.getString("status")?.also { stepStatus = it }
         bundle?.getInt("position")?.also { stepPosition = it }
+        bundle?.getInt("actionType")?.also { actionType = it }
 
         when (stepPosition) {
             1 -> {
-                fragmentCalling(FoHealthDetailsFragment(stepPosition))
+                fragmentCalling(FoHealthDetailsFragment(stepPosition,actionType))
             }
             2 -> {
-                fragmentCalling(FoExpressionOfInterestFragment(stepPosition))
+                fragmentCalling(FoExpressionOfInterestFragment(stepPosition,actionType))
             }
             3 -> {
-                fragmentCalling(FoCheckListFragment(stepPosition))
+                fragmentCalling(FoCheckListFragment(stepPosition,actionType)) //Pending
             }
             4 -> {
-                fragmentCalling(FoAcademicEducationFragment(stepPosition))
+                fragmentCalling(FoAcademicEducationFragment(stepPosition,actionType))
             }
             5 -> {
-                fragmentCalling(FoSocialIdentityFragment(stepPosition))
+                fragmentCalling(FoSocialIdentityFragment(stepPosition,actionType)) //Pending
             }
             6 -> {
-                fragmentCalling(FoBankAccountFragment(stepPosition))
+                fragmentCalling(FoBankAccountFragment(stepPosition,actionType))
             }
             7 -> {
-                fragmentCalling(FoFamilyFragment(stepPosition))
+                fragmentCalling(FoFamilyFragment(stepPosition,actionType))
             }
             8 -> {
-                fragmentCalling(FoChildDetailsFragment(stepPosition))
+                fragmentCalling(FoChildDetailsFragment(stepPosition,actionType))
             }
             9 -> {
-                fragmentCalling(FoPersonalReferenceFragment(stepPosition))
+                fragmentCalling(FoPersonalReferenceFragment(stepPosition,actionType)) //Pending
             }
             10 -> {
-                fragmentCalling(FoAttachmentsFragment())
+                fragmentCalling(FoAttachmentsFragment()) //Pending
             }
             11 -> {
-                fragmentCalling(FoAuthorizationFragment(stepPosition))
+                fragmentCalling(FoAuthorizationFragment(stepPosition,actionType)) //Pending
             }
             else -> {
-                fragmentCalling(FoPersonalDetailsFragment(stepPosition))
+                fragmentCalling(FoPersonalDetailsFragment(stepPosition,actionType))
             }
         }
 

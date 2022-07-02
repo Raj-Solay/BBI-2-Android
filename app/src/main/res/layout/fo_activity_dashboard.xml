@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/bg_layout"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/appCompatTextView"
@@ -15,9 +17,10 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
+        android:layout_margin="@dimen/_12sdp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/bg_layout"
+        tools:listitem="@layout/fo_adapter_dashboard"
         android:layout_below="@+id/appCompatTextView" />
 
 </RelativeLayout>

@@ -13,6 +13,7 @@ import android.util.Patterns
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.widget.DatePicker
+import android.widget.Spinner
 import android.widget.Toast
 import androidx.viewbinding.BuildConfig
 import com.bbi.bizbulls.databinding.DialogMessagesBinding
@@ -30,6 +31,10 @@ object CommonUtils {
         "qa" -> Environment.QA
         else -> Environment.DEVELOPMENT
     }
+
+    const val  ACTION_TYPE_ADD = 0
+    const val  ACTION_TYPE_VIEW = 1
+    const val  ACTION_TYPE_EDIT = 2
 
     fun toast(context: Context?, message: String?) {
         Toast.makeText(context, message, Toast.LENGTH_LONG).show()
@@ -128,6 +133,16 @@ object CommonUtils {
 
         //now that the dialog is set up, it's time to show it
         dialog.show()
+    }
+
+    //private method of your class
+    fun getIndex(spinner: Spinner, myString: String): Int {
+        for (i in 0 until spinner.count) {
+            if (spinner.getItemAtPosition(i).toString().equals(myString, ignoreCase = true)) {
+                return i
+            }
+        }
+        return 0
     }
 
 }

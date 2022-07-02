@@ -9,6 +9,11 @@
         style="@style/regLLAll">
 
         <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/edtfullname"
+            style="@style/inputBox"
+            android:hint="@string/ct_fullname" />
+
+        <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/edtfathername"
             style="@style/inputBox"
             android:hint="@string/ct_writefathername" />
@@ -27,6 +32,16 @@
             android:id="@+id/edtplaceofbirth"
             style="@style/inputBox"
             android:hint="@string/ct_writeplaceofbirth" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/edtage"
+            style="@style/inputBox"
+            android:hint="@string/ct_age" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/edtEmailid"
+            style="@style/inputBox"
+            android:hint="@string/ct_emailid" />
 
         <LinearLayout
             style="@style/subTitleWithLayout"
@@ -204,7 +219,7 @@
             android:id="@+id/edtState"
             style="@style/inputBox"
             android:hint="State"
-            android:inputType="number" />
+            android:inputType="text" />
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/edtZip"
             style="@style/inputBox"

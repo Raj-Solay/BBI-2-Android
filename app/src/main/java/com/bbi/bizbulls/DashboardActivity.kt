@@ -1,5 +1,6 @@
 package com.bbi.bizbulls
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -25,6 +26,7 @@ class DashboardActivity : AppCompatActivity(), View.OnClickListener {
     var myRefer: ConstraintLayout? = null
     var myOffer: ConstraintLayout? = null
     var myWallet: ConstraintLayout? = null
+    var layoutcp : ConstraintLayout? = null
     var about: ConstraintLayout? = null
     var termsAndCondition: ConstraintLayout? = null
     var privacyPolicy: ConstraintLayout? = null
@@ -97,6 +99,10 @@ class DashboardActivity : AppCompatActivity(), View.OnClickListener {
         settings?.setOnClickListener(this)
         logout = hView.findViewById(R.id.logout)
         logout?.setOnClickListener(this)
+
+        layoutcp = hView.findViewById(R.id.layoutcp)
+        layoutcp?.setOnClickListener(this)
+
         binding!!.layoutdraweropen.setOnClickListener(this)
         homeCustomerFragment = HomeCustomerFragment()
         customerFOStatusFragment = CustomerFOStatusFragment()
@@ -120,6 +126,10 @@ class DashboardActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     override fun onClick(view: View) {
+        if (view.id == R.id.layoutcp){
+            val i = Intent(this, ProjectInfoActivity::class.java)
+            startActivity(i)
+        }
         if (view.id == R.id.myAccount) {
         }
         if (view.id == R.id.myRefer) {

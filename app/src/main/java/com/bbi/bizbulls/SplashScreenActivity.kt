@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.bbi.bizbulls.databinding.ActivitySplashBinding
 import com.bbi.bizbulls.sharedpref.SharedPrefsManager
+import com.bbi.bizbulls.ui.registrationforfo.FoRegistrationDashBoardActivity
 
 class SplashScreenActivity : AppCompatActivity() {
     private val sharedPrefsHelper by lazy { SharedPrefsManager(this@SplashScreenActivity) }
@@ -24,7 +25,7 @@ class SplashScreenActivity : AppCompatActivity() {
             i.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(i)
         } else {
-            val i = Intent(this@SplashScreenActivity, SignupActivity::class.java)
+            val i = Intent(this@SplashScreenActivity, SignupActivity::class.java) //SignupActivity
             i.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(i)
         }

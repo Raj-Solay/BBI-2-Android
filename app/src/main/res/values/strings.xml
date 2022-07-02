@@ -76,6 +76,8 @@
     <string name="ct_female">Female</string>
     <string name="ct_placeofbirth">Place of Birth</string>
     <string name="ct_writeplaceofbirth">Place of birth</string>
+    <string name="ct_age">Age</string>
+    <string name="ct_emailid">Email Id</string>
     <string name="ct_mothertongue">Mother Tongue</string>
     <string name="ct_writemothertongue">Mother tongue</string>
     <string name="ct_maritalstatus">Marital Status</string>
@@ -89,7 +91,6 @@
     <string name="ct_writealtnumber">Alternate number</string>
     <string name="ct_whatnumber">Whatsapp Number</string>
     <string name="ct_writewhatsupnumber">Whatsapp number</string>
-    <string name="ct_emailid">Email ID</string>
     <string name="ct_writeemail">Email id</string>
     <string name="ct_permenentadrs">Permanent Address</string>
     <string name="ct_writepermenentadrs">Residential address</string>
@@ -281,16 +282,27 @@
     <string name="no_internet">No internet connection</string>
     <string name="something_wrong">Something went wrong, please try again</string>
     <string name="personal_details">Personal details saved successfully!</string>
+    <string name="personal_details_update">Personal details update successfully!</string>
     <string name="health_details">Health details saved successfully!</string>
+    <string name="health_details_update">Health details update successfully!</string>
     <string name="expression_details">Expression of interest details saved successfully!</string>
+    <string name="expression_details_update">Expression of interest details update successfully!</string>
     <string name="checkBoxSelection">Please read the list and select the chek box</string>
     <string name="checkList_details">Check list details saved successfully!</string>
+    <string name="checkList_details_update">Check list details update successfully!</string>
     <string name="education_details">Academic education details saved successfully!</string>
+    <string name="education_details_update">Academic education details update successfully!</string>
     <string name="socialIdentity_details">Social Identity details saved successfully!</string>
+    <string name="socialIdentity_details_update">Social Identity details update successfully!</string>
     <string name="bank_details">Bank details saved successfully!</string>
+    <string name="bank_details_update">Bank details update successfully!</string>
     <string name="family_details">Family details saved successfully!</string>
+    <string name="family_details_update">Family details update successfully!</string>
     <string name="children_details">Children details saved successfully!</string>
+    <string name="children_details_update">Children details update successfully!</string>
     <string name="personalReferences_details">Personal References details saved successfully!</string>
+    <string name="personalReferences_details_update">Personal References details update successfully!</string>
     <string name="attachments_details">Attachments saved successfully!</string>
     <string name="authorization_details">Authorization saved successfully!</string>
+    <string name="authorization_details_update">Authorization update successfully!</string>
 </resources>
