@@ -219,15 +219,16 @@
                             android:textColor="@color/white"
                             android:textSize="@dimen/_12dp" />
                     </LinearLayout>
+
                     <ImageView
                         android:id="@+id/iv_right"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
+                        android:layout_alignParentRight="true"
                         android:layout_gravity="center"
                         android:layout_marginLeft="@dimen/_10sdp"
-                        android:layout_alignParentRight="true"
                         android:paddingRight="@dimen/_10sdp"
-                        android:src="@drawable/right_arrow"/>
+                        android:src="@drawable/right_arrow" />
                 </RelativeLayout>
             </LinearLayout>
             <LinearLayout
