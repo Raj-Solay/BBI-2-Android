@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'kotlin-kapt'
+    id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin'
 }
 apply plugin: 'kotlin-android'
 
@@ -78,4 +79,9 @@ dependencies {
     // optional - Test helpers
     testImplementation "androidx.room:room-testing:$room_version"
     // ROOM ================
+    implementation 'androidx.gridlayout:gridlayout:1.0.0'
+
+    implementation 'com.cashfree.pg:api:1.0.9'
+    implementation 'com.yanzhenjie:album:2.1.3'
+
 }

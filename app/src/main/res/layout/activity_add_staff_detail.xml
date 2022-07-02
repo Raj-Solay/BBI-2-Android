@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/white_button"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/etFirstName"
+        style="@style/fontregular"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="14dp"
+        android:layout_marginEnd="14dp"
+        android:background="@drawable/edit_text_background"
+        android:hint="@string/firstname"
+        android:inputType="textCapWords"
+        android:padding="@dimen/textboxpadding"
+        android:textColor="@color/heading"
+        android:textColorHint="@color/heading"
+
+        android:textSize="@dimen/medium_font"
+        tools:ignore="TouchTargetSizeCheck" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/etLastName"
+        style="@style/fontregular"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="14dp"
+        android:layout_marginEnd="14dp"
+        android:background="@drawable/edit_text_background"
+        android:hint="@string/lastname"
+        android:inputType="textCapWords"
+        android:padding="@dimen/textboxpadding"
+        android:textColor="@color/heading"
+        android:textColorHint="@color/heading"
+        android:textSize="@dimen/medium_font"
+        tools:ignore="TouchTargetSizeCheck" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/etMobileNumber"
+        style="@style/fontregular"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="14dp"
+        android:layout_marginEnd="14dp"
+        android:background="@drawable/edit_text_background"
+        android:hint="@string/ct_perrefnumber"
+        android:inputType="number"
+        android:padding="@dimen/textboxpadding"
+        android:textColor="@color/heading"
+        android:textColorHint="@color/heading"
+
+        android:textSize="@dimen/medium_font" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/etEmailAdress"
+        style="@style/fontregular"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="14dp"
+        android:layout_marginEnd="14dp"
+        android:background="@drawable/edit_text_background"
+        android:hint="@string/email_"
+        android:inputType="textEmailAddress"
+        android:padding="@dimen/textboxpadding"
+        android:textColor="@color/heading"
+        android:textColorHint="@color/heading"
+
+        android:textSize="@dimen/medium_font" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="14dp"
+        android:layout_marginEnd="14dp"
+        android:orientation="horizontal"
+        android:weightSum="5">
+
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="20dp"
+            android:layout_weight="0.2" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="left|center"
+            android:layout_weight="3.3"
+            android:gravity="left|center"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/infochildsex"
+                style="@style/fontregular"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="@string/ct_childsex"
+                android:textColor="@color/heading"
+                android:textSize="@dimen/small_font" />
+
+            <RadioGroup
+                android:id="@+id/rgGender"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_marginStart="14dp"
+                android:orientation="horizontal">
+
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:id="@+id/radiomale"
+                    style="@style/fontregular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:button="@drawable/radiobtnstyle"
+                    android:paddingStart="@dimen/textboxpadding"
+                    android:text="@string/ct_male"
+                    android:textColor="@color/heading"
+                    android:textSize="@dimen/medium_font" />
+
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:id="@+id/radiofemale"
+                    style="@style/fontregular"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="16dp"
+                    android:button="@drawable/radiobtnstyle"
+                    android:paddingStart="@dimen/textboxpadding"
+                    android:text="@string/ct_female"
+                    android:textColor="@color/heading"
+                    android:textSize="@dimen/medium_font" />
+            </RadioGroup>
+        </LinearLayout>
+    </LinearLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/llUploadPhoto"
+                android:layout_width="@dimen/_45sdp"
+                android:layout_height="@dimen/_45sdp"
+                android:layout_marginStart="@dimen/_100sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:foregroundGravity="center"
+                app:cardBackgroundColor="@color/light_orange"
+                app:cardCornerRadius="6dp"
+                app:cardElevation="0dp"
+                app:cardMaxElevation="0dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/llUploadOfficeBlueprint">
+
+                <RelativeLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/imgvpancard"
+                        android:layout_width="@dimen/_20sdp"
+                        android:layout_height="@dimen/_20sdp"
+                        android:layout_centerInParent="true"
+                        android:layout_gravity="center"
+                        android:src="@drawable/upload" />
+
+                    <ImageView
+                        android:id="@+id/imgpancard"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_40sdp" />
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/checkWithTextLayout"
+                android:layout_width="wrap_content"
+                android:text="@string/upload_photo"
+                android:gravity="center"
+                android:layout_gravity="center"
+                app:layout_constraintEnd_toEndOf="@id/llUploadPhoto"
+                app:layout_constraintStart_toStartOf="@+id/llUploadPhoto"
+                app:layout_constraintTop_toBottomOf="@+id/llUploadPhoto" />
+
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/llUploadVideo"
+                android:layout_width="@dimen/_45sdp"
+                android:layout_height="@dimen/_45sdp"
+                android:layout_marginStart="@dimen/_30sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:foregroundGravity="center"
+                app:cardBackgroundColor="@color/light_orange"
+                app:cardCornerRadius="6dp"
+                app:cardElevation="0dp"
+                app:cardMaxElevation="0dp"
+                app:layout_constraintStart_toEndOf="@id/llUploadPhoto"
+                app:layout_constraintTop_toBottomOf="@+id/llUploadOfficeBlueprint">
+
+                <RelativeLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/video"
+                        android:layout_width="@dimen/_20sdp"
+                        android:layout_height="@dimen/_20sdp"
+                        android:layout_centerInParent="true"
+                        android:layout_gravity="center"
+                        android:src="@drawable/upload" />
+
+                    <ImageView
+                        android:id="@+id/videopancard"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_40sdp" />
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txtVideo"
+                style="@style/checkWithTextLayout"
+                android:layout_width="wrap_content"
+                android:text="@string/upload_video"
+                app:layout_constraintEnd_toEndOf="@+id/llUploadVideo"
+                app:layout_constraintStart_toStartOf="@+id/llUploadVideo"
+                app:layout_constraintTop_toBottomOf="@+id/llUploadVideo" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="26dp"
+        android:layout_marginEnd="14dp"
+        android:layout_marginBottom="20dp"
+        android:orientation="horizontal"
+        android:weightSum="5">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/btnAdd"
+            style="@style/fontsemibold"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dialogbtn"
+            android:layout_gravity="center"
+            android:layout_weight="2.4"
+            android:background="@drawable/bg_round"
+            android:gravity="center"
+            android:text="@string/f_submit"
+            android:textColor="@color/white"
+            android:textSize="@dimen/large_font" />
+    </LinearLayout>
+</LinearLayout>

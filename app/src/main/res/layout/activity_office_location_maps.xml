@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:map="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:fillViewport="false"
+    android:layout_height="match_parent">
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:map="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/txtLocateAddress"
+        android:layout_width="match_parent"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:layout_height="wrap_content"
+        android:text="@string/locate_office_address"
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+
+        />
+    <!--search view to search our location-->
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/idSearchView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="#BFBFBF"
+        android:elevation="5dp"
+        app:layout_constraintStart_toStartOf="@+id/txtLocateAddress"
+        app:iconifiedByDefault="false"
+        app:queryHint="Search Here"
+        map:layout_constraintTop_toBottomOf="@+id/txtLocateAddress" />
+
+    <fragment
+        android:id="@+id/map"
+        app:layout_constraintTop_toBottomOf="@+id/idSearchView"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="0dp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_height="@dimen/_180sdp"
+        app:layout_constraintEnd_toEndOf="@+id/txtLocateAddress"
+        app:layout_constraintStart_toStartOf="@+id/txtLocateAddress"
+        tools:context=".OfficeLocationMapsActivity" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/txtOfficeSpaceMeasurement"
+        style="@style/inputBox"
+        android:hint="@string/officespacemeasurement"
+        android:gravity="left|top"
+        android:lines="4"
+        android:layout_marginTop="@dimen/_5sdp"
+        app:layout_constraintEnd_toEndOf="@+id/txtLocateAddress"
+        app:layout_constraintStart_toStartOf="@+id/txtLocateAddress"
+        app:layout_constraintTop_toBottomOf="@+id/map"
+        android:maxLines="4" />
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="0dp"
+        android:orientation="horizontal"
+        android:id="@+id/llUploadOfficeBlueprint"
+        android:layout_marginTop="@dimen/_10sdp"
+        app:layout_constraintEnd_toEndOf="@+id/txtLocateAddress"
+        app:layout_constraintStart_toStartOf="@+id/txtLocateAddress"
+        app:layout_constraintTop_toBottomOf="@+id/txtOfficeSpaceMeasurement"
+
+        android:layout_height="wrap_content">
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/txtbbi_agreementdate"
+            style="@style/fontregular"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="6dp"
+            android:text="@string/upload_office_space_blueprint"
+            android:layout_weight="1.0"
+            android:textColor="@color/heading"
+            android:textSize="@dimen/medium_font"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtbbi_agreementstatus" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnUpload"
+            style="@style/fontregular"
+            android:layout_width="wrap_content"
+            android:layout_height="22dp"
+            android:layout_marginEnd="6dp"
+            android:background="@drawable/bg_rounddarkorange"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:textAllCaps="false"
+            android:text="@string/upload"
+            android:textColor="@color/white"
+            android:textSize="@dimen/small_font"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="TouchTargetSizeCheck" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="@dimen/_45sdp"
+        android:layout_height="@dimen/_45sdp"
+        android:id="@+id/llUploadPhoto"
+        android:layout_marginStart="@dimen/_100sdp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/llUploadOfficeBlueprint"
+        android:layout_marginLeft="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:foregroundGravity="center"
+        app:cardBackgroundColor="@color/light_orange"
+        app:cardCornerRadius="6dp"
+        app:cardElevation="0dp"
+        app:cardMaxElevation="0dp">
+
+        <RelativeLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/imgvpancard"
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center"
+                android:src="@drawable/upload" />
+
+            <ImageView
+                android:id="@+id/imgpancard"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_40sdp" />
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+    <androidx.appcompat.widget.AppCompatTextView
+        style="@style/checkWithTextLayout"
+        android:layout_width="wrap_content"
+        app:layout_constraintStart_toStartOf="@+id/llUploadPhoto"
+        app:layout_constraintEnd_toEndOf="@id/llUploadPhoto"
+        app:layout_constraintTop_toBottomOf="@+id/llUploadPhoto"
+        android:text="@string/upload_photo" />
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="@dimen/_45sdp"
+        android:layout_height="@dimen/_45sdp"
+        android:id="@+id/llUploadVideo"
+        app:layout_constraintStart_toEndOf="@id/llUploadPhoto"
+        app:layout_constraintTop_toBottomOf="@+id/llUploadOfficeBlueprint"
+        android:layout_marginLeft="@dimen/_30sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:foregroundGravity="center"
+        app:cardBackgroundColor="@color/light_orange"
+        app:cardCornerRadius="6dp"
+        app:cardElevation="0dp"
+        app:cardMaxElevation="0dp">
+
+        <RelativeLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/video"
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center"
+                android:src="@drawable/upload" />
+
+            <ImageView
+                android:id="@+id/videopancard"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_40sdp" />
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/txtVideo"
+        style="@style/checkWithTextLayout"
+        android:layout_width="wrap_content"
+        app:layout_constraintStart_toStartOf="@+id/llUploadVideo"
+        app:layout_constraintEnd_toEndOf="@+id/llUploadVideo"
+        app:layout_constraintTop_toBottomOf="@+id/llUploadVideo"
+        android:text="@string/upload_video" />
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/btnsubmit"
+        style="@style/fontsemibold"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/dialogbtn"
+        android:layout_gravity="center"
+        android:layout_weight="2.4"
+        android:layout_marginTop="@dimen/_15sdp"
+        app:layout_constraintEnd_toEndOf="@+id/txtLocateAddress"
+        app:layout_constraintStart_toStartOf="@+id/txtLocateAddress"
+        app:layout_constraintTop_toBottomOf="@+id/txtVideo"
+        android:background="@drawable/bg_round"
+        android:gravity="center"
+        android:text="@string/f_submit"
+        android:textColor="@color/white"
+        android:textSize="@dimen/large_font" />
+</androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

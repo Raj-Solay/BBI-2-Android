@@ -4,6 +4,7 @@ import com.bbi.bizbulls.data.foregistration.steps.FoRegistrationSteps
 import com.bbi.bizbulls.data.signin.ForgotPasswordResponse
 import com.bbi.bizbulls.data.signin.LoginResponse
 import com.bbi.bizbulls.data.signupresponse.SignupResponse
+import com.bbi.bizbulls.model.CashFreeTokenData
 import com.bbi.bizbulls.model.StatusData
 import com.google.gson.JsonObject
 import okhttp3.MultipartBody
@@ -105,5 +106,18 @@ interface APIService {
 
     @GET("/api/status")
     fun getStatus(@Header("Authorization") token: String): Call<StatusData>
+
+    @POST("/api/cashfree/token")
+    fun getPaymentToken(
+        @Header("Authorization") token: String,
+        @Body jsonObject: JsonObject): Call<CashFreeTokenData>
+
+    @POST("/api/update_payment")
+    fun updatePayment(
+        @Header("Authorization") token: String,
+        @Body jsonObject: JsonObject): Call<ResponseBody>
+
+    @GET
+    fun downloadFileWithDynamicUrlSync(@Url fileUrl: String?): Call<ResponseBody>
 
 }

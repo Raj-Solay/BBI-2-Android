@@ -12,7 +12,7 @@
         android:layout_height="match_parent"
 
         android:layout_marginBottom="@dimen/toolBarHeight"
-        android:visibility="gone">
+        android:visibility="visible">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -262,13 +262,21 @@
                     app:layout_constraintStart_toStartOf="@+id/kycstatuslayout"
                     app:layout_constraintTop_toBottomOf="@+id/kycstatuslayout" />
 
+                <include layout="@layout/bbi_agreement"
+                    android:id="@+id/bbiLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/line_kyc"/>
+
                 <RelativeLayout
                     android:id="@+id/registerstatuslayout"
                     android:layout_width="16dp"
                     android:layout_height="16dp"
                     android:background="@drawable/border_select"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/line_kyc">
+                    app:layout_constraintTop_toBottomOf="@+id/bbiLayout">
 
                     <androidx.appcompat.widget.AppCompatImageView
                         android:id="@+id/imgregisterstatus"
@@ -289,7 +297,7 @@
                     android:textSize="@dimen/medium_font"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/kycstatuslayout"
-                    app:layout_constraintTop_toBottomOf="@+id/line_kyc" />
+                    app:layout_constraintTop_toBottomOf="@+id/bbiLayout" />
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/laoutregister"
@@ -441,6 +449,13 @@
                     app:layout_constraintStart_toStartOf="@+id/registerstatuslayout"
                     app:layout_constraintTop_toBottomOf="@+id/registerstatuslayout" />
 
+                <include layout="@layout/finalbility"
+                    android:id="@+id/finabilityLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/line_register"/>
 
                 <RelativeLayout
                     android:id="@+id/locationidentitylayout"
@@ -448,7 +463,7 @@
                     android:layout_height="16dp"
                     android:background="@drawable/border_select"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/line_register">
+                    app:layout_constraintTop_toBottomOf="@+id/finabilityLayout">
 
                     <androidx.appcompat.widget.AppCompatImageView
                         android:id="@+id/imglocationidentity"
@@ -469,7 +484,7 @@
                     android:textSize="@dimen/medium_font"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/registerstatuslayout"
-                    app:layout_constraintTop_toBottomOf="@+id/line_register" />
+                    app:layout_constraintTop_toBottomOf="@+id/finabilityLayout" />
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/layoutlocationidentity"
@@ -763,6 +778,21 @@
                     app:layout_constraintEnd_toEndOf="@+id/agreementstatuslayout"
                     app:layout_constraintStart_toStartOf="@+id/agreementstatuslayout"
                     app:layout_constraintTop_toBottomOf="@+id/agreementstatuslayout" />
+                <include layout="@layout/site_visit"
+                    android:id="@+id/siteVisitLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/line_agreement"/>
+
+                <include layout="@layout/franchisee_fee"
+                    android:id="@+id/franchiseeFeeLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/siteVisitLayout"/>
 
 
                 <RelativeLayout
@@ -771,7 +801,7 @@
                     android:layout_height="16dp"
                     android:background="@drawable/border_select"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/line_agreement">
+                    app:layout_constraintTop_toBottomOf="@+id/franchiseeFeeLayout">
 
                     <androidx.appcompat.widget.AppCompatImageView
                         android:id="@+id/imgsetupstatus"
@@ -792,7 +822,7 @@
                     android:textSize="@dimen/medium_font"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/agreementstatuslayout"
-                    app:layout_constraintTop_toBottomOf="@+id/line_agreement" />
+                    app:layout_constraintTop_toBottomOf="@+id/franchiseeFeeLayout" />
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/layoutsetup"

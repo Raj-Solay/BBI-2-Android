@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".FinabilityActivity">
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <androidx.appcompat.widget.AppCompatTextView
+            style="@style/subTitle"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:text="@string/monthly_income" />
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/etMonthlyIncome"
+            style="@style/inputBox"
+            android:inputType="number"/>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:orientation="horizontal">
+        <androidx.appcompat.widget.AppCompatTextView
+            style="@style/subTitle"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:text="@string/type_of_income" />
+        <RelativeLayout style="@style/spinnerLayout">
+
+            <com.bbi.bizbulls.utils.CustomSpinner
+                android:id="@+id/spnrFinancialAssistance"
+                style="@style/customSpinner"
+                android:entries="@array/typeOfIncome" />
+
+            <ImageView style="@style/customSpinnerDropDown" />
+
+        </RelativeLayout>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="@dimen/_150sdp"
+        android:layout_gravity="bottom"
+        android:gravity="bottom"
+        android:layout_marginEnd="14dp"
+        android:layout_marginBottom="20dp"
+        android:orientation="horizontal"
+        android:weightSum="5">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/btncancelrefferance"
+            style="@style/fontsemibold"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dialogbtn"
+            android:layout_gravity="center"
+            android:layout_weight="2.4"
+            android:background="@drawable/bg_label"
+            android:gravity="center"
+            android:text="Cancel"
+            android:textColor="@color/heading"
+            android:textSize="@dimen/large_font" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="20dp"
+            android:layout_weight="0.2" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/btnsubmitrefferance"
+            style="@style/fontsemibold"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dialogbtn"
+            android:layout_gravity="center"
+            android:layout_weight="2.4"
+            android:background="@drawable/bg_round"
+            android:gravity="center"
+            android:text="@string/f_submit"
+            android:textColor="@color/white"
+            android:textSize="@dimen/large_font" />
+    </LinearLayout>
+
+</androidx.appcompat.widget.LinearLayoutCompat>

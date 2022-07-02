@@ -1,14 +1,14 @@
 package com.bbi.bizbulls.ui.fragment
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.bbi.bizbulls.AgreementsStatusActivity
 import com.bbi.bizbulls.R
-import com.bbi.bizbulls.data.foregistration.steps.Data
-import com.bbi.bizbulls.data.foregistration.steps.FoRegistrationSteps
 import com.bbi.bizbulls.databinding.FragmentStatusBinding
 import com.bbi.bizbulls.model.StatusData
 import com.bbi.bizbulls.remote.RetrofitClient
@@ -18,16 +18,17 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
+
 class CustomerFOStatusFragment : Fragment(), View.OnClickListener {
     private val sharedPrefsHelper by lazy { SharedPrefsManager(requireActivity()) }
     private lateinit var binding: FragmentStatusBinding
+    val isCustomer = false
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentStatusBinding.inflate(layoutInflater)
         binding.layoutkycincomplete.setOnClickListener(this)
-        binding.btnregister.setOnClickListener(this)
         binding.btnaddlocationidentity.setOnClickListener(this)
         binding.btnaddsetup.setOnClickListener(this)
         binding.btnaddagreement.setOnClickListener(this)
@@ -38,12 +39,15 @@ class CustomerFOStatusFragment : Fragment(), View.OnClickListener {
         return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        geSteps(requireActivity())
+    }
+
     override fun onClick(view: View) {
         if (view === binding.layoutkycincomplete) {
-            binding.layoutkycincomplete.visibility = View.GONE
-            binding.layoutkyccomplete.visibility = View.VISIBLE
-            binding.laoutregisterincomplete.visibility = View.VISIBLE
-            binding.imgkycstatus.setImageResource(R.drawable.ic_done)
+            setKycComplete()
         }
         if (view === binding.btnregister) {
 //            Intent i = new Intent(getActivity(), AddPaymentOrderDetailActivity.class);
@@ -52,39 +56,65 @@ class CustomerFOStatusFragment : Fragment(), View.OnClickListener {
             showfinancialRelibility()
         }
         if (view === binding.btnaddlocationidentity) {
-            binding.layoutlocationidentityincomplete.visibility = View.GONE
-            binding.layoutlocationidentitycomplete.visibility = View.VISIBLE
-            binding.layoutagreementincomplete.visibility = View.VISIBLE
-            binding.imglocationidentity.setImageResource(R.drawable.ic_done)
-            //            Intent i = new Intent(getActivity(), LocateOfficeAddress.class);
+           setLocationDone()
+//                        Intent i = new Intent(getActivity(), LocateOfficeAddress.class);
 //            i.putExtra("temp","fo");
 //            startActivity(i);
         }
         if (view === binding.btnaddagreement) {
-            binding.layoutagreementincomplete.visibility = View.GONE
-            binding.layoutagreementcomplete.visibility = View.VISIBLE
-            binding.layoutsetupincomplete.visibility = View.VISIBLE
-            binding.imgagreementstatus.setImageResource(R.drawable.ic_done)
+            setAgreementDone()
         }
         if (view === binding.btnaddsetup) {
-            binding.layoutsetupincomplete.visibility = View.GONE
-            binding.layoutsetupcomplete.visibility = View.VISIBLE
-            binding.layoutlicenseincomplete.visibility = View.VISIBLE
-            binding.imgsetupstatus.setImageResource(R.drawable.ic_done)
+           setOfficeSetupDone()
             //            Intent i = new Intent(getActivity(), SetupFinancialActivity.class);
 //            startActivity(i);
         }
         if (view === binding.btnaddlicense) {
-            binding.layoutlicenseincomplete.visibility = View.GONE
-            binding.layoutlicensecomplete.visibility = View.VISIBLE
-            binding.imglicensestatus.setImageResource(R.drawable.ic_done)
-            binding.txtinfomsg.visibility = View.VISIBLE
-            binding.txtviewcontactdetails.visibility = View.VISIBLE
+           setLicenceDone()
         }
         if (view === binding.txtviewcontactdetails) {
             requireActivity().finish()
             sharedPrefsHelper.forceLogout(requireActivity())
         }
+    }
+
+    private fun setLicenceDone() {
+        binding.layoutlicenseincomplete.visibility = View.GONE
+        binding.layoutlicensecomplete.visibility = View.VISIBLE
+        binding.imglicensestatus.setImageResource(R.drawable.ic_done)
+        binding.txtinfomsg.visibility = View.VISIBLE
+        binding.txtviewcontactdetails.visibility = View.VISIBLE
+    }
+
+    private fun setOfficeSetupDone() {
+        binding.layoutsetupincomplete.visibility = View.GONE
+        binding.layoutsetupcomplete.visibility = View.VISIBLE
+        binding.layoutlicenseincomplete.visibility = View.VISIBLE
+        binding.imgsetupstatus.setImageResource(R.drawable.ic_done)
+    }
+
+    private fun setAgreementDone() {
+        val i =  Intent(getActivity(), AgreementsStatusActivity::class.java);
+        startActivity(i);
+
+        binding.layoutagreementincomplete.visibility = View.GONE
+        binding.layoutagreementcomplete.visibility = View.VISIBLE
+        binding.layoutsetupincomplete.visibility = View.VISIBLE
+        binding.imgagreementstatus.setImageResource(R.drawable.ic_done)
+    }
+
+    private fun setLocationDone() {
+        binding.layoutlocationidentityincomplete.visibility = View.GONE
+        binding.layoutlocationidentitycomplete.visibility = View.VISIBLE
+        binding.layoutagreementincomplete.visibility = View.VISIBLE
+        binding.imglocationidentity.setImageResource(R.drawable.ic_done)
+    }
+
+    private fun setKycComplete() {
+        binding.layoutkycincomplete.visibility = View.GONE
+        binding.layoutkyccomplete.visibility = View.VISIBLE
+        binding.laoutregisterincomplete.visibility = View.VISIBLE
+        binding.imgkycstatus.setImageResource(R.drawable.ic_done)
     }
 
     private fun showfinancialRelibility() {
@@ -112,6 +142,52 @@ class CustomerFOStatusFragment : Fragment(), View.OnClickListener {
             ) {
                 if (responseObject.isSuccessful) {
                    val data =  responseObject.body()
+                    binding.apply {
+                        txtcustomerid.text = data?.number
+                        txtCustomerstatus.text = data?.customerStatus
+                        txtcustomername.text = data?.customerName
+                        txtcustomeraddress.text = data?.businessName
+                        txtcustomertime.text = data?.date
+                    }
+                    if(isCustomer){
+                        binding.apply {
+                            bbiLayout.bbiLayout.visibility= View.VISIBLE
+                            finabilityLayout.finabilityLayout.visibility= View.VISIBLE
+                            siteVisitLayout.finabilityLayout.visibility= View.VISIBLE
+                            franchiseeFeeLayout.franchiseeFeeLayout.visibility= View.VISIBLE
+                        }
+                    }
+
+                    if(data?.kyc?.status.equals("Completed",true))
+                    {
+                        setKycComplete()
+                    }
+                    if(data?.registrationFees?.status.equals("Completed",true))
+                    {
+                        showfinancialRelibility()
+                    }
+                    if(data?.locationUpdate?.status.equals("Completed",true))
+                    {
+                        setLocationDone()
+                    }
+                    if(data?.agreement?.status.equals("Completed",true))
+                    {
+                        setAgreementDone()
+                    }
+                    if(data?.setup?.status.equals("Completed",true))
+                    {
+                        setOfficeSetupDone()
+                    }
+                    if(data?.licence?.status.equals("Completed",true))
+                    {
+                        setLicenceDone()
+                    }
+                    binding.btnregister.setOnClickListener {
+                        data?.registrationFees?.let { it1 ->
+
+
+                        }
+                    }
 
                 } else {
                     RetrofitClient.showResponseMessage(context, responseObject.code())
@@ -126,4 +202,5 @@ class CustomerFOStatusFragment : Fragment(), View.OnClickListener {
             }
         })
     }
+
 }
