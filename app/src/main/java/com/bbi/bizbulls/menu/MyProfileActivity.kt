@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.bbi.bizbulls.databinding.ActivityMyProfileBinding
 import com.foldio.android.adapter.PaymentMethodAdapter
 import com.foldio.android.adapter.PaymentSettingAdapter
+import com.google.android.material.tabs.TabLayout
 
 
 class MyProfileActivity : AppCompatActivity() {
@@ -28,4 +29,5 @@ class MyProfileActivity : AppCompatActivity() {
        var paymentSettingAdapter=PaymentSettingAdapter()
        binding.rcyPaymentAll.adapter=paymentSettingAdapter
     }
+
 }

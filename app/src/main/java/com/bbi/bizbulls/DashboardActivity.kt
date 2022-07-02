@@ -155,7 +155,7 @@ class DashboardActivity : AppCompatActivity(), View.OnClickListener {
         }
         if (view.id == R.id.myRefer) {
             binding!!.drawerfomainlayout.closeDrawer(GravityCompat.START)
-            val intent = Intent(this, MyReferralsActivity::class.java)
+            val intent = Intent(this, ReferActivity::class.java)
             startActivity(intent)
         }
         if (view.id == R.id.myOffer) {

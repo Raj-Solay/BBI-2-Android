@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_marginHorizontal="@dimen/_10sdp"
+    tools:context=".menu.ReferActivity">
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rcy_social"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"></androidx.recyclerview.widget.RecyclerView>
+   <View
+       android:layout_width="match_parent"
+       android:layout_height="1dp"
+       android:layout_marginVertical="@dimen/_8dp"
+       android:background="@color/dark_blue_color"/>
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/foStepHeaderName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="left|center"
+        android:maxLines="1"
+        android:text="Suggested Contents"
+        android:textColor="@color/value"
+        android:textSize="@dimen/large_font" />
+</LinearLayout>
