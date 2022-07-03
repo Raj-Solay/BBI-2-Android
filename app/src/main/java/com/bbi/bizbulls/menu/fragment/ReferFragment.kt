@@ -8,7 +8,9 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bbi.bizbulls.databinding.FragmentReferBinding
+import com.foldio.android.adapter.InviteAdapter
 import com.foldio.android.adapter.SocialinviteAdapter
+import com.foldio.android.adapter.SuggestedContentsAdapter
 
 
 class ReferFragment() : Fragment() {
@@ -28,6 +30,11 @@ class ReferFragment() : Fragment() {
         binding.rcySocial.setLayoutManager(GridLayoutManager(activity, 4))
         var socialinviteAdapter=SocialinviteAdapter()
         binding.rcySocial.adapter=socialinviteAdapter
+        binding.rcySuggestedContents.setLayoutManager(GridLayoutManager(activity, 4))
+        var suggestedContentsAdapter= SuggestedContentsAdapter()
+        binding.rcySuggestedContents.adapter=suggestedContentsAdapter
+        var inviteAdapter= InviteAdapter()
+        binding.rcyInvite.adapter=inviteAdapter
     }
 
 

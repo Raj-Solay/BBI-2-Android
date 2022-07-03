@@ -4,26 +4,100 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:layout_marginHorizontal="@dimen/_10sdp"
+    android:orientation="vertical"
     tools:context=".menu.ReferActivity">
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rcy_social"
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"></androidx.recyclerview.widget.RecyclerView>
-   <View
-       android:layout_width="match_parent"
-       android:layout_height="1dp"
-       android:layout_marginVertical="@dimen/_8dp"
-       android:background="@color/dark_blue_color"/>
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/foStepHeaderName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="left|center"
-        android:maxLines="1"
-        android:text="Suggested Contents"
-        android:textColor="@color/value"
-        android:textSize="@dimen/large_font" />
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rcy_social"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginVertical="@dimen/_8dp"
+                android:background="@color/dark_blue_color" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/foStepHeaderName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_8dp"
+                android:gravity="left|center"
+                android:maxLines="1"
+                android:text="Suggested Contents"
+                android:textColor="@color/value"
+                android:textSize="@dimen/large_font" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rcy_Suggested_Contents"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="@dimen/_8dp"
+                android:layout_marginBottom="@dimen/_8dp"
+                android:gravity="left|center"
+                android:maxLines="1"
+                android:text="Contact not yet on PhonePe"
+                android:textColor="@color/value"
+                android:textSize="@dimen/large_font" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_44sdp"
+                android:background="@drawable/border_search_">
+
+                <LinearLayout
+                    android:id="@+id/ll_Search"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentLeft="true"
+                    android:gravity="center"
+                    android:paddingLeft="@dimen/_8dp">
+
+                    <ImageView
+                        android:layout_width="@dimen/_24sdp"
+                        android:layout_height="@dimen/_24sdp"
+                        android:foregroundGravity="center"
+                        android:padding="@dimen/_5dp"
+                        android:src="@drawable/search" />
+                </LinearLayout>
+
+                <EditText
+                    android:id="@+id/edt_search"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_toRightOf="@+id/ll_Search"
+                    android:background="@android:color/transparent"
+                    android:hint="Search Country"
+                    android:imeOptions="actionNext"
+                    android:paddingLeft="20dp"
+                    android:singleLine="true"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/devider_color"
+                    android:textSize="@dimen/_12dp" />
+            </RelativeLayout>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rcy_invite"
+                android:layout_marginVertical="@dimen/_8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+
 </LinearLayout>

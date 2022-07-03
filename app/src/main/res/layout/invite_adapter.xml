@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_50sdp"
+        android:gravity="center">
+        <androidx.cardview.widget.CardView
+            android:layout_width="@dimen/toolBarHeight"
+            android:layout_height="@dimen/toolBarHeight"
+            android:orientation="horizontal"
+            android:paddingVertical="@dimen/_5dp"
+            app:cardCornerRadius="@dimen/_25sdp"
+            android:background="@drawable/bulls_circle"
+            android:backgroundTint="@color/orange_100">
+            <com.google.android.material.imageview.ShapeableImageView
+                android:layout_width="@dimen/toolBarHeight"
+                android:layout_height="@dimen/toolBarHeight"
+                android:layout_gravity="center"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent"
+                app:srcCompat="@drawable/ic_userprofile"/>
+        </androidx.cardview.widget.CardView>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:id="@+id/ll_getup"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_toEndOf="@+id/iv_right"
+                android:layout_alignParentLeft="true">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/source_semibold"
+                    android:gravity="center|left"
+                    android:paddingHorizontal="@dimen/_10sdp"
+                    android:text="+91 9999999999"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_14sdp" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/source_regular"
+                    android:gravity="center|left"
+                    android:paddingHorizontal="@dimen/_10sdp"
+                    android:text="9999999999"
+                    android:textColor="@color/black_transpent"
+                    android:textSize="@dimen/_12dp" />
+            </LinearLayout>
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:layout_alignParentRight="true"
+    android:gravity="center"
+    android:orientation="vertical">
+    <TextView
+        android:id="@+id/tv_save_next"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/border_search_"
+        android:clickable="true"
+        android:focusable="true"
+        android:fontFamily="@font/source_semibold"
+        android:foreground="?attr/selectableItemBackground"
+        android:gravity="center"
+        android:paddingHorizontal="@dimen/_10sdp"
+        android:paddingVertical="@dimen/_5dp"
+        android:text="INVITE"
+        android:textColor="@color/orange_700"
+        android:textSize="@dimen/_12dp" />
+
+</LinearLayout>
+        </RelativeLayout>
+    </LinearLayout>
+
+</LinearLayout>
