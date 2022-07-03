@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginHorizontal="@dimen/_10sdp"
+    android:paddingHorizontal="@dimen/_10sdp"
     android:orientation="vertical"
     tools:context=".menu.ReferActivity">
     <androidx.core.widget.NestedScrollView
@@ -12,6 +12,7 @@
         android:layout_height="wrap_content">
         <LinearLayout
             android:layout_width="match_parent"
+            android:layout_marginTop="@dimen/_10sdp"
             android:layout_height="wrap_content"
             android:orientation="vertical">
             <androidx.recyclerview.widget.RecyclerView
@@ -23,8 +24,8 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:layout_marginVertical="@dimen/_8dp"
-                android:background="@color/dark_blue_color" />
+                android:layout_marginVertical="@dimen/_10sdp"
+                android:background="@color/model_desable" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/foStepHeaderName"
@@ -33,6 +34,7 @@
                 android:layout_marginBottom="@dimen/_8dp"
                 android:gravity="left|center"
                 android:maxLines="1"
+                android:fontFamily="@font/source_semibold"
                 android:text="Suggested Contents"
                 android:textColor="@color/value"
                 android:textSize="@dimen/large_font" />
@@ -46,17 +48,17 @@
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginVertical="@dimen/_8dp"
-                android:layout_marginBottom="@dimen/_8dp"
+                android:layout_marginVertical="@dimen/_10sdp"
                 android:gravity="left|center"
                 android:maxLines="1"
+                android:fontFamily="@font/source_semibold"
                 android:text="Contact not yet on PhonePe"
                 android:textColor="@color/value"
                 android:textSize="@dimen/large_font" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_44sdp"
+                android:layout_height="@dimen/_40dp"
                 android:background="@drawable/border_search_">
 
                 <LinearLayout
@@ -74,28 +76,26 @@
                         android:padding="@dimen/_5dp"
                         android:src="@drawable/search" />
                 </LinearLayout>
-
                 <EditText
                     android:id="@+id/edt_search"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_toRightOf="@+id/ll_Search"
                     android:background="@android:color/transparent"
-                    android:hint="Search Country"
+                    android:layout_toRightOf="@+id/ll_Search"
+                    android:hint="Search by number or name"
                     android:imeOptions="actionNext"
                     android:paddingLeft="20dp"
                     android:singleLine="true"
                     android:textColor="@color/black"
-                    android:textColorHint="@color/devider_color"
-                    android:textSize="@dimen/_12dp" />
+                    android:textColorHint="@color/save_icon_color"
+                    android:textSize="@dimen/_14sdp" />
             </RelativeLayout>
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rcy_invite"
-                android:layout_marginVertical="@dimen/_8dp"
+                android:layout_marginVertical="@dimen/_10sdp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
-
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 

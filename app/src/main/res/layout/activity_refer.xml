@@ -64,7 +64,7 @@
                     android:visibility="visible"
                     app:layout_scrollFlags="scroll|enterAlways"
                     app:tabGravity="fill"
-                    app:tabIndicatorColor="@color/orange_700"
+                    app:tabIndicatorColor="@color/white"
                     app:tabIndicatorHeight="2dp"
                     app:tabMode="fixed"
                     app:tabSelectedTextColor="@color/black"

@@ -7,14 +7,7 @@
     android:id="@+id/ll_row"
     android:orientation="vertical">
 
-    <androidx.cardview.widget.CardView
-        android:layout_width="@dimen/toolBarHeight"
-        android:layout_height="@dimen/toolBarHeight"
-        android:orientation="horizontal"
-        android:paddingVertical="@dimen/_5dp"
-        app:cardCornerRadius="@dimen/_25sdp"
-        android:background="@drawable/bulls_circle"
-        android:backgroundTint="@color/orange_100">
+
         <com.google.android.material.imageview.ShapeableImageView
             android:layout_width="@dimen/toolBarHeight"
             android:layout_height="@dimen/toolBarHeight"
@@ -23,7 +16,6 @@
             app:layout_constraintTop_toTopOf="parent"
             app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent"
             app:srcCompat="@drawable/ic_userprofile"/>
-    </androidx.cardview.widget.CardView>
     <TextView
         android:id="@+id/tv_cat_name"
         android:layout_width="wrap_content"

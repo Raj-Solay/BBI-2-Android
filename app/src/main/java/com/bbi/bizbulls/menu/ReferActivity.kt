@@ -21,8 +21,8 @@ class ReferActivity : AppCompatActivity() {
             binding?.customTitleLayout?.ivBack?.setOnClickListener { onBackPressed() }
     }
     fun viewPager(){
-        fun viewPager() {
-            binding.tabLayout.addTab(binding.tabLayout.newTab().setText("Profile"))
+
+            binding.tabLayout.addTab(binding.tabLayout.newTab().setText("Invite"))
             val adapter = ReferPagerAdapter(supportFragmentManager, binding.tabLayout.tabCount,this@ReferActivity)
             binding.viewpager.adapter = adapter
             binding.viewpager.addOnPageChangeListener(TabLayout.TabLayoutOnPageChangeListener(binding.tabLayout))
@@ -38,6 +38,4 @@ class ReferActivity : AppCompatActivity() {
                 }
             })
         }
-
-    }
 }

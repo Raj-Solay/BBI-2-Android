@@ -6,7 +6,7 @@ import androidx.fragment.app.FragmentPagerAdapter
 import com.bbi.bizbulls.menu.ReferActivity
 import com.foldio.fra.ReferFragment
 
-class ReferPagerAdapter(var fm: FragmentManager,var tabCount: Int,referActivity: ReferActivity) : FragmentPagerAdapter(fm!!) {
+class ReferPagerAdapter(var fm: FragmentManager,var tabCount: Int,referActivity: ReferActivity) : FragmentPagerAdapter(fm) {
 
     // this is for fragment tabs
     override fun getItem(position: Int): Fragment {
