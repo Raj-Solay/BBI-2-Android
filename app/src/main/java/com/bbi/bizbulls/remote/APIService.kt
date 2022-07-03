@@ -5,6 +5,7 @@ import com.bbi.bizbulls.data.signin.ForgotPasswordResponse
 import com.bbi.bizbulls.data.signin.LoginResponse
 import com.bbi.bizbulls.data.signupresponse.SignupResponse
 import com.bbi.bizbulls.model.*
+import com.google.gson.JsonArray
 import com.google.gson.JsonObject
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -175,7 +176,7 @@ interface APIService {
 
     @GET("/api/me/reference")
     fun personalReferencesDetailsGet(
-            @Header("Authorization") token: String): Call<ResponseBody>
+            @Header("Authorization") token: String): Call<PersonalReferenceViewRes>
 
 ////////////////////////////
     // TODO
@@ -210,5 +211,29 @@ interface APIService {
 
     @GET("/api/me/authorization")
     fun authorizationDetailsGet(
-            @Header("Authorization") token: String): Call<ResponseBody>
+            @Header("Authorization") token: String): Call<AuthorizationViewRes>
+
+    /*--Document api--*/
+    @POST("/api/me/document")
+    fun documentPost(
+            @Header("Authorization") token: String,
+            @Body jsonArray: JsonArray): Call<ResponseBody>
+
+    @PUT("/api/me/document/{user_id}")
+    fun documentPut(
+            @Header("Authorization") token: String,
+            @Body jsonArray: JsonArray,@Path(value = "user_id", encoded = true) userId : String): Call<ResponseBody>
+
+    @GET("/api/me/document")
+    fun documentGet(
+            @Header("Authorization") token: String): Call<AttachmentsViewRes>
+
+    /*--upload image--*/
+    @Headers("Content-Type: application/json")
+    @Multipart
+    @POST("/api/assets")
+    fun uploadAsset(
+            @Header("Authorization") token: String,
+            @Part image: MultipartBody.Part
+          /*  @Part("fileType") fileType : RequestBody*/): Call<ResponseBody>
 }

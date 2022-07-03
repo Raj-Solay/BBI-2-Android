@@ -125,6 +125,7 @@ class FoFamilyFragment(private val stepPosition: Int,private var actionType: Int
 
         // Call remote Api service to save the Family Detail
         val params: MutableMap<String, String> = HashMap()
-        FranchiseeRegistrationViewModel().sendDetailPostRequest(requireActivity(), params, jsonObject, stepPosition,actionType,uid)    }
+        FranchiseeRegistrationViewModel().sendDetailPostRequest(requireActivity(), params, jsonObject, stepPosition,actionType,uid)
+    }
 
 }

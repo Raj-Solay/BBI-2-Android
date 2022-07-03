@@ -13,6 +13,7 @@ import com.bbi.bizbulls.remote.RetrofitClient
 import com.bbi.bizbulls.sharedpref.SharedPrefsManager
 import com.bbi.bizbulls.utils.CommonUtils
 import com.bbi.bizbulls.utils.MyProcessDialog
+import com.google.gson.JsonArray
 import com.google.gson.JsonObject
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
@@ -80,70 +81,32 @@ class FranchiseeRegistrationViewModel : ViewModel() {
      */
 
     //old
-    fun sendDetailPostRequest(context: Context, params: MutableMap<String, String> = HashMap(), jsonObject: JsonObject, stepPosition: Any) {
+    fun sendDetailPostRequest(context: Context, jsonArray: JsonArray, stepPosition: Any,actionType : Int,uid : String) {
         val sharedPrefsHelper by lazy { SharedPrefsManager(context) }
         var call: Call<ResponseBody>? = null
         when (stepPosition) {
-            0 -> {
-                call =
-                    RetrofitClient.getUrl().personalDetailsPost(sharedPrefsHelper.authToken, jsonObject)
-            }
-            1 -> {
-                call = RetrofitClient.getUrl()
-                    .healthDetailsPost(sharedPrefsHelper.authToken, jsonObject)
-            }
-            2 -> {
-                call = RetrofitClient.getUrl()
-                    .expressionInterestDetailsPost(sharedPrefsHelper.authToken, jsonObject)
-            }
-            3 -> {
-                call = RetrofitClient.getUrl()
-                    .checkListDetailsPost(sharedPrefsHelper.authToken, jsonObject)
-            }
-            4 -> {
-                call = RetrofitClient.getUrl()
-                    .educationDetailsPost(sharedPrefsHelper.authToken, jsonObject)
-            }
-            5 -> {
-                call = RetrofitClient.getUrl()
-                    .socialIdentityDetailsPost(sharedPrefsHelper.authToken, jsonObject)
-            }
-            6 -> {
-                call = RetrofitClient.getUrl()
-                    .bankDetailsPost(sharedPrefsHelper.authToken, jsonObject)
-            }
-            7 -> {
-                call = RetrofitClient.getUrl()
-                    .familyDetailsPost(sharedPrefsHelper.authToken, jsonObject)
-            }
-            8 -> {
-                call = RetrofitClient.getUrl()
-                    .childrenDetailsPost(sharedPrefsHelper.authToken, jsonObject)
-            }
-            9 -> {
-                call = RetrofitClient.getUrl()
-                    .personalReferencesDetailsPost(sharedPrefsHelper.authToken, jsonObject)
-            }
             10 -> {
-//                call = RetrofitClient.getUrl()
-//                    .authorizationDetailsPost(sharedPrefsHelper.authToken, jsonObject)
+                when (actionType) {
+                    CommonUtils.ACTION_TYPE_EDIT -> {
+                        call = RetrofitClient.getUrl()
+                                .documentPut(sharedPrefsHelper.authToken, jsonArray,uid)
+                    }
+                    CommonUtils.ACTION_TYPE_ADD -> {
+                        call = RetrofitClient.getUrl()
+                                .documentPost(sharedPrefsHelper.authToken, jsonArray)
+                    }
+                }
             }
-            11 -> {
-                call = RetrofitClient.getUrl()
-                    .authorizationDetailsPost(sharedPrefsHelper.authToken, jsonObject)
-            }
+
         }
 
-        println("________URL ::${call?.request()?.url}")
-        println("________Details $params")
-        println("________Details $jsonObject")
         MyProcessDialog.showProgressBar(context, 0)
         call?.enqueue(object : Callback<ResponseBody> {
             override
             fun onResponse(
                 call: Call<ResponseBody>,
                 responseObject: Response<ResponseBody>) {
-                if (responseObject.code() == 201) {
+                if (responseObject.code() == 201 || responseObject.code() == 200) {
                    // sharedPrefsHelper.personalDetailID = responseObject.body()?.data?.id.toString()
                     responseSuccessMessage(context, stepPosition,0)
                 } else {
@@ -295,8 +258,16 @@ class FranchiseeRegistrationViewModel : ViewModel() {
                 }
             }
             10 -> {
-//                call = RetrofitClient.getUrl()
-//                    .authorizationDetailsPost(sharedPrefsHelper.authToken, jsonObject)
+               /* when (actionType) {
+                    CommonUtils.ACTION_TYPE_EDIT -> {
+                        call = RetrofitClient.getUrl()
+                                .documentPut(sharedPrefsHelper.authToken, jsonObject,uid)
+                    }
+                    CommonUtils.ACTION_TYPE_ADD -> {
+                        call = RetrofitClient.getUrl()
+                                .documentPost(sharedPrefsHelper.authToken, jsonObject)
+                    }
+                }*/
             }
             11 -> {
 
@@ -404,7 +375,10 @@ class FranchiseeRegistrationViewModel : ViewModel() {
                 }
             }
             10 -> {
-             //   message = context.resources.getString(R.string.attachments_details)
+                message = context.resources.getString(R.string.attachments_details)
+                if(actionType == CommonUtils.ACTION_TYPE_EDIT){
+                    message = context.resources.getString(R.string.attachments_details_update)
+                }
             }
             11 -> {
                 message = context.resources.getString(R.string.authorization_details)

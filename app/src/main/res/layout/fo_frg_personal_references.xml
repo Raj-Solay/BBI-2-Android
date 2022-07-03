@@ -1,90 +1,345 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white">
 
-    <LinearLayout
-        android:id="@+id/tenLayout"
-        style="@style/regLLAll">
+    <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/stepSubmit"
+        android:layout_margin="@dimen/_16sdp"
+        android:background="@color/white">
 
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/otherName"
-            style="@style/inputBox"
-            android:hint="Name" />
+        <LinearLayout
+            android:id="@+id/tenLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-        <androidx.appcompat.widget.AppCompatTextView
-            style="@style/subTitle"
-            android:text="Relation Type" />
+            <!--name-->
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:background="@drawable/card"
+                android:padding="@dimen/_10sdp">
 
-        <RelativeLayout style="@style/spinnerLayout">
+                <ImageView
+                    android:layout_width="@dimen/_18sdp"
+                    android:layout_height="@dimen/_18sdp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/_8sdp"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/ic_education_name" />
 
-            <com.bbi.bizbulls.utils.CustomSpinner
-                android:id="@+id/spnrOtherRelationType"
-                style="@style/customSpinner"
-                android:entries="@array/relations"/>
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:paddingLeft="@dimen/_50sdp"
+                    android:paddingRight="@dimen/_10sdp">
 
-            <ImageView style="@style/customSpinnerDropDown" />
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/otherName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@null"
+                        android:hint="Name"
+                        android:lines="1"
+                        android:maxLines="1"
+                        android:textSize="@dimen/_12sdp" />
+                </FrameLayout>
 
-        </RelativeLayout>
+            </FrameLayout>
 
-        <androidx.appcompat.widget.AppCompatTextView
-            style="@style/subTitle"
-            android:text="Sex" />
+            <!--Relation Type-->
 
-        <RelativeLayout style="@style/spinnerLayout">
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/subTitle"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:text="Relation Type"
+                android:textSize="@dimen/_14ssp" />
 
-            <com.bbi.bizbulls.utils.CustomSpinner
-                android:id="@+id/spnrOtherSex"
-                style="@style/customSpinner"
-                android:entries="@array/gender"/>
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:background="@drawable/card"
+                android:padding="@dimen/_5sdp">
 
-            <ImageView style="@style/customSpinnerDropDown" />
+                <ImageView
+                    android:layout_width="@dimen/_18sdp"
+                    android:layout_height="@dimen/_18sdp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/_12sdp"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/ic_education_name" />
 
-        </RelativeLayout>
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:paddingLeft="@dimen/_50sdp"
+                    android:paddingRight="@dimen/_10sdp">
 
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/otherAge"
-            style="@style/inputBox"
-            android:hint="Age"
-            android:maxLength="2"
-            android:inputType="number" />
+                    <com.bbi.bizbulls.utils.CustomSpinner
+                        android:id="@+id/spnrOtherRelationType"
+                        style="@style/customSpinner"
+                        android:entries="@array/relations" />
 
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/otherOccupation"
-            style="@style/inputBox"
-            android:hint="Occupation" />
+                    <ImageView style="@style/customSpinnerDropDown"
+                        android:layout_gravity="right|center"/>
 
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/otherLocation"
-            style="@style/inputBox"
-            android:hint="Location" />
+                </FrameLayout>
 
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/otherContact"
-            style="@style/inputBox"
-            android:hint="Contact No."
-            android:inputType="number"/>
+            </FrameLayout>
 
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/otherAddress"
-            style="@style/inputBox"
-            android:hint="Address"
-            android:gravity="left|top"
-            android:lines="4"
-            android:maxLines="4" />
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/stepSubmit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_margin="@dimen/_8dp"
-            android:background="@drawable/bg_submit"
-            android:gravity="center"
-            android:text="@string/f_submit"
-            android:textAllCaps="false"
-            android:textColor="@color/white"
-            android:textSize="@dimen/large_font" />
+            <!--Sex-->
 
-    </LinearLayout>
-</androidx.core.widget.NestedScrollView>
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/subTitle"
+                android:text="Sex"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:textSize="@dimen/_14ssp"/>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:background="@drawable/card"
+                android:padding="@dimen/_5sdp">
+
+                <ImageView
+                    android:layout_width="@dimen/_18sdp"
+                    android:layout_height="@dimen/_18sdp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/_12sdp"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/ic_education_name" />
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:paddingLeft="@dimen/_50sdp"
+                    android:paddingRight="@dimen/_10sdp">
+
+                    <com.bbi.bizbulls.utils.CustomSpinner
+                        android:id="@+id/spnrOtherSex"
+                        style="@style/customSpinner"
+                        android:entries="@array/gender" />
+
+                    <ImageView style="@style/customSpinnerDropDown"
+                        android:layout_gravity="right|center"/>
+
+                </FrameLayout>
+
+            </FrameLayout>
+
+            <!--Age-->
+            <FrameLayout
+                android:layout_marginTop="@dimen/_8sdp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_10sdp"
+                android:layout_gravity="bottom"
+                android:background="@drawable/card">
+
+                <ImageView
+                    android:layout_width="@dimen/_18sdp"
+                    android:layout_height="@dimen/_18sdp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/_8sdp"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/ic_family_age" />
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:paddingLeft="@dimen/_50sdp"
+                    android:paddingRight="@dimen/_10sdp">
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:background="@null"
+                        android:id="@+id/otherAge"
+                        android:lines="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Age"
+                        android:maxLines="1"
+                        android:inputType="number"
+                        android:maxLength="2"
+                        android:textSize="@dimen/_12sdp" />
+                </FrameLayout>
+
+            </FrameLayout>
+
+
+            <!--Occupation-->
+            <FrameLayout
+                android:layout_marginTop="@dimen/_8sdp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_10sdp"
+                android:layout_gravity="bottom"
+                android:background="@drawable/card">
+
+                <ImageView
+                    android:layout_width="@dimen/_18sdp"
+                    android:layout_height="@dimen/_18sdp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/_8sdp"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/ic_family_occupation" />
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:paddingLeft="@dimen/_50sdp"
+                    android:paddingRight="@dimen/_10sdp">
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:background="@null"
+                        android:id="@+id/otherOccupation"
+                        android:lines="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Occupation"
+                        android:maxLines="1"
+                        android:textSize="@dimen/_12sdp" />
+                </FrameLayout>
+
+            </FrameLayout>
+
+            <!--Location-->
+            <FrameLayout
+                android:layout_marginTop="@dimen/_8sdp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_10sdp"
+                android:layout_gravity="bottom"
+                android:background="@drawable/card">
+
+                <ImageView
+                    android:layout_width="@dimen/_18sdp"
+                    android:layout_height="@dimen/_18sdp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/_8sdp"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/ic_family_address" />
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:paddingLeft="@dimen/_50sdp"
+                    android:paddingRight="@dimen/_10sdp">
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:background="@null"
+                        android:id="@+id/otherLocation"
+                        android:lines="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Location"
+                        android:maxLines="1"
+                        android:textSize="@dimen/_12sdp" />
+                </FrameLayout>
+
+            </FrameLayout>
+
+           <!--Contact No-->
+            <FrameLayout
+                android:layout_marginTop="@dimen/_8sdp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_10sdp"
+                android:layout_gravity="bottom"
+                android:background="@drawable/card">
+
+                <ImageView
+                    android:layout_width="@dimen/_18sdp"
+                    android:layout_height="@dimen/_18sdp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/_8sdp"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/ic_contact" />
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:paddingLeft="@dimen/_50sdp"
+                    android:paddingRight="@dimen/_10sdp">
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:background="@null"
+                        android:id="@+id/otherContact"
+                        android:lines="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Contact No."
+                        android:maxLines="1"
+                        android:inputType="number"
+                        android:textSize="@dimen/_12sdp" />
+                </FrameLayout>
+
+            </FrameLayout>
+
+            <!--Address-->
+
+            <FrameLayout
+                android:layout_marginTop="@dimen/_8sdp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_10sdp"
+                android:layout_gravity="bottom"
+                android:background="@drawable/card">
+
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical|top"
+                    android:paddingLeft="@dimen/_5sdp"
+                    android:paddingRight="@dimen/_5sdp">
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:background="@null"
+                        android:id="@+id/otherAddress"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="top"
+                        android:hint="Address"
+                        android:lines="4"
+                        android:maxLines="4"
+                        android:textSize="@dimen/_12sdp" />
+                </FrameLayout>
+
+            </FrameLayout>
+
+
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/stepSubmit"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_45sdp"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="center"
+        android:layout_marginStart="@dimen/_16sdp"
+        android:layout_marginTop="@dimen/_16sdp"
+        android:layout_marginEnd="@dimen/_16sdp"
+        android:layout_marginBottom="@dimen/_16sdp"
+        android:background="@drawable/bg_submit"
+        android:gravity="center"
+        android:text="@string/f_submit"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_14ssp" />
+</RelativeLayout>

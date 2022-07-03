@@ -3,6 +3,7 @@ package com.bbi.bizbulls.ui.registrationforfo.fragments
 import android.app.AlertDialog
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,11 +12,25 @@ import androidx.core.content.FileProvider
 import androidx.fragment.app.Fragment
 import com.bbi.bizbulls.R
 import com.bbi.bizbulls.databinding.FoFrgAttachmentsBinding
+import com.bbi.bizbulls.model.AttachmentsViewRes
+import com.bbi.bizbulls.remote.RetrofitClient
+import com.bbi.bizbulls.sharedpref.SharedPrefsManager
 import com.bbi.bizbulls.utils.CommonUtils
+import com.bbi.bizbulls.utils.FileUtils
+import com.bbi.bizbulls.utils.MyProcessDialog
+import com.google.gson.JsonArray
+import com.google.gson.JsonObject
+import okhttp3.*
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import java.io.File
+import java.io.FileInputStream
+import java.io.InputStream
 
 
-class FoAttachmentsFragment : Fragment() {
+class FoAttachmentsFragment(private val stepPosition: Int,private var actionType: Int) : Fragment() {
     private lateinit var binding: FoFrgAttachmentsBinding
     private var imageUri : Uri? = null
     private var selectedDocument = ""
@@ -24,7 +39,7 @@ class FoAttachmentsFragment : Fragment() {
     private  var photoURI: Uri? = null
     private  var addressURI: Uri? = null
     private  var individualURI: Uri? = null
-
+    private var uid : String = ""
     /*
     * Response result from Gallery
     * Getting the Image path from choose the Gallery option for Image upload
@@ -92,15 +107,144 @@ class FoAttachmentsFragment : Fragment() {
         }
 
         binding.stepSubmit.setOnClickListener {
-            CommonUtils.toast(requireActivity(), "Coming soon")
-          //  sendAttachmentDetail()
+           // CommonUtils.toast(requireActivity(), "Coming soon")
+            sendAttachmentDetail()
         }
 
+        when (actionType) {
+            CommonUtils.ACTION_TYPE_VIEW -> {
+                getRecordFromAPI(false)
+            }
+            CommonUtils.ACTION_TYPE_EDIT -> {
+                getRecordFromAPI(true)
+                binding.stepSubmit.setText("Update")
+            }
+            CommonUtils.ACTION_TYPE_ADD -> {
+                binding.stepSubmit.setText("Submit")
+            }
+        }
         return binding.root
     }
+    private fun getRecordFromAPI(isFromEdit: Boolean) {
+        MyProcessDialog.showProgressBar(requireContext(), 0)
+        val sharedPrefsHelper by lazy { SharedPrefsManager(requireContext()) }
+        val call = RetrofitClient.getUrl().documentGet(sharedPrefsHelper.authToken)
+        call?.enqueue(object : Callback<AttachmentsViewRes> {
+            override
+            fun onResponse(
+                    call: Call<AttachmentsViewRes>,
+                    responseObject: Response<AttachmentsViewRes>) {
+                if (responseObject.code() == 200 || responseObject.code() == 201) {
+                    if (responseObject.body()?.data?.get(0)  != null) {
+                        setUpDataInUI(responseObject.body()?.data?.get(0)!!)
+                    }
+                } else {
+                    RetrofitClient.showResponseMessage(requireContext(), responseObject.code())
+
+                }
+                MyProcessDialog.dismiss()
+            }
+
+            override
+            fun onFailure(call: Call<AttachmentsViewRes>, t: Throwable) {
+                MyProcessDialog.dismiss()
+                RetrofitClient.showFailedMessage(requireContext(), t)
+            }
+        })
+
+    }
+    private fun setUpDataInUI(data: AttachmentsViewRes.Data) {
+        uid = data?.id.toString()
+    }
+
+
 
     private fun sendAttachmentDetail() {
-        // TODO
+
+        if(binding.checkPanCard.isChecked){
+
+        }
+        if(binding.checkAadharCard.isChecked){
+
+        }
+        if(binding.checkResidenceProof.isChecked){
+
+        }
+        if(binding.checkIndividually.isChecked){
+
+        }
+        if(binding.checkRecentPhotographOfApplicant.isChecked){
+
+        }
+
+        var fileUtils = FileUtils(requireContext())
+        //upload video
+        Log.d("AssetLog","panCardURI : "+ panCardURI)
+        Log.d("AssetLog","panCardURI : "+ fileUtils.getPath(panCardURI))
+        Log.d("AssetLog","aadhaarCardURI : "+ aadhaarCardURI)
+        Log.d("AssetLog","aadhaarCardURI : "+ addressURI)
+        Log.d("AssetLog","photoURI : "+ photoURI)
+        Log.d("AssetLog","individualURI : "+ individualURI)
+
+        val file  = File(fileUtils.getPath(panCardURI))
+
+        val `in`: InputStream = FileInputStream(file)
+        val buf: ByteArray = ByteArray(`in`.available())
+        while (`in`.read(buf) !== -1);
+
+        val body: RequestBody = MultipartBody.Builder().setType(MultipartBody.FORM)
+                .addFormDataPart("file", file.name,
+                        RequestBody.create("application/octet-stream".toMediaTypeOrNull(),
+                                buf))
+                .build()
+
+     //   val requestBody: RequestBody = file.asRequestBody("application/octet-stream".toMediaTypeOrNull())
+        val multipartBody: MultipartBody.Part = MultipartBody.Part.createFormData("file", file.name, body)
+
+        Log.d("AssetLog","file : "+ file.path)
+
+        val requestBody1: RequestBody = RequestBody.create("application/octet-stream".toMediaTypeOrNull(), file)
+        val partFile1: MultipartBody.Part = MultipartBody.Part.createFormData("file", file.getName(), requestBody1)
+
+        val sharedPrefsHelper by lazy { SharedPrefsManager(requireContext()) }
+        var call: Call<ResponseBody>? = null
+        call = RetrofitClient.getUrl()
+                .uploadAsset(sharedPrefsHelper.authToken, partFile1)
+        MyProcessDialog.showProgressBar(requireContext(), 0)
+        call?.enqueue(object : Callback<ResponseBody> {
+            override
+            fun onResponse(
+                    call: Call<ResponseBody>,
+                    responseObject: Response<ResponseBody>) {
+                if (responseObject.code() == 201 || responseObject.code() == 200) {
+                    // sharedPrefsHelper.personalDetailID = responseObject.body()?.data?.id.toString()
+                  //  responseSuccessMessage(context, stepPosition,0)
+                } else {
+                    RetrofitClient.showResponseMessage(requireContext(), responseObject.code())
+
+                }
+                MyProcessDialog.dismiss()
+            }
+
+            override
+            fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+                t.printStackTrace()
+                MyProcessDialog.dismiss()
+                RetrofitClient.showFailedMessage(requireContext(), t)
+            }
+        })
+
+        val jsonObject = JsonObject()
+        jsonObject.addProperty("document_id", "")
+        jsonObject.addProperty("document_name", "")
+        jsonObject.addProperty("document_type", "")
+
+
+        // Call remote Api service to save the Document Detail
+        var array = JsonArray()
+        array.add(jsonObject)
+        Log.d("JsonArray","Arary : "+ array.toString())
+        //FranchiseeRegistrationViewModel().sendDetailPostRequest(requireActivity(), array, stepPosition,actionType,uid)
     }
 
     private fun setPreviewImage(selectedDocument: String, uri: Uri){

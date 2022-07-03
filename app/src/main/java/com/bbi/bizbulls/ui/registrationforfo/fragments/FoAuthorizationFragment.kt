@@ -7,14 +7,13 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.bbi.bizbulls.R
 import com.bbi.bizbulls.databinding.FoFrgAuthorizationBinding
-import com.bbi.bizbulls.model.PersonalDetailsViewRes
+import com.bbi.bizbulls.model.AuthorizationViewRes
 import com.bbi.bizbulls.remote.RetrofitClient
 import com.bbi.bizbulls.sharedpref.SharedPrefsManager
 import com.bbi.bizbulls.ui.registrationforfo.FranchiseeRegistrationViewModel
 import com.bbi.bizbulls.utils.CommonUtils
 import com.bbi.bizbulls.utils.MyProcessDialog
 import com.google.gson.JsonObject
-import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -63,32 +62,53 @@ class FoAuthorizationFragment(private val stepPosition: Int,private var actionTy
         MyProcessDialog.showProgressBar(requireContext(), 0)
         val sharedPrefsHelper by lazy { SharedPrefsManager(requireContext()) }
         val call = RetrofitClient.getUrl().authorizationDetailsGet(sharedPrefsHelper.authToken)
-        call?.enqueue(object : Callback<ResponseBody> {
+        call?.enqueue(object : Callback<AuthorizationViewRes> {
             override
             fun onResponse(
-                    call: Call<ResponseBody>,
-                    responseObject: Response<ResponseBody>) {
-               /* if (responseObject.code() == 200) {
-                    if (responseObject.body()!!.data[0] != null) {
-                        setUpDataInUI(responseObject.body()!!.data[0])
+                    call: Call<AuthorizationViewRes>,
+                    responseObject: Response<AuthorizationViewRes>) {
+                if (responseObject.code() == 200) {
+                    if (responseObject.body()!!.data?.get(0)   != null) {
+                        responseObject.body()!!.data?.get(0)?.let { setUpDataInUI(it) }
                     }
                 } else {
                     RetrofitClient.showResponseMessage(requireContext(), responseObject.code())
 
-                }*/
+                }
                 MyProcessDialog.dismiss()
             }
 
             override
-            fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+            fun onFailure(call: Call<AuthorizationViewRes>, t: Throwable) {
                 MyProcessDialog.dismiss()
                 RetrofitClient.showFailedMessage(requireContext(), t)
             }
         })
 
     }
-    private fun setUpDataInUI(data: PersonalDetailsViewRes.Data) {
+    private fun setUpDataInUI(data: AuthorizationViewRes.Data) {
         uid = data?.id.toString()
+
+        if(data.authorization == "Yes"){
+            binding.checkAuthorization.isChecked = true
+        }
+
+        var isEditable = false
+        when (actionType) {
+            CommonUtils.ACTION_TYPE_VIEW -> {
+                isEditable = false
+                binding.stepSubmit.visibility = View.INVISIBLE
+            }
+            CommonUtils.ACTION_TYPE_EDIT -> {
+                isEditable = true
+                binding.stepSubmit.visibility = View.VISIBLE
+            }
+            CommonUtils.ACTION_TYPE_ADD -> {
+                isEditable = true
+                binding.stepSubmit.visibility = View.VISIBLE
+            }
+        }
+        binding.checkAuthorization.isEnabled = isEditable
     }
 
     private fun sendAuthorizationDetail() {
@@ -99,7 +119,7 @@ class FoAuthorizationFragment(private val stepPosition: Int,private var actionTy
 
         // Call remote Api service to save the Check List Details
         val params: MutableMap<String, String> = HashMap()
-        FranchiseeRegistrationViewModel().sendDetailPostRequest(requireActivity(), params, jsonObject, stepPosition)
+        FranchiseeRegistrationViewModel().sendDetailPostRequest(requireActivity(), params, jsonObject, stepPosition,actionType,uid)
     }
 
 }

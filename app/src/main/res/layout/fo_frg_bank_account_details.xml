@@ -28,12 +28,12 @@
                 android:background="@drawable/card">
 
                 <ImageView
-                    android:layout_width="@dimen/_24sdp"
-                    android:layout_height="@dimen/_24sdp"
+                    android:layout_width="@dimen/_18sdp"
+                    android:layout_height="@dimen/_18sdp"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="@dimen/_8sdp"
                     android:adjustViewBounds="true"
-                    android:src="@drawable/ic_social_aadharcard" />
+                    android:src="@drawable/ic_education_name" />
 
                 <FrameLayout
                     android:layout_width="match_parent"
@@ -66,8 +66,8 @@
                 android:background="@drawable/card">
 
                 <ImageView
-                    android:layout_width="@dimen/_24sdp"
-                    android:layout_height="@dimen/_24sdp"
+                    android:layout_width="@dimen/_18sdp"
+                    android:layout_height="@dimen/_18sdp"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="@dimen/_8sdp"
                     android:adjustViewBounds="true"
@@ -103,8 +103,8 @@
                 android:background="@drawable/card">
 
                 <ImageView
-                    android:layout_width="@dimen/_24sdp"
-                    android:layout_height="@dimen/_24sdp"
+                    android:layout_width="@dimen/_18sdp"
+                    android:layout_height="@dimen/_18sdp"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="@dimen/_8sdp"
                     android:adjustViewBounds="true"
@@ -140,12 +140,12 @@
                 android:background="@drawable/card">
 
                 <ImageView
-                    android:layout_width="@dimen/_24sdp"
-                    android:layout_height="@dimen/_24sdp"
+                    android:layout_width="@dimen/_18sdp"
+                    android:layout_height="@dimen/_18sdp"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="@dimen/_8sdp"
                     android:adjustViewBounds="true"
-                    android:src="@drawable/ic_social_aadharcard" />
+                    android:src="@drawable/ic_education_name" />
 
                 <FrameLayout
                     android:layout_width="match_parent"
@@ -177,8 +177,8 @@
                 android:background="@drawable/card">
 
                 <ImageView
-                    android:layout_width="@dimen/_24sdp"
-                    android:layout_height="@dimen/_24sdp"
+                    android:layout_width="@dimen/_18sdp"
+                    android:layout_height="@dimen/_18sdp"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="@dimen/_8sdp"
                     android:adjustViewBounds="true"
@@ -207,22 +207,23 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 style="@style/subTitle"
+                android:layout_marginTop="@dimen/_8sdp"
                 android:textSize="@dimen/_14ssp"
                 android:text="Account Type" />
 
             <FrameLayout
-                android:layout_marginTop="@dimen/_12sdp"
+                android:layout_marginTop="@dimen/_8sdp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/_10sdp"
+                android:padding="@dimen/_8sdp"
                 android:layout_gravity="bottom"
                 android:background="@drawable/card">
 
                 <ImageView
-                    android:layout_width="@dimen/_24sdp"
-                    android:layout_height="@dimen/_24sdp"
+                    android:layout_width="@dimen/_18sdp"
+                    android:layout_height="@dimen/_18sdp"
                     android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="@dimen/_8sdp"
+                    android:layout_marginLeft="@dimen/_12sdp"
                     android:adjustViewBounds="true"
                     android:src="@drawable/ic_social_aadharcard" />
 
@@ -238,7 +239,8 @@
                         style="@style/customSpinner"
                         android:entries="@array/banks"/>
 
-                    <ImageView style="@style/customSpinnerDropDown" android:layout_gravity="end|center" />
+                    <ImageView style="@style/customSpinnerDropDown"
+                        android:layout_gravity="end|center" />
                 </FrameLayout>
 
             </FrameLayout>

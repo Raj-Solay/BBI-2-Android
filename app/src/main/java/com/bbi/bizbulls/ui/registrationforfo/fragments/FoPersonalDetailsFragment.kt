@@ -35,7 +35,7 @@ class FoPersonalDetailsFragment(private val stepPosition: Int, private var actio
                     requireActivity(),
                     object : CommonUtils.DatePickerListener {
                         override fun setDate(dateStr: String?) {
-                            binding.edtdob.text = dateStr
+                            binding.edtdob.setText(dateStr)
                         }
                     })
         }

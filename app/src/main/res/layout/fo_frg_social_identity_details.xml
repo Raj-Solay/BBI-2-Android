@@ -28,8 +28,8 @@
                 android:background="@drawable/card">
 
                 <ImageView
-                    android:layout_width="@dimen/_24sdp"
-                    android:layout_height="@dimen/_24sdp"
+                    android:layout_width="@dimen/_18sdp"
+                    android:layout_height="@dimen/_18sdp"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="@dimen/_8sdp"
                     android:adjustViewBounds="true"
@@ -65,8 +65,8 @@
                 android:background="@drawable/card">
 
                 <ImageView
-                    android:layout_width="@dimen/_24sdp"
-                    android:layout_height="@dimen/_24sdp"
+                    android:layout_width="@dimen/_18sdp"
+                    android:layout_height="@dimen/_18sdp"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="@dimen/_8sdp"
                     android:adjustViewBounds="true"
@@ -104,8 +104,8 @@
                 android:background="@drawable/card">
 
                 <ImageView
-                    android:layout_width="@dimen/_24sdp"
-                    android:layout_height="@dimen/_24sdp"
+                    android:layout_width="@dimen/_18sdp"
+                    android:layout_height="@dimen/_18sdp"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="@dimen/_8sdp"
                     android:adjustViewBounds="true"
@@ -142,8 +142,8 @@
                 android:background="@drawable/card">
 
                 <ImageView
-                    android:layout_width="@dimen/_24sdp"
-                    android:layout_height="@dimen/_24sdp"
+                    android:layout_width="@dimen/_18sdp"
+                    android:layout_height="@dimen/_18sdp"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="@dimen/_8sdp"
                     android:adjustViewBounds="true"
@@ -178,8 +178,8 @@
                 android:background="@drawable/card">
 
                 <ImageView
-                    android:layout_width="@dimen/_24sdp"
-                    android:layout_height="@dimen/_24sdp"
+                    android:layout_width="@dimen/_18sdp"
+                    android:layout_height="@dimen/_18sdp"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="@dimen/_8sdp"
                     android:adjustViewBounds="true"
@@ -214,8 +214,8 @@
                 android:background="@drawable/card">
 
                 <ImageView
-                    android:layout_width="@dimen/_24sdp"
-                    android:layout_height="@dimen/_24sdp"
+                    android:layout_width="@dimen/_18sdp"
+                    android:layout_height="@dimen/_18sdp"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="@dimen/_8sdp"
                     android:adjustViewBounds="true"

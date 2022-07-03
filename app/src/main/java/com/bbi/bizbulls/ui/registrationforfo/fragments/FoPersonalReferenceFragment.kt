@@ -6,14 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.bbi.bizbulls.databinding.FoFrgPersonalReferencesBinding
-import com.bbi.bizbulls.model.PersonalDetailsViewRes
+import com.bbi.bizbulls.model.PersonalReferenceViewRes
 import com.bbi.bizbulls.remote.RetrofitClient
 import com.bbi.bizbulls.sharedpref.SharedPrefsManager
 import com.bbi.bizbulls.ui.registrationforfo.FranchiseeRegistrationViewModel
 import com.bbi.bizbulls.utils.CommonUtils
 import com.bbi.bizbulls.utils.MyProcessDialog
 import com.google.gson.JsonObject
-import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -50,31 +49,65 @@ class FoPersonalReferenceFragment(private val stepPosition: Int,private var acti
         MyProcessDialog.showProgressBar(requireContext(), 0)
         val sharedPrefsHelper by lazy { SharedPrefsManager(requireContext()) }
         val call = RetrofitClient.getUrl().personalReferencesDetailsGet(sharedPrefsHelper.authToken)
-        call?.enqueue(object : Callback<ResponseBody> {
+        call?.enqueue(object : Callback<PersonalReferenceViewRes> {
             override
             fun onResponse(
-                    call: Call<ResponseBody>,
-                    responseObject: Response<ResponseBody>) {
-              /*  if (responseObject.code() == 200) {
+                    call: Call<PersonalReferenceViewRes>,
+                    responseObject: Response<PersonalReferenceViewRes>) {
+                if (responseObject.code() == 200) {
                     if (responseObject.body()!!.data[0] != null) {
                         setUpDataInUI(responseObject.body()!!.data[0])
                     }
                 } else {
                     RetrofitClient.showResponseMessage(requireContext(), responseObject.code())
 
-                }*/
+                }
                 MyProcessDialog.dismiss()
             }
 
             override
-            fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+            fun onFailure(call: Call<PersonalReferenceViewRes>, t: Throwable) {
                 MyProcessDialog.dismiss()
                 RetrofitClient.showFailedMessage(requireContext(), t)
             }
         })
     }
-    private fun setUpDataInUI(data: PersonalDetailsViewRes.Data) {
+    private fun setUpDataInUI(data: PersonalReferenceViewRes.Data) {
         uid = data.id.toString()
+
+        binding.otherName.setText(data.fullname)
+        binding.spnrOtherRelationType.setSelection(CommonUtils.getIndex(binding.spnrOtherRelationType,data.relation))
+
+        binding.spnrOtherSex.setSelection(CommonUtils.getIndex(binding.spnrOtherSex,data.sex))
+        binding.otherAge.setText(data.age)
+        binding.otherOccupation.setText(data.occupation)
+        binding.otherLocation.setText(data.location)
+        binding.otherContact.setText(data.contactNumber)
+
+        var isEditable = false
+        when (actionType) {
+            CommonUtils.ACTION_TYPE_VIEW -> {
+                isEditable = false
+                binding.stepSubmit.visibility = View.INVISIBLE
+            }
+            CommonUtils.ACTION_TYPE_EDIT -> {
+                isEditable = true
+                binding.stepSubmit.visibility = View.VISIBLE
+            }
+            CommonUtils.ACTION_TYPE_ADD -> {
+                isEditable = true
+                binding.stepSubmit.visibility = View.VISIBLE
+            }
+        }
+        binding.otherName.isEnabled = isEditable
+        binding.spnrOtherRelationType.isEnabled = isEditable
+
+        binding.spnrOtherSex.isEnabled = isEditable
+        binding.otherAge.isEnabled = isEditable
+        binding.otherOccupation.isEnabled = isEditable
+        binding.otherLocation.isEnabled = isEditable
+        binding.otherContact.isEnabled = isEditable
+
     }
     private fun senPersonalReferenceDetail() {
         val jsonObject = JsonObject()
@@ -93,7 +126,7 @@ class FoPersonalReferenceFragment(private val stepPosition: Int,private var acti
             requireActivity(),
             params,
             jsonObject,
-            stepPosition
+            stepPosition,actionType,uid
         )
     }
 }

@@ -303,6 +303,7 @@
     <string name="personalReferences_details">Personal References details saved successfully!</string>
     <string name="personalReferences_details_update">Personal References details update successfully!</string>
     <string name="attachments_details">Attachments saved successfully!</string>
+    <string name="attachments_details_update">Attachments update successfully!</string>
     <string name="authorization_details">Authorization saved successfully!</string>
     <string name="authorization_details_update">Authorization update successfully!</string>
 </resources>

@@ -28,8 +28,8 @@
                 android:background="@drawable/card">
 
                 <ImageView
-                    android:layout_width="@dimen/_24sdp"
-                    android:layout_height="@dimen/_24sdp"
+                    android:layout_width="@dimen/_18sdp"
+                    android:layout_height="@dimen/_18sdp"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="@dimen/_8sdp"
                     android:adjustViewBounds="true"
@@ -50,7 +50,7 @@
                         android:layout_height="wrap_content"
                         android:hint="@string/ct_qualification"
                         android:maxLines="1"
-                        android:textSize="@dimen/_13sdp" />
+                        android:textSize="@dimen/_12sdp" />
                 </FrameLayout>
 
             </FrameLayout>
@@ -65,8 +65,8 @@
                 android:background="@drawable/card">
 
                 <ImageView
-                    android:layout_width="@dimen/_24sdp"
-                    android:layout_height="@dimen/_24sdp"
+                    android:layout_width="@dimen/_18sdp"
+                    android:layout_height="@dimen/_18sdp"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="@dimen/_8sdp"
                     android:adjustViewBounds="true"
@@ -102,8 +102,8 @@
                 android:background="@drawable/card">
 
                 <ImageView
-                    android:layout_width="@dimen/_24sdp"
-                    android:layout_height="@dimen/_24sdp"
+                    android:layout_width="@dimen/_18sdp"
+                    android:layout_height="@dimen/_18sdp"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="@dimen/_8sdp"
                     android:adjustViewBounds="true"
@@ -138,8 +138,8 @@
                 android:background="@drawable/card">
 
                 <ImageView
-                    android:layout_width="@dimen/_24sdp"
-                    android:layout_height="@dimen/_24sdp"
+                    android:layout_width="@dimen/_18sdp"
+                    android:layout_height="@dimen/_18sdp"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="@dimen/_8sdp"
                     android:adjustViewBounds="true"
@@ -177,8 +177,8 @@
                 android:background="@drawable/card">
 
                 <ImageView
-                    android:layout_width="@dimen/_24sdp"
-                    android:layout_height="@dimen/_24sdp"
+                    android:layout_width="@dimen/_18sdp"
+                    android:layout_height="@dimen/_18sdp"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="@dimen/_8sdp"
                     android:adjustViewBounds="true"
@@ -214,11 +214,14 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/stepSubmit"
-        android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_45sdp"
+        android:layout_alignParentBottom="true"
         android:layout_gravity="center"
-        android:layout_margin="@dimen/_16sdp"
+        android:layout_marginStart="@dimen/_16sdp"
+        android:layout_marginTop="@dimen/_16sdp"
+        android:layout_marginEnd="@dimen/_16sdp"
+        android:layout_marginBottom="@dimen/_16sdp"
         android:background="@drawable/bg_submit"
         android:gravity="center"
         android:text="@string/f_submit"

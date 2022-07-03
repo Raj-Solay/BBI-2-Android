@@ -1,176 +1,624 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    android:layout_margin="@dimen/_16sdp"
     android:layout_height="match_parent"
     android:background="@color/white">
 
-    <LinearLayout
-        android:id="@+id/healthDetailsLayout"
-        style="@style/regLLAll">
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:layout_above="@+id/stepSubmit">
 
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/edtbirthmarkesone"
-            style="@style/inputBox"
-            android:hint="@string/ct_birthidentificationmarks"
-            android:inputType="textMultiLine"
-            android:lines="2"
-            android:maxLines="2"
-            android:overScrollMode="always"
-            android:scrollbarStyle="insideInset"
-            android:scrollbars="vertical" />
+        <LinearLayout
+            android:id="@+id/healthDetailsLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/edtbirthmarketwo"
-            style="@style/inputBox"
-            android:hint="@string/ct_birthidentificationmarks"
-            android:inputType="textMultiLine"
-            android:lines="2"
-            android:maxLines="2"
-            android:overScrollMode="always"
-            android:scrollbarStyle="insideInset"
-            android:scrollbars="vertical" />
+            <!--marks1-->
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_10sdp"
+                android:layout_gravity="bottom"
+                android:background="@drawable/card">
 
-        <androidx.appcompat.widget.AppCompatTextView
-            style="@style/subTitle"
-            android:text="Hand Use" />
+                <ImageView
+                    android:layout_width="@dimen/_18sdp"
+                    android:layout_height="@dimen/_18sdp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/_8sdp"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/ic_education_name" />
 
-        <RelativeLayout style="@style/spinnerLayout">
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:paddingLeft="@dimen/_50sdp"
+                    android:paddingRight="@dimen/_10sdp">
 
-            <com.bbi.bizbulls.utils.CustomSpinner
-                android:id="@+id/spnrhanduse"
-                style="@style/customSpinner"
-                android:entries="@array/handUsed" />
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:background="@null"
+                        android:id="@+id/edtbirthmarkesone"
+                        android:lines="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/ct_birthidentificationmarks"
+                        android:inputType="textMultiLine"
+                        android:maxLines="2"
+                        android:overScrollMode="always"
+                        android:scrollbarStyle="insideInset"
+                        android:scrollbars="vertical"
+                        android:textSize="@dimen/_12sdp" />
+                </FrameLayout>
 
-            <ImageView style="@style/customSpinnerDropDown" />
+            </FrameLayout>
 
-        </RelativeLayout>
 
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/edtheight"
-            style="@style/inputBox"
-            android:hint="@string/ct_heightin"
-            android:inputType="number" />
+            <!--Marks2-->
+            <FrameLayout
+                android:layout_marginTop="@dimen/_8sdp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_10sdp"
+                android:layout_gravity="bottom"
+                android:background="@drawable/card">
 
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/edtweight"
-            style="@style/inputBox"
-            android:hint="@string/ct_weightin"
-            android:inputType="number" />
+                <ImageView
+                    android:layout_width="@dimen/_18sdp"
+                    android:layout_height="@dimen/_18sdp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/_8sdp"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/ic_education_name" />
 
-        <androidx.appcompat.widget.AppCompatTextView
-            style="@style/subTitle"
-            android:text="Blood Group" />
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:paddingLeft="@dimen/_50sdp"
+                    android:paddingRight="@dimen/_10sdp">
 
-        <RelativeLayout style="@style/spinnerLayout">
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:background="@null"
+                        android:id="@+id/edtbirthmarketwo"
+                        android:lines="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/ct_birthidentificationmarks"
+                        android:inputType="textMultiLine"
+                        android:maxLines="2"
+                        android:overScrollMode="always"
+                        android:scrollbarStyle="insideInset"
+                        android:scrollbars="vertical"
+                        android:textSize="@dimen/_12sdp" />
+                </FrameLayout>
 
-            <com.bbi.bizbulls.utils.CustomSpinner
-                android:id="@+id/spnrbloodgroup"
-                style="@style/customSpinner"
-                android:entries="@array/bloodGroup" />
+            </FrameLayout>
 
-            <ImageView style="@style/customSpinnerDropDown" />
 
-        </RelativeLayout>
 
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/edtwillingdonate"
-            style="@style/inputBox"
-            android:hint="@string/ct_ifwillingtodonate"
-            android:inputType="number" />
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/subTitle"
+                android:text="Hand Use"
+                android:textSize="@dimen/_14ssp"
+                android:layout_marginTop="@dimen/_8sdp"/>
 
-        <androidx.appcompat.widget.AppCompatTextView
-            style="@style/subTitle"
-            android:text="Physically Handicapped" />
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_5sdp"
+                android:layout_gravity="bottom"
+                android:background="@drawable/card">
 
-        <RelativeLayout style="@style/spinnerLayout">
+                <ImageView
+                    android:layout_width="@dimen/_18sdp"
+                    android:layout_height="@dimen/_18sdp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/_12sdp"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/ic_family_age" />
 
-            <com.bbi.bizbulls.utils.CustomSpinner
-                android:id="@+id/spnrhandicapped"
-                style="@style/customSpinner"
-                android:entries="@array/NoYes" />
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:paddingLeft="@dimen/_50sdp"
+                    android:paddingRight="@dimen/_10sdp">
 
-            <ImageView style="@style/customSpinnerDropDown" />
+                    <com.bbi.bizbulls.utils.CustomSpinner
+                        android:id="@+id/spnrhanduse"
+                        style="@style/customSpinner"
+                        android:entries="@array/handUsed"/>
 
-        </RelativeLayout>
+                    <ImageView style="@style/customSpinnerDropDown"
+                        android:layout_gravity="right|center"/>
+                </FrameLayout>
 
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/edttypeofph"
-            style="@style/inputBox"
-            android:hint="@string/ct_ifyeshandicappy" />
+            </FrameLayout>
 
-        <androidx.appcompat.widget.AppCompatTextView
-            style="@style/subTitle"
-            android:text="Surgeries/Treatments Undergone" />
 
-        <RelativeLayout style="@style/spinnerLayout">
+            <!--height in Cms-->
+            <FrameLayout
+                android:layout_marginTop="@dimen/_8sdp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_10sdp"
+                android:layout_gravity="bottom"
+                android:background="@drawable/card">
 
-            <com.bbi.bizbulls.utils.CustomSpinner
-                android:id="@+id/spnrsurgeries"
-                style="@style/customSpinner"
-                android:entries="@array/NoYes"/>
+                <ImageView
+                    android:layout_width="@dimen/_18sdp"
+                    android:layout_height="@dimen/_18sdp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/_8sdp"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/ic_family_age" />
 
-            <ImageView style="@style/customSpinnerDropDown" />
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:paddingLeft="@dimen/_50sdp"
+                    android:paddingRight="@dimen/_10sdp">
 
-        </RelativeLayout>
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:background="@null"
+                        android:id="@+id/edtheight"
+                        android:lines="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/ct_heightin"
+                        android:maxLines="1"
+                        android:inputType="number"
+                        android:textSize="@dimen/_12sdp" />
+                </FrameLayout>
 
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/edttypeofsurgery"
-            style="@style/inputBox"
-            android:hint="@string/ct_ifyessurgeries" />
+            </FrameLayout>
 
-        <androidx.appcompat.widget.AppCompatTextView
-            style="@style/subTitle"
-            android:text="Any other Health Issues" />
+            <!--Weight in Kgs-->
+            <FrameLayout
+                android:layout_marginTop="@dimen/_8sdp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_10sdp"
+                android:layout_gravity="bottom"
+                android:background="@drawable/card">
 
-        <RelativeLayout style="@style/spinnerLayout">
+                <ImageView
+                    android:layout_width="@dimen/_18sdp"
+                    android:layout_height="@dimen/_18sdp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/_8sdp"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/ic_family_age" />
 
-            <com.bbi.bizbulls.utils.CustomSpinner
-                android:id="@+id/spnrhealthissued"
-                style="@style/customSpinner"
-                android:entries="@array/NoYes"/>
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:paddingLeft="@dimen/_50sdp"
+                    android:paddingRight="@dimen/_10sdp">
 
-            <ImageView style="@style/customSpinnerDropDown" />
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:background="@null"
+                        android:id="@+id/edtweight"
+                        android:lines="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/ct_weightin"
+                        android:maxLines="1"
+                        android:inputType="number"
+                        android:textSize="@dimen/_12sdp" />
+                </FrameLayout>
 
-        </RelativeLayout>
+            </FrameLayout>
 
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/edttypeofhealthissue"
-            style="@style/inputBox"
-            android:hint="@string/ct_ifyeshelathissues" />
 
-        <androidx.appcompat.widget.AppCompatTextView
-            style="@style/subTitle"
-            android:text="Any unhealthy Habits" />
 
-        <RelativeLayout style="@style/spinnerLayout">
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/subTitle"
+                android:text="Blood Group"
+                android:textSize="@dimen/_14ssp"
+                android:layout_marginTop="@dimen/_8sdp"/>
 
-            <com.bbi.bizbulls.utils.CustomSpinner
-                android:id="@+id/spnrhabbit"
-                style="@style/customSpinner"
-                android:entries="@array/NoYes"/>
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_5sdp"
+                android:layout_gravity="bottom"
+                android:background="@drawable/card">
 
-            <ImageView style="@style/customSpinnerDropDown" />
+                <ImageView
+                    android:layout_width="@dimen/_18sdp"
+                    android:layout_height="@dimen/_18sdp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/_12sdp"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/ic_family_age" />
 
-        </RelativeLayout>
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:paddingLeft="@dimen/_50sdp"
+                    android:paddingRight="@dimen/_10sdp">
 
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/edttypeofhabbits"
-            style="@style/inputBox"
-            android:hint="@string/ct_ifyesunhealthyhabits"
-            android:inputType="text" />
+                    <com.bbi.bizbulls.utils.CustomSpinner
+                        android:id="@+id/spnrbloodgroup"
+                        style="@style/customSpinner"
+                        android:entries="@array/bloodGroup"/>
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/stepSubmit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_margin="@dimen/_8dp"
-            android:background="@drawable/bg_submit"
-            android:gravity="center"
-            android:text="@string/f_submit"
-            android:textAllCaps="false"
-            android:textColor="@color/white"
-            android:textSize="@dimen/large_font" />
+                    <ImageView style="@style/customSpinnerDropDown"
+                        android:layout_gravity="right|center"/>
+                </FrameLayout>
 
-    </LinearLayout>
-</androidx.core.widget.NestedScrollView>
+            </FrameLayout>
+
+            <!--Willing-->
+            <FrameLayout
+                android:layout_marginTop="@dimen/_8sdp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_10sdp"
+                android:layout_gravity="bottom"
+                android:background="@drawable/card">
+
+                <ImageView
+                    android:layout_width="@dimen/_18sdp"
+                    android:layout_height="@dimen/_18sdp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/_8sdp"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/ic_family_age" />
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:paddingLeft="@dimen/_50sdp"
+                    android:paddingRight="@dimen/_10sdp">
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:background="@null"
+                        android:id="@+id/edtwillingdonate"
+                        android:lines="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/ct_ifwillingtodonate"
+                        android:maxLines="1"
+                        android:inputType="text"
+                        android:textSize="@dimen/_11sdp" />
+                </FrameLayout>
+
+            </FrameLayout>
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/subTitle"
+                android:text="Physically Handicapped"
+                android:textSize="@dimen/_14ssp"
+                android:layout_marginTop="@dimen/_8sdp"/>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_5sdp"
+                android:layout_gravity="bottom"
+                android:background="@drawable/card">
+
+                <ImageView
+                    android:layout_width="@dimen/_18sdp"
+                    android:layout_height="@dimen/_18sdp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/_12sdp"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/ic_family_age" />
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:paddingLeft="@dimen/_50sdp"
+                    android:paddingRight="@dimen/_10sdp">
+
+                    <com.bbi.bizbulls.utils.CustomSpinner
+                        android:id="@+id/spnrhandicapped"
+                        style="@style/customSpinner"
+                        android:entries="@array/NoYes"/>
+
+                    <ImageView style="@style/customSpinnerDropDown"
+                        android:layout_gravity="right|center"/>
+                </FrameLayout>
+
+            </FrameLayout>
+
+
+            <!--Physically-->
+
+            <FrameLayout
+                android:layout_marginTop="@dimen/_8sdp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_10sdp"
+                android:layout_gravity="bottom"
+                android:background="@drawable/card">
+
+                <ImageView
+                    android:layout_width="@dimen/_18sdp"
+                    android:layout_height="@dimen/_18sdp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/_8sdp"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/ic_family_age" />
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:paddingLeft="@dimen/_50sdp"
+                    android:paddingRight="@dimen/_10sdp">
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:background="@null"
+                        android:id="@+id/edttypeofph"
+                        android:lines="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/ct_ifyeshandicappy"
+                        android:maxLines="1"
+                        android:textSize="@dimen/_11sdp" />
+                </FrameLayout>
+
+            </FrameLayout>
+
+
+            <!--Surgeries-->
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/subTitle"
+                android:text="Surgeries/Treatments Undergone"
+                android:textSize="@dimen/_14ssp"
+                android:layout_marginTop="@dimen/_8sdp"/>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_5sdp"
+                android:layout_gravity="bottom"
+                android:background="@drawable/card">
+
+                <ImageView
+                    android:layout_width="@dimen/_18sdp"
+                    android:layout_height="@dimen/_18sdp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/_12sdp"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/ic_family_age" />
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:paddingLeft="@dimen/_50sdp"
+                    android:paddingRight="@dimen/_10sdp">
+
+                    <com.bbi.bizbulls.utils.CustomSpinner
+                        android:id="@+id/spnrsurgeries"
+                        style="@style/customSpinner"
+                        android:entries="@array/NoYes"/>
+
+                    <ImageView style="@style/customSpinnerDropDown"
+                        android:layout_gravity="right|center"/>
+                </FrameLayout>
+
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_marginTop="@dimen/_8sdp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_10sdp"
+                android:layout_gravity="bottom"
+                android:background="@drawable/card">
+
+                <ImageView
+                    android:layout_width="@dimen/_18sdp"
+                    android:layout_height="@dimen/_18sdp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/_8sdp"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/ic_family_age" />
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:paddingLeft="@dimen/_50sdp"
+                    android:paddingRight="@dimen/_10sdp">
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:background="@null"
+                        android:id="@+id/edttypeofsurgery"
+                        android:lines="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/ct_ifyessurgeries"
+                        android:maxLines="1"
+                        android:textSize="@dimen/_11sdp" />
+                </FrameLayout>
+
+            </FrameLayout>
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/subTitle"
+                android:text="Any other Health Issues"
+                android:textSize="@dimen/_14ssp"
+                android:layout_marginTop="@dimen/_8sdp"/>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_5sdp"
+                android:layout_gravity="bottom"
+                android:background="@drawable/card">
+
+                <ImageView
+                    android:layout_width="@dimen/_18sdp"
+                    android:layout_height="@dimen/_18sdp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/_12sdp"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/ic_family_age" />
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:paddingLeft="@dimen/_50sdp"
+                    android:paddingRight="@dimen/_10sdp">
+
+                    <com.bbi.bizbulls.utils.CustomSpinner
+                        android:id="@+id/spnrhealthissued"
+                        style="@style/customSpinner"
+                        android:entries="@array/NoYes"/>
+
+                    <ImageView style="@style/customSpinnerDropDown"
+                        android:layout_gravity="right|center"/>
+                </FrameLayout>
+
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_marginTop="@dimen/_8sdp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_10sdp"
+                android:layout_gravity="bottom"
+                android:background="@drawable/card">
+
+                <ImageView
+                    android:layout_width="@dimen/_18sdp"
+                    android:layout_height="@dimen/_18sdp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/_8sdp"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/ic_family_age" />
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:paddingLeft="@dimen/_50sdp"
+                    android:paddingRight="@dimen/_10sdp">
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:background="@null"
+                        android:id="@+id/edttypeofhealthissue"
+                        android:lines="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/ct_ifyeshelathissues"
+                        android:maxLines="1"
+                        android:textSize="@dimen/_11sdp" />
+                </FrameLayout>
+
+            </FrameLayout>
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/subTitle"
+                android:text="Any unhealthy Habits"
+                android:textSize="@dimen/_14ssp"
+                android:layout_marginTop="@dimen/_8sdp"/>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_5sdp"
+                android:layout_gravity="bottom"
+                android:background="@drawable/card">
+
+                <ImageView
+                    android:layout_width="@dimen/_18sdp"
+                    android:layout_height="@dimen/_18sdp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/_12sdp"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/ic_family_age" />
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:paddingLeft="@dimen/_50sdp"
+                    android:paddingRight="@dimen/_10sdp">
+
+                    <com.bbi.bizbulls.utils.CustomSpinner
+                        android:id="@+id/spnrhabbit"
+                        style="@style/customSpinner"
+                        android:entries="@array/bloodGroup"/>
+
+                    <ImageView style="@style/customSpinnerDropDown"
+                        android:layout_gravity="right|center"/>
+                </FrameLayout>
+
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_marginTop="@dimen/_8sdp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_10sdp"
+                android:layout_gravity="bottom"
+                android:background="@drawable/card">
+
+                <ImageView
+                    android:layout_width="@dimen/_18sdp"
+                    android:layout_height="@dimen/_18sdp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/_8sdp"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/ic_family_age" />
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:paddingLeft="@dimen/_50sdp"
+                    android:paddingRight="@dimen/_10sdp">
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:background="@null"
+                        android:id="@+id/edttypeofhabbits"
+                        android:lines="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/ct_ifyesunhealthyhabits"
+                        android:maxLines="1"
+                        android:inputType="text"
+                        android:textSize="@dimen/_11sdp" />
+                </FrameLayout>
+
+            </FrameLayout>
+
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/stepSubmit"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_45sdp"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/_16sdp"
+        android:background="@drawable/bg_submit"
+        android:gravity="center"
+        android:text="@string/f_submit"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_14ssp" />
+</RelativeLayout>
