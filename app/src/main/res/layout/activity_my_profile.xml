@@ -159,7 +159,7 @@
                             android:paddingHorizontal="@dimen/_10sdp"
                             android:text="\u20B9  0"
                             android:textColor="@color/orange_700"
-                            android:textSize="@dimen/_12dp" />
+                            android:textSize="@dimen/_14sdp" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -226,7 +226,7 @@
                 android:layout_marginHorizontal="@dimen/_10sdp"
                 android:background="@drawable/rectanglegrey"
                 android:orientation="vertical"
-                android:visibility="gone">
+                android:visibility="visible">
 
                 <TextView
                     android:layout_width="match_parent"

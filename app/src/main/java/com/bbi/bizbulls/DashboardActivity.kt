@@ -193,6 +193,9 @@ class DashboardActivity : AppCompatActivity(), View.OnClickListener {
         if (view.id == R.id.followUs) {
         }
         if (view.id == R.id.rateUs) {
+            binding!!.drawerfomainlayout.closeDrawer(GravityCompat.START)
+            val intent = Intent(this, ReatingActivity::class.java)
+            startActivity(intent)
         }
         if (view.id == R.id.settings) {
         }
