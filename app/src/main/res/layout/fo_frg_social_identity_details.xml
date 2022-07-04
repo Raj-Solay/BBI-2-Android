@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/white">
 
 
@@ -32,6 +33,7 @@
                     android:layout_height="@dimen/_18sdp"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="@dimen/_8sdp"
+                    app:tint="@color/value"
                     android:adjustViewBounds="true"
                     android:src="@drawable/ic_social_aadharcard" />
 
@@ -68,6 +70,7 @@
                     android:layout_width="@dimen/_18sdp"
                     android:layout_height="@dimen/_18sdp"
                     android:layout_gravity="center_vertical"
+                    app:tint="@color/value"
                     android:layout_marginLeft="@dimen/_8sdp"
                     android:adjustViewBounds="true"
                     android:src="@drawable/ic_social_pancard" />
@@ -107,6 +110,7 @@
                     android:layout_width="@dimen/_18sdp"
                     android:layout_height="@dimen/_18sdp"
                     android:layout_gravity="center_vertical"
+                    app:tint="@color/value"
                     android:layout_marginLeft="@dimen/_8sdp"
                     android:adjustViewBounds="true"
                     android:src="@drawable/ic_social_votercard" />
@@ -144,6 +148,7 @@
                 <ImageView
                     android:layout_width="@dimen/_18sdp"
                     android:layout_height="@dimen/_18sdp"
+                    app:tint="@color/value"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="@dimen/_8sdp"
                     android:adjustViewBounds="true"
@@ -181,6 +186,7 @@
                     android:layout_width="@dimen/_18sdp"
                     android:layout_height="@dimen/_18sdp"
                     android:layout_gravity="center_vertical"
+                    app:tint="@color/value"
                     android:layout_marginLeft="@dimen/_8sdp"
                     android:adjustViewBounds="true"
                     android:src="@drawable/ic_social_passport" />
@@ -218,6 +224,7 @@
                     android:layout_height="@dimen/_18sdp"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="@dimen/_8sdp"
+                    app:tint="@color/value"
                     android:adjustViewBounds="true"
                     android:src="@drawable/ic_social_rationcard" />
 

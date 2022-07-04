@@ -226,14 +226,13 @@ interface APIService {
 
     @GET("/api/me/document")
     fun documentGet(
-            @Header("Authorization") token: String): Call<AttachmentsViewRes>
+            @Header("Authorization") token: String): Call<DocumentsViewRes>
 
     /*--upload image--*/
-    @Headers("Content-Type: application/json")
+
     @Multipart
     @POST("/api/assets")
     fun uploadAsset(
             @Header("Authorization") token: String,
-            @Part image: MultipartBody.Part
-          /*  @Part("fileType") fileType : RequestBody*/): Call<ResponseBody>
+            @Part image: MultipartBody.Part): Call<AssetsRes>
 }

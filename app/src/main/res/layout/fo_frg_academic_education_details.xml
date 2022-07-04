@@ -32,6 +32,7 @@
                     android:layout_height="@dimen/_18sdp"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="@dimen/_8sdp"
+                    app:tint="@color/value"
                     android:adjustViewBounds="true"
                     android:src="@drawable/ic_education" />
 
@@ -69,6 +70,7 @@
                     android:layout_height="@dimen/_18sdp"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="@dimen/_8sdp"
+                    app:tint="@color/value"
                     android:adjustViewBounds="true"
                     android:src="@drawable/ic_education_inst_name" />
 
@@ -104,6 +106,7 @@
                 <ImageView
                     android:layout_width="@dimen/_18sdp"
                     android:layout_height="@dimen/_18sdp"
+                    app:tint="@color/value"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="@dimen/_8sdp"
                     android:adjustViewBounds="true"
@@ -142,6 +145,7 @@
                     android:layout_height="@dimen/_18sdp"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="@dimen/_8sdp"
+                    app:tint="@color/value"
                     android:adjustViewBounds="true"
                     android:src="@drawable/ic_education_year" />
 
@@ -181,6 +185,7 @@
                     android:layout_height="@dimen/_18sdp"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="@dimen/_8sdp"
+                    app:tint="@color/value"
                     android:adjustViewBounds="true"
                     android:src="@drawable/ic_education_percentage" />
 

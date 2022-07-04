@@ -10,6 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/white"
+        android:layout_marginBottom="@dimen/_8sdp"
         android:layout_above="@+id/stepSubmit">
 
         <LinearLayout
@@ -81,7 +82,6 @@
         android:layout_height="@dimen/_45sdp"
         android:layout_alignParentBottom="true"
         android:layout_gravity="center"
-        android:layout_marginTop="@dimen/_16sdp"
         android:background="@drawable/bg_submit"
         android:gravity="center"
         android:text="@string/f_submit"

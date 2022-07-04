@@ -1,58 +1,72 @@
 package com.bbi.bizbulls.ui.registrationforfo.fragments
 
+import android.Manifest.permission.*
 import android.app.AlertDialog
+import android.content.Context
+import android.content.DialogInterface
+import android.content.pm.PackageManager
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
 import androidx.fragment.app.Fragment
+import androidx.test.core.app.ApplicationProvider.getApplicationContext
 import com.bbi.bizbulls.R
 import com.bbi.bizbulls.databinding.FoFrgAttachmentsBinding
-import com.bbi.bizbulls.model.AttachmentsViewRes
+import com.bbi.bizbulls.model.AssetUploadReq
+import com.bbi.bizbulls.model.AssetsRes
+import com.bbi.bizbulls.model.DocumentsViewRes
 import com.bbi.bizbulls.remote.RetrofitClient
 import com.bbi.bizbulls.sharedpref.SharedPrefsManager
+import com.bbi.bizbulls.ui.registrationforfo.FranchiseeRegistrationViewModel
 import com.bbi.bizbulls.utils.CommonUtils
 import com.bbi.bizbulls.utils.FileUtils
 import com.bbi.bizbulls.utils.MyProcessDialog
+import com.google.android.material.snackbar.Snackbar
 import com.google.gson.JsonArray
 import com.google.gson.JsonObject
+import com.squareup.picasso.Picasso
 import okhttp3.*
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.RequestBody.Companion.asRequestBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import java.io.File
-import java.io.FileInputStream
-import java.io.InputStream
 
 
-class FoAttachmentsFragment(private val stepPosition: Int,private var actionType: Int) : Fragment() {
+class FoAttachmentsFragment(private val stepPosition: Int, private var actionType: Int) : Fragment() {
     private lateinit var binding: FoFrgAttachmentsBinding
-    private var imageUri : Uri? = null
+    private var imageUri: Uri? = null
     private var selectedDocument = ""
-    private  var panCardURI: Uri? = null
-    private  var aadhaarCardURI: Uri? = null
-    private  var photoURI: Uri? = null
-    private  var addressURI: Uri? = null
-    private  var individualURI: Uri? = null
-    private var uid : String = ""
+    private var panCardURI: Uri? = null
+    private var aadhaarCardURI: Uri? = null
+    private var photoURI: Uri? = null
+    private var addressURI: Uri? = null
+    private var individualURI: Uri? = null
+    private var bbiURI: Uri? = null
+    private var uid: String = ""
+
     /*
     * Response result from Gallery
     * Getting the Image path from choose the Gallery option for Image upload
     * */
     private val imageFromGallery = registerForActivityResult(ActivityResultContracts.GetContent()) {
         if (it != null) {
-          //  binding.imgpancard.setImageURI(it)
+            //  binding.imgpancard.setImageURI(it)
             setPreviewImage(selectedDocument, it)
             println("________ImagePathGallery - ${it.path}")
         } else {
             CommonUtils.toast(
-                requireActivity(),
-                requireActivity().resources.getString(R.string.something_wrong)
+                    requireActivity(),
+                    requireActivity().resources.getString(R.string.something_wrong)
             )
         }
     }
@@ -63,21 +77,52 @@ class FoAttachmentsFragment(private val stepPosition: Int,private var actionType
     * */
     private val imageFromCamera = registerForActivityResult(ActivityResultContracts.TakePicture()) {
         if (it) {
-          //  binding.imgpancard.setImageURI(imageUri)
+            //  binding.imgpancard.setImageURI(imageUri)
             imageUri?.let { it1 -> setPreviewImage(selectedDocument, it1) }
             println("_______ImagePathCamera - ${imageUri?.path}")
         } else {
             CommonUtils.toast(
-                requireActivity(),
-                requireActivity().resources.getString(R.string.something_wrong)
+                    requireActivity(),
+                    requireActivity().resources.getString(R.string.something_wrong)
             )
         }
     }
 
+    private fun checkPermission(): Boolean {
+        val result = ContextCompat.checkSelfPermission(requireContext(), WRITE_EXTERNAL_STORAGE)
+        val result1 = ContextCompat.checkSelfPermission(requireContext(), READ_EXTERNAL_STORAGE)
+        return result == PackageManager.PERMISSION_GRANTED && result1 == PackageManager.PERMISSION_GRANTED
+    }
+
+    private fun requestPermission() {
+        ActivityCompat.requestPermissions(requireActivity(), arrayOf(WRITE_EXTERNAL_STORAGE, READ_EXTERNAL_STORAGE), 100)
+    }
+
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        when (requestCode) {
+            100 -> if (grantResults.isNotEmpty()) {
+                val locationAccepted = grantResults[0] == PackageManager.PERMISSION_GRANTED
+                val cameraAccepted = grantResults[1] == PackageManager.PERMISSION_GRANTED
+                if (locationAccepted && cameraAccepted) {
+                    //permission granted
+                }else {
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                        if (shouldShowRequestPermissionRationale(WRITE_EXTERNAL_STORAGE)) {
+                            //You need to allow access to both the permissions
+                            return
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+            inflater: LayoutInflater,
+            container: ViewGroup?,
+            savedInstanceState: Bundle?
     ): View {
         binding = FoFrgAttachmentsBinding.inflate(inflater, container, false)
 
@@ -105,9 +150,12 @@ class FoAttachmentsFragment(private val stepPosition: Int,private var actionType
             selectedDocument = requireActivity().resources.getString(R.string.attachmentIndividuallyField)
             selectImage(selectedDocument)
         }
-
+        binding.imgaBBI.setOnClickListener {
+            selectedDocument = requireActivity().resources.getString(R.string.attachmentarbitary)
+            selectImage(selectedDocument)
+        }
         binding.stepSubmit.setOnClickListener {
-           // CommonUtils.toast(requireActivity(), "Coming soon")
+            // CommonUtils.toast(requireActivity(), "Coming soon")
             sendAttachmentDetail()
         }
 
@@ -125,18 +173,19 @@ class FoAttachmentsFragment(private val stepPosition: Int,private var actionType
         }
         return binding.root
     }
+
     private fun getRecordFromAPI(isFromEdit: Boolean) {
         MyProcessDialog.showProgressBar(requireContext(), 0)
         val sharedPrefsHelper by lazy { SharedPrefsManager(requireContext()) }
         val call = RetrofitClient.getUrl().documentGet(sharedPrefsHelper.authToken)
-        call?.enqueue(object : Callback<AttachmentsViewRes> {
+        call?.enqueue(object : Callback<DocumentsViewRes> {
             override
             fun onResponse(
-                    call: Call<AttachmentsViewRes>,
-                    responseObject: Response<AttachmentsViewRes>) {
+                    call: Call<DocumentsViewRes>,
+                    responseObject: Response<DocumentsViewRes>) {
                 if (responseObject.code() == 200 || responseObject.code() == 201) {
-                    if (responseObject.body()?.data?.get(0)  != null) {
-                        setUpDataInUI(responseObject.body()?.data?.get(0)!!)
+                    if (responseObject.body()?.data?.get(0) != null) {
+                        setUpDataInUI(responseObject.body()?.data)
                     }
                 } else {
                     RetrofitClient.showResponseMessage(requireContext(), responseObject.code())
@@ -146,79 +195,102 @@ class FoAttachmentsFragment(private val stepPosition: Int,private var actionType
             }
 
             override
-            fun onFailure(call: Call<AttachmentsViewRes>, t: Throwable) {
+            fun onFailure(call: Call<DocumentsViewRes>, t: Throwable) {
                 MyProcessDialog.dismiss()
                 RetrofitClient.showFailedMessage(requireContext(), t)
             }
         })
 
     }
-    private fun setUpDataInUI(data: AttachmentsViewRes.Data) {
-        uid = data?.id.toString()
+
+    private fun setUpDataInUI(data: List<DocumentsViewRes.Data>?) {
+        uid = data?.get(0)?.id.toString()
+
+        if (data?.get(0) != null) {
+            // Picasso.get().load(data.get(0)?.documentName).into(holder.itemBinding.itemIcon)
+        }
+        Picasso.get().load("https://bizbulls.beurboss.com/api/assets/ad08a48d-b181-4098-841b-7e1794647fca/render")
+                .into(binding.imgpancard)
+
+        Picasso.get().load("https://bizbulls.beurboss.com/api/assets/ad08a48d-b181-4098-841b-7e1794647fca/render")
+                .into(binding.imgaadharcard)
+
+        Picasso.get().load("https://bizbulls.beurboss.com/api/assets/ad08a48d-b181-4098-841b-7e1794647fca/render")
+                .into(binding.imgaResidence)
+
+        Picasso.get().load("https://bizbulls.beurboss.com/api/assets/ad08a48d-b181-4098-841b-7e1794647fca/render")
+                .into(binding.imgaIndividually)
+
+        Picasso.get().load("https://bizbulls.beurboss.com/api/assets/ad08a48d-b181-4098-841b-7e1794647fca/render")
+                .into(binding.imgaRecentPhotographOfApplicant)
+
+        Picasso.get().load("https://bizbulls.beurboss.com/api/assets/ad08a48d-b181-4098-841b-7e1794647fca/render")
+                .into(binding.imgaBBI)
+
+        var isEditable = false
+        when (actionType) {
+            CommonUtils.ACTION_TYPE_VIEW -> {
+                isEditable = false
+                binding.stepSubmit.visibility = View.INVISIBLE
+            }
+            CommonUtils.ACTION_TYPE_EDIT -> {
+                isEditable = true
+                binding.stepSubmit.visibility = View.VISIBLE
+            }
+            CommonUtils.ACTION_TYPE_ADD -> {
+                isEditable = true
+                binding.stepSubmit.visibility = View.VISIBLE
+            }
+        }
+
+        binding.checkPanCard.isEnabled = isEditable
+        binding.checkAadharCard.isEnabled = isEditable
+        binding.checkResidenceProof.isEnabled = isEditable
+        binding.checkIndividually.isEnabled = isEditable
+        binding.checkRecentPhotographOfApplicant.isEnabled = isEditable
+        binding.checkArbitaryDocuments.isEnabled = isEditable
+
+
     }
 
 
+    var uploadFileList = arrayListOf<AssetUploadReq>()
 
-    private fun sendAttachmentDetail() {
-
-        if(binding.checkPanCard.isChecked){
-
-        }
-        if(binding.checkAadharCard.isChecked){
-
-        }
-        if(binding.checkResidenceProof.isChecked){
-
-        }
-        if(binding.checkIndividually.isChecked){
-
-        }
-        if(binding.checkRecentPhotographOfApplicant.isChecked){
-
-        }
-
+    /* 1	Pan card
+     2	Aadhaar
+     3	Residence Proof
+     4	Bank Statement/ Passbook
+     5	downloaded & Signed Registration Form
+     6	BIZ BULLS Arbitrary Agreement*/
+    private fun uploadFileOnServer(uri: Uri, type: Int) {
         var fileUtils = FileUtils(requireContext())
-        //upload video
-        Log.d("AssetLog","panCardURI : "+ panCardURI)
-        Log.d("AssetLog","panCardURI : "+ fileUtils.getPath(panCardURI))
-        Log.d("AssetLog","aadhaarCardURI : "+ aadhaarCardURI)
-        Log.d("AssetLog","aadhaarCardURI : "+ addressURI)
-        Log.d("AssetLog","photoURI : "+ photoURI)
-        Log.d("AssetLog","individualURI : "+ individualURI)
 
-        val file  = File(fileUtils.getPath(panCardURI))
+        val file = File(fileUtils.getPath(uri))
 
-        val `in`: InputStream = FileInputStream(file)
-        val buf: ByteArray = ByteArray(`in`.available())
-        while (`in`.read(buf) !== -1);
-
-        val body: RequestBody = MultipartBody.Builder().setType(MultipartBody.FORM)
-                .addFormDataPart("file", file.name,
-                        RequestBody.create("application/octet-stream".toMediaTypeOrNull(),
-                                buf))
-                .build()
-
-     //   val requestBody: RequestBody = file.asRequestBody("application/octet-stream".toMediaTypeOrNull())
-        val multipartBody: MultipartBody.Part = MultipartBody.Part.createFormData("file", file.name, body)
-
-        Log.d("AssetLog","file : "+ file.path)
-
-        val requestBody1: RequestBody = RequestBody.create("application/octet-stream".toMediaTypeOrNull(), file)
-        val partFile1: MultipartBody.Part = MultipartBody.Part.createFormData("file", file.getName(), requestBody1)
+        var mimeType = requireContext().contentResolver.getType(uri!!)
+        val requestBody: RequestBody = RequestBody.create(mimeType?.toMediaTypeOrNull(), file)
+        val part: MultipartBody.Part = MultipartBody.Part.createFormData("file",
+                file.name, requestBody)
 
         val sharedPrefsHelper by lazy { SharedPrefsManager(requireContext()) }
-        var call: Call<ResponseBody>? = null
+        var call: Call<AssetsRes>? = null
         call = RetrofitClient.getUrl()
-                .uploadAsset(sharedPrefsHelper.authToken, partFile1)
+                .uploadAsset(sharedPrefsHelper.authToken, part)
         MyProcessDialog.showProgressBar(requireContext(), 0)
-        call?.enqueue(object : Callback<ResponseBody> {
+        call?.enqueue(object : Callback<AssetsRes> {
             override
             fun onResponse(
-                    call: Call<ResponseBody>,
-                    responseObject: Response<ResponseBody>) {
+                    call: Call<AssetsRes>,
+                    responseObject: Response<AssetsRes>) {
                 if (responseObject.code() == 201 || responseObject.code() == 200) {
-                    // sharedPrefsHelper.personalDetailID = responseObject.body()?.data?.id.toString()
-                  //  responseSuccessMessage(context, stepPosition,0)
+                    var assetReq = AssetUploadReq()
+                    var assetRes = responseObject.body()?.data
+                    //image/jpeg
+                    var fType = mimeType?.split("/")
+                    assetReq.mimeType = fType?.get(1).toString()
+                    assetReq.name = file.name
+                    assetReq.id = type.toString()
+                    uploadFileList.add(type - 1, assetReq)
                 } else {
                     RetrofitClient.showResponseMessage(requireContext(), responseObject.code())
 
@@ -227,75 +299,130 @@ class FoAttachmentsFragment(private val stepPosition: Int,private var actionType
             }
 
             override
-            fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+            fun onFailure(call: Call<AssetsRes>, t: Throwable) {
                 t.printStackTrace()
                 MyProcessDialog.dismiss()
                 RetrofitClient.showFailedMessage(requireContext(), t)
             }
         })
-
-        val jsonObject = JsonObject()
-        jsonObject.addProperty("document_id", "")
-        jsonObject.addProperty("document_name", "")
-        jsonObject.addProperty("document_type", "")
-
-
-        // Call remote Api service to save the Document Detail
-        var array = JsonArray()
-        array.add(jsonObject)
-        Log.d("JsonArray","Arary : "+ array.toString())
-        //FranchiseeRegistrationViewModel().sendDetailPostRequest(requireActivity(), array, stepPosition,actionType,uid)
     }
 
-    private fun setPreviewImage(selectedDocument: String, uri: Uri){
+    private fun sendAttachmentDetail() {
+
+
+        // uploadFileOnServer()
+
+        // return
+
+
+        if (binding.checkPanCard.isChecked) {
+
+        }
+        if (binding.checkAadharCard.isChecked) {
+
+        }
+        if (binding.checkResidenceProof.isChecked) {
+
+        }
+        if (binding.checkIndividually.isChecked) {
+
+        }
+        if (binding.checkRecentPhotographOfApplicant.isChecked) {
+
+        }
+        if (binding.checkArbitaryDocuments.isChecked) {
+
+        }
+
+
+        var array = JsonArray()
+
+        uploadFileList.forEach {
+            val jsonObjectBBI = JsonObject()
+            jsonObjectBBI.addProperty("document_id", "" + it.id)
+            jsonObjectBBI.addProperty("document_name", "" + it.name)
+            jsonObjectBBI.addProperty("document_type", "" + it.mimeType)
+            array.add(jsonObjectBBI)
+        }
+
+        Log.d("JSONArray", "" + array.toString())
+        // Call remote Api service to save the Document Detail
+
+        FranchiseeRegistrationViewModel().sendDetailPostRequest(requireActivity(), array, stepPosition, actionType, uid)
+    }
+
+    fun getImageRequestBody(path: String, key: String): MultipartBody.Part? {
+        val file = File(path)
+        val requestFile = file.asRequestBody("*/*".toMediaTypeOrNull())
+        return MultipartBody.Part.createFormData(key, file.name, requestFile)
+    }
+
+    private fun setPreviewImage(selectedDocument: String, uri: Uri) {
         when (selectedDocument) {
             requireActivity().resources.getString(R.string.attachmentPanCard) -> {
                 binding.imgpancard.setImageURI(uri)
                 panCardURI = uri
+                uploadFileOnServer(uri, 1)
             }
             requireActivity().resources.getString(R.string.attachmentAadhaar) -> {
                 binding.imgaadharcard.setImageURI(uri)
                 aadhaarCardURI = uri
+                uploadFileOnServer(uri, 2)
             }
             requireActivity().resources.getString(R.string.attachmentResidential) -> {
                 binding.imgaResidence.setImageURI(uri)
                 addressURI = uri
+                uploadFileOnServer(uri, 3)
             }
             requireActivity().resources.getString(R.string.attachmentPhoto) -> {
                 binding.imgaRecentPhotographOfApplicant.setImageURI(uri)
                 photoURI = uri
+                uploadFileOnServer(uri, 4)
             }
             requireActivity().resources.getString(R.string.attachmentIndividuallyField) -> {
                 binding.imgaIndividually.setImageURI(uri)
                 individualURI = uri
+                uploadFileOnServer(uri, 5)
+            }
+            requireActivity().resources.getString(R.string.attachmentarbitary) -> {
+                binding.imgaBBI.setImageURI(uri)
+                bbiURI = uri
+                uploadFileOnServer(uri, 6)
             }
         }
 
     }
+
     private fun createImageUri(fileName: String): Uri? {
         val name = fileName.replace("\\s".toRegex(), "")
-        val image = File(context?.filesDir , "$name.png")
+        val image = File(context?.filesDir, "$name.png")
         return context?.let {
             FileProvider.getUriForFile(
-                it,
-                "com.bbi.bizbulls.fileProvider",
-                image)
+                    it,
+                    "com.bbi.bizbulls.fileProvider",
+                    image)
         }
     }
+
     private fun selectImage(fileName: String) {
-        val options = arrayOf<CharSequence>("Take Photo", "Choose from Gallery", "Cancel")
-        val builder: AlertDialog.Builder = AlertDialog.Builder(context)
-        builder.setTitle("Add Photo!")
-        builder.setItems(options) { dialog, item ->
-            if (options[item] == "Take Photo") {
-                imageUri = createImageUri(fileName)!!
-                imageFromCamera.launch(imageUri)
-            } else if (options[item] == "Choose from Gallery") {
-                imageFromGallery.launch("image/*")
-            } else if (options[item] == "Cancel") {
-                dialog.dismiss()
+        if (checkPermission()) {
+            val options = arrayOf<CharSequence>("Take Photo", "Choose from Gallery", "Cancel")
+            val builder: AlertDialog.Builder = AlertDialog.Builder(context)
+            builder.setTitle("Add Photo!")
+            builder.setItems(options) { dialog, item ->
+                if (options[item] == "Take Photo") {
+                    imageUri = createImageUri(fileName)!!
+                    imageFromCamera.launch(imageUri)
+                } else if (options[item] == "Choose from Gallery") {
+                    imageFromGallery.launch("image/*")
+                } else if (options[item] == "Cancel") {
+                    dialog.dismiss()
+                }
             }
+            builder.show()
+        } else {
+            requestPermission()
         }
-        builder.show()
+
     }
 }

@@ -75,10 +75,10 @@ class FranchiseeRegistrationActivity : AppCompatActivity() {
                 fragmentCalling(FoChildDetailsFragment(stepPosition,actionType))
             }
             9 -> {
-                fragmentCalling(FoPersonalReferenceFragment(stepPosition,actionType)) //Pending
+                fragmentCalling(FoPersonalReferenceFragment(stepPosition,actionType))
             }
             10 -> {
-                fragmentCalling(FoAttachmentsFragment(stepPosition,actionType)) //Pending
+                fragmentCalling(FoAttachmentsFragment(stepPosition,actionType))
             }
             11 -> {
                 fragmentCalling(FoAuthorizationFragment(stepPosition,actionType))

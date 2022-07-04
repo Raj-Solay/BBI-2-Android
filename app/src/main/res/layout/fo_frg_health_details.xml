@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_margin="@dimen/_16sdp"
     android:layout_height="match_parent"
     android:background="@color/white">
@@ -30,8 +31,9 @@
                     android:layout_height="@dimen/_18sdp"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="@dimen/_8sdp"
+                    app:tint="@color/value"
                     android:adjustViewBounds="true"
-                    android:src="@drawable/ic_education_name" />
+                    android:src="@drawable/ic_health" />
 
                 <FrameLayout
                     android:layout_width="match_parent"
@@ -72,8 +74,9 @@
                     android:layout_height="@dimen/_18sdp"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="@dimen/_8sdp"
+                    app:tint="@color/value"
                     android:adjustViewBounds="true"
-                    android:src="@drawable/ic_education_name" />
+                    android:src="@drawable/ic_health" />
 
                 <FrameLayout
                     android:layout_width="match_parent"
@@ -117,7 +120,9 @@
                 <ImageView
                     android:layout_width="@dimen/_18sdp"
                     android:layout_height="@dimen/_18sdp"
+                    android:visibility="invisible"
                     android:layout_gravity="center_vertical"
+                    app:tint="@color/value"
                     android:layout_marginLeft="@dimen/_12sdp"
                     android:adjustViewBounds="true"
                     android:src="@drawable/ic_family_age" />
@@ -155,8 +160,9 @@
                     android:layout_height="@dimen/_18sdp"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="@dimen/_8sdp"
+                    app:tint="@color/value"
                     android:adjustViewBounds="true"
-                    android:src="@drawable/ic_family_age" />
+                    android:src="@drawable/ic_height" />
 
                 <FrameLayout
                     android:layout_width="match_parent"
@@ -192,9 +198,10 @@
                     android:layout_width="@dimen/_18sdp"
                     android:layout_height="@dimen/_18sdp"
                     android:layout_gravity="center_vertical"
+                    app:tint="@color/value"
                     android:layout_marginLeft="@dimen/_8sdp"
                     android:adjustViewBounds="true"
-                    android:src="@drawable/ic_family_age" />
+                    android:src="@drawable/ic_height" />
 
                 <FrameLayout
                     android:layout_width="match_parent"
@@ -235,6 +242,8 @@
                 <ImageView
                     android:layout_width="@dimen/_18sdp"
                     android:layout_height="@dimen/_18sdp"
+                    android:visibility="invisible"
+                    app:tint="@color/value"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="@dimen/_12sdp"
                     android:adjustViewBounds="true"
@@ -272,8 +281,9 @@
                     android:layout_height="@dimen/_18sdp"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="@dimen/_8sdp"
+                    app:tint="@color/value"
                     android:adjustViewBounds="true"
-                    android:src="@drawable/ic_family_age" />
+                    android:src="@drawable/ic_desc" />
 
                 <FrameLayout
                     android:layout_width="match_parent"
@@ -313,7 +323,9 @@
                 <ImageView
                     android:layout_width="@dimen/_18sdp"
                     android:layout_height="@dimen/_18sdp"
+                    android:visibility="invisible"
                     android:layout_gravity="center_vertical"
+                    app:tint="@color/value"
                     android:layout_marginLeft="@dimen/_12sdp"
                     android:adjustViewBounds="true"
                     android:src="@drawable/ic_family_age" />
@@ -350,8 +362,10 @@
                 <ImageView
                     android:layout_width="@dimen/_18sdp"
                     android:layout_height="@dimen/_18sdp"
+                    android:visibility="invisible"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="@dimen/_8sdp"
+                    app:tint="@color/value"
                     android:adjustViewBounds="true"
                     android:src="@drawable/ic_family_age" />
 
@@ -393,8 +407,10 @@
                 <ImageView
                     android:layout_width="@dimen/_18sdp"
                     android:layout_height="@dimen/_18sdp"
+                    android:visibility="invisible"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="@dimen/_12sdp"
+                    app:tint="@color/value"
                     android:adjustViewBounds="true"
                     android:src="@drawable/ic_family_age" />
 
@@ -429,8 +445,9 @@
                     android:layout_height="@dimen/_18sdp"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="@dimen/_8sdp"
+                    app:tint="@color/value"
                     android:adjustViewBounds="true"
-                    android:src="@drawable/ic_family_age" />
+                    android:src="@drawable/ic_desc" />
 
                 <FrameLayout
                     android:layout_width="match_parent"
@@ -469,7 +486,9 @@
                 <ImageView
                     android:layout_width="@dimen/_18sdp"
                     android:layout_height="@dimen/_18sdp"
+                    android:visibility="invisible"
                     android:layout_gravity="center_vertical"
+                    app:tint="@color/value"
                     android:layout_marginLeft="@dimen/_12sdp"
                     android:adjustViewBounds="true"
                     android:src="@drawable/ic_family_age" />
@@ -505,8 +524,9 @@
                     android:layout_height="@dimen/_18sdp"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="@dimen/_8sdp"
+                    app:tint="@color/value"
                     android:adjustViewBounds="true"
-                    android:src="@drawable/ic_family_age" />
+                    android:src="@drawable/ic_desc" />
 
                 <FrameLayout
                     android:layout_width="match_parent"
@@ -545,7 +565,9 @@
                 <ImageView
                     android:layout_width="@dimen/_18sdp"
                     android:layout_height="@dimen/_18sdp"
+                    android:visibility="invisible"
                     android:layout_gravity="center_vertical"
+                    app:tint="@color/value"
                     android:layout_marginLeft="@dimen/_12sdp"
                     android:adjustViewBounds="true"
                     android:src="@drawable/ic_family_age" />
@@ -582,11 +604,12 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="@dimen/_8sdp"
                     android:adjustViewBounds="true"
-                    android:src="@drawable/ic_family_age" />
+                    android:src="@drawable/ic_desc" />
 
                 <FrameLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    app:tint="@color/value"
                     android:layout_gravity="center_vertical"
                     android:paddingLeft="@dimen/_50sdp"
                     android:paddingRight="@dimen/_10sdp">

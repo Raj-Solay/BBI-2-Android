@@ -23,10 +23,10 @@ object RetrofitClient {
     private fun getClient(): Retrofit {
         if (retrofit == null) {
             retrofit = Retrofit.Builder()
-                .baseUrl(Globals.BASE_URL)
-                .client(okHttpClient())
-                .addConverterFactory(GsonConverterFactory.create())/* Converter Factory to convert your Json to gson */
-                .build()
+                    .baseUrl(Globals.BASE_URL)
+                    .client(okHttpClient())
+                    .addConverterFactory(GsonConverterFactory.create())/* Converter Factory to convert your Json to gson */
+                    .build()
         }
         return retrofit!!
     }
@@ -39,9 +39,10 @@ object RetrofitClient {
         val interceptor = HttpLoggingInterceptor()
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
         return OkHttpClient.Builder()
-            .connectTimeout(2, TimeUnit.MINUTES)
-            .readTimeout(2, TimeUnit.MINUTES).addInterceptor(interceptor)
-            .build()
+                .connectTimeout(2, TimeUnit.MINUTES)
+                .writeTimeout(2, TimeUnit.MINUTES)
+                .readTimeout(2, TimeUnit.MINUTES).addInterceptor(interceptor)
+                .build()
     }
 
 
@@ -53,7 +54,7 @@ object RetrofitClient {
     fun showResponseMessage(context: Context, responseCode: Int) {
         val dialog = Dialog(context)
         val binding: DialogMessagesBinding =
-            DialogMessagesBinding.inflate(LayoutInflater.from(context))
+                DialogMessagesBinding.inflate(LayoutInflater.from(context))
         dialog.setContentView(binding.root)
         // TODO WHen release the application change the cancelable true to false
         dialog.setCancelable(true)
@@ -82,7 +83,7 @@ object RetrofitClient {
         }
 
         //now that the dialog is set up, it's time to show it
-         dialog.show()
+        dialog.show()
     }
 
     /**
@@ -90,10 +91,10 @@ object RetrofitClient {
      *
      * @param context activity or fragment context
      */
-    fun showFailedMessage(context: Context,  t: Throwable) {
+    fun showFailedMessage(context: Context, t: Throwable) {
         val dialog = Dialog(context)
         val binding: DialogMessagesBinding =
-            DialogMessagesBinding.inflate(LayoutInflater.from(context))
+                DialogMessagesBinding.inflate(LayoutInflater.from(context))
         dialog.setContentView(binding.root)
         dialog.setCancelable(true)
         dialog.window?.setGravity(Gravity.CENTER)

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white">
@@ -31,7 +32,9 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="@dimen/_8sdp"
                     android:adjustViewBounds="true"
-                    android:src="@drawable/ic_education_name" />
+                    android:src="@drawable/ic_education_name"
+                    app:tint="@color/value" />
+
 
                 <FrameLayout
                     android:layout_width="match_parent"
@@ -71,6 +74,7 @@
                 <ImageView
                     android:layout_width="@dimen/_18sdp"
                     android:layout_height="@dimen/_18sdp"
+                    android:visibility="invisible"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="@dimen/_12sdp"
                     android:adjustViewBounds="true"
@@ -113,6 +117,7 @@
                 <ImageView
                     android:layout_width="@dimen/_18sdp"
                     android:layout_height="@dimen/_18sdp"
+                    android:visibility="invisible"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="@dimen/_12sdp"
                     android:adjustViewBounds="true"
@@ -152,6 +157,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="@dimen/_8sdp"
                     android:adjustViewBounds="true"
+                    app:tint="@color/value"
                     android:src="@drawable/ic_family_age" />
 
                 <FrameLayout
@@ -192,6 +198,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="@dimen/_8sdp"
                     android:adjustViewBounds="true"
+                    app:tint="@color/value"
                     android:src="@drawable/ic_family_occupation" />
 
                 <FrameLayout
@@ -229,6 +236,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="@dimen/_8sdp"
                     android:adjustViewBounds="true"
+                    app:tint="@color/value"
                     android:src="@drawable/ic_family_address" />
 
                 <FrameLayout
@@ -266,6 +274,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="@dimen/_8sdp"
                     android:adjustViewBounds="true"
+                    app:tint="@color/value"
                     android:src="@drawable/ic_contact" />
 
                 <FrameLayout

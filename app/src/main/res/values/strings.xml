@@ -191,6 +191,7 @@
     <string name="attachmentResidential">Residential Address Proof</string>
     <string name="attachmentPhoto">Recent Photograph of applicant</string>
     <string name="attachmentIndividuallyField">Individually filled &amp; signed copies of this form (in case of partnership)</string>
+    <string name="attachmentarbitary">BIZ BULLS Arbitrary Agreement</string>
     <!--     Authorization -->
     <string name="ct_authinfo">I certify that all the information given in this application is true to the best of my knowledge.</string>
     <string name="ct_authinfoone">Should any information stated by me in this application be in-correct, my association / License with you is liable to immediate termination without refund of any payment.</string>

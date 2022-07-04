@@ -3,7 +3,7 @@ package com.bbi.bizbulls.model
 import com.google.gson.annotations.SerializedName
 import com.google.gson.annotations.Expose
 
-class AttachmentsViewRes {
+class DocumentsViewRes {
     @SerializedName("data")
     @Expose
     var data: List<Data>? = null

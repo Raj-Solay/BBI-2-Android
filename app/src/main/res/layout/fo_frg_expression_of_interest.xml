@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_margin="@dimen/_16sdp"
     android:background="@color/white">
 
@@ -11,6 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/white"
+        android:layout_marginBottom="@dimen/_8sdp"
         android:layout_above="@+id/stepSubmit">
 
         <LinearLayout
@@ -33,7 +35,8 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="@dimen/_8sdp"
                     android:adjustViewBounds="true"
-                    android:src="@drawable/ic_education_name" />
+                    app:tint="@color/value"
+                    android:src="@drawable/ic_tax" />
 
                 <FrameLayout
                     android:layout_width="match_parent"
@@ -70,8 +73,9 @@
                     android:layout_height="@dimen/_18sdp"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="@dimen/_8sdp"
+                    app:tint="@color/value"
                     android:adjustViewBounds="true"
-                    android:src="@drawable/ic_education_name" />
+                    android:src="@drawable/ic_tax" />
 
                 <FrameLayout
                     android:layout_width="match_parent"
@@ -107,8 +111,9 @@
                     android:layout_height="@dimen/_18sdp"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="@dimen/_8sdp"
+                    app:tint="@color/value"
                     android:adjustViewBounds="true"
-                    android:src="@drawable/ic_education_name" />
+                    android:src="@drawable/ic_family_address" />
 
                 <FrameLayout
                     android:layout_width="match_parent"
@@ -145,6 +150,7 @@
                     android:layout_height="@dimen/_18sdp"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="@dimen/_8sdp"
+                    app:tint="@color/value"
                     android:adjustViewBounds="true"
                     android:src="@drawable/ic_education_name" />
 
@@ -180,7 +186,9 @@
                 <ImageView
                     android:layout_width="@dimen/_18sdp"
                     android:layout_height="@dimen/_18sdp"
+                    android:visibility="invisible"
                     android:layout_gravity="center_vertical"
+                    app:tint="@color/value"
                     android:layout_marginLeft="@dimen/_14sdp"
                     android:adjustViewBounds="true"
                     android:src="@drawable/ic_family_age" />
@@ -217,9 +225,10 @@
                     android:layout_width="@dimen/_18sdp"
                     android:layout_height="@dimen/_18sdp"
                     android:layout_gravity="center_vertical"
+                    app:tint="@color/value"
                     android:layout_marginLeft="@dimen/_8sdp"
                     android:adjustViewBounds="true"
-                    android:src="@drawable/ic_education_name" />
+                    android:src="@drawable/ic_tax" />
 
                 <FrameLayout
                     android:layout_width="match_parent"
@@ -256,9 +265,10 @@
                     android:layout_width="@dimen/_18sdp"
                     android:layout_height="@dimen/_18sdp"
                     android:layout_gravity="center_vertical"
+                    app:tint="@color/value"
                     android:layout_marginLeft="@dimen/_8sdp"
                     android:adjustViewBounds="true"
-                    android:src="@drawable/ic_education_name" />
+                    android:src="@drawable/ic_desc" />
 
                 <FrameLayout
                     android:layout_width="match_parent"
@@ -295,8 +305,9 @@
                     android:layout_height="@dimen/_18sdp"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="@dimen/_8sdp"
+                    app:tint="@color/value"
                     android:adjustViewBounds="true"
-                    android:src="@drawable/ic_education_name" />
+                    android:src="@drawable/ic_desc" />
 
                 <FrameLayout
                     android:layout_width="match_parent"
@@ -340,6 +351,8 @@
                     android:layout_height="@dimen/_18sdp"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="@dimen/_14sdp"
+                    app:tint="@color/value"
+                    android:visibility="invisible"
                     android:adjustViewBounds="true"
                     android:src="@drawable/ic_family_age" />
 
@@ -376,8 +389,9 @@
                     android:layout_height="@dimen/_18sdp"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="@dimen/_8sdp"
+                    app:tint="@color/value"
                     android:adjustViewBounds="true"
-                    android:src="@drawable/ic_education_name" />
+                    android:src="@drawable/ic_desc" />
 
                 <FrameLayout
                     android:layout_width="match_parent"
@@ -408,8 +422,6 @@
         android:layout_height="@dimen/_45sdp"
         android:layout_alignParentBottom="true"
         android:layout_gravity="center"
-        android:layout_marginTop="@dimen/_16sdp"
-        android:layout_marginBottom="@dimen/_16sdp"
         android:background="@drawable/bg_submit"
         android:gravity="center"
         android:text="@string/f_submit"
