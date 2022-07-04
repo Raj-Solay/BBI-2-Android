@@ -18,6 +18,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BizBullsIndia">
         <activity
+            android:name=".menu.FollowUsActivity"
+            android:exported="false" />
+        <activity
             android:name=".menu.ReatingActivity"
             android:exported="false" />
         <activity
