@@ -28,6 +28,7 @@ import com.bbi.bizbulls.sharedpref.SharedPrefsManager
 import com.bbi.bizbulls.ui.registrationforfo.FranchiseeRegistrationViewModel
 import com.bbi.bizbulls.utils.CommonUtils
 import com.bbi.bizbulls.utils.FileUtils
+import com.bbi.bizbulls.utils.Globals
 import com.bbi.bizbulls.utils.MyProcessDialog
 import com.google.android.material.snackbar.Snackbar
 import com.google.gson.JsonArray
@@ -206,26 +207,90 @@ class FoAttachmentsFragment(private val stepPosition: Int, private var actionTyp
     private fun setUpDataInUI(data: List<DocumentsViewRes.Data>?) {
         uid = data?.get(0)?.id.toString()
 
-        if (data?.get(0) != null) {
+       var rList = data?.reversed()
+
+        if (rList?.get(0) != null) {
             // Picasso.get().load(data.get(0)?.documentName).into(holder.itemBinding.itemIcon)
+            Picasso.get().load(Globals.BASE_URL+Globals.ASSET_URL+rList.get(0).documentName+"/render")
+                    .into(binding.imgpancard)
+            val assetReq = AssetUploadReq()
+            //image/jpeg
+            assetReq.mimeType = "image/jpeg"
+            assetReq.name = rList.get(0).documentName.toString()
+            assetReq.id = "1"
+            uploadFileList.add(0, assetReq)
         }
-        Picasso.get().load("https://bizbulls.beurboss.com/api/assets/ad08a48d-b181-4098-841b-7e1794647fca/render")
-                .into(binding.imgpancard)
+        if (rList?.get(1) != null) {
+            // Picasso.get().load(data.get(0)?.documentName).into(holder.itemBinding.itemIcon)
+            Picasso.get().load(Globals.BASE_URL+Globals.ASSET_URL+rList.get(1).documentName+"/render")
+                    .into(binding.imgaadharcard)
+            val assetReq = AssetUploadReq()
+            //image/jpeg
+            assetReq.mimeType = "image/jpeg"
+            assetReq.name = rList.get(1).documentName.toString()
+            assetReq.id = "1"
+            uploadFileList.add(1, assetReq)
+        }
 
-        Picasso.get().load("https://bizbulls.beurboss.com/api/assets/ad08a48d-b181-4098-841b-7e1794647fca/render")
-                .into(binding.imgaadharcard)
+        if (rList?.get(2) != null) {
+            // Picasso.get().load(data.get(0)?.documentName).into(holder.itemBinding.itemIcon)
+            Picasso.get().load(Globals.BASE_URL+Globals.ASSET_URL+rList.get(2).documentName+"/render")
+                    .into(binding.imgaResidence)
+            val assetReq = AssetUploadReq()
+            //image/jpeg
+            assetReq.mimeType = "image/jpeg"
+            assetReq.name = rList.get(2).documentName.toString()
+            assetReq.id = "2"
+            uploadFileList.add(2, assetReq)
+        }
 
-        Picasso.get().load("https://bizbulls.beurboss.com/api/assets/ad08a48d-b181-4098-841b-7e1794647fca/render")
-                .into(binding.imgaResidence)
+        if (rList?.get(3) != null) {
+            // Picasso.get().load(data.get(0)?.documentName).into(holder.itemBinding.itemIcon)
+            Picasso.get().load(Globals.BASE_URL+Globals.ASSET_URL+rList.get(3).documentName+"/render")
+                    .into(binding.imgaIndividually)
+            val assetReq = AssetUploadReq()
+            //image/jpeg
+            assetReq.mimeType = "image/jpeg"
+            assetReq.name = rList.get(3).documentName.toString()
+            assetReq.id = "3"
+            uploadFileList.add(3, assetReq)
+        }
 
-        Picasso.get().load("https://bizbulls.beurboss.com/api/assets/ad08a48d-b181-4098-841b-7e1794647fca/render")
-                .into(binding.imgaIndividually)
+        if (rList?.get(4) != null) {
+            // Picasso.get().load(data.get(0)?.documentName).into(holder.itemBinding.itemIcon)
+            Picasso.get().load(Globals.BASE_URL+Globals.ASSET_URL+rList.get(4).documentName+"/render")
+                    .into(binding.imgaRecentPhotographOfApplicant)
+            val assetReq = AssetUploadReq()
+            //image/jpeg
+            assetReq.mimeType = "image/jpeg"
+            assetReq.name = rList.get(4).documentName.toString()
+            assetReq.id = "4"
+            uploadFileList.add(4, assetReq)
+        }
 
-        Picasso.get().load("https://bizbulls.beurboss.com/api/assets/ad08a48d-b181-4098-841b-7e1794647fca/render")
-                .into(binding.imgaRecentPhotographOfApplicant)
+        if (rList?.get(5) != null) {
+            // Picasso.get().load(data.get(0)?.documentName).into(holder.itemBinding.itemIcon)
+            Picasso.get().load(Globals.BASE_URL+Globals.ASSET_URL+rList.get(5).documentName+"/render")
+                    .into(binding.imgaBBI)
+            val assetReq = AssetUploadReq()
+            //image/jpeg
+            assetReq.mimeType = "image/jpeg"
+            assetReq.name = rList.get(5).documentName.toString()
+            assetReq.id = "5"
+            uploadFileList.add(5, assetReq)
+        }
 
-        Picasso.get().load("https://bizbulls.beurboss.com/api/assets/ad08a48d-b181-4098-841b-7e1794647fca/render")
-                .into(binding.imgaBBI)
+        if (rList?.get(6) != null) {
+            // Picasso.get().load(data.get(0)?.documentName).into(holder.itemBinding.itemIcon)
+            Picasso.get().load(Globals.BASE_URL+Globals.ASSET_URL+rList.get(6).documentName+"/render")
+                    .into(binding.imgaBBI)
+            val assetReq = AssetUploadReq()
+            //image/jpeg
+            assetReq.mimeType = "image/jpeg"
+            assetReq.name = rList.get(6).documentName.toString()
+            assetReq.id = "6"
+            uploadFileList.add(6, assetReq)
+        }
 
         var isEditable = false
         when (actionType) {
@@ -288,7 +353,7 @@ class FoAttachmentsFragment(private val stepPosition: Int, private var actionTyp
                     //image/jpeg
                     var fType = mimeType?.split("/")
                     assetReq.mimeType = fType?.get(1).toString()
-                    assetReq.name = file.name
+                    assetReq.name = assetRes?.id.toString()
                     assetReq.id = type.toString()
                     uploadFileList.add(type - 1, assetReq)
                 } else {
