@@ -421,7 +421,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="22dp"
                             android:layout_marginStart="8dp"
-                            android:background="@drawable/bg_roundlighred"
+                            android:background="@drawable/bg_rounddarkorange"
                             android:paddingStart="8dp"
                             android:paddingEnd="8dp"
                             android:text="Pay Now"
@@ -1009,12 +1009,14 @@
                         <androidx.appcompat.widget.AppCompatTextView
                             android:id="@+id/txtlicensestatus"
                             style="@style/fontregular"
+                            app:layout_constraintEnd_toStartOf="@+id/imgLicence"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
-                            android:text="Completed"
+                            android:text="@string/licence_issued"
                             android:textColor="@color/status_green"
                             android:textSize="@dimen/medium_font"
+                            android:textStyle="bold"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
@@ -1027,11 +1029,22 @@
                             android:layout_marginStart="8dp"
                             android:layout_marginTop="6dp"
                             android:text="081112021"
+                            app:layout_constraintEnd_toStartOf="@+id/imgLicence"
                             android:textColor="@color/heading"
                             android:textSize="@dimen/medium_font"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/txtlicensestatus" />
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/imgLicence"
+                            android:layout_width="@dimen/_30sdp"
+                            android:layout_height="@dimen/_30sdp"
+                            android:layout_marginEnd="@dimen/_10sdp"
+                            app:layout_constraintTop_toTopOf="@+id/txtlicensestatus"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintBottom_toBottomOf="@+id/txtlicensedate"
+                            app:srcCompat="@drawable/ic_certificate"
+                            />
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
                     <androidx.constraintlayout.widget.ConstraintLayout
@@ -1052,7 +1065,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
                             android:layout_marginTop="2dp"
-                            android:text="Pending Approval"
+                            android:text="@string/pending_approval"
                             android:textColor="@color/status_red"
                             android:textSize="@dimen/medium_font"
                             app:layout_constraintStart_toStartOf="parent"
@@ -1068,7 +1081,7 @@
                             android:background="@drawable/bg_submit"
                             android:paddingStart="8dp"
                             android:paddingEnd="8dp"
-                            android:text="Add License"
+                            android:text="@string/add_license"
                             android:textColor="@color/white"
                             android:textSize="@dimen/medium_font"
                             app:layout_constraintBottom_toBottomOf="parent"

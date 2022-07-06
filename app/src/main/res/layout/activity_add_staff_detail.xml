@@ -7,6 +7,61 @@
     android:background="@drawable/white_button"
     android:orientation="vertical">
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/toolbarh"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/toolBarHeight"
+        android:background="@color/orange_700"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <RelativeLayout
+            android:id="@+id/layoutdraweropen"
+            android:layout_width="@dimen/toolBarHeight"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/backNavigation"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerVertical="true"
+                android:padding="@dimen/_10dp"
+                android:src="@drawable/ic__back_white" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:layout_toEndOf="@+id/layoutdraweropen"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txtlcoationname"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/imagebox"
+                android:layout_centerInParent="true"
+                android:layout_marginStart="@dimen/minimumspacing"
+                android:layout_marginEnd="@dimen/minimumspacing"
+                android:gravity="center"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:src="@drawable/app_logo"
+                android:text="@string/add_staff_details"
+                android:textAllCaps="true"
+                android:textColor="@color/white"
+                android:textStyle="bold" />
+
+        </RelativeLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/etFirstName"
         style="@style/fontregular"
@@ -96,6 +151,7 @@
             android:layout_height="match_parent"
             android:layout_gravity="left|center"
             android:layout_weight="3.3"
+            android:visibility="gone"
             android:gravity="left|center"
             android:orientation="horizontal">
 
@@ -145,98 +201,96 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_marginTop="@dimen/_15sdp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_15sdp"
         android:orientation="horizontal">
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/llUploadPhoto"
-                android:layout_width="@dimen/_45sdp"
-                android:layout_height="@dimen/_45sdp"
-                android:layout_marginStart="@dimen/_100sdp"
-                android:layout_marginTop="@dimen/_10sdp"
-                android:foregroundGravity="center"
-                app:cardBackgroundColor="@color/light_orange"
-                app:cardCornerRadius="6dp"
-                app:cardElevation="0dp"
-                app:cardMaxElevation="0dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/llUploadOfficeBlueprint">
+        <androidx.cardview.widget.CardView
+            android:id="@+id/llUploadPhoto"
+            android:layout_width="@dimen/_45sdp"
+            android:layout_height="@dimen/_45sdp"
+            android:layout_marginStart="@dimen/_100sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:foregroundGravity="center"
+            app:cardBackgroundColor="@color/light_orange"
+            app:cardCornerRadius="6dp"
+            app:cardElevation="0dp"
+            app:cardMaxElevation="0dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/llUploadOfficeBlueprint">
 
-                <RelativeLayout
+            <RelativeLayout
 
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/imgPhotoPlaceholder"
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:layout_centerInParent="true"
+                    android:layout_gravity="center"
+                    android:src="@drawable/upload" />
+
+                <ImageView
+                    android:id="@+id/imgPhoto"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="@dimen/_40sdp" />
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
 
-                    <ImageView
-                        android:id="@+id/imgvpancard"
-                        android:layout_width="@dimen/_20sdp"
-                        android:layout_height="@dimen/_20sdp"
-                        android:layout_centerInParent="true"
-                        android:layout_gravity="center"
-                        android:src="@drawable/upload" />
-
-                    <ImageView
-                        android:id="@+id/imgpancard"
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/_40sdp" />
-                </RelativeLayout>
-            </androidx.cardview.widget.CardView>
-
-            <androidx.appcompat.widget.AppCompatTextView
-                style="@style/checkWithTextLayout"
-                android:layout_width="wrap_content"
-                android:text="@string/upload_photo"
-                android:gravity="center"
-                android:layout_gravity="center"
-                app:layout_constraintEnd_toEndOf="@id/llUploadPhoto"
-                app:layout_constraintStart_toStartOf="@+id/llUploadPhoto"
-                app:layout_constraintTop_toBottomOf="@+id/llUploadPhoto" />
+        <androidx.appcompat.widget.AppCompatTextView
+            style="@style/checkWithTextLayout"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="@string/upload_photo"
+            app:layout_constraintEnd_toEndOf="@id/llUploadPhoto"
+            app:layout_constraintStart_toStartOf="@+id/llUploadPhoto"
+            app:layout_constraintTop_toBottomOf="@+id/llUploadPhoto" />
 
 
+        <androidx.cardview.widget.CardView
+            android:id="@+id/llUploadResume"
+            android:layout_width="@dimen/_45sdp"
+            android:layout_height="@dimen/_45sdp"
+            android:layout_marginStart="@dimen/_30sdp"
+            android:foregroundGravity="center"
+            app:cardBackgroundColor="@color/light_orange"
+            app:cardCornerRadius="6dp"
+            app:cardElevation="0dp"
+            app:cardMaxElevation="0dp"
+            app:layout_constraintStart_toEndOf="@id/llUploadPhoto"
+            app:layout_constraintTop_toTopOf="@+id/llUploadPhoto">
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/llUploadVideo"
-                android:layout_width="@dimen/_45sdp"
-                android:layout_height="@dimen/_45sdp"
-                android:layout_marginStart="@dimen/_30sdp"
-                android:layout_marginTop="@dimen/_10sdp"
-                android:foregroundGravity="center"
-                app:cardBackgroundColor="@color/light_orange"
-                app:cardCornerRadius="6dp"
-                app:cardElevation="0dp"
-                app:cardMaxElevation="0dp"
-                app:layout_constraintStart_toEndOf="@id/llUploadPhoto"
-                app:layout_constraintTop_toBottomOf="@+id/llUploadOfficeBlueprint">
+            <RelativeLayout
 
-                <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
+                <ImageView
+                    android:id="@+id/imgResumePlaceHolder"
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:layout_centerInParent="true"
+                    android:layout_gravity="center"
+                    android:src="@drawable/upload" />
+
+                <ImageView
+                    android:id="@+id/imgResume"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="@dimen/_40sdp" />
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
 
-                    <ImageView
-                        android:id="@+id/video"
-                        android:layout_width="@dimen/_20sdp"
-                        android:layout_height="@dimen/_20sdp"
-                        android:layout_centerInParent="true"
-                        android:layout_gravity="center"
-                        android:src="@drawable/upload" />
-
-                    <ImageView
-                        android:id="@+id/videopancard"
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/_40sdp" />
-                </RelativeLayout>
-            </androidx.cardview.widget.CardView>
-
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/txtVideo"
-                style="@style/checkWithTextLayout"
-                android:layout_width="wrap_content"
-                android:text="@string/upload_video"
-                app:layout_constraintEnd_toEndOf="@+id/llUploadVideo"
-                app:layout_constraintStart_toStartOf="@+id/llUploadVideo"
-                app:layout_constraintTop_toBottomOf="@+id/llUploadVideo" />
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/txtResume"
+            style="@style/checkWithTextLayout"
+            android:layout_width="wrap_content"
+            android:text="@string/upload_resume"
+            app:layout_constraintEnd_toEndOf="@+id/llUploadResume"
+            app:layout_constraintStart_toStartOf="@+id/llUploadResume"
+            app:layout_constraintTop_toBottomOf="@+id/llUploadResume" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <LinearLayout

@@ -107,7 +107,7 @@
             android:background="@color/button_background_redlight"
             android:paddingTop="8dp"
             android:paddingBottom="16dp"
-            android:visibility="visible"
+            android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -118,13 +118,29 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:text="Pending Approval"
+                android:text="Pending"
                 android:textColor="@color/status_red"
                 android:textSize="@dimen/medium_font"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
-
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnPayNow"
+                style="@style/fontregular"
+                android:layout_width="wrap_content"
+                android:layout_height="22dp"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/bg_submit"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
+                android:layout_marginTop="@dimen/_2sdp"
+                android:text="@string/pay_now"
+                app:layout_constraintTop_toBottomOf="@+id/txtfranchisee_feestatusincomplete"
+                android:textColor="@color/white"
+                android:textSize="@dimen/medium_font"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:ignore="TouchTargetSizeCheck" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>

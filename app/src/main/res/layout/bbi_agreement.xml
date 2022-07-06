@@ -107,7 +107,7 @@
             android:background="@color/button_background_redlight"
             android:paddingTop="8dp"
             android:paddingBottom="16dp"
-            android:visibility="visible"
+            android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">

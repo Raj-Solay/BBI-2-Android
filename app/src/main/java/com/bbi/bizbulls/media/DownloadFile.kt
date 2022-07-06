@@ -1,7 +1,11 @@
 package com.bbi.bizbulls.media
 
 import android.content.Context
+import android.content.Intent
 import android.util.Log
+import android.webkit.MimeTypeMap
+import android.widget.Toast
+import androidx.core.content.FileProvider
 import com.bbi.bizbulls.remote.RetrofitClient
 import com.bbi.bizbulls.utils.MyProcessDialog
 import okhttp3.ResponseBody
@@ -9,11 +13,12 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import java.io.*
+import java.util.*
 
 
 object DownloadFile {
   val TAG ="DownloadFile"
-    private fun download(url: String?, ctx:Context) {
+     fun download(url: String?, ctx:Context) {
         MyProcessDialog.showProgressBar(ctx, 0)
         val call: Call<ResponseBody> = RetrofitClient.getUrl().downloadFileWithDynamicUrlSync(url)
         call.enqueue(object : Callback<ResponseBody> {
@@ -41,7 +46,7 @@ object DownloadFile {
     private fun writeResponseBodyToDisk(body: ResponseBody?, ctx: Context): Boolean {
         return try {
             // todo change the file location/name according to your needs
-            val futureStudioIconFile = File(ctx.getExternalFilesDir(null),File.separator.toString() + "Bizzbull.png")
+            val futureStudioIconFile = File(ctx.getExternalFilesDir(null),File.separator.toString()+Date() + "_Bizzbull.png")
             var inputStream: InputStream? = null
             var outputStream: OutputStream? = null
             try {
@@ -60,6 +65,27 @@ object DownloadFile {
                     Log.d(TAG, "file download: $fileSizeDownloaded of $fileSize")
                 }
                 outputStream?.flush()
+
+                try {
+                    Toast.makeText(ctx,"File downloaded at: ${futureStudioIconFile.absolutePath}",Toast.LENGTH_SHORT).show()
+                    val map = MimeTypeMap.getSingleton()
+                    val ext = MimeTypeMap.getFileExtensionFromUrl(futureStudioIconFile.name)
+                    var type = map.getMimeTypeFromExtension(ext)
+
+                    if (type == null) type = "*/*"
+                    val intent = Intent(Intent.ACTION_VIEW)
+
+                    val data = FileProvider.getUriForFile(
+                        ctx,
+                        ctx.packageName + ".fileProvider",
+                        futureStudioIconFile
+                    )
+
+                    intent.setDataAndType(data, type)
+                    ctx.startActivity(intent)
+                }catch (e:Exception){
+                    e.printStackTrace()
+                }
                 true
             } catch (e: IOException) {
                 false

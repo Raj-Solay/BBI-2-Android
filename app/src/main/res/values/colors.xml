@@ -23,4 +23,6 @@
     <color name="status_green">#049a5b</color>
     <color name="status_red">#ff6c52</color>
     <color name="oil">#C3591E</color>
+    <color name="gray">#CCC7C7</color>
+
 </resources>
