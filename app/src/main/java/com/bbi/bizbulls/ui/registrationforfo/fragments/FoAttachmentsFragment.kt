@@ -17,7 +17,6 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
 import androidx.fragment.app.Fragment
-import androidx.test.core.app.ApplicationProvider.getApplicationContext
 import com.bbi.bizbulls.R
 import com.bbi.bizbulls.databinding.FoFrgAttachmentsBinding
 import com.bbi.bizbulls.model.AssetUploadReq

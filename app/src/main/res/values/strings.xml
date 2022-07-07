@@ -303,6 +303,7 @@
     <string name="family_details">Family details saved successfully!</string>
     <string name="family_details_update">Family details update successfully!</string>
     <string name="children_details">Children details saved successfully!</string>
+    <string name="children_details_update">Children details update successfully!</string>
     <string name="personalReferences_details">Personal References details saved successfully!</string>
     <string name="personalReferences_details_update">Personal References details update successfully!</string>
     <string name="attachments_details">Attachments saved successfully!</string>
