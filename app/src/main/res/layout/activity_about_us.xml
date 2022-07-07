@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".menu.AboutUsActivity">
+    <include
+        android:id="@+id/custom_title_layout"
+        layout="@layout/hader"
+        app:layout_constraintTop_toTopOf="@+id/posts" />
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="@dimen/_5dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_about_us"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fontFamily="@font/source_semibold"
+            android:gravity="left|top"
+            android:text="Who are we"
+            android:paddingHorizontal="@dimen/_5dp"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_16sdp" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fontFamily="@font/source_regular"
+            android:gravity="left|top"
+            android:text="We are BIZBULLS INDIA - The only multi-unit franchising company that helps you create, innovate, and execute your franchisee dreams. We are a complete solution provider to the Franchise business, having acquired a vast base of clients. We help you understand the market and expand your business in a better way."
+            android:paddingHorizontal="@dimen/_5dp"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_14sdp" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/source_semibold"
+                android:gravity="left|top"
+                android:text="Our Vision"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:paddingHorizontal="@dimen/_5dp"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_16sdp" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/source_regular"
+                android:gravity="left|top"
+                android:text="To become the largest franchising services agency in the country. We look forward to providing the best and most competitive franchise services to our clients and franchisees, supporting our franchisees for sustained growth in the franchise business, and providing them with the best training, marketing, business know-how, and support services."
+                android:paddingHorizontal="@dimen/_5dp"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_14sdp" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/source_semibold"
+                android:gravity="left|top"
+                android:text="What we do"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:paddingHorizontal="@dimen/_5dp"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_16sdp" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/source_regular"
+                android:gravity="left|top"
+                android:text="@string/about_us_text"
+                android:paddingHorizontal="@dimen/_5dp"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_14sdp" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</LinearLayout>

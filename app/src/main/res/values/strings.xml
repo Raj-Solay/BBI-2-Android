@@ -21,6 +21,8 @@
     <string name="menurateus">Rate us</string>
     <string name="menusetting">Settings</string>
     <string name="menulogout">Logout</string>
+    <string name="about_us">Kotlin is an open-source, general-purpose, statically typed programming language. It is JVM-based and may be used in all projects where Java is currently used. It may be used to create Android apps, server-side apps, and a variety of other applications. It is an improved version of Java and is completely interoperable with it. We can even mix Kotlin and Java in the same project. It blends Object Oriented Programming (OOPs) and functional programming in a platform that is unlimited, self-contained, and unique. It also enables functional twinning using microcodes. The JetBrains team created Kotlin. The language was initially launched in February 2016 after a project began in 2010 to develop it. The Apache 2.0 license was used to create Kotlin. Programs written in Kotlin do not require semicolons. This makes the code more readable and easy to understand. This language enables the interchange and usage of Java in a variety of ways. Furthermore, code written in Java and Kotlin can coexist in the same project. The type system of Kotlin is designed to eliminate NullPointerException from code. Writing new code in Kotlin will take you less time. Kotlin code is even easier to deploy and manage at scale.</string>
+    <string name="google_maps_key">AIzaSyDOV-kb-JWBC2qk7HvkEajnQFcrFCkb3FI</string>
 
     <!--     MENU -->
     <string name="fo_home">Home</string>
@@ -275,6 +277,7 @@
     <string name="b_4">HDFC Bank</string>
     <string name="b_5">ICICI Bank</string>
     <string name="b_6">IDFC FIRST Bank</string>
+    <string name="Rs">\u20B9 50</string>
 
     <string name="bizBullsIndia_url">https://www.bizbullsindia.com</string>
     <string name="logout">Logout Successfully!</string>
@@ -300,11 +303,158 @@
     <string name="family_details">Family details saved successfully!</string>
     <string name="family_details_update">Family details update successfully!</string>
     <string name="children_details">Children details saved successfully!</string>
-    <string name="children_details_update">Children details update successfully!</string>
     <string name="personalReferences_details">Personal References details saved successfully!</string>
     <string name="personalReferences_details_update">Personal References details update successfully!</string>
     <string name="attachments_details">Attachments saved successfully!</string>
     <string name="attachments_details_update">Attachments update successfully!</string>
     <string name="authorization_details">Authorization saved successfully!</string>
     <string name="authorization_details_update">Authorization update successfully!</string>
+    <string name="about_us_text">.We provide a one-stop solution for all your franchise needs, from franchise advisory to franchise promotion.\n.We will help you build your business with scalability and sustainability.\n.We work with franchisors to reach the right audience and help them differentiate their businesses.
+        \n.We offer the business owner a chance to operate an independent business while enjoying many significant business benefits.\n.We work by the unique business model of a Franchisor and promote their brand, achieving their targeted growth quickly.
+        \nWhy choose us?\n.We are here to help you with the set of all the fundamental methods which is required for setting up a business.\n.We believe in charging the lowest franchise license rates in the globe.
+        \n.We can offer customized packages for franchisees as per their requirement with our expertise.\n.Our objective is to empower companies in becoming their own best business partners.\n.Our team consists of market research experts who have in-depth knowledge about the industry and know how to get the best in the market.
+        \n Start Your Business with Our Franchise Solutions\n We are committed to your business growth and are open to a healthy and mutually beneficial association.</string>
+    <string name="privacy1">Privacy Policy</string>
+    <string name="privacy2">We value your privacy, and this policy describes how https://www.bizbullsindia.com (collectively, "we," "us," or "our") collects, uses,
+shares, and processes your information.</string>
+    <string name="privacy3">WE COLLECT PERSONAL INFORMATION</string>
+    <string name="privacy4">When you use the Site, we automatically collect certain information about your
+devices, such as information about your web browser, IP address, time zone, and
+some of the cookies that are installed on your device. Furthermore, as you browse
+the Site, we gather information about the individual web pages or goods that you
+view, which websites or search keywords sent you to the Site, and how you
+interact with the Site. This automatically acquired data is known as "Device
+Information."
+This Policy also applies to information we acquire from you through our surveys or
+diagnostic tools. Before taking part in a survey or diagnostic, you may be shown an
+additional confidentiality notice. Please keep in mind that if the provisions of any
+such survey- or diagnostic-specific confidentiality notice contradict any conditions
+in this Policy, the contents of that notice will prevail. We will not contact you for
+marketing purposes using information collected through our survey or diagnostic
+tools.
+This Policy shall apply whether you gave us the information directly or we
+acquired it from another source, such as a third party.
+Increasing safety and security
+We adhere to the principles of legality, legitimacy, and transparency, utilise and
+process the least amount of data for a specified purpose, and take technical and
+administrative measures to ensure data security. We utilise personal data to assist
+in the verification of accounts and user activity, as well as to improve safety and
+security, such as by monitoring fraud and investigating suspicious or possibly</string>
+    <string name="privacy5">USE OF INFORMATION</string>
+    <string name="privacy6">In general, we utilise personal data to deliver, improve, and develop our products
+and services, connect with you, present you with relevant adverts and services,
+and safeguard us and our customers.\n
+● Offering, upgrading, and expanding our products and services:
+We collect and use personal information to offer, improve, and develop our
+products, services, and advertising. This covers the use of personal data for data
+analysis, research, and audits. Such processing is justified by our legitimate</string>
+    <string name="privacy7">● Communicating with you:</string>
+    <string name="privacy8">We may use personal data to send you marketing communications about our
+products and services, interact with you about your account or transactions, and
+inform you about our policies and terms, subject to your prior express consent.
+Please contact us to opt-out if you no longer wish to receive marketing-related
+email communications. When you contact us, we may also use your data to
+process and react to your requests. We may share your data with third-party
+partners who may send you marketing emails about their products and services if
+you give us your prior express approval. We may use personal data to personalise
+your experience with our products and services, as well as on third-party websites
+and applications, with your prior express consent, and to analyse the effectiveness
+of our promotional activities.
+</string>
+    <string name="privacy9">Benefits of Privacy Policy
+\n● REMOVE BLINDSPOTS OF UNWANTED ACTIVITY Monitoring the deep, dark, and indexed web around the clock using cutting-edge
+AI to stop hazardous behaviour before it reaches your users.
+\n● INTEGRATE AI TECHNOLOGY WITH EXPERT ANALYSIS Improve detection by combining AI-powered risk-scoring with subject matter
+experts for maximum accuracy.
+\n● SCALE TRUST AND SAFETY Automate your Trust &amp; Safety processes from start to finish with moderation
+queues, no-code workflows, and analytics all in one simple platform.
+\n● ANALYSIS OF CONTENT FORMATS Monitor and detect malicious behaviour and potentially hazardous content in any
+format, including video, audio, image, and text.
+\n● PREVENT UNNECESSARY EXPOSURE TO YOUR TEAM
+With our resilience tools and automatic moderation, we can promote team
+wellness while reducing team exposure to dangerous content.
+GET IN TOUCH
+For more information about our privacy practices, if you have any concerns, or if
+you want to file a complaint, please contact us through email at
+info@bizbullsindia.com or by mail at the address listed below:
+BIZ BULLS INDIA
+BIZ BULLS INDIA @Global Coach, 1st Floor Above Tipsy Topsy Bakers, beside
+Himalaya Book World, Punjagutta, Hyderabad, Telangana 500016. Telephone: +91
+8977-362-436</string>
+
+
+    <string name="terms_condition1">Terms and Conditions</string>
+    <string name="Interpretation_and_Definitions">Interpretation and Definitions</string>
+    <string name="Interpretation1">Interpretation</string>
+    <string name="Interpretation2">The words in which the initial letter is capitalized have meanings defined under the following conditions. The following definitions shall have the same meaning regardless of whether they appear in singular or plural.</string>
+    <string name="Interpretation3">Definitions</string>
+    <string name="Interpretation4">For these Terms and Conditions:
+\n•	Country refers to India
+\n•	Company (referred to as either "the Company", "We", "Us" or "Our" in this Agreement) refers to Biz Bulls India, BIZ BULLS Franchising Pvt Ltd., Near Nagarjuna Circle, Punjagutta, Hyderabad, Telangana - 500016.
+\n•	Device means any device that can access the Service such as a computer, a cellphone, or a digital tablet.
+\n•	Service refers to the Website.
+\n•	Terms and Conditions (also referred to as "Terms") mean these Terms and Conditions that form the entire agreement between You and the Company regarding the use of the Service.
+\n•	Third-party Social Media Service means any services or content (including data, information, products, or services) provided by a third party that may be displayed, included, or made available by the Service.
+\n•	Website refers to Biz Bulls India, accessible from https://www.bizbullsindia.com/
+\n•	You mean the individual accessing or using the Service, or the company, or other legal entity on behalf of which such individual is accessing or using the Service, as applicable.
+</string>
+    <string name="Acknowledgment">Acknowledgment</string>
+    <string name="Acknowledgment1">These are the Terms and Conditions governing the use of this Service and the agreement that operates between You and the Company. These Terms and Conditions set out the rights and obligations of all users regarding the use of the Service.
+Your access to and use of the Service is conditioned on Your acceptance of and compliance with these Terms and Conditions. These Terms and Conditions apply to all visitors, users, and others who access or use the Service.
+By accessing or using the Service You agree to be bound by these Terms and Conditions. If You disagree with any part of these Terms and Conditions then You may not access the Service.
+You represent that you are over the age of 18. The Company does not permit those under 18 to use the Service.
+Your access to and use of the Service is also conditioned on Your acceptance of and compliance with the Privacy Policy of the Company. Our Privacy Policy describes Our policies and procedures on the collection, use, and disclosure of Your personal information when You use the Application or the Website and tells You about Your privacy rights and how the law protects You. Please read Our Privacy Policy carefully before using Our Service.
+</string>
+    <string name="What_you_can_expect_from_us">What you can expect from us</string>
+    <string name="What_you_can_expect_from_us1">Biz Bull India Pvt Ltd is a company dealing with franchising a brand. We offer the following services to our clients
+\n•	Guidance in starting your own business
+\n•	Branding your business
+\n•	Promoting your business with our marketing strategies
+\n•	Licensing with the government Offering support to your business in various stages of its journey
+</string>
+    <string name="Links_to_Other_Websites">Links to Other Websites</string>
+    <string name="Links_to_Other_Websites1">Our Service may contain links to third-party websites or services that are not owned or controlled by the Company.
+The Company has no control over and assumes no responsibility for, the content, privacy policies, or practices of any third-party websites or services. You further acknowledge and agree that the Company shall not be responsible or liable, directly or indirectly, for any damage or loss caused or alleged to be caused by or in connection with the use of or reliance on any such content, goods, or services available on or through any such web sites or services.
+We strongly advise You to read the terms and conditions and privacy policies of any third-party websites or services that You visit.
+</string>
+    <string name="Termination">Termination</string>
+    <string name="Termination1">We may terminate or suspend Your access immediately, without prior notice or liability, for any reason whatsoever, including without limitation if You breach these Terms and Conditions.
+Upon termination, Your right to use the Service will cease immediately.</string>
+    <string name="Limitation_of_Liability">Limitation of Liability</string>
+    <string name="Limitation_of_Liability1">Notwithstanding any damages that You might incur, the entire liability of the Company and any of its suppliers under any provision of this Terms and Your exclusive remedy for all of the foregoing shall be limited to the amount actually paid by You.
+To the maximum extent permitted by applicable law, in no event shall the Company or its suppliers be liable for any special, incidental, indirect, or consequential damages whatsoever (including, but not limited to, damages for loss of profits, loss of data or other information, for business interruption, for personal injury, loss of privacy arising out of or in any way related to the use of or inability to use the Service, third-party software and/or third-party hardware used with the Service, or otherwise in connection with any provision of this Terms), even if the Company or any supplier has been advised of the possibility of such damages and even if the remedy fails of its essential purpose.
+</string>
+    <string name="Disclaimer">"AS IS" and "AS AVAILABLE" Disclaimer</string>
+    <string name="Disclaimer1">The Service is provided to You AS IS and AS AVAILABLE and with all faults and defects without warranty of any kind. To the maximum extent permitted under applicable law, the Company, on its own behalf and behalf of its Affiliates and its and their respective licensors and service providers, expressly disclaims all warranties, whether express, implied, statutory, or otherwise, concerning the Service, including all implied warranties of merchantability, fitness for a particular purpose, title and non-infringement, and warranties that may arise out of a course of dealing, course of performance, usage or trade practice. Without limitation to the foregoing, the Company provides no warranty or undertaking, and makes no representation of any kind that the Service will meet Your requirements, achieve any intended results, be compatible or work with any other software, applications, systems, or services, operate without interruption, meet any performance or reliability standards or be error-free or that any errors or defects can or will be corrected.
+Without limiting the foregoing, neither the Company nor any of the companys providers makes any representation or warranty of any kind, express or implied: (i) as to the operation or availability of the Service, or the information, content, and materials or products included thereon; (ii) that the Service will be uninterrupted or error-free; (iii) as to the accuracy, reliability, or currency of any information or content provided through the Service; or (iv) that the Service, its servers, the content, or e-mails sent from or on behalf of the Company are free of viruses, scripts, trojan horses, worms, malware, timebombs or other harmful components.
+</string>
+    <string name="Governing_Law">Governing Law</string>
+    <string name="Governing_Law1">The laws of the Country, excluding its conflicts of law rules, shall govern this Terms and Your use of the Service. </string>
+    <string name="Disputes_Resolution1">If You have any concerns or disputes about the Service, You agree to first try to resolve the dispute informally by contacting the Company.</string>
+    <string name="Severability">Severability</string>
+    <string name="Severability1">If any provision of these Terms is held to be unenforceable or invalid, such provision will be changed and interpreted to accomplish the objectives of such provision to the greatest extent possible under applicable law and the remaining provisions will continue in full force and effect</string>
+    <string name="Waiver">Severability</string>
+    <string name="Waiver1">Except as provided herein, the failure to exercise a right or to require performance of an obligation under these Terms shall not affect a party\'s ability to exercise such right or require such performance at any time thereafter nor shall the waiver of a breach constitute a waiver of any subsequent breach.</string>
+    <string name="Translation_Interpretation">Translation Interpretation</string>
+    <string name="Translation_Interpretation1">These Terms and Conditions may have been translated if We have made them available to You on our Service. You agree that the original English text shall prevail in the case of a dispute.</string>
+
+    <string name="Changes_to_These_Terms_and_Conditions">Changes to These Terms and Conditions</string>
+    <string name="Changes_to_These_Terms_and_Conditions1">We reserve the right, at Our sole discretion, to modify or replace these Terms at any time. If a revision is a material. We will make reasonable efforts to provide at least 30 days’ notice before any new terms take effect. What constitutes a material change will be determined at Our sole discretion.
+By continuing to access or use Our Service after those revisions become effective, You agree to be bound by the revised terms. If You do not agree to the new terms, in whole or in part, please stop using the website and the Service.
+</string>
+    <string name="Contact_Us">Contact Us</string>
+    <string name="Contact_Us1">If you have any questions about these Terms and Conditions, You can contact us:
+\nBy email: info@bizbullsindia.com
+\nBy visiting this page on our website: https://www.bizbullsindia.com/
+\nBy phone number: +91 - 8977 36 24 36
+</string>
+    <string name="title_activity_my_referrals">MyReferralsActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
 </resources>

@@ -46,6 +46,7 @@
 
     <item name="imageLoaderCircleRadius" format="float" type="dimen">30.0</item>
     <item name="imageLoaderCircleStroke" format="float" type="dimen">5.0</item>
+    <dimen name="fab_margin">16dp</dimen>
 
 
 
