@@ -6,6 +6,7 @@ import com.bbi.bizbulls.data.signin.LoginResponse
 import com.bbi.bizbulls.data.signupresponse.SignupResponse
 import com.bbi.bizbulls.model.*
 import com.google.gson.JsonArray
+import com.bbi.bizbulls.model.StatusData
 import com.google.gson.JsonObject
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -235,4 +236,8 @@ interface APIService {
     fun uploadAsset(
             @Header("Authorization") token: String,
             @Part image: MultipartBody.Part): Call<AssetsRes>
+
+    @GET("/api/status")
+    fun getStatus(@Header("Authorization") token: String): Call<StatusData>
+
 }

@@ -43,6 +43,12 @@ object RetrofitClient {
                 .writeTimeout(2, TimeUnit.MINUTES)
                 .readTimeout(2, TimeUnit.MINUTES).addInterceptor(interceptor)
                 .build()
+        val logging = HttpLoggingInterceptor()
+        logging.setLevel(HttpLoggingInterceptor.Level.BODY)
+        return OkHttpClient.Builder().addInterceptor(logging)
+            .connectTimeout(2, TimeUnit.MINUTES)
+            .readTimeout(2, TimeUnit.MINUTES)
+            .build()
     }
 
 
