@@ -210,9 +210,314 @@
                 </FrameLayout>
 
             </FrameLayout>
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/subTitle"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:textSize="@dimen/_14ssp"
+                android:text="Technical Certifications (If Any)" />
 
+            <FrameLayout
+                android:layout_marginTop="@dimen/_12sdp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_10sdp"
+                android:layout_gravity="bottom"
+                android:background="@drawable/card">
 
+                <ImageView
+                    android:layout_width="@dimen/_18sdp"
+                    android:layout_height="@dimen/_18sdp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/_8sdp"
+                    app:tint="@color/value"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/ic_education_percentage" />
 
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:paddingLeft="@dimen/_50sdp"
+                    android:paddingRight="@dimen/_10sdp">
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:background="@null"
+                        android:id="@+id/tcCourse"
+                        android:lines="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Course"
+                        android:maxLines="1"
+                        android:inputType="number"
+                        android:maxLength="2"
+                        android:textSize="@dimen/_13sdp" />
+                </FrameLayout>
+
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_marginTop="@dimen/_12sdp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_10sdp"
+                android:layout_gravity="bottom"
+                android:background="@drawable/card">
+
+                <ImageView
+                    android:layout_width="@dimen/_18sdp"
+                    android:layout_height="@dimen/_18sdp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/_8sdp"
+                    app:tint="@color/value"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/ic_education_percentage" />
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:paddingLeft="@dimen/_50sdp"
+                    android:paddingRight="@dimen/_10sdp">
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:background="@null"
+                        android:id="@+id/tcInstituteName"
+                        android:lines="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Institution name"
+                        android:maxLines="1"
+                        android:inputType="number"
+                        android:maxLength="2"
+                        android:textSize="@dimen/_13sdp" />
+                </FrameLayout>
+
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_marginTop="@dimen/_12sdp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_10sdp"
+                android:layout_gravity="bottom"
+                android:background="@drawable/card">
+
+                <ImageView
+                    android:layout_width="@dimen/_18sdp"
+                    android:layout_height="@dimen/_18sdp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/_8sdp"
+                    app:tint="@color/value"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/ic_education_percentage" />
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:paddingLeft="@dimen/_50sdp"
+                    android:paddingRight="@dimen/_10sdp">
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:background="@null"
+                        android:id="@+id/tcYear"
+                        android:lines="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Year"
+                        android:maxLines="1"
+                        android:inputType="number"
+                        android:maxLength="2"
+                        android:textSize="@dimen/_13sdp" />
+                </FrameLayout>
+
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_marginTop="@dimen/_12sdp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_10sdp"
+                android:layout_gravity="bottom"
+                android:background="@drawable/card">
+
+                <ImageView
+                    android:layout_width="@dimen/_18sdp"
+                    android:layout_height="@dimen/_18sdp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/_8sdp"
+                    app:tint="@color/value"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/ic_education_percentage" />
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:paddingLeft="@dimen/_50sdp"
+                    android:paddingRight="@dimen/_10sdp">
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:background="@null"
+                        android:id="@+id/tcLevel"
+                        android:lines="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Level"
+                        android:maxLines="1"
+                        android:inputType="number"
+                        android:maxLength="2"
+                        android:textSize="@dimen/_13sdp" />
+                </FrameLayout>
+
+            </FrameLayout>
+
+            <!--Extra-->
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/subTitle"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:textSize="@dimen/_14ssp"
+                android:text="Extra / Co-curricular Activities (If any)" />
+
+            <FrameLayout
+                android:layout_marginTop="@dimen/_12sdp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_10sdp"
+                android:layout_gravity="bottom"
+                android:background="@drawable/card">
+
+                <ImageView
+                    android:layout_width="@dimen/_18sdp"
+                    android:layout_height="@dimen/_18sdp"
+                    android:visibility="invisible"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/_8sdp"
+                    app:tint="@color/value"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/ic_education_percentage" />
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:paddingLeft="@dimen/_5sdp"
+                    android:paddingRight="@dimen/_5sdp">
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:background="@null"
+                        android:id="@+id/extraActivities"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="NCC/NSS/Sports/Cultural Activities"
+                        android:lines="4"
+                        android:maxLines="4"
+                        android:gravity="left|top"
+                        android:overScrollMode="always"
+                        android:scrollbarStyle="insideInset"
+                        android:scrollbars="vertical"
+                        android:textSize="@dimen/_12sdp" />
+                </FrameLayout>
+
+            </FrameLayout>
+
+            <!--Achievements-->
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/subTitle"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:textSize="@dimen/_14ssp"
+                android:text="Academic / Curricular Achievements (If any)" />
+
+            <FrameLayout
+                android:layout_marginTop="@dimen/_12sdp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_10sdp"
+                android:layout_gravity="bottom"
+                android:background="@drawable/card">
+
+                <ImageView
+                    android:layout_width="@dimen/_5sdp"
+                    android:layout_height="@dimen/_5sdp"
+                    android:visibility="invisible"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/_8sdp"
+                    app:tint="@color/value"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/ic_education_percentage" />
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:paddingLeft="@dimen/_50sdp"
+                    android:paddingRight="@dimen/_10sdp">
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:background="@null"
+                        android:id="@+id/achievements"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Scholarships/Awards/Prizes etc"
+                        android:lines="4"
+                        android:maxLines="4"
+                        android:gravity="left|top"
+                        android:overScrollMode="always"
+                        android:scrollbarStyle="insideInset"
+                        android:scrollbars="vertical"
+                        android:textSize="@dimen/_12sdp" />
+                </FrameLayout>
+
+            </FrameLayout>
+
+            <!--Bobbies-->
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/subTitle"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:textSize="@dimen/_14ssp"
+                android:text="Hobbies / Interests (If any)" />
+
+            <FrameLayout
+                android:layout_marginTop="@dimen/_12sdp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_10sdp"
+                android:layout_gravity="bottom"
+                android:background="@drawable/card">
+
+                <ImageView
+                    android:layout_width="@dimen/_18sdp"
+                    android:visibility="invisible"
+                    android:layout_height="@dimen/_18sdp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/_8sdp"
+                    app:tint="@color/value"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/ic_education_percentage" />
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:paddingLeft="@dimen/_5sdp"
+                    android:paddingRight="@dimen/_5sdp">
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:background="@null"
+                        android:id="@+id/hobbies"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint=""
+                        android:lines="4"
+                        android:maxLines="4"
+                        android:gravity="left|top"
+                        android:overScrollMode="always"
+                        android:scrollbarStyle="insideInset"
+                        android:scrollbars="vertical"
+                        android:textSize="@dimen/_12sdp" />
+                </FrameLayout>
+
+            </FrameLayout>
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>

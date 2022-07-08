@@ -14,6 +14,7 @@ import com.bbi.bizbulls.databinding.FoActivityDashboardBinding
 import com.bbi.bizbulls.ui.registrationforfo.adapters.FoRegistrationDashboardAdapter
 import com.bbi.bizbulls.ui.registrationforfo.interfaces.IFoRegistrationStepsClickListener
 import com.bbi.bizbulls.utils.CommonUtils
+import com.bbi.bizbulls.utils.Globals
 import com.google.gson.Gson
 
 class FoRegistrationDashBoardActivity : AppCompatActivity(), IFoRegistrationStepsClickListener {
@@ -37,18 +38,36 @@ class FoRegistrationDashBoardActivity : AppCompatActivity(), IFoRegistrationStep
         }
 
         var listSteps = arrayListOf<Data>()
-        listSteps.add(Data("1",R.drawable.icn_personal_profile,"Personal Profile","1"))
-        listSteps.add(Data("2",R.drawable.icn_health_details,"Health Details",""))
-        listSteps.add(Data("3",R.drawable.icn_interest_details,"Expression of interest details",""))
-            listSteps.add(Data("3",R.drawable.icn_checklist_details,"Check list details",""))
-        listSteps.add(Data("3",R.drawable.icn_education,"Academic education details",""))
-        listSteps.add(Data("3",R.drawable.icn_social_identify,"Social Identity details",""))
-        listSteps.add(Data("3",R.drawable.icn_bank_details,"Bank details",""))
-        listSteps.add(Data("3",R.drawable.icn_family_details,"Family details",""))
-        listSteps.add(Data("3",R.drawable.icn_children_details,"Children details",""))
-        listSteps.add(Data("3",R.drawable.icn_personal_refrence,"Personal references details",""))
-        listSteps.add(Data("3",R.drawable.icn_attachment,"Attachment details",""))
-        listSteps.add(Data("3",R.drawable.icn_authorization,"Authorization details",""))
+
+        listSteps.add(Data(1,R.drawable.icn_personal_profile,"Personal Profile","1"))
+        listSteps.add(Data(2,R.drawable.icn_health_details,"Health Details",""))
+
+
+        if(Globals.USER_TYPE_EMPLOYEE == 1){
+
+        }else{
+            listSteps.add(Data(3,R.drawable.icn_interest_details,"Expression of interest details",""))
+            listSteps.add(Data(4,R.drawable.icn_checklist_details,"Check list details",""))
+
+        }
+
+        listSteps.add(Data(5,R.drawable.icn_education,"Academic education details",""))
+        listSteps.add(Data(6,R.drawable.icn_social_identify,"Social Identity details",""))
+        listSteps.add(Data(7,R.drawable.icn_bank_details,"Bank details",""))
+        listSteps.add(Data(8,R.drawable.icn_family_details,"Family details",""))
+        listSteps.add(Data(9,R.drawable.icn_children_details,"Children details",""))
+        listSteps.add(Data(10,R.drawable.icn_personal_refrence,"Personal references details",""))
+
+        if(Globals.USER_TYPE_EMPLOYEE == 1){
+            listSteps.add(Data(13,R.drawable.icn_family_details,"Work History",""))
+            listSteps.add(Data(14,R.drawable.icn_family_details,"Professional References",""))
+            listSteps.add(Data(15,R.drawable.icn_family_details,"Leave & Holiday Requests",""))
+            listSteps.add(Data(16,R.drawable.icn_family_details,"Referral Details",""))
+
+        }else{
+            listSteps.add(Data(11,R.drawable.icn_attachment,"Attachment details",""))
+        }
+        listSteps.add(Data(12,R.drawable.icn_authorization,"Authorization details",""))
 
         var gson = Gson();
         var json  = gson.toJson(listSteps)
@@ -68,13 +87,14 @@ class FoRegistrationDashBoardActivity : AppCompatActivity(), IFoRegistrationStep
         adapter.notifyDataSetChanged()
     }
 
-    override fun onStepsClickListener(name: String, status: String, position: Int, actionType: Int) {
+    override fun onStepsClickListener(model: Data, position: Int, actionType: Int) {
         //Create the bundle
         val bundle = Bundle()
         val i = Intent(this, FranchiseeRegistrationActivity::class.java)
         //Add your data to bundle
-        bundle.putString("name", name)
-        bundle.putString("status", status)
+        bundle.putString("name", model.linkName)
+        bundle.putString("status", model.profileUpdatedOn)
+        bundle.putInt("id", model.id)
         bundle.putInt("position", position)
         bundle.putInt("actionType", actionType)
         //Add the bundle to the intent

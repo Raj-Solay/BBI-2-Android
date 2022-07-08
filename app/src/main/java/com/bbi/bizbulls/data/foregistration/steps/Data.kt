@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName
 
 data class Data(
     @SerializedName("id")
-    val id: String,
+    val id: Int,
     @SerializedName("link_icon")
     val linkIcon: Int,
     @SerializedName("link_name")

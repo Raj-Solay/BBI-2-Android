@@ -62,8 +62,7 @@ class FoRegistrationDashboardAdapter(
 
         holder.itemView.setOnClickListener {
             stepsClickListener.onStepsClickListener(
-                    model.linkName,
-                    model.profileUpdatedOn,
+                    model,
                     position,
                     CommonUtils.ACTION_TYPE_ADD
             )
@@ -93,8 +92,7 @@ class FoRegistrationDashboardAdapter(
                 }
             }
             stepsClickListener.onStepsClickListener(
-                    model.linkName,
-                    model.profileUpdatedOn,
+                    model,
                     position,actionType
             )
 

@@ -21,6 +21,7 @@ class FranchiseeRegistrationActivity : AppCompatActivity() {
     private var _selectedStepName = MutableLiveData<String>()
     private val selectedStepName: LiveData<String> get() = _selectedStepName
     private var stepName = ""
+    private var id = 0
     private var stepStatus = ""
     private var stepPosition = 0
     private var actionType = CommonUtils.ACTION_TYPE_ADD
@@ -48,40 +49,56 @@ class FranchiseeRegistrationActivity : AppCompatActivity() {
         bundle?.getString("status")?.also { stepStatus = it }
         bundle?.getInt("position")?.also { stepPosition = it }
         bundle?.getInt("actionType")?.also { actionType = it }
+        bundle?.getInt("id")?.also { id = it }
 
-        when (stepPosition) {
+        when (id) {
             1 -> {
-                fragmentCalling(FoHealthDetailsFragment(stepPosition,actionType))
+                fragmentCalling(FoPersonalDetailsFragment(stepPosition,actionType))
             }
             2 -> {
-                fragmentCalling(FoExpressionOfInterestFragment(stepPosition,actionType))
+                fragmentCalling(FoHealthDetailsFragment(stepPosition,actionType))
             }
             3 -> {
-                fragmentCalling(FoCheckListFragment(stepPosition,actionType)) //Pending
+                fragmentCalling(FoExpressionOfInterestFragment(stepPosition,actionType))
             }
             4 -> {
-                fragmentCalling(FoAcademicEducationFragment(stepPosition,actionType))
+                fragmentCalling(FoCheckListFragment(stepPosition,actionType)) //Pending
             }
             5 -> {
-                fragmentCalling(FoSocialIdentityFragment(stepPosition,actionType)) //Pending
+                fragmentCalling(FoAcademicEducationFragment(stepPosition,actionType))
             }
             6 -> {
-                fragmentCalling(FoBankAccountFragment(stepPosition,actionType))
+                fragmentCalling(FoSocialIdentityFragment(stepPosition,actionType)) //Pending
             }
             7 -> {
-                fragmentCalling(FoFamilyFragment(stepPosition,actionType))
+                fragmentCalling(FoBankAccountFragment(stepPosition,actionType))
             }
             8 -> {
-                fragmentCalling(FoChildDetailsFragment(stepPosition,actionType))
+                fragmentCalling(FoFamilyFragment(stepPosition,actionType))
             }
             9 -> {
-                fragmentCalling(FoPersonalReferenceFragment(stepPosition,actionType))
+                fragmentCalling(FoChildDetailsFragment(stepPosition,actionType))
             }
             10 -> {
-                fragmentCalling(FoAttachmentsFragment(stepPosition,actionType))
+                fragmentCalling(FoPersonalReferenceFragment(stepPosition,actionType))
             }
             11 -> {
+                fragmentCalling(FoAttachmentsFragment(stepPosition,actionType))
+            }
+            12 -> {
                 fragmentCalling(FoAuthorizationFragment(stepPosition,actionType))
+            }
+            13 ->{
+                fragmentCalling(EmployeeWorkHistoryFragment(stepPosition,actionType))
+            }
+            14 -> {
+                fragmentCalling(EmployeeProfessionalReferenceFragment(stepPosition,actionType))
+            }
+            15 -> {
+                fragmentCalling(EmployeeLeavePolicyFragment(stepPosition,actionType))
+            }
+            16 -> {
+                fragmentCalling(EmployeeReferralDetailsFragment(stepPosition,actionType))
             }
             else -> {
                 fragmentCalling(FoPersonalDetailsFragment(stepPosition,actionType))
