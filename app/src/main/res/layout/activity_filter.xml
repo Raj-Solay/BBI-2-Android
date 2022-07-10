@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".FilterActivity">
+
+    <RelativeLayout
+        android:id="@+id/rl_filter"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_50sdp"
+        android:background="@color/image_border"
+        android:paddingHorizontal="@dimen/_10sdp">
+
+        <TextView
+            android:id="@+id/tv_filters"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:fontFamily="@font/source_regular"
+            android:gravity="center"
+            android:text="Filters"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_16sdp" />
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:fontFamily="@font/source_regular"
+            android:gravity="center"
+            android:text="Clear all"
+            android:textAllCaps="true"
+            android:textColor="@color/red"
+            android:textSize="@dimen/_16sdp" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:orientation="horizontal"
+        android:layout_below="@+id/rl_filter"
+        android:layout_above="@+id/rl_bottom"
+        android:paddingHorizontal="@dimen/_10sdp"
+        android:weightSum="1">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight=".4"
+            android:background="@color/image_border"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_Indusstry"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentLeft="true"
+                android:fontFamily="@font/source_regular"
+                android:gravity="center|left"
+                android:paddingVertical="@dimen/_10sdp"
+                android:text="Indusstry"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_16sdp" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/border" />
+
+            <TextView
+                android:id="@+id/tv_Client"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentLeft="true"
+                android:fontFamily="@font/source_regular"
+                android:gravity="center|left"
+                android:paddingVertical="@dimen/_10sdp"
+                android:text="Client"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_16sdp" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/border" />
+            <TextView
+                android:id="@+id/tv_Location"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentLeft="true"
+                android:fontFamily="@font/source_regular"
+                android:gravity="center|left"
+                android:paddingVertical="@dimen/_10sdp"
+                android:text="Location"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_16sdp" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/border" />
+            <TextView
+                android:id="@+id/tv_Stage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentLeft="true"
+                android:fontFamily="@font/source_regular"
+                android:gravity="center|left"
+                android:paddingVertical="@dimen/_10sdp"
+                android:text="Stage"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_16sdp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight=".6"
+            android:orientation="vertical">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rcy_filter"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+        </LinearLayout>
+    </LinearLayout>
+    <RelativeLayout
+        android:id="@+id/rl_bottom"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_50sdp"
+        android:background="@color/image_border"
+        android:paddingHorizontal="@dimen/_10sdp">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:weightSum="1">
+    <TextView
+        android:id="@+id/tv_Close"
+        android:layout_width="0dp"
+        android:layout_weight=".5"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:fontFamily="@font/source_regular"
+        android:gravity="center"
+        android:text="Close"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_16sdp" />
+
+    <TextView
+        android:id="@+id/tv_Apply"
+        android:layout_width="0dp"
+        android:layout_weight=".5"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:fontFamily="@font/source_regular"
+        android:gravity="center"
+        android:text="Apply"
+        android:textAllCaps="true"
+        android:textColor="@color/red"
+        android:textSize="@dimen/_16sdp" />
+</LinearLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

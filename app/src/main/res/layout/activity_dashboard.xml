@@ -100,7 +100,7 @@
                         android:id="@+id/imgnotification"
                         android:layout_width="22dp"
                         android:layout_height="22dp"
-                        android:layout_centerInParent="true"
+                        android:layout_centerHorizontal="true"
                         android:src="@drawable/ic_notification" />
                 </RelativeLayout>
 

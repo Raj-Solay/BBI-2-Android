@@ -56,6 +56,7 @@ class DashboardActivity : AppCompatActivity(), View.OnClickListener {
     var settings: ConstraintLayout? = null
     var logout: ConstraintLayout? = null
     var layoutnotification: RelativeLayout?=null
+    var layoutsearch: RelativeLayout?=null
     var layouthelp:RelativeLayout?=null
     var count = 0
     var homeCustomerFragment: HomeCustomerFragment? = null
@@ -123,6 +124,8 @@ class DashboardActivity : AppCompatActivity(), View.OnClickListener {
         logout?.setOnClickListener(this)
         layoutnotification=findViewById(R.id.layoutnotification);
         layoutnotification?.setOnClickListener(this)
+        layoutsearch=findViewById(R.id.layoutsearch);
+        layoutsearch?.setOnClickListener(this)
         binding!!.layoutdraweropen.setOnClickListener(this)
         binding!!.layouthelp.setOnClickListener(this)
         homeCustomerFragment = HomeCustomerFragment()
@@ -216,6 +219,10 @@ class DashboardActivity : AppCompatActivity(), View.OnClickListener {
         }
         if (view === binding!!.layoutdraweropen) {
             binding!!.drawerfomainlayout.openDrawer(Gravity.LEFT)
+        }
+        if (view.id==R.id.layoutsearch){
+            val intent = Intent(this, FilterActivity::class.java)
+            startActivity(intent)
         }
     }
 
