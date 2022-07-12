@@ -59,6 +59,7 @@ class DashboardActivity : AppCompatActivity(), View.OnClickListener {
     var settings: ConstraintLayout? = null
     var logout: ConstraintLayout? = null
     var layoutnotification: RelativeLayout?=null
+    var layoutsearch: RelativeLayout?=null
     var layouthelp:RelativeLayout?=null
     var count = 0
     var homeCustomerFragment: HomeCustomerFragment? = null
@@ -166,6 +167,8 @@ class DashboardActivity : AppCompatActivity(), View.OnClickListener {
 
         layoutnotification=findViewById(R.id.layoutnotification);
         layoutnotification?.setOnClickListener(this)
+        layoutsearch=findViewById(R.id.layoutsearch);
+        layoutsearch?.setOnClickListener(this)
         binding!!.layoutdraweropen.setOnClickListener(this)
         binding!!.layouthelp.setOnClickListener(this)
         homeCustomerFragment = HomeCustomerFragment()
@@ -196,10 +199,13 @@ class DashboardActivity : AppCompatActivity(), View.OnClickListener {
             startActivity(i)
         }
         if (view.id == R.id.myAccount) {
+            binding!!.drawerfomainlayout.closeDrawer(GravityCompat.START)
+            val intent = Intent(this, MyProfileActivity::class.java)
+            startActivity(intent)
         }
         if (view.id == R.id.myRefer) {
             binding!!.drawerfomainlayout.closeDrawer(GravityCompat.START)
-            val intent = Intent(this, MyReferralsActivity::class.java)
+            val intent = Intent(this, ReferActivity::class.java)
             startActivity(intent)
         }
         if (view.id == R.id.myOffer) {
@@ -235,8 +241,14 @@ class DashboardActivity : AppCompatActivity(), View.OnClickListener {
         if (view.id == R.id.contactUs) {
         }
         if (view.id == R.id.followUs) {
+            binding!!.drawerfomainlayout.closeDrawer(GravityCompat.START)
+            val intent = Intent(this, FollowUsActivity::class.java)
+            startActivity(intent)
         }
         if (view.id == R.id.rateUs) {
+            binding!!.drawerfomainlayout.closeDrawer(GravityCompat.START)
+            val intent = Intent(this, ReatingActivity::class.java)
+            startActivity(intent)
         }
         if (view.id == R.id.settings) {
         }
@@ -254,6 +266,10 @@ class DashboardActivity : AppCompatActivity(), View.OnClickListener {
         }
         if (view === binding!!.layoutdraweropen) {
             binding!!.drawerfomainlayout.openDrawer(Gravity.LEFT)
+        }
+        if (view.id==R.id.layoutsearch){
+            val intent = Intent(this, FilterActivity::class.java)
+            startActivity(intent)
         }
     }
 

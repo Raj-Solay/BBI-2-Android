@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/grey_most_light"
+    android:orientation="vertical"
+    tools:context=".menu.MyProfileActivity">
+
+    <include
+        android:id="@+id/custom_title_layout"
+        layout="@layout/hader" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:background="@drawable/rectanglegrey"
+                android:orientation="horizontal">
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/imgnavuserprofile"
+                    android:layout_width="@dimen/toolBarHeight"
+                    android:layout_height="@dimen/toolBarHeight"
+                    android:layout_marginVertical="16dp"
+                    android:layout_marginStart="18dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent"
+                    app:srcCompat="@drawable/ic_userprofile" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="@dimen/_10sdp">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/txtfoname"
+                        style="@style/fontsemibold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_marginStart="8dp"
+                        android:includeFontPadding="false"
+                        android:text="@string/sample_username"
+                        android:textColor="@color/heading"
+                        android:textSize="@dimen/large_font" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/txtfomobile"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/txtfoname"
+                        android:layout_alignParentLeft="true"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="2dp"
+                        android:includeFontPadding="false"
+                        android:text="+91 98XXXXXX88"
+                        android:textColor="@color/heading"
+                        android:textSize="@dimen/small_font" />
+
+                    <ImageView
+                        android:id="@+id/iv_right"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="@dimen/_6sdp"
+                        android:layout_marginRight="@dimen/_10sdp"
+                        android:foregroundGravity="center"
+                        android:src="@drawable/right_arrow"
+                        app:tint="@color/black" />
+                </RelativeLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_10sdp"
+                android:background="@drawable/rectanglegrey"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:fontFamily="@font/source_semibold"
+                    android:gravity="center|left"
+                    android:paddingHorizontal="@dimen/_10sdp"
+                    android:text="Payment Methode"
+                    android:textColor="@color/black01"
+                    android:textSize="@dimen/_16sdp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/_5dp"
+                    android:fontFamily="@font/source_semibold"
+                    android:gravity="center|left"
+                    android:paddingHorizontal="@dimen/_10sdp"
+                    android:text="Bank Accounts"
+                    android:textColor="@color/grey_mono"
+                    android:textSize="@dimen/_16sdp" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rcy_payment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_10sdp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginHorizontal="@dimen/_10sdp"
+                    android:layout_marginVertical="@dimen/_10sdp"
+                    android:background="@color/reting_bar_think" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:id="@+id/ll_wallet"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:paddingVertical="@dimen/_10sdp">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/source_regular"
+                            android:gravity="center|left"
+                            android:paddingHorizontal="@dimen/_10sdp"
+                            android:text="PhonePe Wallet "
+                            android:textColor="@color/grey_mono"
+                            android:textSize="@dimen/_14sdp" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/source_regular"
+                            android:gravity="center|left"
+                            android:paddingHorizontal="@dimen/_10sdp"
+                            android:text="\u20B9  0"
+                            android:textColor="@color/orange_700"
+                            android:textSize="@dimen/_14sdp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@+id/ll_wallet"
+                        android:layout_alignBottom="@+id/ll_wallet"
+                        android:layout_alignParentRight="true"
+                        android:gravity="center"
+                        android:paddingRight="@dimen/_10sdp">
+
+                        <TextView
+                            android:id="@+id/tv_save_next"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:background="@drawable/submit_button"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:fontFamily="@font/source_semibold"
+                            android:foreground="?attr/selectableItemBackground"
+                            android:gravity="center"
+                            android:paddingHorizontal="@dimen/_10sdp"
+                            android:paddingVertical="@dimen/_5dp"
+                            android:text="TOP-UP"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/_12dp" />
+
+                    </LinearLayout>
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_view_all_payment"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/_40dp"
+                        android:fontFamily="@font/source_regular"
+                        android:gravity="center"
+                        android:text="View All Payment Method"
+                        android:textColor="@color/course_title"
+                        android:textSize="@dimen/_14sdp" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_gravity="center"
+                        android:foregroundGravity="center"
+                        android:src="@drawable/right_arrow"
+                        app:tint="@color/course_title" />
+                </LinearLayout>
+
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/ll_view_all"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_10sdp"
+                android:background="@drawable/rectanglegrey"
+                android:orientation="vertical"
+                android:visibility="visible">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginBottom="@dimen/_5dp"
+                    android:fontFamily="@font/source_semibold"
+                    android:gravity="center|left"
+                    android:paddingHorizontal="@dimen/_10sdp"
+                    android:text="Payment Settings"
+                    android:textColor="@color/black01"
+                    android:textSize="@dimen/_16sdp" />
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rcy_payment_all"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_10sdp"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+
+</LinearLayout>

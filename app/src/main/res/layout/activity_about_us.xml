@@ -28,7 +28,7 @@
             android:text="Who are we"
             android:paddingHorizontal="@dimen/_5dp"
             android:textColor="@color/black"
-            android:textSize="@dimen/_16sdp" />
+            android:textSize="@dimen/_14sdp" />
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -44,10 +44,10 @@
                 android:fontFamily="@font/source_semibold"
                 android:gravity="left|top"
                 android:text="Our Vision"
-                android:layout_marginTop="@dimen/_15sdp"
+                android:layout_marginTop="@dimen/_10sdp"
                 android:paddingHorizontal="@dimen/_5dp"
                 android:textColor="@color/black"
-                android:textSize="@dimen/_16sdp" />
+                android:textSize="@dimen/_14sdp" />
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -63,10 +63,10 @@
                 android:fontFamily="@font/source_semibold"
                 android:gravity="left|top"
                 android:text="What we do"
-                android:layout_marginTop="@dimen/_15sdp"
+                android:layout_marginTop="@dimen/_10sdp"
                 android:paddingHorizontal="@dimen/_5dp"
                 android:textColor="@color/black"
-                android:textSize="@dimen/_16sdp" />
+                android:textSize="@dimen/_14sdp" />
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
