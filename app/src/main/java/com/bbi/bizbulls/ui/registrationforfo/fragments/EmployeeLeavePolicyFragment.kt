@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.bbi.bizbulls.databinding.EmployeeFrgLeavePolicyBinding
 import com.bbi.bizbulls.databinding.EmployeeFrgProfessionalReferencesBinding
+import com.bbi.bizbulls.model.LeavePolicy
 import com.bbi.bizbulls.model.PersonalReferenceViewRes
 import com.bbi.bizbulls.remote.RetrofitClient
 import com.bbi.bizbulls.sharedpref.SharedPrefsManager
@@ -18,9 +19,11 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class EmployeeLeavePolicyFragment(private val stepPosition: Int, private var actionType: Int) : Fragment() {
+class EmployeeLeavePolicyFragment(private val stepPosition: Int, private var actionType: Int) :
+    Fragment() {
     private lateinit var binding: EmployeeFrgLeavePolicyBinding
-    private var uid : String = ""
+    private var uid: String = ""
+    private var leavePolicyList = arrayListOf<LeavePolicy>()
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -31,6 +34,7 @@ class EmployeeLeavePolicyFragment(private val stepPosition: Int, private var act
         binding.stepSubmit.setOnClickListener {
             senPersonalReferenceDetail()
         }
+
         when (actionType) {
             CommonUtils.ACTION_TYPE_VIEW -> {
                 getRecordFromAPI(false)
@@ -53,8 +57,9 @@ class EmployeeLeavePolicyFragment(private val stepPosition: Int, private var act
         call?.enqueue(object : Callback<PersonalReferenceViewRes> {
             override
             fun onResponse(
-                    call: Call<PersonalReferenceViewRes>,
-                    responseObject: Response<PersonalReferenceViewRes>) {
+                call: Call<PersonalReferenceViewRes>,
+                responseObject: Response<PersonalReferenceViewRes>
+            ) {
                 if (responseObject.code() == 200) {
                     if (responseObject.body()!!.data[0] != null) {
                         setUpDataInUI(responseObject.body()!!.data[0])
@@ -73,13 +78,19 @@ class EmployeeLeavePolicyFragment(private val stepPosition: Int, private var act
             }
         })
     }
+
     private fun setUpDataInUI(data: PersonalReferenceViewRes.Data) {
         uid = data.id.toString()
 
         binding.otherName.setText(data.fullname)
-        binding.spnrOtherRelationType.setSelection(CommonUtils.getIndex(binding.spnrOtherRelationType,data.relation))
+        binding.spnrOtherRelationType.setSelection(
+            CommonUtils.getIndex(
+                binding.spnrOtherRelationType,
+                data.relation
+            )
+        )
 
-        binding.spnrOtherSex.setSelection(CommonUtils.getIndex(binding.spnrOtherSex,data.sex))
+        binding.spnrOtherSex.setSelection(CommonUtils.getIndex(binding.spnrOtherSex, data.sex))
         binding.otherAge.setText(data.age)
         binding.otherOccupation.setText(data.occupation)
         binding.otherLocation.setText(data.location)
@@ -110,10 +121,14 @@ class EmployeeLeavePolicyFragment(private val stepPosition: Int, private var act
         binding.otherContact.isEnabled = isEditable
 
     }
+
     private fun senPersonalReferenceDetail() {
         val jsonObject = JsonObject()
         jsonObject.addProperty("fullname", binding.otherName.text.toString().trim())
-        jsonObject.addProperty("relation", binding.spnrOtherRelationType.selectedItem.toString().trim())
+        jsonObject.addProperty(
+            "relation",
+            binding.spnrOtherRelationType.selectedItem.toString().trim()
+        )
         jsonObject.addProperty("sex", binding.spnrOtherSex.selectedItem.toString().trim())
         jsonObject.addProperty("age", binding.otherAge.text.toString().trim())
         jsonObject.addProperty("occupation", binding.otherOccupation.text.toString().trim())
@@ -127,7 +142,7 @@ class EmployeeLeavePolicyFragment(private val stepPosition: Int, private var act
             requireActivity(),
             params,
             jsonObject,
-            stepPosition,actionType,uid
+            stepPosition, actionType, uid
         )
     }
 }

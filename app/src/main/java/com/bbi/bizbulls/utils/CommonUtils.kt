@@ -145,4 +145,8 @@ object CommonUtils {
         return 0
     }
 
+    fun getUserIdFromToken() : String{
+        return ""
+    }
+
 }

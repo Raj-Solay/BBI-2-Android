@@ -282,6 +282,30 @@ class FranchiseeRegistrationViewModel : ViewModel() {
                     }
                 }
             }
+            13 ->{
+                when (actionType) {
+                    CommonUtils.ACTION_TYPE_EDIT -> {
+                        call = RetrofitClient.getUrl()
+                            .workHistoryPut(sharedPrefsHelper.authToken, jsonObject,uid)
+                    }
+                    CommonUtils.ACTION_TYPE_ADD -> {
+                        call = RetrofitClient.getUrl()
+                            .workHistoryPost(sharedPrefsHelper.authToken, jsonObject)
+                    }
+                }
+            }
+            16 -> {
+                when (actionType) {
+                    CommonUtils.ACTION_TYPE_EDIT -> {
+                        call = RetrofitClient.getUrl()
+                            .referralPut(sharedPrefsHelper.authToken, jsonObject,uid)
+                    }
+                    CommonUtils.ACTION_TYPE_ADD -> {
+                        call = RetrofitClient.getUrl()
+                            .referralPost(sharedPrefsHelper.authToken, jsonObject)
+                    }
+                }
+            }
         }
 
         println("________URL ::${call?.request()?.url}")
@@ -384,6 +408,18 @@ class FranchiseeRegistrationViewModel : ViewModel() {
                 message = context.resources.getString(R.string.authorization_details)
                 if(actionType == CommonUtils.ACTION_TYPE_EDIT){
                     message = context.resources.getString(R.string.authorization_details_update)
+                }
+            }
+            13 -> {
+                message = context.resources.getString(R.string.work_history_details)
+                if(actionType == CommonUtils.ACTION_TYPE_EDIT){
+                    message = context.resources.getString(R.string.work_history_details_update)
+                }
+            }
+            16 -> {
+                message = context.resources.getString(R.string.referral_details)
+                if(actionType == CommonUtils.ACTION_TYPE_EDIT){
+                    message = context.resources.getString(R.string.referral_details_update)
                 }
             }
         }

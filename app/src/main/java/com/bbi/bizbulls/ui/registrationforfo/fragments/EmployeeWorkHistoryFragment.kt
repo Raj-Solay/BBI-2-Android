@@ -14,7 +14,9 @@ import com.bbi.bizbulls.sharedpref.SharedPrefsManager
 import com.bbi.bizbulls.ui.registrationforfo.FranchiseeRegistrationViewModel
 import com.bbi.bizbulls.utils.CommonUtils
 import com.bbi.bizbulls.utils.MyProcessDialog
+import com.google.gson.JsonArray
 import com.google.gson.JsonObject
+import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -50,25 +52,25 @@ class EmployeeWorkHistoryFragment(private val stepPosition: Int, private var act
     private fun getRecordFromAPI(isFromEdit: Boolean) {
         MyProcessDialog.showProgressBar(requireContext(), 0)
         val sharedPrefsHelper by lazy { SharedPrefsManager(requireContext()) }
-        val call = RetrofitClient.getUrl().personalReferencesDetailsGet(sharedPrefsHelper.authToken)
-        call?.enqueue(object : Callback<PersonalReferenceViewRes> {
+        val call = RetrofitClient.getUrl().workHistoryGet(sharedPrefsHelper.authToken)
+        call?.enqueue(object : Callback<ResponseBody> {
             override
             fun onResponse(
-                    call: Call<PersonalReferenceViewRes>,
-                    responseObject: Response<PersonalReferenceViewRes>) {
-                if (responseObject.code() == 200) {
+                    call: Call<ResponseBody>,
+                    responseObject: Response<ResponseBody>) {
+               /* if (responseObject.code() == 200) {
                     if (responseObject.body()!!.data[0] != null) {
                         setUpDataInUI(responseObject.body()!!.data[0])
                     }
                 } else {
                     RetrofitClient.showResponseMessage(requireContext(), responseObject.code())
 
-                }
+                }*/
                 MyProcessDialog.dismiss()
             }
 
             override
-            fun onFailure(call: Call<PersonalReferenceViewRes>, t: Throwable) {
+            fun onFailure(call: Call<ResponseBody>, t: Throwable) {
                 MyProcessDialog.dismiss()
                 RetrofitClient.showFailedMessage(requireContext(), t)
             }
@@ -111,23 +113,43 @@ class EmployeeWorkHistoryFragment(private val stepPosition: Int, private var act
         binding.otherContact.isEnabled = isEditable*/
 
     }
+
     private fun senPersonalReferenceDetail() {
         val jsonObject = JsonObject()
-       /* jsonObject.addProperty("fullname", binding.otherName.text.toString().trim())
-        jsonObject.addProperty("relation", binding.spnrOtherRelationType.selectedItem.toString().trim())
-        jsonObject.addProperty("sex", binding.spnrOtherSex.selectedItem.toString().trim())
-        jsonObject.addProperty("age", binding.otherAge.text.toString().trim())
-        jsonObject.addProperty("occupation", binding.otherOccupation.text.toString().trim())
-        jsonObject.addProperty("location", binding.otherLocation.text.toString().trim())
-        jsonObject.addProperty("contact_number", binding.otherContact.text.toString().trim())
-        jsonObject.addProperty("address", binding.otherAddress.text.toString().trim())*/
+        jsonObject.addProperty("organization", binding.edtOrganization.text.toString().trim())
+        jsonObject.addProperty("field", binding.edtFiled.text.toString().trim())
+        jsonObject.addProperty("location", binding.edtLocation.text.toString().trim())
+        jsonObject.addProperty("date_of_joining", binding.edtDateofJoining.text.toString().trim())
+        jsonObject.addProperty("date_of_leaving", binding.edtDateofJoining.text.toString().trim())
+        jsonObject.addProperty("product_service", binding.edtProductService.text.toString().trim())
+        jsonObject.addProperty("job_designation", binding.edtJobDesignation.text.toString().trim())
+        jsonObject.addProperty("department", binding.edtDepartment.text.toString().trim())
+        jsonObject.addProperty("reporting_to", binding.edtReportTo.text.toString().trim())
+        jsonObject.addProperty("business_targets", binding.edtBusinessTargets.text.toString().trim())
+        jsonObject.addProperty("total_cost_to_company", binding.edtTotalCostToCompany.text.toString().trim())
+        jsonObject.addProperty("take_home_per_month", binding.edtTakeHomePerMonth.text.toString().trim())
+        jsonObject.addProperty("pf_number", binding.edtPFNumber.text.toString().trim())
+        jsonObject.addProperty("health_card_number", binding.edtHealthCardNumber.text.toString().trim())
+        jsonObject.addProperty("other_benefits", binding.edtOtherDetails.text.toString().trim())
+        jsonObject.addProperty("achievements", binding.edtAchievements.text.toString().trim())
+        jsonObject.addProperty("reasons_for_change", binding.edtReasonForChange.text.toString().trim())
+        jsonObject.addProperty("job_description", binding.edtJobDescription.text.toString().trim())
+        jsonObject.addProperty("contact_board_number", binding.edtContactBoardNumber.text.toString().trim())
+        jsonObject.addProperty("official_mail_id", binding.edtOfficialMailId.text.toString().trim())
+        jsonObject.addProperty("web_site", binding.edtWebsite.text.toString().trim())
+
+        var jsonArray = JsonArray()
+        jsonArray.add(jsonObject)
+
+        var jsonObjectData = JsonObject()
+        jsonObjectData.add("data",jsonArray)
 
         // Call remote Api service to save the Family Detail
         val params: MutableMap<String, String> = HashMap()
         FranchiseeRegistrationViewModel().sendDetailPostRequest(
             requireActivity(),
             params,
-            jsonObject,
+            jsonObjectData,
             stepPosition,actionType,uid
         )
     }

@@ -240,4 +240,34 @@ interface APIService {
     @GET("/api/status")
     fun getStatus(@Header("Authorization") token: String): Call<StatusData>
 
+    /*--Work History--*/
+    @POST("/api/me/work")
+    fun workHistoryPost(
+        @Header("Authorization") token: String,
+        @Body jsonObject: JsonObject): Call<ResponseBody>
+
+    @PUT("/api/me/work/{user_id}")
+    fun workHistoryPut(
+        @Header("Authorization") token: String,
+        @Body jsonObject: JsonObject,@Path(value = "user_id", encoded = true) userId : String): Call<ResponseBody>
+
+    @GET("/api/me/work")
+    fun workHistoryGet(
+        @Header("Authorization") token: String): Call<ResponseBody>
+
+    /*--Referral Details--*/
+    @POST("/api/me/referral")
+    fun referralPost(
+        @Header("Authorization") token: String,
+        @Body jsonObject: JsonObject): Call<ResponseBody>
+
+    @PUT("/api/me/referral/{user_id}")
+    fun referralPut(
+        @Header("Authorization") token: String,
+        @Body jsonObject: JsonObject,@Path(value = "user_id", encoded = true) userId : String): Call<ResponseBody>
+
+    @GET("/api/me/referral")
+    fun referralGet(
+        @Header("Authorization") token: String): Call<ResponseBody>
+
 }
