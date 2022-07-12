@@ -11,7 +11,6 @@
         android:id="@+id/rl_filter"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_50sdp"
-        android:background="@color/image_border"
         android:paddingHorizontal="@dimen/_10sdp">
 
         <TextView
@@ -41,10 +40,10 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_above="@+id/rl_bottom"
+        android:layout_below="@+id/rl_filter"
         android:layout_marginTop="@dimen/_20sdp"
         android:orientation="horizontal"
-        android:layout_below="@+id/rl_filter"
-        android:layout_above="@+id/rl_bottom"
         android:paddingHorizontal="@dimen/_10sdp"
         android:weightSum="1">
 
@@ -66,10 +65,11 @@
                 android:text="Indusstry"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_16sdp" />
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/border" />
+                android:background="@color/about_des_grey" />
 
             <TextView
                 android:id="@+id/tv_Client"
@@ -82,10 +82,12 @@
                 android:text="Client"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_16sdp" />
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/border" />
+                android:background="@color/about_des_grey" />
+
             <TextView
                 android:id="@+id/tv_Location"
                 android:layout_width="match_parent"
@@ -97,10 +99,12 @@
                 android:text="Location"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_16sdp" />
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/border" />
+                android:background="@color/about_des_grey" />
+
             <TextView
                 android:id="@+id/tv_Stage"
                 android:layout_width="match_parent"
@@ -124,46 +128,134 @@
                 android:id="@+id/rcy_filter"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+            <LinearLayout
+                android:id="@+id/ll_location"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/_10sdp"
+                android:visibility="gone"
+                android:orientation="vertical">
+
+                <EditText
+                    android:id="@+id/state_edt"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_40dp"
+                    android:background="@drawable/border_select"
+                    android:fadeScrollbars="false"
+                    android:gravity="center|left"
+                    android:hint="Enter State Name"
+                    android:inputType="textCapSentences|textMultiLine"
+                    android:maxLength="1000"
+                    android:paddingLeft="@dimen/_8dp"
+                    android:scrollbars="vertical"
+                    android:singleLine="true"
+                    android:fontFamily="@font/source_regular"
+                    android:textSize="@dimen/_14sdp"  />
+
+                <EditText
+                    android:id="@+id/city_edt"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_40dp"
+                    android:background="@drawable/border_select"
+                    android:fadeScrollbars="false"
+                    android:gravity="center|left"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:hint="Enter City Name"
+                    android:inputType="textCapSentences|textMultiLine"
+                    android:maxLength="1000"
+                    android:paddingLeft="@dimen/_8dp"
+                    android:scrollbars="vertical"
+                    android:singleLine="true"
+                    android:fontFamily="@font/source_regular"
+                    android:textSize="@dimen/_14sdp"  />
+
+                <EditText
+                    android:id="@+id/Location_edt"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_40dp"
+                    android:background="@drawable/border_select"
+                    android:fadeScrollbars="false"
+                    android:gravity="center|left"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:hint="Location"
+                    android:inputType="textCapSentences|textMultiLine"
+                    android:maxLength="1000"
+                    android:paddingLeft="@dimen/_8dp"
+                    android:scrollbars="vertical"
+                    android:singleLine="true"
+                    android:fontFamily="@font/source_regular"
+                    android:textSize="@dimen/_14sdp" />
+
+                <EditText
+                    android:id="@+id/Mangalagiri_edt"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_40dp"
+                    android:background="@drawable/border_select"
+                    android:fadeScrollbars="false"
+                    android:gravity="center|left"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:hint="Mangalagiri"
+                    android:inputType="textCapSentences|textMultiLine"
+                    android:maxLength="1000"
+                    android:paddingLeft="@dimen/_8dp"
+                    android:scrollbars="vertical"
+                    android:singleLine="true"
+                    android:fontFamily="@font/source_regular"
+                    android:textSize="@dimen/_14sdp" />
+
+            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
+
     <RelativeLayout
         android:id="@+id/rl_bottom"
-        android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_50sdp"
-        android:background="@color/image_border"
-        android:paddingHorizontal="@dimen/_10sdp">
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="horizontal"
-    android:weightSum="1">
-    <TextView
-        android:id="@+id/tv_Close"
-        android:layout_width="0dp"
-        android:layout_weight=".5"
-        android:layout_height="match_parent"
-        android:layout_alignParentLeft="true"
-        android:fontFamily="@font/source_regular"
-        android:gravity="center"
-        android:text="Close"
-        android:textColor="@color/black"
-        android:textSize="@dimen/_16sdp" />
+        android:layout_alignParentBottom="true"
+        android:background="@color/image_border">
 
-    <TextView
-        android:id="@+id/tv_Apply"
-        android:layout_width="0dp"
-        android:layout_weight=".5"
-        android:layout_height="match_parent"
-        android:layout_alignParentRight="true"
-        android:fontFamily="@font/source_regular"
-        android:gravity="center"
-        android:text="Apply"
-        android:textAllCaps="true"
-        android:textColor="@color/red"
-        android:textSize="@dimen/_16sdp" />
-</LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/about_des_grey"
+            android:orientation="horizontal"
+            android:paddingVertical="1dp"
+            android:weightSum="2">
+
+            <TextView
+                android:id="@+id/tv_Close"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentLeft="true"
+                android:layout_weight="1"
+                android:background="@color/image_border"
+                android:fontFamily="@font/source_regular"
+                android:gravity="center"
+                android:text="Close"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_16sdp" />
+
+            <TextView
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/about_des_grey" />
+
+            <TextView
+                android:id="@+id/tv_Apply"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:layout_weight="1"
+                android:background="@color/image_border"
+                android:fontFamily="@font/source_regular"
+                android:gravity="center"
+                android:text="Apply"
+                android:textAllCaps="true"
+                android:textColor="@color/red"
+                android:textSize="@dimen/_16sdp" />
+        </LinearLayout>
     </RelativeLayout>
 
 </RelativeLayout>
