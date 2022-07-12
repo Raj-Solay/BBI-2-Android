@@ -34,6 +34,26 @@ class EmployeeWorkHistoryFragment(private val stepPosition: Int, private var act
         binding.stepSubmit.setOnClickListener {
             senPersonalReferenceDetail()
         }
+
+        binding.edtDateofJoining.setOnClickListener {
+            CommonUtils.commonDatePickerDialog(
+                requireActivity(),
+                object : CommonUtils.DatePickerListener {
+                    override fun setDate(dateStr: String?) {
+                        binding.edtDateofJoining.setText(dateStr)
+                    }
+                })
+        }
+        binding.edtDateOfLeaving.setOnClickListener {
+            CommonUtils.commonDatePickerDialog(
+                requireActivity(),
+                object : CommonUtils.DatePickerListener {
+                    override fun setDate(dateStr: String?) {
+                        binding.edtDateOfLeaving.setText(dateStr)
+                    }
+                })
+        }
+
         when (actionType) {
             CommonUtils.ACTION_TYPE_VIEW -> {
                 getRecordFromAPI(false)

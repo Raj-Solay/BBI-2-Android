@@ -25,7 +25,7 @@ object Globals {
     var Item_Type = 1
     var SEE_ALL_TAG = "See All>>"
 
-    const val USER_TYPE_EMPLOYEE = 1
-    const val USER_TYPE_FO = 2
+    const val USER_TYPE_EMPLOYEE = 2
+    const val USER_TYPE_FO = 1
 
 }

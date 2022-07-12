@@ -26,7 +26,7 @@ interface APIService {
     fun reset(@Body jsonObject: JsonObject): Call<ForgotPasswordResponse>
 
     @GET("/api/me/")
-    fun foRegistrationSteps(@Header("Authorization") token: String): Call<FoRegistrationSteps>
+    fun userRoleDetails(@Header("Authorization") token: String): Call<UserDetails>
 
     /*--Personal Details api--*/
     @POST("/api/me/personal")
@@ -268,6 +268,37 @@ interface APIService {
 
     @GET("/api/me/referral")
     fun referralGet(
+        @Header("Authorization") token: String): Call<ResponseBody>
+
+    /*--Leave and Holidays--*/
+    @POST("/api/me/leave")
+    fun leaveHolidaysPost(
+        @Header("Authorization") token: String,
+        @Body jsonObject: JsonObject): Call<ResponseBody>
+
+    @PUT("/api/me/leave/{user_id}")
+    fun leaveHolidaysPut(
+        @Header("Authorization") token: String,
+        @Body jsonObject: JsonObject,@Path(value = "user_id", encoded = true) userId : String): Call<ResponseBody>
+
+    @GET("/api/me/leave")
+    fun leaveHolidaysGet(
+        @Header("Authorization") token: String): Call<ResponseBody>
+
+    /*--Professional Reference--*/
+    //professional_references
+    @POST("/api/me/professional_references")
+    fun professionalReferencesPost(
+        @Header("Authorization") token: String,
+        @Body jsonObject: JsonObject): Call<ResponseBody>
+
+    @PUT("/api/me/professional_references/{user_id}")
+    fun professionalReferencesPut(
+        @Header("Authorization") token: String,
+        @Body jsonObject: JsonObject,@Path(value = "user_id", encoded = true) userId : String): Call<ResponseBody>
+
+    @GET("/api/me/professional_references")
+    fun professionalReferencesGet(
         @Header("Authorization") token: String): Call<ResponseBody>
 
 }

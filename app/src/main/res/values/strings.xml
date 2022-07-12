@@ -312,6 +312,10 @@
     <string name="authorization_details_update">Authorization update successfully!</string>
     <string name="work_history_details">Work history saved successfully!</string>
     <string name="work_history_details_update">Work history update successfully!</string>
+    <string name="professional_ref_details">Professional References saved successfully!</string>
+    <string name="professional_ref_details_update">Professional References update successfully!</string>
+    <string name="leave_holidays_details">Leave Holidays saved successfully!</string>
+    <string name="leave_holidays_details_update">Leave Holidays update successfully!</string>
     <string name="referral_details">Referral saved successfully!</string>
     <string name="referral_details_update">Referral update successfully!</string>
     <string name="about_us_text">.We provide a one-stop solution for all your franchise needs, from franchise advisory to franchise promotion.\n.We will help you build your business with scalability and sustainability.\n.We work with franchisors to reach the right audience and help them differentiate their businesses.

@@ -10,33 +10,35 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import com.bbi.bizbulls.ui.fragment.HomeCustomerFragment
 import com.bbi.bizbulls.ui.fragment.CustomerFOStatusFragment
 import android.os.Bundle
+import android.util.Log
 import com.google.android.material.progressindicator.LinearProgressIndicator
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.core.view.GravityCompat
 import android.view.Gravity
 import android.view.KeyEvent
 import android.view.View
-import android.webkit.PermissionRequest
 import android.widget.RelativeLayout
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
+import com.bbi.bizbulls.data.foregistration.steps.FoRegistrationSteps
 import com.bbi.bizbulls.databinding.ActivityDashboardBinding
 import com.bbi.bizbulls.menu.*
+import com.bbi.bizbulls.model.UserDetails
+import com.bbi.bizbulls.remote.RetrofitClient
 import com.bbi.bizbulls.sharedpref.SharedPrefsManager
 import com.bbi.bizbulls.utils.CommonUtils
+import com.bbi.bizbulls.utils.MyProcessDialog
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
-import com.google.android.gms.maps.CameraUpdateFactory
-import com.google.android.gms.maps.GoogleMap
-import com.google.android.gms.maps.OnMapReadyCallback
-import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.gms.tasks.OnSuccessListener
 import com.karumi.dexter.Dexter
 import com.karumi.dexter.PermissionToken
 import com.karumi.dexter.listener.PermissionDeniedResponse
 import com.karumi.dexter.listener.PermissionGrantedResponse
 import com.karumi.dexter.listener.single.PermissionListener
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class DashboardActivity : AppCompatActivity(), View.OnClickListener {
     private val sharedPrefsHelper by lazy { SharedPrefsManager(this@DashboardActivity) }
@@ -67,11 +69,47 @@ class DashboardActivity : AppCompatActivity(), View.OnClickListener {
         binding = ActivityDashboardBinding.inflate(layoutInflater)
         setContentView(binding!!.root)
         init()
+        getUserRole(this)
         println("________NAME ::${sharedPrefsHelper.userName}")
         println("________EMAIL  ::${sharedPrefsHelper.email}")
         println("________PHONE  ::${sharedPrefsHelper.phone}")
         println("________TOKEN_ID  ::${sharedPrefsHelper.tokenID}")
         println("________AUTH_TOKEN  ::${sharedPrefsHelper.authToken}")
+    }
+    fun getUserRole(activity: DashboardActivity) {
+        val sharedPrefsHelper by lazy { SharedPrefsManager(this) }
+
+        val call: Call<UserDetails> =
+            RetrofitClient.getUrl().userRoleDetails(sharedPrefsHelper.authToken)
+        println("________URL ::${call.request().url}")
+        println("________authToken ::${sharedPrefsHelper.authToken}")
+        var token = sharedPrefsHelper.authToken;
+        MyProcessDialog.showProgressBar(activity, 0)
+        call.enqueue(object : Callback<UserDetails> {
+            override
+            fun onResponse(
+                call: Call<UserDetails>,
+                responseObject: Response<UserDetails>
+            ) {
+                if (responseObject.isSuccessful) {
+                    //responseObject.body()?.data
+                    var userDetails = responseObject.body()
+                  //  Log.d("UserDetails","Role : " + userDetails?.data?.id)
+                 //   Log.d("UserDetails","Role : " + userDetails?.data?.roleId)
+                    sharedPrefsHelper.role = userDetails?.data?.roleId.toString()
+                    sharedPrefsHelper.userId = userDetails?.data?.id.toString()
+                } else {
+                    RetrofitClient.showResponseMessage(activity, responseObject.code())
+                }
+                MyProcessDialog.dismiss()
+            }
+
+            override
+            fun onFailure(call: Call<UserDetails>, t: Throwable) {
+                MyProcessDialog.dismiss()
+                RetrofitClient.showFailedMessage(activity, t)
+            }
+        })
     }
 
     fun init() {

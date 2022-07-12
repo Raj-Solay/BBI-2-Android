@@ -131,7 +131,7 @@ class EmployeeReferralDetailsFragment(private val stepPosition: Int, private var
             requireActivity(),
             params,
             jsonObject,
-            16,actionType,uid
+            stepPosition,actionType,uid
         )
     }
 }

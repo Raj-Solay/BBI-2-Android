@@ -13,6 +13,7 @@ import com.bbi.bizbulls.ui.registrationforfo.FranchiseeRegistrationViewModel
 import com.bbi.bizbulls.utils.CommonUtils
 import com.bbi.bizbulls.utils.MyProcessDialog
 import com.google.gson.JsonObject
+import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -48,25 +49,25 @@ class EmployeeProfessionalReferenceFragment(private val stepPosition: Int, priva
     private fun getRecordFromAPI(isFromEdit: Boolean) {
         MyProcessDialog.showProgressBar(requireContext(), 0)
         val sharedPrefsHelper by lazy { SharedPrefsManager(requireContext()) }
-        val call = RetrofitClient.getUrl().personalReferencesDetailsGet(sharedPrefsHelper.authToken)
-        call?.enqueue(object : Callback<PersonalReferenceViewRes> {
+        val call = RetrofitClient.getUrl().professionalReferencesGet(sharedPrefsHelper.authToken)
+        call?.enqueue(object : Callback<ResponseBody> {
             override
             fun onResponse(
-                    call: Call<PersonalReferenceViewRes>,
-                    responseObject: Response<PersonalReferenceViewRes>) {
-                if (responseObject.code() == 200) {
+                    call: Call<ResponseBody>,
+                    responseObject: Response<ResponseBody>) {
+               /* if (responseObject.code() == 200) {
                     if (responseObject.body()!!.data[0] != null) {
                         setUpDataInUI(responseObject.body()!!.data[0])
                     }
                 } else {
                     RetrofitClient.showResponseMessage(requireContext(), responseObject.code())
 
-                }
+                }*/
                 MyProcessDialog.dismiss()
             }
 
             override
-            fun onFailure(call: Call<PersonalReferenceViewRes>, t: Throwable) {
+            fun onFailure(call: Call<ResponseBody>, t: Throwable) {
                 MyProcessDialog.dismiss()
                 RetrofitClient.showFailedMessage(requireContext(), t)
             }
@@ -75,14 +76,14 @@ class EmployeeProfessionalReferenceFragment(private val stepPosition: Int, priva
     private fun setUpDataInUI(data: PersonalReferenceViewRes.Data) {
         uid = data.id.toString()
 
-        binding.otherName.setText(data.fullname)
+      /*  binding.otherName.setText(data.fullname)
         binding.spnrOtherRelationType.setSelection(CommonUtils.getIndex(binding.spnrOtherRelationType,data.relation))
 
         binding.spnrOtherSex.setSelection(CommonUtils.getIndex(binding.spnrOtherSex,data.sex))
         binding.otherAge.setText(data.age)
         binding.otherOccupation.setText(data.occupation)
         binding.otherLocation.setText(data.location)
-        binding.otherContact.setText(data.contactNumber)
+        binding.otherContact.setText(data.contactNumber)*/
 
         var isEditable = false
         when (actionType) {
@@ -99,26 +100,28 @@ class EmployeeProfessionalReferenceFragment(private val stepPosition: Int, priva
                 binding.stepSubmit.visibility = View.VISIBLE
             }
         }
-        binding.otherName.isEnabled = isEditable
+       /* binding.otherName.isEnabled = isEditable
         binding.spnrOtherRelationType.isEnabled = isEditable
 
         binding.spnrOtherSex.isEnabled = isEditable
         binding.otherAge.isEnabled = isEditable
         binding.otherOccupation.isEnabled = isEditable
         binding.otherLocation.isEnabled = isEditable
-        binding.otherContact.isEnabled = isEditable
+        binding.otherContact.isEnabled = isEditable*/
 
     }
     private fun senPersonalReferenceDetail() {
         val jsonObject = JsonObject()
-        jsonObject.addProperty("fullname", binding.otherName.text.toString().trim())
-        jsonObject.addProperty("relation", binding.spnrOtherRelationType.selectedItem.toString().trim())
-        jsonObject.addProperty("sex", binding.spnrOtherSex.selectedItem.toString().trim())
-        jsonObject.addProperty("age", binding.otherAge.text.toString().trim())
-        jsonObject.addProperty("occupation", binding.otherOccupation.text.toString().trim())
-        jsonObject.addProperty("location", binding.otherLocation.text.toString().trim())
-        jsonObject.addProperty("contact_number", binding.otherContact.text.toString().trim())
-        jsonObject.addProperty("address", binding.otherAddress.text.toString().trim())
+        jsonObject.addProperty("name", binding.edtName.text.toString().trim())
+        jsonObject.addProperty("designation", binding.edtDesignation.text.toString().trim())
+        jsonObject.addProperty("department", binding.edtDepartment.text.toString().trim())
+        jsonObject.addProperty("organization_working", binding.edtOrgWorking.text.toString().trim())
+        jsonObject.addProperty("period_contact", binding.edtPeriodContact.text.toString().trim())
+        jsonObject.addProperty("contact_type", binding.edtContactType.text.toString().trim())
+        jsonObject.addProperty("office_number", binding.edtOfficeNumber.text.toString().trim())
+        jsonObject.addProperty("personal_contact", binding.edtPersonalContact.text.toString().trim())
+        jsonObject.addProperty("address", binding.edtAddress.text.toString().trim())
+        jsonObject.addProperty("mail_id", binding.edtMailId.text.toString().trim())
 
         // Call remote Api service to save the Family Detail
         val params: MutableMap<String, String> = HashMap()

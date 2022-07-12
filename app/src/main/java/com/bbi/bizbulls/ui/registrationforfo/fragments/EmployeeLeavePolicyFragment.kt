@@ -14,7 +14,9 @@ import com.bbi.bizbulls.sharedpref.SharedPrefsManager
 import com.bbi.bizbulls.ui.registrationforfo.FranchiseeRegistrationViewModel
 import com.bbi.bizbulls.utils.CommonUtils
 import com.bbi.bizbulls.utils.MyProcessDialog
+import com.google.gson.JsonArray
 import com.google.gson.JsonObject
+import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -35,6 +37,56 @@ class EmployeeLeavePolicyFragment(private val stepPosition: Int, private var act
             senPersonalReferenceDetail()
         }
 
+        binding.edtDate1.setOnClickListener {
+            CommonUtils.commonDatePickerDialog(
+                requireActivity(),
+                object : CommonUtils.DatePickerListener {
+                    override fun setDate(dateStr: String?) {
+                        binding.edtDate1.setText(dateStr)
+                    }
+                })
+        }
+
+        binding.edtDate2.setOnClickListener {
+            CommonUtils.commonDatePickerDialog(
+                requireActivity(),
+                object : CommonUtils.DatePickerListener {
+                    override fun setDate(dateStr: String?) {
+                        binding.edtDate2.setText(dateStr)
+                    }
+                })
+        }
+
+        binding.edtDate3.setOnClickListener {
+            CommonUtils.commonDatePickerDialog(
+                requireActivity(),
+                object : CommonUtils.DatePickerListener {
+                    override fun setDate(dateStr: String?) {
+                        binding.edtDate3.setText(dateStr)
+                    }
+                })
+        }
+
+        binding.edtDate4.setOnClickListener {
+            CommonUtils.commonDatePickerDialog(
+                requireActivity(),
+                object : CommonUtils.DatePickerListener {
+                    override fun setDate(dateStr: String?) {
+                        binding.edtDate4.setText(dateStr)
+                    }
+                })
+        }
+
+        binding.edtDate5.setOnClickListener {
+            CommonUtils.commonDatePickerDialog(
+                requireActivity(),
+                object : CommonUtils.DatePickerListener {
+                    override fun setDate(dateStr: String?) {
+                        binding.edtDate5.setText(dateStr)
+                    }
+                })
+        }
+
         when (actionType) {
             CommonUtils.ACTION_TYPE_VIEW -> {
                 getRecordFromAPI(false)
@@ -47,32 +99,35 @@ class EmployeeLeavePolicyFragment(private val stepPosition: Int, private var act
                 binding.stepSubmit.setText("Submit")
             }
         }
+
+
+
         return binding.root
     }
 
     private fun getRecordFromAPI(isFromEdit: Boolean) {
         MyProcessDialog.showProgressBar(requireContext(), 0)
         val sharedPrefsHelper by lazy { SharedPrefsManager(requireContext()) }
-        val call = RetrofitClient.getUrl().personalReferencesDetailsGet(sharedPrefsHelper.authToken)
-        call?.enqueue(object : Callback<PersonalReferenceViewRes> {
+        val call = RetrofitClient.getUrl().leaveHolidaysGet(sharedPrefsHelper.authToken)
+        call?.enqueue(object : Callback<ResponseBody> {
             override
             fun onResponse(
-                call: Call<PersonalReferenceViewRes>,
-                responseObject: Response<PersonalReferenceViewRes>
+                call: Call<ResponseBody>,
+                responseObject: Response<ResponseBody>
             ) {
-                if (responseObject.code() == 200) {
+               /* if (responseObject.code() == 200) {
                     if (responseObject.body()!!.data[0] != null) {
                         setUpDataInUI(responseObject.body()!!.data[0])
                     }
                 } else {
                     RetrofitClient.showResponseMessage(requireContext(), responseObject.code())
 
-                }
+                }*/
                 MyProcessDialog.dismiss()
             }
 
             override
-            fun onFailure(call: Call<PersonalReferenceViewRes>, t: Throwable) {
+            fun onFailure(call: Call<ResponseBody>, t: Throwable) {
                 MyProcessDialog.dismiss()
                 RetrofitClient.showFailedMessage(requireContext(), t)
             }
@@ -82,66 +137,50 @@ class EmployeeLeavePolicyFragment(private val stepPosition: Int, private var act
     private fun setUpDataInUI(data: PersonalReferenceViewRes.Data) {
         uid = data.id.toString()
 
-        binding.otherName.setText(data.fullname)
-        binding.spnrOtherRelationType.setSelection(
-            CommonUtils.getIndex(
-                binding.spnrOtherRelationType,
-                data.relation
-            )
-        )
 
-        binding.spnrOtherSex.setSelection(CommonUtils.getIndex(binding.spnrOtherSex, data.sex))
-        binding.otherAge.setText(data.age)
-        binding.otherOccupation.setText(data.occupation)
-        binding.otherLocation.setText(data.location)
-        binding.otherContact.setText(data.contactNumber)
-
-        var isEditable = false
-        when (actionType) {
-            CommonUtils.ACTION_TYPE_VIEW -> {
-                isEditable = false
-                binding.stepSubmit.visibility = View.INVISIBLE
-            }
-            CommonUtils.ACTION_TYPE_EDIT -> {
-                isEditable = true
-                binding.stepSubmit.visibility = View.VISIBLE
-            }
-            CommonUtils.ACTION_TYPE_ADD -> {
-                isEditable = true
-                binding.stepSubmit.visibility = View.VISIBLE
-            }
-        }
-        binding.otherName.isEnabled = isEditable
-        binding.spnrOtherRelationType.isEnabled = isEditable
-
-        binding.spnrOtherSex.isEnabled = isEditable
-        binding.otherAge.isEnabled = isEditable
-        binding.otherOccupation.isEnabled = isEditable
-        binding.otherLocation.isEnabled = isEditable
-        binding.otherContact.isEnabled = isEditable
 
     }
 
     private fun senPersonalReferenceDetail() {
-        val jsonObject = JsonObject()
-        jsonObject.addProperty("fullname", binding.otherName.text.toString().trim())
-        jsonObject.addProperty(
-            "relation",
-            binding.spnrOtherRelationType.selectedItem.toString().trim()
-        )
-        jsonObject.addProperty("sex", binding.spnrOtherSex.selectedItem.toString().trim())
-        jsonObject.addProperty("age", binding.otherAge.text.toString().trim())
-        jsonObject.addProperty("occupation", binding.otherOccupation.text.toString().trim())
-        jsonObject.addProperty("location", binding.otherLocation.text.toString().trim())
-        jsonObject.addProperty("contact_number", binding.otherContact.text.toString().trim())
-        jsonObject.addProperty("address", binding.otherAddress.text.toString().trim())
+        val jsonObject1 = JsonObject()
+        jsonObject1.addProperty("occasion", binding.edtFestival1.text.toString().trim())
+        jsonObject1.addProperty("date_of_festival", binding.edtDate1.text.toString().trim())
+
+        val jsonObject2 = JsonObject()
+        jsonObject2.addProperty("occasion", binding.edtFestival2.text.toString().trim())
+        jsonObject2.addProperty("date_of_festival", binding.edtDate2.text.toString().trim())
+
+        val jsonObject3 = JsonObject()
+        jsonObject3.addProperty("occasion", binding.edtFestival3.text.toString().trim())
+        jsonObject3.addProperty("date_of_festival", binding.edtDate3.text.toString().trim())
+
+        val jsonObject4 = JsonObject()
+        jsonObject4.addProperty("occasion", binding.edtFestival4.text.toString().trim())
+        jsonObject4.addProperty("date_of_festival", binding.edtDate4.text.toString().trim())
+
+        val jsonObject5 = JsonObject()
+        jsonObject5.addProperty("occasion", binding.edtFestival5.text.toString().trim())
+        jsonObject5.addProperty("date_of_festival", binding.edtDate5.text.toString().trim())
+
+        val jsonObjectRoot = JsonObject()
+        jsonObjectRoot.addProperty("rotational_name", binding.otherAge.text.toString().trim())
+
+        var jsonArray = JsonArray()
+        jsonArray.add(jsonObject1)
+        jsonArray.add(jsonObject2)
+        jsonArray.add(jsonObject3)
+        jsonArray.add(jsonObject4)
+        jsonArray.add(jsonObject5)
+
+        jsonObjectRoot.add("leave_holidays",jsonArray)
+
 
         // Call remote Api service to save the Family Detail
         val params: MutableMap<String, String> = HashMap()
         FranchiseeRegistrationViewModel().sendDetailPostRequest(
             requireActivity(),
             params,
-            jsonObject,
+            jsonObjectRoot,
             stepPosition, actionType, uid
         )
     }

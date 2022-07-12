@@ -3,6 +3,7 @@ package com.bbi.bizbulls.ui.registrationforfo
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.KeyEvent
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -49,8 +50,13 @@ class FranchiseeRegistrationActivity : AppCompatActivity() {
         bundle?.getString("status")?.also { stepStatus = it }
         bundle?.getInt("position")?.also { stepPosition = it }
         bundle?.getInt("actionType")?.also { actionType = it }
-        bundle?.getInt("id")?.also { id = it }
+        /*bundle?.getInt("id")?.also {
 
+            id = it
+        }*/
+        id = bundle?.getInt("id",0)!!
+
+        stepPosition = id;
         when (id) {
             1 -> {
                 fragmentCalling(FoPersonalDetailsFragment(stepPosition,actionType))

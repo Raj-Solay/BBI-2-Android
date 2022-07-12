@@ -2,6 +2,7 @@ package com.bbi.bizbulls.ui.registrationforfo.adapters
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -59,8 +60,10 @@ class FoRegistrationDashboardAdapter(
             holder.itemBinding.itemName.setBackgroundResource(R.color.status_green)
         }*/
 
+        Log.d("StepCount","Count : " + model.id);
 
         holder.itemView.setOnClickListener {
+            Log.d("StepCount","click : " + model.id);
             stepsClickListener.onStepsClickListener(
                     model,
                     position,
