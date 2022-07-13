@@ -80,4 +80,6 @@
     <color name="grey_course_light">#999999</color>
     <color name="reting_text_color">#f4a620</color>
     <color name="ovel_login">#e5e1e1</color>
+    <color name="gray">#CCC7C7</color>
+
 </resources>

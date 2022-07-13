@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/finabilityLayout"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <RelativeLayout
+        android:id="@+id/site_visitstatuslayout"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:background="@drawable/border_select"
+        app:layout_constraintBottom_toBottomOf="@+id/txtsite_visittitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/txtsite_visittitle">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imgsite_visitstatus"
+            android:layout_width="8dp"
+            android:layout_height="8dp"
+            android:layout_centerInParent="true"
+            android:src="@drawable/bg_round" />
+    </RelativeLayout>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/txtsite_visittitle"
+        style="@style/fontregular"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="@string/c_site_visit"
+        android:textColor="@color/heading"
+        android:textSize="@dimen/medium_font"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/site_visitstatuslayout"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layoutsite_visit"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:minHeight="52dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/txtsite_visittitle"
+        app:layout_constraintTop_toBottomOf="@+id/txtsite_visittitle">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layoutsite_visitcomplete"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/orange_100"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txtsite_visitstatus"
+                style="@style/fontregular"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="Completed"
+                android:textColor="@color/status_green"
+                android:textSize="@dimen/medium_font"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txtsite_visitdate"
+                style="@style/fontregular"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="6dp"
+                android:text="081112021"
+                android:textColor="@color/heading"
+                android:textSize="@dimen/medium_font"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtsite_visitstatus" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/txtsite_visitdownload"
+                style="@style/fontregular"
+                android:layout_width="wrap_content"
+                android:layout_height="22dp"
+                android:layout_marginEnd="6dp"
+                android:background="@drawable/card_background"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
+                android:text="@string/c_download"
+                android:textColor="@color/heading"
+                android:textSize="@dimen/small_font"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="TouchTargetSizeCheck" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layoutsite_visitincomplete"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/button_background_redlight"
+            android:paddingTop="8dp"
+            android:paddingBottom="16dp"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txtsite_visitstatusincomplete"
+                style="@style/fontregular"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="@string/select_any_date_and_confirm_for_site_visit"
+                android:textColor="@color/black"
+                android:textSize="@dimen/medium_font"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_10sdp"
+                app:layout_constraintEnd_toEndOf="@+id/txtsite_visitstatusincomplete"
+                app:layout_constraintStart_toStartOf="@+id/txtsite_visitstatusincomplete"
+                android:paddingBottom="@dimen/_3sdp"
+                app:layout_constraintTop_toBottomOf="@+id/txtsite_visitstatusincomplete"
+                android:layout_marginTop="@dimen/_5sdp" />
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnReschedule"
+                style="@style/fontregular"
+                android:layout_width="wrap_content"
+                android:layout_height="22dp"
+                android:background="@drawable/bg_rounddarkorange"
+                android:paddingStart="8dp"
+                app:layout_constraintStart_toStartOf="@+id/txtsite_visitstatusincomplete"
+                android:paddingEnd="8dp"
+                android:layout_marginTop="@dimen/_3sdp"
+                android:text="@string/reschedule"
+                android:textColor="@color/white"
+                android:textSize="@dimen/small_font"
+                app:layout_constraintTop_toBottomOf="@+id/recycler"
+                tools:ignore="TouchTargetSizeCheck" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <View
+        android:id="@+id/line_site_visit"
+        android:layout_width="1dp"
+        android:layout_height="0dp"
+        android:background="@color/orange_700"
+        android:maxHeight="52dp"
+        app:layout_constraintBottom_toBottomOf="@+id/layoutsite_visit"
+        app:layout_constraintEnd_toEndOf="@+id/site_visitstatuslayout"
+        app:layout_constraintStart_toStartOf="@+id/site_visitstatuslayout"
+        app:layout_constraintTop_toBottomOf="@+id/site_visitstatuslayout" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

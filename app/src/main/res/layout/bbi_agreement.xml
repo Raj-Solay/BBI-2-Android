@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/bbiLayout"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <RelativeLayout
+        android:id="@+id/bbi_agreementstatuslayout"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:background="@drawable/border_select"
+        app:layout_constraintBottom_toBottomOf="@+id/txtbbi_agreementtitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/txtbbi_agreementtitle">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imgbbi_agreementstatus"
+            android:layout_width="8dp"
+            android:layout_height="8dp"
+            android:layout_centerInParent="true"
+            android:src="@drawable/bg_round" />
+    </RelativeLayout>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/txtbbi_agreementtitle"
+        style="@style/fontregular"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="@string/c_bbi_agreement"
+        android:textColor="@color/heading"
+        android:textSize="@dimen/medium_font"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/bbi_agreementstatuslayout"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layoutbbi_agreement"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:minHeight="52dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/txtbbi_agreementtitle"
+        app:layout_constraintTop_toBottomOf="@+id/txtbbi_agreementtitle">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layoutbbi_agreementcomplete"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/orange_100"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txtbbi_agreementstatus"
+                style="@style/fontregular"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="Completed"
+                android:textColor="@color/status_green"
+                android:textSize="@dimen/medium_font"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txtbbi_agreementdate"
+                style="@style/fontregular"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="6dp"
+                android:text="081112021"
+                android:textColor="@color/heading"
+                android:textSize="@dimen/medium_font"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtbbi_agreementstatus" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/txtbbi_agreementdownload"
+                style="@style/fontregular"
+                android:layout_width="wrap_content"
+                android:layout_height="22dp"
+                android:layout_marginEnd="6dp"
+                android:background="@drawable/card_background"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
+                android:text="@string/c_download"
+                android:textColor="@color/heading"
+                android:textSize="@dimen/small_font"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="TouchTargetSizeCheck" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layoutbbi_agreementincomplete"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/button_background_redlight"
+            android:paddingTop="8dp"
+            android:paddingBottom="16dp"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/txtbbi_agreementstatusincomplete"
+                style="@style/fontregular"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="Pending Approval"
+                android:textColor="@color/status_red"
+                android:textSize="@dimen/medium_font"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <View
+        android:id="@+id/line_bbi_agreement"
+        android:layout_width="1dp"
+        android:layout_height="0dp"
+        android:background="@color/orange_700"
+        android:maxHeight="52dp"
+        app:layout_constraintBottom_toBottomOf="@+id/layoutbbi_agreement"
+        app:layout_constraintEnd_toEndOf="@+id/bbi_agreementstatuslayout"
+        app:layout_constraintStart_toStartOf="@+id/bbi_agreementstatuslayout"
+        app:layout_constraintTop_toBottomOf="@+id/bbi_agreementstatuslayout" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
