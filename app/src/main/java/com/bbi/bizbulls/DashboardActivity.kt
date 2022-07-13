@@ -26,6 +26,7 @@ import com.bbi.bizbulls.menu.*
 import com.bbi.bizbulls.model.UserDetails
 import com.bbi.bizbulls.remote.RetrofitClient
 import com.bbi.bizbulls.sharedpref.SharedPrefsManager
+import com.bbi.bizbulls.ui.registrationforfo.FoRegistrationDashBoardActivity
 import com.bbi.bizbulls.utils.CommonUtils
 import com.bbi.bizbulls.utils.MyProcessDialog
 import com.google.android.gms.location.FusedLocationProviderClient
@@ -195,7 +196,7 @@ class DashboardActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onClick(view: View) {
         if (view.id == R.id.layoutcp){
-            val i = Intent(this, ProjectInfoActivity::class.java)
+            val i = Intent(this, FoRegistrationDashBoardActivity::class.java)
             startActivity(i)
         }
         if (view.id == R.id.myAccount) {

@@ -11,6 +11,7 @@ import com.bbi.bizbulls.remote.RetrofitClient
 import com.bbi.bizbulls.sharedpref.SharedPrefsManager
 import com.bbi.bizbulls.ui.registrationforfo.FranchiseeRegistrationViewModel
 import com.bbi.bizbulls.utils.CommonUtils
+import com.bbi.bizbulls.utils.Globals
 import com.bbi.bizbulls.utils.MyProcessDialog
 import com.google.gson.JsonObject
 import retrofit2.Call
@@ -42,6 +43,31 @@ class FoAcademicEducationFragment(private val stepPosition: Int,private var acti
             CommonUtils.ACTION_TYPE_ADD -> {
                 binding.stepSubmit.setText("Submit")
             }
+        }
+
+        val sharedPrefsHelper by lazy { SharedPrefsManager(requireContext()) }
+        if(sharedPrefsHelper.role.toInt() == Globals.USER_TYPE_EMPLOYEE){
+            binding.txtTCTitle.visibility = View.VISIBLE
+            binding.txtTitle2.visibility = View.VISIBLE
+            binding.txtTitle3.visibility = View.VISIBLE
+            binding.tcCourse.visibility = View.VISIBLE
+            binding.tcInstituteName.visibility = View.VISIBLE
+            binding.tcYear.visibility = View.VISIBLE
+            binding.tcLevel.visibility = View.VISIBLE
+            binding.extraActivities.visibility = View.VISIBLE
+            binding.achievements.visibility = View.VISIBLE
+            binding.hobbies.visibility = View.VISIBLE
+        }else{
+            binding.txtTCTitle.visibility = View.GONE
+            binding.txtTitle2.visibility = View.GONE
+            binding.txtTitle3.visibility = View.GONE
+            binding.tcCourse.visibility = View.GONE
+            binding.tcInstituteName.visibility = View.GONE
+            binding.tcYear.visibility = View.GONE
+            binding.tcLevel.visibility = View.GONE
+            binding.extraActivities.visibility = View.GONE
+            binding.achievements.visibility = View.GONE
+            binding.hobbies.visibility = View.GONE
         }
 
         return binding.root
@@ -84,6 +110,26 @@ class FoAcademicEducationFragment(private val stepPosition: Int,private var acti
         binding.yearOfPassing.setText(data.yearofpasing)
         binding.percent.setText(data.percentage)
 
+        val sharedPrefsHelper by lazy { SharedPrefsManager(requireContext()) }
+        if(sharedPrefsHelper.role.toInt() == Globals.USER_TYPE_EMPLOYEE){
+
+            binding.tcCourse.setText(data.tc_course)
+            binding.tcInstituteName.setText(data.tc_institution)
+            binding.tcYear.setText(data.tc_year)
+            binding.tcLevel.setText(data.tc_level)
+            binding.extraActivities.setText(data.extra_co_activities)
+            binding.achievements.setText(data.curricular_achivements)
+            binding.hobbies.setText(data.tc_hobbies)
+        }else{
+            binding.tcCourse.setText("")
+            binding.tcInstituteName.setText("")
+            binding.tcYear.setText("")
+            binding.tcLevel.setText("")
+            binding.extraActivities.setText("")
+            binding.achievements.setText("")
+            binding.hobbies.setText("")
+        }
+
         var isEditable = false
         when (actionType) {
             CommonUtils.ACTION_TYPE_VIEW -> {
@@ -105,6 +151,16 @@ class FoAcademicEducationFragment(private val stepPosition: Int,private var acti
         binding.boardOrUniversity.isEnabled = isEditable
         binding.yearOfPassing.isEnabled = isEditable
         binding.percent.isEnabled = isEditable
+
+        if(sharedPrefsHelper.role.toInt() == Globals.USER_TYPE_EMPLOYEE){
+            binding.tcCourse.isEnabled = isEditable
+            binding.tcInstituteName.isEnabled = isEditable
+            binding.tcYear.isEnabled = isEditable
+            binding.tcLevel.isEnabled = isEditable
+            binding.extraActivities.isEnabled = isEditable
+            binding.achievements.isEnabled = isEditable
+            binding.hobbies.isEnabled = isEditable
+        }
     }
 
     private fun senEducationDetail() {
@@ -115,6 +171,16 @@ class FoAcademicEducationFragment(private val stepPosition: Int,private var acti
         jsonObject.addProperty("yearofpasing", binding.yearOfPassing.text.toString().trim())
         jsonObject.addProperty("percentage", binding.percent.text.toString().trim())
 
+        val sharedPrefsHelper by lazy { SharedPrefsManager(requireContext()) }
+        if(sharedPrefsHelper.role.toInt() == Globals.USER_TYPE_EMPLOYEE){
+            jsonObject.addProperty("tc_course", binding.tcCourse.text.toString().trim())
+            jsonObject.addProperty("tc_institution", binding.tcInstituteName.text.toString().trim())
+            jsonObject.addProperty("tc_year", binding.tcYear.text.toString().trim())
+            jsonObject.addProperty("tc_level", binding.tcLevel.text.toString().trim())
+            jsonObject.addProperty("extra_co_activities", binding.extraActivities.text.toString().trim())
+            jsonObject.addProperty("curricular_achivements", binding.achievements.text.toString().trim())
+            jsonObject.addProperty("hobbies", binding.hobbies.text.toString().trim())
+        }
         // Call remote Api service to save the Education Detail
         val params: MutableMap<String, String> = HashMap()
         FranchiseeRegistrationViewModel().sendDetailPostRequest(requireActivity(), params, jsonObject, stepPosition,actionType,uid)

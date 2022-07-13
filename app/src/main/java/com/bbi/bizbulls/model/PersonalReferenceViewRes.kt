@@ -3,7 +3,7 @@ package com.bbi.bizbulls.model
 import com.google.gson.annotations.SerializedName
 import com.google.gson.annotations.Expose
 
-class ProfessionalReferenceView {
+class PersonalReferenceViewRes {
     @SerializedName("data")
     @Expose
     var data: List<Data>? = null
@@ -43,6 +43,6 @@ class ProfessionalReferenceView {
 
         @SerializedName("address")
         @Expose
-        var address: Any? = null
+        var address: String? = null
     }
 }

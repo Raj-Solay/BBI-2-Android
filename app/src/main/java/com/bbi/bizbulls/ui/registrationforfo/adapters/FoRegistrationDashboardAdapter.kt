@@ -60,10 +60,10 @@ class FoRegistrationDashboardAdapter(
             holder.itemBinding.itemName.setBackgroundResource(R.color.status_green)
         }*/
 
-        Log.d("StepCount","Count : " + model.id);
+       // Log.d("StepCount","Count : " + model.id);
 
         holder.itemView.setOnClickListener {
-            Log.d("StepCount","click : " + model.id);
+         //   Log.d("StepCount","click : " + model.id);
             stepsClickListener.onStepsClickListener(
                     model,
                     position,

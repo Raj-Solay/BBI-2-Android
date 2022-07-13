@@ -55,8 +55,8 @@ class FoPersonalReferenceFragment(private val stepPosition: Int,private var acti
                     call: Call<PersonalReferenceViewRes>,
                     responseObject: Response<PersonalReferenceViewRes>) {
                 if (responseObject.code() == 200) {
-                    if (responseObject.body()!!.data[0] != null) {
-                        setUpDataInUI(responseObject.body()!!.data[0])
+                    if (responseObject.body()!!.data?.get(0)   != null) {
+                        responseObject.body()!!.data?.get(0)?.let { setUpDataInUI(it) }
                     }
                 } else {
                     RetrofitClient.showResponseMessage(requireContext(), responseObject.code())
@@ -76,9 +76,11 @@ class FoPersonalReferenceFragment(private val stepPosition: Int,private var acti
         uid = data.id.toString()
 
         binding.otherName.setText(data.fullname)
-        binding.spnrOtherRelationType.setSelection(CommonUtils.getIndex(binding.spnrOtherRelationType,data.relation))
+        binding.spnrOtherRelationType.setSelection(CommonUtils.getIndex(binding.spnrOtherRelationType,
+            data.relation.toString()
+        ))
 
-        binding.spnrOtherSex.setSelection(CommonUtils.getIndex(binding.spnrOtherSex,data.sex))
+        binding.spnrOtherSex.setSelection(CommonUtils.getIndex(binding.spnrOtherSex,data.sex.toString()))
         binding.otherAge.setText(data.age)
         binding.otherOccupation.setText(data.occupation)
         binding.otherLocation.setText(data.location)

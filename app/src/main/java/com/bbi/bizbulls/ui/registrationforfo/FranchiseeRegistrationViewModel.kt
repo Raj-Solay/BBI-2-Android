@@ -124,12 +124,12 @@ class FranchiseeRegistrationViewModel : ViewModel() {
                               jsonObject: JsonObject, stepPosition: Any,actionType : Int,uid : String) {
         val sharedPrefsHelper by lazy { SharedPrefsManager(context) }
         var newUid = uid
-        if(!sharedPrefsHelper.userId.isEmpty()){
+        if(sharedPrefsHelper.userId.isNotEmpty()){
             newUid = sharedPrefsHelper.userId
         }
         var call: Call<ResponseBody>? = null
         when (stepPosition) {
-            0 -> {
+            1 -> {
                 when (actionType) {
                     CommonUtils.ACTION_TYPE_EDIT -> {
                         call =
@@ -142,7 +142,7 @@ class FranchiseeRegistrationViewModel : ViewModel() {
                 }
 
             }
-            1 -> {
+            2 -> {
                 when (actionType) {
                     CommonUtils.ACTION_TYPE_EDIT -> {
                         call = RetrofitClient.getUrl()
@@ -153,7 +153,7 @@ class FranchiseeRegistrationViewModel : ViewModel() {
                 }
 
             }
-            2 -> {
+            3 -> {
 
                 when (actionType) {
                     CommonUtils.ACTION_TYPE_EDIT -> {
@@ -166,7 +166,7 @@ class FranchiseeRegistrationViewModel : ViewModel() {
                     }
                 }
             }
-            3 -> {
+            4 -> {
 
                 when (actionType) {
                     CommonUtils.ACTION_TYPE_EDIT -> {
@@ -179,7 +179,7 @@ class FranchiseeRegistrationViewModel : ViewModel() {
                     }
                 }
             }
-            4 -> {
+            5 -> {
 
                 when (actionType) {
                     CommonUtils.ACTION_TYPE_EDIT -> {
@@ -192,7 +192,7 @@ class FranchiseeRegistrationViewModel : ViewModel() {
                     }
                 }
             }
-            5 -> {
+            6 -> {
 
                 when (actionType) {
                     CommonUtils.ACTION_TYPE_EDIT -> {
@@ -205,7 +205,7 @@ class FranchiseeRegistrationViewModel : ViewModel() {
                     }
                 }
             }
-            6 -> {
+            7 -> {
 
                 when (actionType) {
                     CommonUtils.ACTION_TYPE_EDIT -> {
@@ -218,7 +218,7 @@ class FranchiseeRegistrationViewModel : ViewModel() {
                     }
                 }
             }
-            7 -> {
+            8 -> {
 
                 when (actionType) {
                     CommonUtils.ACTION_TYPE_EDIT -> {
@@ -231,7 +231,7 @@ class FranchiseeRegistrationViewModel : ViewModel() {
                     }
                 }
             }
-            8 -> {
+            9 -> {
 
                 when (actionType) {
                     CommonUtils.ACTION_TYPE_EDIT -> {
@@ -244,7 +244,7 @@ class FranchiseeRegistrationViewModel : ViewModel() {
                     }
                 }
             }
-            9 -> {
+            10 -> {
 
                 when (actionType) {
                     CommonUtils.ACTION_TYPE_EDIT -> {
@@ -257,7 +257,7 @@ class FranchiseeRegistrationViewModel : ViewModel() {
                     }
                 }
             }
-            10 -> {
+            11 -> {
                /* when (actionType) {
                     CommonUtils.ACTION_TYPE_EDIT -> {
                         call = RetrofitClient.getUrl()
@@ -269,7 +269,7 @@ class FranchiseeRegistrationViewModel : ViewModel() {
                     }
                 }*/
             }
-            11 -> {
+            12 -> {
 
                 when (actionType) {
                     CommonUtils.ACTION_TYPE_EDIT -> {
@@ -362,73 +362,73 @@ class FranchiseeRegistrationViewModel : ViewModel() {
     private fun responseSuccessMessage(context: Context, position: Any,actionType: Int){
         var message = ""
         when (position) {
-            0 -> {
+            1 -> {
                 message = context.resources.getString(R.string.personal_details)
                 if(actionType == CommonUtils.ACTION_TYPE_EDIT){
                     message = context.resources.getString(R.string.personal_details_update)
                 }
             }
-            1 -> {
+            2 -> {
                 message = context.resources.getString(R.string.health_details)
                 if(actionType == CommonUtils.ACTION_TYPE_EDIT){
                     message = context.resources.getString(R.string.health_details_update)
                 }
             }
-            2 -> {
+            3 -> {
                 message = context.resources.getString(R.string.expression_details)
                 if(actionType == CommonUtils.ACTION_TYPE_EDIT){
                     message = context.resources.getString(R.string.expression_details_update)
                 }
             }
-            3 -> {
+            4 -> {
                 message = context.resources.getString(R.string.checkList_details)
                 if(actionType == CommonUtils.ACTION_TYPE_EDIT){
                     message = context.resources.getString(R.string.checkList_details_update)
                 }
             }
-            4 -> {
+            5 -> {
                 message = context.resources.getString(R.string.education_details)
                 if(actionType == CommonUtils.ACTION_TYPE_EDIT){
                     message = context.resources.getString(R.string.education_details_update)
                 }
             }
-            5 -> {
+            6 -> {
                 message = context.resources.getString(R.string.socialIdentity_details)
                 if(actionType == CommonUtils.ACTION_TYPE_EDIT){
                     message = context.resources.getString(R.string.socialIdentity_details_update)
                 }
             }
-            6 -> {
+            7 -> {
                 message = context.resources.getString(R.string.bank_details)
                 if(actionType == CommonUtils.ACTION_TYPE_EDIT){
                     message = context.resources.getString(R.string.bank_details_update)
                 }
             }
-            7 -> {
+            8 -> {
                 message = context.resources.getString(R.string.family_details)
                 if(actionType == CommonUtils.ACTION_TYPE_EDIT){
                     message = context.resources.getString(R.string.family_details_update)
                 }
             }
-            8 -> {
+            9 -> {
                 message = context.resources.getString(R.string.children_details)
                 if(actionType == CommonUtils.ACTION_TYPE_EDIT){
                     message = context.resources.getString(R.string.children_details_update)
                 }
             }
-            9 -> {
+            10 -> {
                 message = context.resources.getString(R.string.personalReferences_details)
                 if(actionType == CommonUtils.ACTION_TYPE_EDIT){
                     message = context.resources.getString(R.string.personalReferences_details_update)
                 }
             }
-            10 -> {
+            11 -> {
                 message = context.resources.getString(R.string.attachments_details)
                 if(actionType == CommonUtils.ACTION_TYPE_EDIT){
                     message = context.resources.getString(R.string.attachments_details_update)
                 }
             }
-            11 -> {
+            12 -> {
                 message = context.resources.getString(R.string.authorization_details)
                 if(actionType == CommonUtils.ACTION_TYPE_EDIT){
                     message = context.resources.getString(R.string.authorization_details_update)

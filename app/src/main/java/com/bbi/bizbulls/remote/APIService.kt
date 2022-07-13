@@ -268,7 +268,7 @@ interface APIService {
 
     @GET("/api/me/referral")
     fun referralGet(
-        @Header("Authorization") token: String): Call<ResponseBody>
+        @Header("Authorization") token: String): Call<ReferralDetailsView>
 
     /*--Leave and Holidays--*/
     @POST("/api/me/leave")
@@ -283,10 +283,9 @@ interface APIService {
 
     @GET("/api/me/leave")
     fun leaveHolidaysGet(
-        @Header("Authorization") token: String): Call<ResponseBody>
+        @Header("Authorization") token: String): Call<LeavePolicyView>
 
     /*--Professional Reference--*/
-    //professional_references
     @POST("/api/me/professional_references")
     fun professionalReferencesPost(
         @Header("Authorization") token: String,
@@ -299,6 +298,6 @@ interface APIService {
 
     @GET("/api/me/professional_references")
     fun professionalReferencesGet(
-        @Header("Authorization") token: String): Call<ResponseBody>
+        @Header("Authorization") token: String): Call<ProfessionalReferenceViewRes>
 
 }

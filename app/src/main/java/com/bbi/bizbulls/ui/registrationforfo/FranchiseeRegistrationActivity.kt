@@ -56,7 +56,7 @@ class FranchiseeRegistrationActivity : AppCompatActivity() {
         }*/
         id = bundle?.getInt("id",0)!!
 
-        stepPosition = id;
+        stepPosition = id
         when (id) {
             1 -> {
                 fragmentCalling(FoPersonalDetailsFragment(stepPosition,actionType))

@@ -6,14 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.bbi.bizbulls.databinding.EmployeeFrgProfessionalReferencesBinding
-import com.bbi.bizbulls.model.PersonalReferenceViewRes
+import com.bbi.bizbulls.model.ProfessionalReferenceViewRes
 import com.bbi.bizbulls.remote.RetrofitClient
 import com.bbi.bizbulls.sharedpref.SharedPrefsManager
 import com.bbi.bizbulls.ui.registrationforfo.FranchiseeRegistrationViewModel
 import com.bbi.bizbulls.utils.CommonUtils
 import com.bbi.bizbulls.utils.MyProcessDialog
 import com.google.gson.JsonObject
-import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -50,40 +49,42 @@ class EmployeeProfessionalReferenceFragment(private val stepPosition: Int, priva
         MyProcessDialog.showProgressBar(requireContext(), 0)
         val sharedPrefsHelper by lazy { SharedPrefsManager(requireContext()) }
         val call = RetrofitClient.getUrl().professionalReferencesGet(sharedPrefsHelper.authToken)
-        call?.enqueue(object : Callback<ResponseBody> {
+        call?.enqueue(object : Callback<ProfessionalReferenceViewRes> {
             override
             fun onResponse(
-                    call: Call<ResponseBody>,
-                    responseObject: Response<ResponseBody>) {
-               /* if (responseObject.code() == 200) {
-                    if (responseObject.body()!!.data[0] != null) {
-                        setUpDataInUI(responseObject.body()!!.data[0])
+                    call: Call<ProfessionalReferenceViewRes>,
+                    responseObject: Response<ProfessionalReferenceViewRes>) {
+                if (responseObject.code() == 200) {
+                    if (responseObject.body()!!.data?.get(0)   != null) {
+                        responseObject.body()!!.data?.get(0)?.let { setUpDataInUI(it) }
                     }
                 } else {
                     RetrofitClient.showResponseMessage(requireContext(), responseObject.code())
 
-                }*/
+                }
                 MyProcessDialog.dismiss()
             }
 
             override
-            fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+            fun onFailure(call: Call<ProfessionalReferenceViewRes>, t: Throwable) {
                 MyProcessDialog.dismiss()
                 RetrofitClient.showFailedMessage(requireContext(), t)
             }
         })
     }
-    private fun setUpDataInUI(data: PersonalReferenceViewRes.Data) {
-        uid = data.id.toString()
+    private fun setUpDataInUI(data: ProfessionalReferenceViewRes.Data) {
+     //   uid = data.id.toString()
 
-      /*  binding.otherName.setText(data.fullname)
-        binding.spnrOtherRelationType.setSelection(CommonUtils.getIndex(binding.spnrOtherRelationType,data.relation))
-
-        binding.spnrOtherSex.setSelection(CommonUtils.getIndex(binding.spnrOtherSex,data.sex))
-        binding.otherAge.setText(data.age)
-        binding.otherOccupation.setText(data.occupation)
-        binding.otherLocation.setText(data.location)
-        binding.otherContact.setText(data.contactNumber)*/
+        binding.edtName.setText(data.name)
+        binding.edtDesignation.setText(data.designation)
+        binding.edtDepartment.setText(data.department)
+        binding.edtOrgWorking.setText(data.organizationWorking)
+        binding.edtPeriodContact.setText(data.periodContact)
+        binding.edtContactType.setText(data.contactType)
+        binding.edtOfficeNumber.setText(data.officeNumber)
+        binding.edtPersonalContact.setText(data.personalContact)
+        binding.edtAddress.setText(data.address)
+        binding.edtMailId.setText(data.mailId)
 
         var isEditable = false
         when (actionType) {
@@ -100,14 +101,18 @@ class EmployeeProfessionalReferenceFragment(private val stepPosition: Int, priva
                 binding.stepSubmit.visibility = View.VISIBLE
             }
         }
-       /* binding.otherName.isEnabled = isEditable
-        binding.spnrOtherRelationType.isEnabled = isEditable
 
-        binding.spnrOtherSex.isEnabled = isEditable
-        binding.otherAge.isEnabled = isEditable
-        binding.otherOccupation.isEnabled = isEditable
-        binding.otherLocation.isEnabled = isEditable
-        binding.otherContact.isEnabled = isEditable*/
+        binding.edtName.isEnabled = isEditable
+        binding.edtDesignation.isEnabled = isEditable
+        binding.edtDepartment.isEnabled = isEditable
+        binding.edtOrgWorking.isEnabled = isEditable
+        binding.edtPeriodContact.isEnabled = isEditable
+        binding.edtContactType.isEnabled = isEditable
+        binding.edtOfficeNumber.isEnabled = isEditable
+        binding.edtPersonalContact.isEnabled = isEditable
+        binding.edtAddress.isEnabled = isEditable
+        binding.edtMailId.isEnabled = isEditable
+
 
     }
     private fun senPersonalReferenceDetail() {

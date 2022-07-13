@@ -33,6 +33,36 @@ class EducationDetailsViewRes {
         @Expose
         var percentage: String? = null
 
+        @SerializedName("tc_course")
+        @Expose
+        var tc_course: String? = null
+
+        @SerializedName("tc_institution")
+        @Expose
+        var tc_institution: String? = null
+
+        @SerializedName("tc_year")
+        @Expose
+        var tc_year: String? = null
+
+        @SerializedName("tc_level")
+        @Expose
+        var tc_level: String? = null
+
+        @SerializedName("extra_co_activities")
+        @Expose
+        var extra_co_activities: String? = null
+
+        @SerializedName("curricular_achivements")
+        @Expose
+        var curricular_achivements: String? = null
+
+        @SerializedName("tc_hobbies")
+        @Expose
+        var tc_hobbies: String? = null
+
+        /*----*/
+
         @SerializedName("created_at")
         @Expose
         var createdAt: String? = null

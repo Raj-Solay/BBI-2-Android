@@ -6,9 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.bbi.bizbulls.databinding.EmployeeFrgLeavePolicyBinding
-import com.bbi.bizbulls.databinding.EmployeeFrgProfessionalReferencesBinding
 import com.bbi.bizbulls.model.LeavePolicy
-import com.bbi.bizbulls.model.PersonalReferenceViewRes
+import com.bbi.bizbulls.model.LeavePolicyView
 import com.bbi.bizbulls.remote.RetrofitClient
 import com.bbi.bizbulls.sharedpref.SharedPrefsManager
 import com.bbi.bizbulls.ui.registrationforfo.FranchiseeRegistrationViewModel
@@ -16,7 +15,6 @@ import com.bbi.bizbulls.utils.CommonUtils
 import com.bbi.bizbulls.utils.MyProcessDialog
 import com.google.gson.JsonArray
 import com.google.gson.JsonObject
-import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -109,36 +107,56 @@ class EmployeeLeavePolicyFragment(private val stepPosition: Int, private var act
         MyProcessDialog.showProgressBar(requireContext(), 0)
         val sharedPrefsHelper by lazy { SharedPrefsManager(requireContext()) }
         val call = RetrofitClient.getUrl().leaveHolidaysGet(sharedPrefsHelper.authToken)
-        call?.enqueue(object : Callback<ResponseBody> {
+        call?.enqueue(object : Callback<LeavePolicyView> {
             override
             fun onResponse(
-                call: Call<ResponseBody>,
-                responseObject: Response<ResponseBody>
+                call: Call<LeavePolicyView>,
+                responseObject: Response<LeavePolicyView>
             ) {
-               /* if (responseObject.code() == 200) {
-                    if (responseObject.body()!!.data[0] != null) {
-                        setUpDataInUI(responseObject.body()!!.data[0])
+                if (responseObject.code() == 200) {
+                    if (responseObject.body()?.data?.get(0)!! != null) {
+                        responseObject.body()!!.data?.get(0)?.let { setUpDataInUI(it) }
                     }
                 } else {
                     RetrofitClient.showResponseMessage(requireContext(), responseObject.code())
 
-                }*/
+                }
                 MyProcessDialog.dismiss()
             }
 
             override
-            fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+            fun onFailure(call: Call<LeavePolicyView>, t: Throwable) {
                 MyProcessDialog.dismiss()
                 RetrofitClient.showFailedMessage(requireContext(), t)
             }
         })
     }
 
-    private fun setUpDataInUI(data: PersonalReferenceViewRes.Data) {
-        uid = data.id.toString()
+    private fun setUpDataInUI(data: LeavePolicyView.Data) {
+        //uid = data.id.toString()
 
+        binding.otherAge.setText(data.rotationalName)
+        binding.edtDate1.setText(data.occasion)
+        binding.edtFestival1.setText(data.dateOfFestival)
 
-
+        var isEditable = false
+        when (actionType) {
+            CommonUtils.ACTION_TYPE_VIEW -> {
+                isEditable = false
+                binding.stepSubmit.visibility = View.INVISIBLE
+            }
+            CommonUtils.ACTION_TYPE_EDIT -> {
+                isEditable = true
+                binding.stepSubmit.visibility = View.VISIBLE
+            }
+            CommonUtils.ACTION_TYPE_ADD -> {
+                isEditable = true
+                binding.stepSubmit.visibility = View.VISIBLE
+            }
+        }
+        binding.otherAge.isEnabled = isEditable
+        binding.edtDate1.isEnabled = isEditable
+        binding.edtFestival1.isEnabled = isEditable
     }
 
     private fun senPersonalReferenceDetail() {

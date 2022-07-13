@@ -92,7 +92,6 @@
                         android:layout_height="wrap_content"
                         android:hint="Designation"
                         android:maxLines="1"
-                        android:maxLength="2"
                         android:textSize="@dimen/_12sdp" />
                 </FrameLayout>
 
