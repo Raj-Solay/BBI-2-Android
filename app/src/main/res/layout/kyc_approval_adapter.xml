@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/button"
+        android:backgroundTint="@color/white"
+        android:padding="@dimen/_10sdp">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:fontFamily="@font/source_semibold"
+                android:paddingVertical="@dimen/_5dp"
+                android:text="UK000123242365356"
+                android:textColor="@color/orange_700"
+                android:textSize="@dimen/_14sdp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/button"
+                android:backgroundTint="@color/light_orange"
+                android:fontFamily="@font/source_semibold"
+                android:paddingHorizontal="@dimen/_5dp"
+                android:paddingVertical="@dimen/_5dp"
+                android:text="Project Report"
+                android:textColor="@color/orange_700"
+                android:textSize="@dimen/_14sdp" />
+
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:fontFamily="@font/source_regular"
+            android:text="UNCLE KITCHENS"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_14sdp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center|left">
+
+            <ImageView
+                android:layout_width="@dimen/_24sdp"
+                android:layout_height="@dimen/_24sdp"
+                android:layout_marginLeft="-5dp"
+                android:background="@drawable/location" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:backgroundTint="@color/light_orange"
+                android:fontFamily="@font/source_regular"
+                android:paddingHorizontal="@dimen/_5dp"
+                android:paddingVertical="@dimen/_5dp"
+                android:text="New Ashok Nagar Delhi 110096"
+                android:textColor="@color/border"
+                android:textSize="@dimen/_12sdp" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:backgroundTint="@color/light_orange"
+            android:fontFamily="@font/source_regular"
+            android:paddingVertical="@dimen/_5dp"
+            android:text="14-07-2022, 11:02 Pm"
+            android:textColor="@color/grey_light"
+            android:textSize="@dimen/_12sdp" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/source_semibold"
+                android:paddingVertical="@dimen/_10dp"
+                android:text="Yugal Kishor"
+                android:textColor="@color/orange_700"
+                android:textSize="@dimen/_14sdp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/button"
+                android:backgroundTint="@color/status_green"
+                android:fontFamily="@font/source_semibold"
+                android:paddingHorizontal="@dimen/_20sdp"
+                android:paddingVertical="@dimen/_10dp"
+                android:text="View"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_14sdp" />
+
+        </RelativeLayout>
+    </LinearLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_10dp"/>
+</LinearLayout>
