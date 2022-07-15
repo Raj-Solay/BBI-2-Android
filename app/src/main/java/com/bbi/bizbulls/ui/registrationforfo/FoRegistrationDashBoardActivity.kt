@@ -33,7 +33,7 @@ class FoRegistrationDashBoardActivity : AppCompatActivity(), IFoRegistrationStep
 
         if (CommonUtils.isNetworkConnected(this)) {
             // Call remote Api service for FO registration steps
-          //  foRegistrationViewModel.getFoRegistrationSteps(this)
+           // foRegistrationViewModel.callRegisterApi(this,sharedPrefsHelper)
         } else {
             CommonUtils.toast(this, this.resources.getString(R.string.no_internet))
         }

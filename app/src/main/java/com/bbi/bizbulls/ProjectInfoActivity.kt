@@ -34,7 +34,7 @@ class ProjectInfoActivity : AppCompatActivity(), View.OnClickListener {
     private fun showAlert(){
         AlertDialog.Builder(this)
             .setTitle(getString(com.bbi.bizbulls.R.string.app_name))
-            .setMessage("Please register the form first?")
+            .setMessage("To proceed with your registration process, you must update your profile first.")
             .setPositiveButton(
                 R.string.yes,
                 DialogInterface.OnClickListener { dialog, which ->

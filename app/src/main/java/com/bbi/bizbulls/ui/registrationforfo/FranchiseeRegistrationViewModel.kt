@@ -1,13 +1,16 @@
 package com.bbi.bizbulls.ui.registrationforfo
 
 import android.content.Context
+import android.content.Intent
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.bbi.bizbulls.LoginActivity
 import com.bbi.bizbulls.R
 import com.bbi.bizbulls.data.foregistration.steps.Data
 import com.bbi.bizbulls.data.foregistration.steps.FoRegistrationSteps
+import com.bbi.bizbulls.data.signupresponse.SignupResponse
 import com.bbi.bizbulls.remote.RetrofitClient
 import com.bbi.bizbulls.sharedpref.SharedPrefsManager
 import com.bbi.bizbulls.utils.CommonUtils
@@ -58,6 +61,38 @@ class FranchiseeRegistrationViewModel : ViewModel() {
                 RetrofitClient.showFailedMessage(context, t)
             }
         })*/
+    }
+    fun callRegisterApi(context: Context, sharedPrefsHelper: SharedPrefsManager){
+        MyProcessDialog.showProgressBar(context, 0)
+        val jsonObject = JsonObject()
+        jsonObject.addProperty("name", sharedPrefsHelper.userName.toString())
+        jsonObject.addProperty("email", sharedPrefsHelper.email)
+        jsonObject.addProperty("phone", sharedPrefsHelper.phone)
+        jsonObject.addProperty("password", 12345678)
+        jsonObject.addProperty("password_confirmation", 12345678)
+        val call: Call<SignupResponse> = RetrofitClient.getUrl().register( jsonObject)
+        call.enqueue(object : Callback<SignupResponse> {
+            override fun onResponse(
+                call: Call<SignupResponse>,
+                response: Response<SignupResponse>
+            ) {
+                if (response.code() == 201 || response.code() == 200) {
+                    if (!response.body()!!.data?.id?.isEmpty()!!) {
+                        //sharedPrefsHelper.tokenID = response.body()?.data?.id.toString()
+                        MyProcessDialog.dismiss()
+
+                    } else {
+                        MyProcessDialog.dismiss()
+                    }
+                } else {
+                    MyProcessDialog.dismiss()
+                }
+            }
+
+            override fun onFailure(call: Call<SignupResponse>, t: Throwable) {
+                MyProcessDialog.dismiss()
+            }
+        })
     }
 
     /**
