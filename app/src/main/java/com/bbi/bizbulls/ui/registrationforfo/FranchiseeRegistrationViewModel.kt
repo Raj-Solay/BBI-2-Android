@@ -21,6 +21,8 @@ import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.util.*
+import kotlin.collections.HashMap
 
 /**
  * Created by Daniel.
@@ -62,12 +64,16 @@ class FranchiseeRegistrationViewModel : ViewModel() {
             }
         })*/
     }
+
+
+
     fun callRegisterApi(context: Context, sharedPrefsHelper: SharedPrefsManager){
+        var uniqueID = System.currentTimeMillis().toString()
         MyProcessDialog.showProgressBar(context, 0)
         val jsonObject = JsonObject()
-        jsonObject.addProperty("name", sharedPrefsHelper.userName.toString())
-        jsonObject.addProperty("email", sharedPrefsHelper.email)
-        jsonObject.addProperty("phone", sharedPrefsHelper.phone)
+        jsonObject.addProperty("name", uniqueID+"@gmail.com")
+        jsonObject.addProperty("email", uniqueID+"@gmail.com")
+        jsonObject.addProperty("phone", "1234567890")
         jsonObject.addProperty("password", 12345678)
         jsonObject.addProperty("password_confirmation", 12345678)
         val call: Call<SignupResponse> = RetrofitClient.getUrl().register( jsonObject)
@@ -78,7 +84,7 @@ class FranchiseeRegistrationViewModel : ViewModel() {
             ) {
                 if (response.code() == 201 || response.code() == 200) {
                     if (!response.body()!!.data?.id?.isEmpty()!!) {
-                        //sharedPrefsHelper.tokenID = response.body()?.data?.id.toString()
+                        sharedPrefsHelper.registerFormUserId = response.body()?.data?.user_id.toString()
                         MyProcessDialog.dismiss()
 
                     } else {
@@ -115,12 +121,16 @@ class FranchiseeRegistrationViewModel : ViewModel() {
     fun sendDetailPostRequest(context: Context, jsonArray: JsonArray, stepPosition: Any,actionType : Int,uid : String) {
         val sharedPrefsHelper by lazy { SharedPrefsManager(context) }
         var call: Call<ResponseBody>? = null
+        var newUid = uid
+        if(sharedPrefsHelper.userId.isNotEmpty()){
+            newUid = sharedPrefsHelper.userId
+        }
         when (stepPosition) {
             10 -> {
                 when (actionType) {
                     CommonUtils.ACTION_TYPE_EDIT -> {
                         call = RetrofitClient.getUrl()
-                                .documentPut(sharedPrefsHelper.authToken, jsonArray,uid)
+                                .documentPut(sharedPrefsHelper.authToken, jsonArray,newUid)
                     }
                     CommonUtils.ACTION_TYPE_ADD -> {
                         call = RetrofitClient.getUrl()

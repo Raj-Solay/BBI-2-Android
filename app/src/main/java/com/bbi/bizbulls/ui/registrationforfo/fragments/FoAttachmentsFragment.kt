@@ -400,9 +400,10 @@ class FoAttachmentsFragment(private val stepPosition: Int, private var actionTyp
 
 
         var array = JsonArray()
-
+        val sharedPrefsHelper by lazy { SharedPrefsManager(requireContext()) }
         uploadFileList.forEach {
             val jsonObjectBBI = JsonObject()
+            jsonObjectBBI.addProperty("user_id", "" + sharedPrefsHelper.registerFormUserId)
             jsonObjectBBI.addProperty("document_id", "" + it.id)
             jsonObjectBBI.addProperty("document_name", "" + it.name)
             jsonObjectBBI.addProperty("document_type", "" + it.mimeType)

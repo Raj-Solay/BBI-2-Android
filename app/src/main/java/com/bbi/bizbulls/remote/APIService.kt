@@ -348,4 +348,19 @@ interface APIService {
     fun addFinability(
         @Header("Authorization") token: String,
         @Body jsonObject: JsonObject): Call<ResponseBody>
+
+    /*---Approved doc api--*/
+    @GET("/api/me/personal/all")
+    fun personalAll(
+        @Header("Authorization") token: String): Call<PersonalUserAll>
+
+    @GET("/api/me/document/user/{user_id}")
+    fun viewUserDoc(
+        @Header("Authorization") token: String,@Path(value = "user_id", encoded = true) userId : String):
+            Call<ApprovalDocRes>
+
+    @POST("/api/me/document/user")
+    fun approveDoc(
+        @Header("Authorization") token: String,@Body jsonObject: JsonObject):
+            Call<ResponseBody>
 }

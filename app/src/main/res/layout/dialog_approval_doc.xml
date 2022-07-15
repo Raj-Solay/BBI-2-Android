@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="@dimen/_16sdp">
+
+
+    <ImageView
+        android:id="@+id/docViewDialog"
+        android:src="@drawable/app_logo"
+        android:layout_weight="1"
+        android:layout_above="@+id/lnrBottom"
+        android:layout_width="match_parent"
+        android:layout_marginBottom="@dimen/_16sdp"
+        android:layout_height="match_parent"/>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/lnrBottom"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/btnCancel"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button"
+            android:backgroundTint="@color/status_green"
+            android:fontFamily="@font/source_semibold"
+            android:paddingHorizontal="@dimen/_20sdp"
+            android:paddingVertical="@dimen/_10dp"
+            android:text="Cancel"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_12sdp" />
+
+        <TextView
+            android:layout_weight="0.1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/btnApproval"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button"
+            android:backgroundTint="@color/status_green"
+            android:fontFamily="@font/source_semibold"
+            android:paddingHorizontal="@dimen/_20sdp"
+            android:paddingVertical="@dimen/_10dp"
+            android:text="Approve"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_12sdp" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</RelativeLayout>

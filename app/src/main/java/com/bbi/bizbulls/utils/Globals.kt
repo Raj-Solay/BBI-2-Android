@@ -42,6 +42,7 @@ object Globals {
 
 
     const val USER_TYPE_EMPLOYEE = 2
+    const val USER_TYPE_FO_TEAM = 3
     const val USER_TYPE_FO = 1
 
 }

@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/divider"
+    android:orientation="vertical"
+    tools:context=".menu.AboutUsActivity">
+
+    <include
+        android:id="@+id/custom_title_layout"
+        layout="@layout/hader"
+        app:layout_constraintTop_toTopOf="@+id/posts" />
+
+    <LinearLayout
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_marginBottom="@dimen/_16sdp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/button"
+            android:backgroundTint="@color/white"
+            android:padding="@dimen/_10sdp">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:visibility="gone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:fontFamily="@font/source_semibold"
+                    android:paddingVertical="@dimen/_5dp"
+                    android:text="UK000123242365356"
+                    android:textColor="@color/orange_700"
+                    android:textSize="@dimen/_14sdp" />
+
+                <TextView
+                    android:visibility="gone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:background="@drawable/button"
+                    android:backgroundTint="@color/light_orange"
+                    android:fontFamily="@font/source_semibold"
+                    android:paddingHorizontal="@dimen/_5dp"
+                    android:paddingVertical="@dimen/_5dp"
+                    android:text="Project Report"
+                    android:textColor="@color/orange_700"
+                    android:textSize="@dimen/_14sdp" />
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/txtName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:fontFamily="@font/source_regular"
+                android:text="UNCLE KITCHENS"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_14sdp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center|left">
+
+                <ImageView
+                    android:layout_width="@dimen/_24sdp"
+                    android:layout_height="@dimen/_24sdp"
+                    android:layout_marginLeft="-5dp"
+                    android:background="@drawable/location" />
+
+                <TextView
+                    android:id="@+id/txtAddress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:backgroundTint="@color/light_orange"
+                    android:fontFamily="@font/source_regular"
+                    android:paddingHorizontal="@dimen/_5dp"
+                    android:paddingVertical="@dimen/_5dp"
+                    android:text="New Ashok Nagar Delhi 110096"
+                    android:textColor="@color/border"
+                    android:textSize="@dimen/_12sdp" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/txtDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:backgroundTint="@color/light_orange"
+                android:fontFamily="@font/source_regular"
+                android:paddingVertical="@dimen/_5dp"
+                android:text="14-07-2022, 11:02 Pm"
+                android:textColor="@color/grey_light"
+                android:textSize="@dimen/_12sdp" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/txtFullname"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/source_semibold"
+                    android:paddingVertical="@dimen/_10dp"
+                    android:text="Yugal Kishor"
+                    android:textColor="@color/orange_700"
+                    android:textSize="@dimen/_14sdp" />
+
+            </RelativeLayout>
+        </LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_10dp"/>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_10sdp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/txtCName"
+                android:layout_weight="1"
+                android:text="Customer Name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/txtCGender"
+                android:text="Male"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_10sdp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/txtCAddress"
+                android:layout_weight="1"
+                android:text="Address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/txtCAge"
+                android:text="22 Years"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_10dp"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/listDocuments"
+            android:padding="@dimen/_10sdp"
+            android:layout_width="match_parent"
+            android:layout_marginTop="@dimen/_10dp"
+            android:paddingHorizontal="@dimen/_10dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+    <TextView
+        android:id="@+id/txtBg"
+        android:background="#808080"
+        android:layout_marginBottom="@dimen/_4sdp"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_2dp"/>
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/linerApprove"
+        android:layout_width="match_parent"
+        android:visibility="visible"
+        android:layout_marginLeft="@dimen/_8sdp"
+        android:layout_marginBottom="@dimen/_8sdp"
+        android:layout_marginRight="@dimen/_8sdp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/btnCancelFinal"
+            android:visibility="visible"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button"
+            android:layout_gravity="end"
+            android:gravity="center"
+            android:backgroundTint="@color/status_red"
+            android:fontFamily="@font/source_semibold"
+            android:paddingHorizontal="@dimen/_20sdp"
+            android:paddingVertical="@dimen/_10dp"
+            android:text="Cancel"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_14sdp" />
+
+        <TextView
+            android:layout_weight="0.5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/btnApproveFinal"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:background="@drawable/button"
+            android:backgroundTint="@color/status_green"
+            android:fontFamily="@font/source_semibold"
+            android:paddingHorizontal="@dimen/_20sdp"
+            android:paddingVertical="@dimen/_10dp"
+            android:text="Approve"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_14sdp" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</LinearLayout>
