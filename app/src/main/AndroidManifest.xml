@@ -31,6 +31,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BizBullsIndia">
         <activity
+            android:name=".KycListActivity"
+            android:exported="false" />
+        <activity
             android:name=".FilterActivity"
             android:exported="false" />
         <activity

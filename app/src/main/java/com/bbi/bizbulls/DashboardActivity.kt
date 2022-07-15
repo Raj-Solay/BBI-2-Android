@@ -3,12 +3,9 @@ package com.bbi.bizbulls
 import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.location.Address
+import android.location.Geocoder
 import android.location.Location
-import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.app.ActionBarDrawerToggle
-import androidx.constraintlayout.widget.ConstraintLayout
-import com.bbi.bizbulls.ui.fragment.HomeCustomerFragment
-import com.bbi.bizbulls.ui.fragment.CustomerFOStatusFragment
 import android.os.Bundle
 import android.util.Log
 import com.google.android.material.progressindicator.LinearProgressIndicator
@@ -18,7 +15,12 @@ import android.view.Gravity
 import android.view.KeyEvent
 import android.view.View
 import android.widget.RelativeLayout
+import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.AppCompatTextView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.app.ActivityCompat
+import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
 import com.bbi.bizbulls.data.foregistration.steps.FoRegistrationSteps
 import com.bbi.bizbulls.databinding.ActivityDashboardBinding
@@ -27,11 +29,14 @@ import com.bbi.bizbulls.model.UserDetails
 import com.bbi.bizbulls.remote.RetrofitClient
 import com.bbi.bizbulls.sharedpref.SharedPrefsManager
 import com.bbi.bizbulls.ui.registrationforfo.FoRegistrationDashBoardActivity
+import com.bbi.bizbulls.ui.fragment.CustomerFOStatusFragment
+import com.bbi.bizbulls.ui.fragment.HomeCustomerFragment
 import com.bbi.bizbulls.utils.CommonUtils
 import com.bbi.bizbulls.utils.MyProcessDialog
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.tasks.OnSuccessListener
+import com.google.android.material.progressindicator.LinearProgressIndicator
 import com.karumi.dexter.Dexter
 import com.karumi.dexter.PermissionToken
 import com.karumi.dexter.listener.PermissionDeniedResponse
@@ -40,6 +45,8 @@ import com.karumi.dexter.listener.single.PermissionListener
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.util.*
+
 
 class DashboardActivity : AppCompatActivity(), View.OnClickListener {
     private val sharedPrefsHelper by lazy { SharedPrefsManager(this@DashboardActivity) }
@@ -271,7 +278,7 @@ class DashboardActivity : AppCompatActivity(), View.OnClickListener {
             binding!!.drawerfomainlayout.openDrawer(Gravity.LEFT)
         }
         if (view.id==R.id.layoutsearch){
-            val intent = Intent(this, FilterActivity::class.java)
+            val intent = Intent(this, KycListActivity::class.java)
             startActivity(intent)
         }
     }
@@ -341,7 +348,25 @@ class DashboardActivity : AppCompatActivity(), View.OnClickListener {
                     }
 
                 })*/
-
+                try {
+                    val geo = Geocoder(
+                        this@DashboardActivity.getApplicationContext(),
+                        Locale.getDefault()
+                    )
+                    val addresses: List<Address> =
+                        location?.let { geo.getFromLocation(it.latitude, it.longitude, 1) } as List<Address>
+                    if (addresses.isEmpty()) {
+                        /*yourtextfieldname.setText("Waiting for Location")*/
+                    } else {
+                        if (addresses.size > 0) {
+                            binding?.txtlcoationname?.setText(
+                                /*addresses[0].getFeatureName().toString() + ", " +*/ addresses[0].getLocality() /*+ ", " + addresses[0].getAdminArea() + ", " + addresses[0].getCountryName()*/
+                            )
+                        }
+                    }
+                } catch (e: Exception) {
+                    e.printStackTrace() // getFromLocation() may sometimes fail
+                }
             }
 
         })

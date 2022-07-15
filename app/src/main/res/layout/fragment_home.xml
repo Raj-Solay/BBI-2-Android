@@ -33,21 +33,22 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
-<!--                <com.smarteist.autoimageslider.SliderView-->
-<!--                    android:id="@+id/imgsliderfo"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="@dimen/slidersize"-->
-<!--                    app:sliderAnimationDuration="600"-->
-<!--                    app:sliderAutoCycleDirection="back_and_forth"-->
-<!--                    app:sliderIndicatorAnimationDuration="600"-->
-<!--                    app:sliderIndicatorEnabled="true"-->
-<!--                    app:sliderIndicatorGravity="center_horizontal|bottom"-->
-<!--                    app:sliderIndicatorOrientation="horizontal"-->
-<!--                    app:sliderIndicatorPadding="3dp"-->
-<!--                    app:sliderIndicatorRadius="2dp"-->
-<!--                    app:sliderIndicatorSelectedColor="#5A5A5A"-->
-<!--                    app:sliderIndicatorUnselectedColor="#FFF"-->
-<!--                    app:sliderScrollTimeInSec="1" />-->
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <androidx.viewpager.widget.ViewPager
+                        android:id="@+id/viewpager"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_100sdp" />
+
+                    <me.relex.circleindicator.CircleIndicator
+                        android:id="@+id/indicator"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:layout_gravity="bottom"
+                        android:elevation="4dp" />
+                </FrameLayout>
 
             </androidx.cardview.widget.CardView>
 
@@ -110,8 +111,8 @@
 
 
                     <androidx.cardview.widget.CardView
-                        android:layout_width="@dimen/cardsize"
-                        android:layout_height="@dimen/cardsize"
+                        android:layout_width="@dimen/_60sdp"
+                        android:layout_height="@dimen/_50sdp"
                         android:layout_marginBottom="@dimen/minimumspacing"
                         app:cardBackgroundColor="@color/light_orange"
                         app:cardCornerRadius="10dp"
@@ -120,8 +121,8 @@
 
                         <ImageView
                             android:id="@+id/iv_top_small_card"
-                            android:layout_width="@dimen/toolBarHeight"
-                            android:layout_height="@dimen/cardsize"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
                             android:layout_gravity="center"
                             android:scaleType="fitCenter"
                             android:src="@drawable/biz_bulls" />
@@ -157,34 +158,41 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/constraintscope">
 
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/txtservices"
-                    style="@style/fontregular"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="12dp"
-                    android:layout_marginTop="@dimen/overrallspacing"
-                    android:gravity="center"
-                    android:text="Services"
-                    android:textColor="@color/orange_700"
-                    android:textSize="@dimen/medium_font"
+                <RelativeLayout
+                    android:id="@+id/rl_service"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent">
 
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/txtservicesviewall"
-                    style="@style/fontregular"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="@dimen/overrallspacing"
-                    android:layout_marginEnd="12dp"
-                    android:gravity="center"
-                    android:text="View All"
-                    android:textColor="@color/facebook_color"
-                    android:textSize="@dimen/small_font"
-                    android:visibility="gone"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/txtservices"
+                        style="@style/fontregular"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentLeft="true"
+                        android:layout_marginStart="12dp"
+                        android:layout_marginTop="@dimen/overrallspacing"
+                        android:gravity="center"
+                        android:text="Services"
+                        android:textColor="@color/orange_700"
+                        android:textSize="@dimen/medium_font" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tv_all"
+                        style="@style/fontregular"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginStart="12dp"
+                        android:layout_marginTop="@dimen/overrallspacing"
+                        android:gravity="center"
+                        android:text="View All"
+                        android:paddingRight="12dp"
+                        android:textColor="@color/facebook_color"
+                        android:textSize="@dimen/medium_font" />
+
+                </RelativeLayout>
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rv_services"
@@ -193,7 +201,7 @@
                     android:layout_marginTop="@dimen/minimumspacing"
                     android:nestedScrollingEnabled="true"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/txtservices" />
+                    app:layout_constraintTop_toBottomOf="@+id/rl_service" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -209,34 +217,41 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/constraintscope">
 
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/txtleads"
-                    style="@style/fontregular"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="12dp"
-                    android:layout_marginTop="@dimen/overrallspacing"
-                    android:gravity="center"
-                    android:text="Franchising projects"
-                    android:textColor="@color/orange_700"
-                    android:textSize="@dimen/medium_font"
+                <RelativeLayout
+                    android:id="@+id/rlleads"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent">
 
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/txtfoodviewall"
-                    style="@style/fontregular"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="@dimen/overrallspacing"
-                    android:layout_marginEnd="12dp"
-                    android:gravity="center"
-                    android:text="View All"
-                    android:textColor="@color/facebook_color"
-                    android:textSize="@dimen/small_font"
-                    android:visibility="gone"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/txtleads"
+                        style="@style/fontregular"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentLeft="true"
+                        android:layout_marginStart="12dp"
+                        android:layout_marginTop="@dimen/overrallspacing"
+                        android:gravity="center"
+                        android:text="Franchising projects"
+                        android:textColor="@color/orange_700"
+                        android:textSize="@dimen/medium_font" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tv_Franchising_projects"
+                        style="@style/fontregular"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginStart="12dp"
+                        android:layout_marginTop="@dimen/overrallspacing"
+                        android:gravity="center"
+                        android:text="View All"
+                        android:paddingRight="12dp"
+                        android:textColor="@color/facebook_color"
+                        android:textSize="@dimen/medium_font" />
+
+                </RelativeLayout>
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyclerleads"
@@ -246,8 +261,7 @@
                     android:layout_marginTop="@dimen/minimumspacing"
                     android:nestedScrollingEnabled="true"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/txtleads" />
-
+                    app:layout_constraintTop_toBottomOf="@+id/rlleads" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
 
@@ -288,7 +302,7 @@
                     android:text="View All"
                     android:textColor="@color/facebook_color"
                     android:textSize="@dimen/small_font"
-                    android:visibility="gone"
+                    android:visibility="visible"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 

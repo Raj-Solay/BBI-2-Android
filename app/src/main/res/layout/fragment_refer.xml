@@ -76,12 +76,13 @@
                         android:padding="@dimen/_5dp"
                         android:src="@drawable/search" />
                 </LinearLayout>
+
                 <EditText
                     android:id="@+id/edt_search"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@android:color/transparent"
                     android:layout_toRightOf="@+id/ll_Search"
+                    android:background="@android:color/transparent"
                     android:hint="Search by number or name"
                     android:imeOptions="actionNext"
                     android:paddingLeft="20dp"

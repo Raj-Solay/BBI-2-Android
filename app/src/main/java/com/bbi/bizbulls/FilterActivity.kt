@@ -32,6 +32,7 @@ class FilterActivity : AppCompatActivity() {
             setSelectColor()
             binding.tvIndusstry.setBackgroundResource(R.color.white);
         }
+        binding.tvClose.setOnClickListener { onBackPressed() }
         binding.tvClient.setOnClickListener {
             clientfilterAdapter=FilterAdapter(client)
             binding.rcyFilter.adapter=clientfilterAdapter
