@@ -28,6 +28,7 @@ class SharedPrefsManager constructor(private val myContext: Context) {
         const val KEY_EMAIL = "email"
         const val KEY_PHONE = "phone"
         const val KEY_PERSONAL_DETAIL_ID = "personalDetailID"
+        const val USER_ID = "user_id"
 
 
         const val DEFAULT_KEY_IS_LOGIN = false
@@ -72,6 +73,11 @@ class SharedPrefsManager constructor(private val myContext: Context) {
         get() = sharedPrefs[KEY_PERSONAL_DETAIL_ID] ?: ""
         set(value) {
             sharedPrefs[KEY_PERSONAL_DETAIL_ID] = value
+        }
+ var userId: String
+        get() = sharedPrefs[USER_ID] ?: ""
+        set(value) {
+            sharedPrefs[USER_ID] = value
         }
 
 

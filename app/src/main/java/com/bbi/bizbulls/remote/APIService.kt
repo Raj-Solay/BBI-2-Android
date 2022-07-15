@@ -4,6 +4,7 @@ import com.bbi.bizbulls.data.foregistration.steps.FoRegistrationSteps
 import com.bbi.bizbulls.data.signin.ForgotPasswordResponse
 import com.bbi.bizbulls.data.signin.LoginResponse
 import com.bbi.bizbulls.data.signupresponse.SignupResponse
+import com.bbi.bizbulls.menu.data.GetAllUserDataModel
 import com.google.gson.JsonObject
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -101,4 +102,11 @@ interface APIService {
     fun authorizationDetailsPost(
         @Header("Authorization") token: String,
         @Body jsonObject: JsonObject): Call<ResponseBody>
+
+  @POST("/api/roleassign")
+    fun roleassign(@Header("Authorization") token: String,
+        @Body jsonObject: JsonObject): Call<GetAllUserDataModel>
+
+    @GET("/api/alluser")
+    fun AllUser(@Header("Authorization") token: String): Call<List<GetAllUserDataModel>>
 }
