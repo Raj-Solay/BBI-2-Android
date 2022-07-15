@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-data class StatusData(
+public data class StatusData(
     @SerializedName("agreement")
     var agreement: Agreement,
     @SerializedName("bb_agreement")

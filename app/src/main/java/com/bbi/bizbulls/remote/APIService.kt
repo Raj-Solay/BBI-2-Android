@@ -1,13 +1,10 @@
 package com.bbi.bizbulls.remote
 
-import com.bbi.bizbulls.data.foregistration.steps.FoRegistrationSteps
 import com.bbi.bizbulls.data.signin.ForgotPasswordResponse
 import com.bbi.bizbulls.data.signin.LoginResponse
 import com.bbi.bizbulls.data.signupresponse.SignupResponse
 import com.bbi.bizbulls.model.*
 import com.google.gson.JsonArray
-import com.bbi.bizbulls.model.StatusData
-import com.bbi.bizbulls.model.*
 import com.google.gson.JsonObject
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -234,7 +231,7 @@ interface APIService {
 
     @Multipart
     @POST("/api/assets")
-    fun uploadAsset(
+    fun uploadAsset1(
             @Header("Authorization") token: String,
             @Part image: MultipartBody.Part): Call<AssetsRes>
 

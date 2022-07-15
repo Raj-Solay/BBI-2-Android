@@ -34,6 +34,11 @@ import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.gms.tasks.OnSuccessListener
 import com.google.android.gms.tasks.Task
 import com.google.gson.JsonObject
+import com.karumi.dexter.Dexter
+import com.karumi.dexter.PermissionToken
+import com.karumi.dexter.listener.PermissionDeniedResponse
+import com.karumi.dexter.listener.PermissionGrantedResponse
+import com.karumi.dexter.listener.single.PermissionListener
 import com.yanzhenjie.album.Action
 import com.yanzhenjie.album.Album
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
@@ -73,10 +78,28 @@ class OfficeLocationMapsActivity : AppCompatActivity(), OnMapReadyCallback {
         binding = ActivityOfficeLocationMapsBinding.inflate(layoutInflater)
         setContentView(binding.root)
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this)
+
+
+
         val mapFragment =
             supportFragmentManager.findFragmentById(R.id.mapLayout) as SupportMapFragment
         mapFragment.getMapAsync(this)
-        fetchLocation();
+        //fetchLocation()
+        Dexter.withContext(this)
+            .withPermission(Manifest.permission.ACCESS_FINE_LOCATION)
+            .withListener(object : PermissionListener {
+                override fun onPermissionGranted(response: PermissionGrantedResponse) {
+                    fetchLocation();
+                }
+
+                override fun onPermissionDenied(response: PermissionDeniedResponse) { /* ... */
+                }
+
+                override fun onPermissionRationaleShouldBeShown(p0: com.karumi.dexter.listener.PermissionRequest?,token: PermissionToken? ) {
+                    token?.continuePermissionRequest()
+                }
+
+            }).check()
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
 //        val mapFragment = supportFragmentManager
 //            .findFragmentById(R.id.mapLayout) as SupportMapFragment

@@ -32,6 +32,9 @@ import com.bbi.bizbulls.utils.Globals.REQUEST_CODE_PDF_SELECT
 import com.bbi.bizbulls.utils.Globals.REQUEST_CODE_REGISTRATION_FEE
 import com.bbi.bizbulls.utils.Globals.REQUEST_CODE_SETUP
 import com.bbi.bizbulls.utils.MyProcessDialog
+import com.yanzhenjie.album.Action
+import com.yanzhenjie.album.Album
+import com.yanzhenjie.album.AlbumFile
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -132,6 +135,7 @@ class CustomerFOStatusFragment : Fragment(), View.OnClickListener {
             intent.putExtra(REGISTRATION_FEES_DATA,statusData)
             intent.putExtra(IS_FRANCHISEE_FEE,true)
             startActivityForResult(intent, REQUEST_CODE_FRANCHISEE_FEE)
+            setFranchiseeRegistrationFeeDone()
         }
         if (view === binding.txtkycdownload){
             DownloadFile.download(statusData.kyc.documentUrl,requireActivity())
@@ -262,6 +266,10 @@ class CustomerFOStatusFragment : Fragment(), View.OnClickListener {
                 if (responseObject.isSuccessful) {
                     statusData =  responseObject.body()!!
                     isCustomer = statusData.isCustomer
+                  //  if(statusData.type == "customer"){
+                    //    isCustomer = true
+                    //}
+
                     binding.apply {
                         txtcustomerid.text = statusData?.number
                         txtCustomerstatus.text = statusData?.customerStatus
@@ -282,18 +290,22 @@ class CustomerFOStatusFragment : Fragment(), View.OnClickListener {
 
                     if(statusData?.kyc?.status.equals("Completed",true))
                     {
+                        binding.txtkycdate.setText(statusData?.kyc?.date.toString())
                         setKycComplete()
                     }
                     if(statusData?.bbAgreement?.status.equals("Completed",true))
                     {
+                        binding.bbiLayout.txtbbiAgreementdate.setText(statusData?.bbAgreement?.date.toString())
                         setBBIAgreementDone()
                     }
                     if(statusData?.registrationFees?.status.equals("Completed",true))
                     {
+                        binding.txtregisterdate.setText(statusData?.kyc?.date.toString())
                         showfinancialRelibility()
                     }
                     if(statusData?.finability?.status.equals("Completed",true))
                     {
+                        binding.finabilityLayout.txtfinabilitydate.setText(statusData?.finability?.date.toString())
                         setFinabilityDone()
                     }
                     if(statusData?.locationUpdate?.status.equals("Completed",true))
@@ -302,6 +314,7 @@ class CustomerFOStatusFragment : Fragment(), View.OnClickListener {
                     }
                     if(statusData?.agreement?.status.equals("Completed",true))
                     {
+                        binding.txtagreementdate.setText(statusData?.agreement?.date.toString())
                         setAgreementDone()
                     }
                     if(statusData?.frenchiseeFee?.status.equals("Completed",true))
@@ -310,14 +323,17 @@ class CustomerFOStatusFragment : Fragment(), View.OnClickListener {
                     }
                     if(statusData?.siteVisit?.status.equals("Completed",true))
                     {
+                        binding.siteVisitLayout.txtsiteVisitdate.setText(statusData?.siteVisit?.date.toString())
                         setSiteVisitDone()
                     }
                     if(statusData?.setup?.status.equals("Completed",true))
                     {
+                        binding.txtsetupdate.setText(statusData?.setup?.date.toString())
                         setOfficeSetupDone()
                     }
                     if(statusData?.licence?.status.equals("Completed",true))
                     {
+                        binding.txtlicensedate.setText(statusData?.licence?.date.toString())
                         setLicenceDone()
                     }
 
@@ -415,11 +431,30 @@ class CustomerFOStatusFragment : Fragment(), View.OnClickListener {
             }
         })
     }
+
+    private var mAlbumFilesThirdParty: ArrayList<AlbumFile>? = null
     private fun selectPdf() {
         val pdfIntent = Intent(Intent.ACTION_GET_CONTENT)
         pdfIntent.type = "application/pdf"
         pdfIntent.addCategory(Intent.CATEGORY_OPENABLE)
-        startActivityForResult(pdfIntent, REQUEST_CODE_PDF_SELECT)
+      //  startActivityForResult(pdfIntent, REQUEST_CODE_PDF_SELECT)
+
+        Album.image(this) // Image selection.
+            .multipleChoice()
+            .camera(true)
+            .columnCount(3)
+            .selectCount(3)
+            .checkedList(mAlbumFilesThirdParty)
+            .onResult { result ->
+                mAlbumFilesThirdParty = result
+                mAlbumFilesThirdParty?.forEach {
+                    uploadDocument(File(it.path))
+                }
+            }
+            .onCancel(object : Action<String?> {
+                override fun onAction(result: String) {}
+            })
+            .start()
     }
     private fun uploadDocument(file: File) {
         val uri = FileProvider.getUriForFile(

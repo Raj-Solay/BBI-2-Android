@@ -100,6 +100,8 @@ class DashboardActivity : AppCompatActivity(), View.OnClickListener {
                  //   Log.d("UserDetails","Role : " + userDetails?.data?.roleId)
                     sharedPrefsHelper.role = userDetails?.data?.roleId.toString()
                     sharedPrefsHelper.userId = userDetails?.data?.id.toString()
+                    sharedPrefsHelper.phone = userDetails?.data?.phone.toString()
+                    sharedPrefsHelper.email = userDetails?.data?.email.toString()
                 } else {
                     RetrofitClient.showResponseMessage(activity, responseObject.code())
                 }

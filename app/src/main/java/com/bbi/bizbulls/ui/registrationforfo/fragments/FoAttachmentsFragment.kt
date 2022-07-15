@@ -339,7 +339,7 @@ class FoAttachmentsFragment(private val stepPosition: Int, private var actionTyp
         val sharedPrefsHelper by lazy { SharedPrefsManager(requireContext()) }
         var call: Call<AssetsRes>? = null
         call = RetrofitClient.getUrl()
-                .uploadAsset(sharedPrefsHelper.authToken, part)
+                .uploadAsset1(sharedPrefsHelper.authToken, part)
         MyProcessDialog.showProgressBar(requireContext(), 0)
         call?.enqueue(object : Callback<AssetsRes> {
             override

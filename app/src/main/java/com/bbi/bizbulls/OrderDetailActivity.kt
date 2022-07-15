@@ -137,7 +137,7 @@ class OrderDetailActivity : AppCompatActivity(), CFCheckoutResponseCallback {
                         .build()
                     val cfDropCheckoutPayment = CFDropCheckoutPayment.CFDropCheckoutPaymentBuilder()
                         .setSession(cfSession)
-//                        .setCFUIPaymentModes(cfPaymentComponent)
+                     //   .setCFUIPaymentModes(cfPaymentComponent)
                         .setCFNativeCheckoutUITheme(cfTheme)
                         .build()
 
@@ -187,17 +187,17 @@ class OrderDetailActivity : AppCompatActivity(), CFCheckoutResponseCallback {
                     setResult(RESULT_OK)
                     finish()
                 } else {
-                    CommonUtils.toast(
+                   /* CommonUtils.toast(
                         this@OrderDetailActivity,
                         this@OrderDetailActivity.resources.getString(R.string.something_wrong)
-                    )
+                    )*/
                 }
                 MyProcessDialog.dismiss()
             }
 
             override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
                 MyProcessDialog.dismiss()
-                RetrofitClient.showFailedMessage(this@OrderDetailActivity, t)
+              //  RetrofitClient.showFailedMessage(this@OrderDetailActivity, t)
             }
         })
     }

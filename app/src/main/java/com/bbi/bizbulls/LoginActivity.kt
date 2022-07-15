@@ -56,8 +56,8 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
         }
         if (view === binding!!.submitlogin) {
             if (CommonUtils.isNetworkConnected(this@LoginActivity)) {
-                if (CommonUtils.isValidPhone(binding!!.etUsername.text.toString()) ||
-                    CommonUtils.isValidEmail(binding!!.etUsername.text.toString())
+                if (CommonUtils.isValidPhone(binding!!.etUsername.text.toString().trim()) ||
+                    CommonUtils.isValidEmail(binding!!.etUsername.text.toString().trim())
                 ) {
                     if (binding!!.etPassword.text.toString().isNotEmpty()) {
                         login()
