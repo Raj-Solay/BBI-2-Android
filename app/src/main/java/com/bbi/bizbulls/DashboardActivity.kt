@@ -111,7 +111,7 @@ class DashboardActivity : AppCompatActivity(), View.OnClickListener {
                     sharedPrefsHelper.email = userDetails?.data?.email.toString()
                     try{
                         if(userDetails?.data?.roleId!= null &&
-                            userDetails?.data?.roleId!!.toInt() == Globals.USER_TYPE_EMPLOYEE){
+                            userDetails?.data?.roleId!!.toInt() == Globals.USER_TYPE_FO_TEAM){
                             docApprovel!!.visibility = View.VISIBLE
                         }else{
                             docApprovel!!.visibility = View.GONE
