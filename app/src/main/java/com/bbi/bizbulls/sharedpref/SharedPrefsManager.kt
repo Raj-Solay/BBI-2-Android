@@ -31,6 +31,7 @@ class SharedPrefsManager constructor(private val myContext: Context) {
         const val KEY_USER_ID = "user_id"
         const val KEY_PERSONAL_DETAIL_ID = "personalDetailID"
         const val KEY_REGISTER_FORM_ID = "registeruserId"
+        const val USER_ID = "user_id"
 
 
         const val DEFAULT_KEY_IS_LOGIN = false
@@ -91,6 +92,12 @@ class SharedPrefsManager constructor(private val myContext: Context) {
         set(value) {
             sharedPrefs[KEY_REGISTER_FORM_ID] = value
         }
+ var userId: String
+        get() = sharedPrefs[USER_ID] ?: ""
+        set(value) {
+            sharedPrefs[USER_ID] = value
+        }
+
 
     /**
      * Extension function to listen the edit() and apply() function calls on every SharedPreferences operation

@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -10,13 +11,15 @@
         android:gravity="center">
 
         <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/iv_profile"
             android:layout_width="@dimen/toolBarHeight"
             android:layout_height="@dimen/toolBarHeight"
             android:layout_gravity="center"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent"
-            app:srcCompat="@drawable/ic_userprofile" />
+            app:srcCompat="@drawable/ic_userprofile"
+            android:visibility="gone"/>
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -27,24 +30,29 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_alignParentLeft="true"
+                android:layout_toRightOf="@+id/ll_more_option"
                 android:gravity="center"
                 android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/tv_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/source_semibold"
                     android:gravity="center|left"
+                    android:singleLine="true"
                     android:paddingHorizontal="@dimen/_10sdp"
                     android:text="Yugal Kishor"
                     android:textColor="@color/black"
                     android:textSize="@dimen/_14sdp" />
 
                 <TextView
+                    android:id="@+id/tv_email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/source_regular"
                     android:gravity="center|left"
+                    android:singleLine="true"
                     android:paddingHorizontal="@dimen/_10sdp"
                     android:text="yugal.yug123@gmail.com"
                     android:textColor="@color/black_transpent"
@@ -58,25 +66,29 @@
                 android:layout_alignParentRight="true"
                 android:gravity="center"
                 android:orientation="horizontal">
+
                 <Spinner
-                    android:id="@+id/dd_activity"
+                    android:id="@+id/sp_activity"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:animateLayoutChanges="false"
-                    android:visibility="gone"
-                    app:layout_constraintTop_toTopOf="parent"/>
+                    android:layout_marginRight="@dimen/_20sdp"
+                    android:visibility="gone" />
 
                 <ImageView
-                    android:id="@+id/tv_save_next"
+                    android:id="@+id/iv_select"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/ic_baseline_more_vert_24"
                     android:clickable="true"
+                    android:layout_marginRight="@dimen/_5dp"
                     android:focusable="true"
-                    android:gravity="center"/>
+                    android:gravity="center" />
 
             </LinearLayout>
         </RelativeLayout>
     </LinearLayout>
-
+<TextView
+    android:layout_width="match_parent"
+    android:layout_height="1dp"
+    android:background="@color/orange_100"/>
 </LinearLayout>

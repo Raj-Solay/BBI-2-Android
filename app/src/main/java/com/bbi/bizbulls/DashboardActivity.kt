@@ -206,6 +206,7 @@ class DashboardActivity : AppCompatActivity(), View.OnClickListener {
         binding!!.layouthelp.setOnClickListener(this)
         homeCustomerFragment = HomeCustomerFragment()
         customerFOStatusFragment = CustomerFOStatusFragment()
+
         binding!!.bottomNavigationView.selectedItemId = R.id.navigation_fohome
         loadFragment(homeCustomerFragment)
         actionBarDrawerToggle = ActionBarDrawerToggle(
@@ -301,7 +302,7 @@ class DashboardActivity : AppCompatActivity(), View.OnClickListener {
             binding!!.drawerfomainlayout.openDrawer(Gravity.LEFT)
         }
         if (view.id==R.id.layoutsearch){
-            val intent = Intent(this, KycListActivity::class.java)
+            val intent = Intent(this, AproveStatusActivity::class.java)
             startActivity(intent)
         }
         if(view.id == R.id.docApprovel){

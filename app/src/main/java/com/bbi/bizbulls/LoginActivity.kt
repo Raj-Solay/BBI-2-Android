@@ -117,6 +117,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
                         sharedPrefsHelper.phone = response.body()?.user?.data?.phone.toString()
                         sharedPrefsHelper.email = response.body()?.user?.data?.email.toString()
                         sharedPrefsHelper.userPicture = response.body()?.user?.data?.profilePic.toString()
+                        sharedPrefsHelper.userId = response.body()?.user?.data?.id.toString()
                         MyProcessDialog.dismiss()
                         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
                         finish()

@@ -34,6 +34,9 @@
             android:name=".KycListActivity"
             android:exported="false" />
         <activity
+            android:name=".menu.AproveStatusActivity"
+            android:exported="false" />
+        <activity
             android:name=".FilterActivity"
             android:exported="false" />
         <activity
