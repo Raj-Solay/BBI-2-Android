@@ -114,7 +114,7 @@
             android:noHistory="true" />
         <activity
             android:name=".DashboardActivity"
-            android:exported="true" />
+            android:exported="true"  android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
             android:name=".ForgotPasswordActivity"
             android:exported="true"
@@ -139,6 +139,7 @@
             android:name=".ui.registrationforfo.FranchiseeRegistrationActivity"
             android:exported="true" />
         <activity android:name=".KycDocViewActivity" />
+        <activity android:name=".KycStatusViewActivity" />
 
         <provider
             android:name="androidx.core.content.FileProvider"

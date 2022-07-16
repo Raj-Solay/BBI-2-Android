@@ -94,7 +94,7 @@ class KycDocViewActivity : AppCompatActivity(),DocViewListener {
 
         var count = 0
         docList.forEach {
-            if(it.isApproved)
+            if(it.isApproved || it!!.documentStatus == "1" )
                 count++
         }
        /* if(count >0){
@@ -112,14 +112,13 @@ class KycDocViewActivity : AppCompatActivity(),DocViewListener {
         docDialogDocApprove.show()
 
         Picasso.get().load(
-            Globals.BASE_URL+
-                Globals.ASSET_URL+data!!.documentName+"/render")
+            data!!.documentName)
             .placeholder(R.drawable.img_default)
             .into(docDialogDocApprove.imdDocView)
         docDialogDocApprove.btnCancel!!.setOnClickListener {
             docDialogDocApprove.dismiss()
         }
-        if(data.isApproved){
+        if(data.isApproved || data.documentStatus == "1"){
             docDialogDocApprove.btnApproval!!.setText("DisApprove")
         }else{
             docDialogDocApprove.btnApproval!!.setText("Approve")
@@ -159,11 +158,11 @@ class KycDocViewActivity : AppCompatActivity(),DocViewListener {
         var count = 0
         docList.forEach {
             var jsonObjectDoc = JsonObject()
-            jsonObjectDoc.addProperty("doc_id",it!!.documentId.toString())
+            jsonObjectDoc.addProperty("doc_id",it!!.id.toString())
             if(it!!.documentType.toString() == "null"){
                 it!!.documentType = "1"
             }
-            if(it!!.isApproved) {
+            if(it!!.isApproved || it!!.documentStatus == "1" ) {
                 count++
                 jsonObjectDoc.addProperty("document_type","1")
             }else{

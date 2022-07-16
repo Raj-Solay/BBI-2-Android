@@ -236,7 +236,7 @@ interface APIService {
             @Part image: MultipartBody.Part): Call<AssetsRes>
 
     @GET("/api/status")
-    fun getStatus(@Header("Authorization") token: String): Call<StatusData>
+    fun getStatus(@Header("Authorization") token: String): Call<StatusDataRes>
 
     /*--Work History--*/
     @POST("/api/me/work")

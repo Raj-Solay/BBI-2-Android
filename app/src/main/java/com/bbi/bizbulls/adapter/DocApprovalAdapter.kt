@@ -29,15 +29,14 @@ class DocApprovalAdapter(var userList: List<ApprovalDocRes.Data>?,var docViewLis
         return ViewHolder(v)
     }
     override fun onBindViewHolder(holder: DocApprovalAdapter.ViewHolder, position: Int) {
-     holder.txtDocName.text="Document Name : "+userList!!.get(position).documentName
-        Picasso.get().load(Globals.BASE_URL+
-                Globals.ASSET_URL+userList!!.get(position).documentName+"/render")
+     holder.txtDocName.text="Document Id or Name : "+userList!!.get(position).id+"\nDocuemtn Type : "+ userList!!.get(position).documentType
+        Picasso.get().load(userList!!.get(position).documentName)
             .placeholder(R.drawable.img_default)
             .into(holder.imgDocView)
         holder.txtVerify.setOnClickListener {
             docViewListener.onDocView(userList!!.get(position))
         }
-        if(userList!!.get(position).isApproved){
+        if(userList!!.get(position).isApproved || userList!!.get(position).documentStatus == "1"){
             holder.txtVerify.setText("Approved")
         }else{
             holder.txtVerify.setText("Verify")
@@ -50,7 +49,7 @@ class DocApprovalAdapter(var userList: List<ApprovalDocRes.Data>?,var docViewLis
         var imgDocView = itemView.findViewById(R.id.imgDocView) as ImageView
         var txtDocName = itemView.findViewById(R.id.txtDocName) as TextView
         var txtVerify = itemView.findViewById(R.id.txtVerify) as TextView
-        var txtApproved = itemView.findViewById(R.id.txtApproved) as TextView
+       // var txtApproved = itemView.findViewById(R.id.txtApproved) as TextView
 
     }
 }

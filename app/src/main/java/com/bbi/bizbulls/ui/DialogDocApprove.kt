@@ -17,6 +17,7 @@ class DialogDocApprove
     var d: Dialog? = null
     var btnCancel: TextView? = null
     var btnApproval: TextView? = null
+    var txtSpace: TextView? = null
     var imdDocView: ImageView? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,6 +32,7 @@ class DialogDocApprove
         getWindow()?.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT)
 
         btnCancel = findViewById<View>(R.id.btnCancel) as TextView
+        txtSpace = findViewById<View>(R.id.txtSpace) as TextView
         btnApproval = findViewById<View>(R.id.btnApproval) as TextView
         imdDocView = findViewById<View>(R.id.docViewDialog) as ImageView
     }

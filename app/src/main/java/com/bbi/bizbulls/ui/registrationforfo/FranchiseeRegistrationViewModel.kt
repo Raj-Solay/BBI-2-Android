@@ -126,7 +126,7 @@ class FranchiseeRegistrationViewModel : ViewModel() {
             newUid = sharedPrefsHelper.userId
         }
         when (stepPosition) {
-            10 -> {
+            11 -> {
                 when (actionType) {
                     CommonUtils.ACTION_TYPE_EDIT -> {
                         call = RetrofitClient.getUrl()

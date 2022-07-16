@@ -1,7 +1,7 @@
-package com.bbi.bizbulls;
+package com.bbi.bizbulls
 
-import com.bbi.bizbulls.model.ApprovalDocRes;
+import com.bbi.bizbulls.model.ApprovalDocRes
 
-public interface DocViewListener {
-    void onDocView(ApprovalDocRes.Data data);
+interface DocViewListener {
+    fun onDocView(data: ApprovalDocRes.Data?)
 }

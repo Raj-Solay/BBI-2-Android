@@ -39,6 +39,7 @@
             android:textSize="@dimen/_12sdp" />
 
         <TextView
+            android:id="@+id/txtSpace"
             android:layout_weight="0.1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"/>

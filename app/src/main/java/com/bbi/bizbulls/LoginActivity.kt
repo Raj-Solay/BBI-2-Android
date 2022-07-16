@@ -1,11 +1,13 @@
 package com.bbi.bizbulls
 
+import android.app.Activity
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.text.method.HideReturnsTransformationMethod
 import android.text.method.PasswordTransformationMethod
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.bbi.bizbulls.utils.MyProcessDialog
@@ -28,7 +30,17 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
         setContentView(binding!!.root)
         init()
     }
-
+    fun hideKeyboard(activity: Activity) {
+        val imm: InputMethodManager =
+            activity.getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
+        //Find the currently focused view, so we can grab the correct window token from it.
+        var view = activity.currentFocus
+        //If no view currently has focus, create a new one, just so we can grab a window token from it
+        if (view == null) {
+            view = View(activity)
+        }
+        imm.hideSoftInputFromWindow(view.windowToken, 0)
+    }
     fun init() {
         binding!!.txtloginweblink.setOnClickListener(this)
         binding!!.ivShowpBtn.setOnClickListener(this)
@@ -55,6 +67,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
             }
         }
         if (view === binding!!.submitlogin) {
+            hideKeyboard(this)
             if (CommonUtils.isNetworkConnected(this@LoginActivity)) {
                 if (CommonUtils.isValidPhone(binding!!.etUsername.text.toString().trim()) ||
                     CommonUtils.isValidEmail(binding!!.etUsername.text.toString().trim())

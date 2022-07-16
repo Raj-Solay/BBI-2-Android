@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.bbi.bizbulls.databinding.ActivityOrderDetailBinding
 import com.bbi.bizbulls.model.ApplyPromoResponse
 import com.bbi.bizbulls.model.CashFreeTokenData
-import com.bbi.bizbulls.model.StatusData
+import com.bbi.bizbulls.model.StatusDataRes
 import com.bbi.bizbulls.remote.RetrofitClient
 import com.bbi.bizbulls.sharedpref.SharedPrefsManager
 import com.bbi.bizbulls.utils.CommonUtils
@@ -32,14 +32,14 @@ class OrderDetailActivity : AppCompatActivity(), CFCheckoutResponseCallback {
     private var netPayable: Int = 0
     private val sharedPrefsHelper by lazy { SharedPrefsManager(this@OrderDetailActivity) }
     private lateinit var binding: ActivityOrderDetailBinding
-    lateinit var statusData: StatusData
+    lateinit var statusData: StatusDataRes
     private var isFranchiseeFee: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityOrderDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        statusData = intent.getParcelableExtra(Globals.REGISTRATION_FEES_DATA)!!
+        statusData =intent!!.getSerializableExtra(Globals.REGISTRATION_FEES_DATA)!! as StatusDataRes
         binding.backNavigation.setOnClickListener {
             setResult(RESULT_CANCELED)
             finish()
@@ -107,7 +107,20 @@ class OrderDetailActivity : AppCompatActivity(), CFCheckoutResponseCallback {
 
         jsonObject.addProperty("order_amount", amount)
         jsonObject.addProperty("order_id", "OR"+Random(100000).nextInt())
-        jsonObject.addProperty("customer_name", statusData?.customerName)
+        val email = statusData?.customerName
+
+        var name = statusData?.customerName
+
+        try {
+            val split = email!!.split("@").toTypedArray()
+            if(split.size > 1){
+                name = split[0]
+            }
+
+        }catch (e : Exception){}
+
+
+        jsonObject.addProperty("customer_name", name)
         jsonObject.addProperty("customer_email", sharedPrefsHelper.email)
         jsonObject.addProperty("customer_phone", sharedPrefsHelper.phone)
         jsonObject.addProperty("order_currency", "INR")
@@ -193,10 +206,14 @@ class OrderDetailActivity : AppCompatActivity(), CFCheckoutResponseCallback {
                     )*/
                 }
                 MyProcessDialog.dismiss()
+                setResult(RESULT_OK)
+                finish()
             }
 
             override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
                 MyProcessDialog.dismiss()
+                setResult(RESULT_OK)
+                finish()
               //  RetrofitClient.showFailedMessage(this@OrderDetailActivity, t)
             }
         })

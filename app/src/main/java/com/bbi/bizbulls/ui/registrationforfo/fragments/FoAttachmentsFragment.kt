@@ -207,89 +207,112 @@ class FoAttachmentsFragment(private val stepPosition: Int, private var actionTyp
         uid = data?.get(0)?.id.toString()
 
        var rList = data?.reversed()
-
-        if (rList?.get(0) != null) {
-            // Picasso.get().load(data.get(0)?.documentName).into(holder.itemBinding.itemIcon)
-            Picasso.get().load(Globals.BASE_URL+Globals.ASSET_URL+rList.get(0).documentName+"/render")
+        try {
+            if (rList?.get(0) != null) {
+                // Picasso.get().load(data.get(0)?.documentName).into(holder.itemBinding.itemIcon)
+                Picasso.get().load(rList.get(0).documentName.toString())
                     .into(binding.imgpancard)
-            val assetReq = AssetUploadReq()
-            //image/jpeg
-            assetReq.mimeType = "image/jpeg"
-            assetReq.name = rList.get(0).documentName.toString()
-            assetReq.id = "1"
-            uploadFileList.add(0, assetReq)
-        }
-        if (rList?.get(1) != null) {
-            // Picasso.get().load(data.get(0)?.documentName).into(holder.itemBinding.itemIcon)
-            Picasso.get().load(Globals.BASE_URL+Globals.ASSET_URL+rList.get(1).documentName+"/render")
-                    .into(binding.imgaadharcard)
-            val assetReq = AssetUploadReq()
-            //image/jpeg
-            assetReq.mimeType = "image/jpeg"
-            assetReq.name = rList.get(1).documentName.toString()
-            assetReq.id = "1"
-            uploadFileList.add(1, assetReq)
+                val assetReq = AssetUploadReq()
+                //image/jpeg
+                assetReq.mimeType = "image/jpeg"
+                assetReq.name = rList.get(0).documentName.toString()
+                assetReq.id = "1"
+                uploadFileList.add(0, assetReq)
+            }
+        }catch (e : Exception){
+
         }
 
-        if (rList?.get(2) != null) {
-            // Picasso.get().load(data.get(0)?.documentName).into(holder.itemBinding.itemIcon)
-            Picasso.get().load(Globals.BASE_URL+Globals.ASSET_URL+rList.get(2).documentName+"/render")
-                    .into(binding.imgaResidence)
-            val assetReq = AssetUploadReq()
-            //image/jpeg
-            assetReq.mimeType = "image/jpeg"
-            assetReq.name = rList.get(2).documentName.toString()
-            assetReq.id = "2"
-            uploadFileList.add(2, assetReq)
+        try {
+            if(rList?.size!! > 1){
+                if (rList?.get(1) != null) {
+                    // Picasso.get().load(data.get(0)?.documentName).into(holder.itemBinding.itemIcon)
+                    Picasso.get().load(rList.get(1).documentName.toString())
+                        .into(binding.imgaadharcard)
+                    val assetReq = AssetUploadReq()
+                    //image/jpeg
+                    assetReq.mimeType = "image/jpeg"
+                    assetReq.name = rList.get(1).documentName.toString()
+                    assetReq.id = "1"
+                    uploadFileList.add(1, assetReq)
+                }
+            }
+        }catch (e : Exception){
+
         }
 
-        if (rList?.get(3) != null) {
-            // Picasso.get().load(data.get(0)?.documentName).into(holder.itemBinding.itemIcon)
-            Picasso.get().load(Globals.BASE_URL+Globals.ASSET_URL+rList.get(3).documentName+"/render")
-                    .into(binding.imgaIndividually)
-            val assetReq = AssetUploadReq()
-            //image/jpeg
-            assetReq.mimeType = "image/jpeg"
-            assetReq.name = rList.get(3).documentName.toString()
-            assetReq.id = "3"
-            uploadFileList.add(3, assetReq)
+        try {
+            if(rList?.size!! > 2){
+                if (rList?.get(2) != null) {
+                    // Picasso.get().load(data.get(0)?.documentName).into(holder.itemBinding.itemIcon)
+                    Picasso.get().load(rList.get(2).documentName.toString())
+                        .into(binding.imgaResidence)
+                    val assetReq = AssetUploadReq()
+                    //image/jpeg
+                    assetReq.mimeType = "image/jpeg"
+                    assetReq.name = rList.get(2).documentName.toString()
+                    assetReq.id = "2"
+                    uploadFileList.add(2, assetReq)
+                }
+            }
+        }catch (e : Exception){
+
         }
 
-        if (rList?.get(4) != null) {
-            // Picasso.get().load(data.get(0)?.documentName).into(holder.itemBinding.itemIcon)
-            Picasso.get().load(Globals.BASE_URL+Globals.ASSET_URL+rList.get(4).documentName+"/render")
-                    .into(binding.imgaRecentPhotographOfApplicant)
-            val assetReq = AssetUploadReq()
-            //image/jpeg
-            assetReq.mimeType = "image/jpeg"
-            assetReq.name = rList.get(4).documentName.toString()
-            assetReq.id = "4"
-            uploadFileList.add(4, assetReq)
+        try {
+            if(rList?.size!! > 3){
+                if (rList?.get(3) != null) {
+                    // Picasso.get().load(data.get(0)?.documentName).into(holder.itemBinding.itemIcon)
+                    Picasso.get().load(rList.get(3).documentName.toString())
+                        .into(binding.imgaIndividually)
+                    val assetReq = AssetUploadReq()
+                    //image/jpeg
+                    assetReq.mimeType = "image/jpeg"
+                    assetReq.name = rList.get(3).documentName.toString()
+                    assetReq.id = "3"
+                    uploadFileList.add(3, assetReq)
+                }
+            }
+        }catch (e : Exception){
+
         }
 
-        if (rList?.get(5) != null) {
-            // Picasso.get().load(data.get(0)?.documentName).into(holder.itemBinding.itemIcon)
-            Picasso.get().load(Globals.BASE_URL+Globals.ASSET_URL+rList.get(5).documentName+"/render")
+        try {
+            if(rList?.size!! > 4){
+                if (rList?.get(4) != null) {
+                    // Picasso.get().load(data.get(0)?.documentName).into(holder.itemBinding.itemIcon)
+                    Picasso.get().load(rList.get(4).documentName.toString())
+                        .into(binding.imgaRecentPhotographOfApplicant)
+                    val assetReq = AssetUploadReq()
+                    //image/jpeg
+                    assetReq.mimeType = "image/jpeg"
+                    assetReq.name = rList.get(4).documentName.toString()
+                    assetReq.id = "4"
+                    uploadFileList.add(4, assetReq)
+                }
+            }
+
+        }catch (e : Exception){
+
+        }
+
+        try {
+            if (rList?.get(5) != null) {
+                // Picasso.get().load(data.get(0)?.documentName).into(holder.itemBinding.itemIcon)
+                Picasso.get().load(rList.get(5).documentName.toString())
                     .into(binding.imgaBBI)
-            val assetReq = AssetUploadReq()
-            //image/jpeg
-            assetReq.mimeType = "image/jpeg"
-            assetReq.name = rList.get(5).documentName.toString()
-            assetReq.id = "5"
-            uploadFileList.add(5, assetReq)
+                val assetReq = AssetUploadReq()
+                //image/jpeg
+                assetReq.mimeType = "image/jpeg"
+                assetReq.name = rList.get(5).documentName.toString()
+                assetReq.id = "5"
+                uploadFileList.add(5, assetReq)
+            }
+
+        }catch (e : Exception){
+
         }
 
-        if (rList?.get(6) != null) {
-            // Picasso.get().load(data.get(0)?.documentName).into(holder.itemBinding.itemIcon)
-            Picasso.get().load(Globals.BASE_URL+Globals.ASSET_URL+rList.get(6).documentName+"/render")
-                    .into(binding.imgaBBI)
-            val assetReq = AssetUploadReq()
-            //image/jpeg
-            assetReq.mimeType = "image/jpeg"
-            assetReq.name = rList.get(6).documentName.toString()
-            assetReq.id = "6"
-            uploadFileList.add(6, assetReq)
-        }
 
         var isEditable = false
         when (actionType) {
@@ -352,7 +375,7 @@ class FoAttachmentsFragment(private val stepPosition: Int, private var actionTyp
                     //image/jpeg
                     var fType = mimeType?.split("/")
                     assetReq.mimeType = fType?.get(1).toString()
-                    assetReq.name = assetRes?.id.toString()
+                    assetReq.name = assetRes?.links!!.full.toString()
                     assetReq.id = type.toString()
                     uploadFileList.add(type - 1, assetReq)
                 } else {
@@ -413,7 +436,8 @@ class FoAttachmentsFragment(private val stepPosition: Int, private var actionTyp
         Log.d("JSONArray", "" + array.toString())
         // Call remote Api service to save the Document Detail
 
-        FranchiseeRegistrationViewModel().sendDetailPostRequest(requireActivity(), array, stepPosition, actionType, uid)
+        FranchiseeRegistrationViewModel().sendDetailPostRequest(requireActivity(),
+            array, stepPosition, actionType, uid)
     }
 
     fun getImageRequestBody(path: String, key: String): MultipartBody.Part? {

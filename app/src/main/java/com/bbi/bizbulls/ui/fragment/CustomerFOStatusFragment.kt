@@ -18,7 +18,7 @@ import com.bbi.bizbulls.databinding.FragmentStatusBinding
 import com.bbi.bizbulls.media.DownloadFile
 import com.bbi.bizbulls.model.DatesResponse
 import com.bbi.bizbulls.model.FileUpload
-import com.bbi.bizbulls.model.StatusData
+import com.bbi.bizbulls.model.StatusDataRes
 import com.bbi.bizbulls.remote.RetrofitClient
 import com.bbi.bizbulls.sharedpref.SharedPrefsManager
 import com.bbi.bizbulls.ui.adapter.DatesAdapter
@@ -49,7 +49,7 @@ class CustomerFOStatusFragment : Fragment(), View.OnClickListener {
     private val sharedPrefsHelper by lazy { SharedPrefsManager(requireActivity()) }
     private lateinit var binding: FragmentStatusBinding
     var isCustomer = false
-    lateinit var statusData: StatusData
+    lateinit var statusData: StatusDataRes
     var dates =  mutableListOf<String>()
     private lateinit var pdfUri: Uri
 
@@ -77,8 +77,9 @@ class CustomerFOStatusFragment : Fragment(), View.OnClickListener {
         binding.siteVisitLayout.txtsiteVisitdownload.setOnClickListener(this)
         binding.franchiseeFeeLayout.txtfranchiseeFeedownload.setOnClickListener(this)
         binding.txtsetupdownload.setOnClickListener(this)
+        binding.txtKyvView.setOnClickListener(this)
 
-
+        binding.txtkycdownload.visibility = View.GONE
         binding.scrollfostatus.visibility = View.VISIBLE
         binding.layoutinfostatus.visibility = View.GONE
         return binding.root
@@ -90,9 +91,19 @@ class CustomerFOStatusFragment : Fragment(), View.OnClickListener {
         geSteps(requireActivity())
     }
 
+    private fun viewKycDocumentApi(){
+        val intent = Intent(activity, KycStatusViewActivity::class.java)
+        intent.putExtra(REGISTRATION_FEES_DATA,statusData)
+        intent.putExtra(IS_FRANCHISEE_FEE,false)
+        startActivityForResult(intent,REQUEST_CODE_REGISTRATION_FEE)
+    }
+
     override fun onClick(view: View) {
         if (view === binding.layoutkycincomplete) {
-            setKycComplete()
+            //setKycComplete()
+        }
+        if(view == binding.txtKyvView){
+            viewKycDocumentApi()
         }
         if (view === binding.btnregister) {
             val intent = Intent(activity, OrderDetailActivity::class.java)
@@ -138,31 +149,31 @@ class CustomerFOStatusFragment : Fragment(), View.OnClickListener {
             setFranchiseeRegistrationFeeDone()
         }
         if (view === binding.txtkycdownload){
-            DownloadFile.download(statusData.kyc.documentUrl,requireActivity())
+           // DownloadFile.download(statusData.kyc.documentUrl,requireActivity())
         }
         if (view ===  binding.txtregisterdownload){
-            DownloadFile.download(statusData.registrationFees.documentUrl,requireActivity())
+            DownloadFile.download(statusData.registrationFees!!.documentUrl,requireActivity())
         }
         if (view === binding.bbiLayout.txtbbiAgreementdownload){
-            DownloadFile.download(statusData.bbAgreement.documentUrl,requireActivity())
+            DownloadFile.download(statusData.bbAgreement!!.documentUrl,requireActivity())
         }
         if (view === binding.finabilityLayout.txtfinabilitydownload){
-            DownloadFile.download(statusData.finability.documentUrl,requireActivity())
+            DownloadFile.download(statusData.finability!!.documentUrl,requireActivity())
         }
         if (view === binding.txtlocationidentitydownload){
-            DownloadFile.download(statusData.locationUpdate.documentUrl,requireActivity())
+            DownloadFile.download(statusData.locationUpdate!!.documentUrl,requireActivity())
         }
         if (view === binding.txtagreementdownload){
-            DownloadFile.download(statusData.agreement.documentUrl,requireActivity())
+            DownloadFile.download(statusData.agreement!!.documentUrl,requireActivity())
         }
         if (view === binding.siteVisitLayout.txtsiteVisitdownload){
-            DownloadFile.download(statusData.siteVisit.documentUrl,requireActivity())
+            DownloadFile.download(statusData.siteVisit!!.documentUrl,requireActivity())
         }
         if (view ===  binding.franchiseeFeeLayout.txtfranchiseeFeedownload){
-            DownloadFile.download(statusData.frenchiseeFee.documentUrl,requireActivity())
+            DownloadFile.download(statusData.frenchiseeFee!!.documentUrl,requireActivity())
         }
         if (view === binding.txtsetupdownload){
-            DownloadFile.download(statusData.setup.documentUrl,requireActivity())
+            DownloadFile.download(statusData.setup!!.documentUrl,requireActivity())
         }
     }
 
@@ -193,6 +204,12 @@ class CustomerFOStatusFragment : Fragment(), View.OnClickListener {
             binding.finabilityLayout.layoutfinabilityincomplete.visibility = View.VISIBLE
         } else {
             binding.layoutlocationidentityincomplete.visibility = View.VISIBLE
+        }
+        try{
+            binding.txtregisterdate.setText(statusData?.registrationFees?.date.toString())
+
+        }catch (e  :Exception){
+
         }
         binding.imgregisterstatus.setImageResource(R.drawable.ic_done)
     }
@@ -227,6 +244,7 @@ class CustomerFOStatusFragment : Fragment(), View.OnClickListener {
         binding.siteVisitLayout.imgsiteVisitstatus.setImageResource(R.drawable.ic_done)
     }
     private fun setFranchiseeRegistrationFeeDone() {
+
         binding.franchiseeFeeLayout.layoutfranchiseeFeeincomplete.visibility = View.GONE
         binding.franchiseeFeeLayout.layoutfranchiseeFeecomplete.visibility = View.VISIBLE
         binding.layoutsetupincomplete.visibility = View.VISIBLE
@@ -252,23 +270,24 @@ class CustomerFOStatusFragment : Fragment(), View.OnClickListener {
     fun geSteps(context: Context) {
         val sharedPrefsHelper by lazy { SharedPrefsManager(context) }
 
-        val call: Call<StatusData> =
+        val call: Call<StatusDataRes> =
             RetrofitClient.getUrl().getStatus(sharedPrefsHelper.authToken)
         println("________URL ::${call.request().url}")
         println("________authToken ::${sharedPrefsHelper.authToken}")
         MyProcessDialog.showProgressBar(context, 0)
-        call.enqueue(object : Callback<StatusData> {
+        call.enqueue(object : Callback<StatusDataRes> {
             override
             fun onResponse(
-                call: Call<StatusData>,
-                responseObject: Response<StatusData>
+                call: Call<StatusDataRes>,
+                responseObject: Response<StatusDataRes>
             ) {
                 if (responseObject.isSuccessful) {
                     statusData =  responseObject.body()!!
-                    isCustomer = statusData.isCustomer
-                  //  if(statusData.type == "customer"){
-                    //    isCustomer = true
-                    //}
+                  //  isCustomer = statusData.type
+                    if(statusData.type == "customer"){
+                        isCustomer = true
+                    }
+                    isCustomer = false
 
                     binding.apply {
                         txtcustomerid.text = statusData?.number
@@ -276,7 +295,7 @@ class CustomerFOStatusFragment : Fragment(), View.OnClickListener {
                         txtcustomername.text = statusData?.customerName
                         txtcustomeraddress.text = statusData?.businessName
                         txtcustomertime.text = statusData?.date
-                        dates = statusData.siteVisit.dates as MutableList<String>
+                        dates = statusData.siteVisit!!.dates as MutableList<String>
                         setDatesData()
                     }
                     if(isCustomer){
@@ -288,11 +307,14 @@ class CustomerFOStatusFragment : Fragment(), View.OnClickListener {
                         }
                     }
 
-                    if(statusData?.kyc?.status.equals("Completed",true))
-                    {
-                        binding.txtkycdate.setText(statusData?.kyc?.date.toString())
-                        setKycComplete()
+                    if(statusData?.kyc?.status!!.size > 0){
+                        if(statusData?.kyc?.status!!.get(0)!!.kycStatus.toString().equals("approved",true))
+                        {
+                            binding.txtkycdate.setText(statusData?.kyc?.status!!.get(0)!!.createdAt.toString().toString())
+                            setKycComplete()
+                        }
                     }
+
                     if(statusData?.bbAgreement?.status.equals("Completed",true))
                     {
                         binding.bbiLayout.txtbbiAgreementdate.setText(statusData?.bbAgreement?.date.toString())
@@ -300,7 +322,7 @@ class CustomerFOStatusFragment : Fragment(), View.OnClickListener {
                     }
                     if(statusData?.registrationFees?.status.equals("Completed",true))
                     {
-                        binding.txtregisterdate.setText(statusData?.kyc?.date.toString())
+                        binding.txtregisterdate.setText(statusData?.registrationFees?.date.toString())
                         showfinancialRelibility()
                     }
                     if(statusData?.finability?.status.equals("Completed",true))
@@ -344,7 +366,7 @@ class CustomerFOStatusFragment : Fragment(), View.OnClickListener {
             }
 
             override
-            fun onFailure(call: Call<StatusData>, t: Throwable) {
+            fun onFailure(call: Call<StatusDataRes>, t: Throwable) {
                 MyProcessDialog.dismiss()
                 RetrofitClient.showFailedMessage(context, t)
             }
@@ -385,7 +407,7 @@ class CustomerFOStatusFragment : Fragment(), View.OnClickListener {
                 try {
                     myCursor = requireActivity().contentResolver.query(uri, null, null, null, null)
                     if (myCursor != null && myCursor.moveToFirst()) {
-                        pdfName = myCursor.getString(myCursor.getColumnIndex(OpenableColumns.DISPLAY_NAME))
+                        pdfName = myCursor.getString(myCursor.getColumnIndexOrThrow(OpenableColumns.DISPLAY_NAME))
                         uploadDocument(File(pdfName))
                     }
                 } finally {
@@ -419,15 +441,17 @@ class CustomerFOStatusFragment : Fragment(), View.OnClickListener {
                    setDatesData()
 
                 } else {
-                    RetrofitClient.showResponseMessage(context, responseObject.code())
+                  //  RetrofitClient.showResponseMessage(context, responseObject.code())
                 }
                 MyProcessDialog.dismiss()
+                setSiteVisitDone()
             }
 
             override
             fun onFailure(call: Call<DatesResponse>, t: Throwable) {
                 MyProcessDialog.dismiss()
-                RetrofitClient.showFailedMessage(context, t)
+              //  RetrofitClient.showFailedMessage(context, t)
+                setSiteVisitDone()
             }
         })
     }

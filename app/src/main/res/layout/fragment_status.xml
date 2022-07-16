@@ -220,6 +220,19 @@
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
                             tools:ignore="TouchTargetSizeCheck" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/txtKyvView"
+                            style="@style/fontregular"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="6dp"
+                            android:layout_marginEnd="4dp"
+                            android:text="@string/c_viewdetail"
+                            android:textColor="@color/orange_700"
+                            android:textSize="@dimen/medium_font"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/txtkycdownload" />
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
                     <androidx.constraintlayout.widget.ConstraintLayout
@@ -246,6 +259,7 @@
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
+
 
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -352,6 +366,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="6dp"
                             android:layout_marginEnd="4dp"
+                            android:visibility="invisible"
                             android:text="@string/c_viewdetail"
                             android:textColor="@color/orange_700"
                             android:textSize="@dimen/medium_font"
@@ -366,7 +381,7 @@
                             android:layout_marginStart="8dp"
                             android:layout_marginTop="6dp"
                             android:layout_marginEnd="10dp"
-                            android:text="081112021"
+                            android:text=""
                             android:textColor="@color/heading"
                             android:textSize="@dimen/medium_font"
                             app:layout_constraintEnd_toStartOf="@+id/txtregisterviewdetail"
@@ -538,6 +553,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="6dp"
+                            android:visibility="invisible"
                             android:layout_marginEnd="4dp"
                             android:text="@string/c_viewdetail"
                             android:textColor="@color/orange_700"
@@ -553,7 +569,7 @@
                             android:layout_marginStart="8dp"
                             android:layout_marginTop="6dp"
                             android:layout_marginEnd="10dp"
-                            android:text="081112021"
+                            android:text=""
                             android:textColor="@color/heading"
                             android:textSize="@dimen/medium_font"
                             app:layout_constraintEnd_toStartOf="@+id/txtlocationidentityviewdetail"
@@ -699,6 +715,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="6dp"
+                            android:visibility="invisible"
                             android:layout_marginEnd="4dp"
                             android:text="@string/c_viewdetail"
                             android:textColor="@color/orange_700"
@@ -714,7 +731,7 @@
                             android:layout_marginStart="8dp"
                             android:layout_marginTop="6dp"
                             android:layout_marginEnd="10dp"
-                            android:text="081112021"
+                            android:text=""
                             android:textColor="@color/heading"
                             android:textSize="@dimen/medium_font"
                             app:layout_constraintEnd_toStartOf="@+id/txtagreementviewdetail"
@@ -876,6 +893,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="6dp"
                             android:layout_marginEnd="4dp"
+                            android:visibility="invisible"
                             android:text="@string/c_viewdetail"
                             android:textColor="@color/orange_700"
                             android:textSize="@dimen/medium_font"
@@ -890,7 +908,7 @@
                             android:layout_marginStart="8dp"
                             android:layout_marginTop="6dp"
                             android:layout_marginEnd="10dp"
-                            android:text="081112021"
+                            android:text=""
                             android:textColor="@color/heading"
                             android:textSize="@dimen/medium_font"
                             app:layout_constraintEnd_toStartOf="@+id/txtsetupviewdetail"
@@ -1028,7 +1046,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
                             android:layout_marginTop="6dp"
-                            android:text="081112021"
+                            android:text=""
                             app:layout_constraintEnd_toStartOf="@+id/imgLicence"
                             android:textColor="@color/heading"
                             android:textSize="@dimen/medium_font"

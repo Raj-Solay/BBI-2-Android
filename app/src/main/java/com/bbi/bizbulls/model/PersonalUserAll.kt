@@ -7,7 +7,7 @@ import java.io.Serializable
 class PersonalUserAll {
     @SerializedName("data")
     @Expose
-    var data: List<Data>? = null
+    var data: ArrayList<Data>? = null
 
     inner class Data : Serializable{
         @SerializedName("id")

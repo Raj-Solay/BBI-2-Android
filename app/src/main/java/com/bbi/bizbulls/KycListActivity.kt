@@ -3,6 +3,8 @@ package com.bbi.bizbulls
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import com.bbi.bizbulls.databinding.ActivityKycListBinding
 import com.bbi.bizbulls.model.PersonalUserAll
 import com.bbi.bizbulls.remote.RetrofitClient
@@ -17,7 +19,7 @@ class KycListActivity : AppCompatActivity() {
     lateinit var binding:ActivityKycListBinding
     private val sharedPrefsHelper by lazy { SharedPrefsManager(this@KycListActivity) }
 
-    private var userList : List<PersonalUserAll.Data> = arrayListOf();
+    private var userList : ArrayList<PersonalUserAll.Data> = arrayListOf();
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,6 +37,7 @@ class KycListActivity : AppCompatActivity() {
            val intent = Intent(this, FilterActivity::class.java)
            startActivity(intent)
        }
+
     }
     private fun getUserList(){
         MyProcessDialog.showProgressBar(this, 0)
@@ -60,8 +63,41 @@ class KycListActivity : AppCompatActivity() {
             }
         })
     }
-    private fun setAdapter(userList: List<PersonalUserAll.Data>) {
+    private fun setAdapter(userList: ArrayList<PersonalUserAll.Data>) {
         var kycApprovalAdapter= KycApprovalAdapter(userList)
         binding?.rcyKycApproval?.adapter=kycApprovalAdapter
+        kycApprovalAdapter.addList(userList)
+
+        binding.edtSearch.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+
+            }
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+               filterAdapter(binding.edtSearch.text.toString(),kycApprovalAdapter,userList)
+            }
+
+            override fun afterTextChanged(p0: Editable?) {
+
+            }
+
+        })
+    }
+    fun filterAdapter(
+        filter: String,
+        kycApprovalAdapter: KycApprovalAdapter,
+        userList: ArrayList<PersonalUserAll.Data>
+    ) {
+        var tmpList : ArrayList<PersonalUserAll.Data> = arrayListOf()
+        userList.forEach {
+            if(it.whatsappnumber == null){
+                it.whatsappnumber = 0
+            }
+            if(it.fullname!!.toLowerCase().contains(filter.toLowerCase()) || it.whatsappnumber.toString().contains(filter)){
+                tmpList.add(it)
+            }
+        }
+        kycApprovalAdapter.addList(tmpList)
+        kycApprovalAdapter.notifyDataSetChanged()
     }
 }

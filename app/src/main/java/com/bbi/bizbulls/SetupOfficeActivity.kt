@@ -49,6 +49,9 @@ class SetupOfficeActivity : AppCompatActivity() {
                 startActivityForResult(intent, Globals.REQUEST_CODE_ADD_STAFF)
             }
         }
+        binding.btnsubmitrefferance.setOnClickListener {
+            onBackPressed()
+        }
         setListData()
         binding?.backNavigation?.setOnClickListener {
             finish()

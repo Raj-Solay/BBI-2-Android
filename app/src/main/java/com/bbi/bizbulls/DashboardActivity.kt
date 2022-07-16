@@ -1,17 +1,17 @@
 package com.bbi.bizbulls
 
 import android.Manifest
+import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.Address
 import android.location.Geocoder
 import android.location.Location
 import android.os.Bundle
-import android.util.Log
-import com.google.android.material.progressindicator.LinearProgressIndicator
 import android.view.Gravity
 import android.view.KeyEvent
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 import android.widget.RelativeLayout
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
@@ -25,15 +25,16 @@ import com.bbi.bizbulls.menu.*
 import com.bbi.bizbulls.model.UserDetails
 import com.bbi.bizbulls.remote.RetrofitClient
 import com.bbi.bizbulls.sharedpref.SharedPrefsManager
-import com.bbi.bizbulls.ui.registrationforfo.FoRegistrationDashBoardActivity
 import com.bbi.bizbulls.ui.fragment.CustomerFOStatusFragment
 import com.bbi.bizbulls.ui.fragment.HomeCustomerFragment
+import com.bbi.bizbulls.ui.registrationforfo.FoRegistrationDashBoardActivity
 import com.bbi.bizbulls.utils.CommonUtils
 import com.bbi.bizbulls.utils.Globals
 import com.bbi.bizbulls.utils.MyProcessDialog
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.tasks.OnSuccessListener
+import com.google.android.material.progressindicator.LinearProgressIndicator
 import com.karumi.dexter.Dexter
 import com.karumi.dexter.PermissionToken
 import com.karumi.dexter.listener.PermissionDeniedResponse
@@ -75,6 +76,7 @@ class DashboardActivity : AppCompatActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         binding = ActivityDashboardBinding.inflate(layoutInflater)
         setContentView(binding!!.root)
+        hideKeyboard(this)
         init()
         getUserRole(this)
         println("________NAME ::${sharedPrefsHelper.userName}")
@@ -131,7 +133,17 @@ class DashboardActivity : AppCompatActivity(), View.OnClickListener {
             }
         })
     }
-
+    fun hideKeyboard(activity: Activity) {
+        val imm: InputMethodManager =
+            activity.getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
+        //Find the currently focused view, so we can grab the correct window token from it.
+        var view = activity.currentFocus
+        //If no view currently has focus, create a new one, just so we can grab a window token from it
+        if (view == null) {
+            view = View(activity)
+        }
+        imm.hideSoftInputFromWindow(view.windowToken, 0)
+    }
     fun init() {
         binding!!.bottomNavigationView.background = null
         binding!!.bottomNavigationView.setOnItemSelectedListener { item ->
