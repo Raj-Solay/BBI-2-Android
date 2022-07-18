@@ -9,11 +9,13 @@ import com.bbi.bizbulls.databinding.DialogMessagesBinding
 import com.bbi.bizbulls.sharedpref.SharedPrefsManager
 import com.bbi.bizbulls.utils.Globals
 import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.HttpException
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.io.IOException
 import java.util.concurrent.TimeUnit
+
 
 object RetrofitClient {
 
@@ -21,10 +23,10 @@ object RetrofitClient {
     private fun getClient(): Retrofit {
         if (retrofit == null) {
             retrofit = Retrofit.Builder()
-                .baseUrl(Globals.BASE_URL)
-                .client(okHttpClient())
-                .addConverterFactory(GsonConverterFactory.create())/* Converter Factory to convert your Json to gson */
-                .build()
+                    .baseUrl(Globals.BASE_URL)
+                    .client(okHttpClient())
+                    .addConverterFactory(GsonConverterFactory.create())/* Converter Factory to convert your Json to gson */
+                    .build()
         }
         return retrofit!!
     }
@@ -34,7 +36,16 @@ object RetrofitClient {
     }
 
     private fun okHttpClient(): OkHttpClient {
+        val interceptor = HttpLoggingInterceptor()
+        interceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
         return OkHttpClient.Builder()
+                .connectTimeout(2, TimeUnit.MINUTES)
+                .writeTimeout(2, TimeUnit.MINUTES)
+                .readTimeout(2, TimeUnit.MINUTES).addInterceptor(interceptor)
+                .build()
+        val logging = HttpLoggingInterceptor()
+        logging.setLevel(HttpLoggingInterceptor.Level.BODY)
+        return OkHttpClient.Builder().addInterceptor(logging)
             .connectTimeout(2, TimeUnit.MINUTES)
             .readTimeout(2, TimeUnit.MINUTES)
             .build()
@@ -49,7 +60,7 @@ object RetrofitClient {
     fun showResponseMessage(context: Context, responseCode: Int) {
         val dialog = Dialog(context)
         val binding: DialogMessagesBinding =
-            DialogMessagesBinding.inflate(LayoutInflater.from(context))
+                DialogMessagesBinding.inflate(LayoutInflater.from(context))
         dialog.setContentView(binding.root)
         // TODO WHen release the application change the cancelable true to false
         dialog.setCancelable(true)
@@ -78,7 +89,7 @@ object RetrofitClient {
         }
 
         //now that the dialog is set up, it's time to show it
-         dialog.show()
+        dialog.show()
     }
 
     /**
@@ -86,10 +97,10 @@ object RetrofitClient {
      *
      * @param context activity or fragment context
      */
-    fun showFailedMessage(context: Context,  t: Throwable) {
+    fun showFailedMessage(context: Context, t: Throwable) {
         val dialog = Dialog(context)
         val binding: DialogMessagesBinding =
-            DialogMessagesBinding.inflate(LayoutInflater.from(context))
+                DialogMessagesBinding.inflate(LayoutInflater.from(context))
         dialog.setContentView(binding.root)
         dialog.setCancelable(true)
         dialog.window?.setGravity(Gravity.CENTER)

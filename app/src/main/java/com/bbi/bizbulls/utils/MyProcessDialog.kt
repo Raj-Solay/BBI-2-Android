@@ -11,7 +11,7 @@ import com.bbi.bizbulls.R
 
 @SuppressLint("StaticFieldLeak")
 object MyProcessDialog {
-    private var myAlertDialog: AlertDialog? = null
+     var myAlertDialog: AlertDialog? = null
     private var bar: ProgressBar? = null
     private var t001: TextView? = null
     private var circular: ProgressBar? = null

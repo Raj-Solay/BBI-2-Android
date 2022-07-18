@@ -21,6 +21,9 @@ class Data {
     @SerializedName("id")
     val id: String? = null
 
+    @SerializedName("user_id")
+    val user_id: String? = null
+
     @SerializedName("email")
     val email: String? = null
 }

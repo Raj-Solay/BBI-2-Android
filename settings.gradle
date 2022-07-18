@@ -3,6 +3,11 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        jcenter()
+        maven
+                {
+                    url 'https://maven.cashfree.com/release'
+                }
     }
 }
 rootProject.name = "BizBullsIndia"

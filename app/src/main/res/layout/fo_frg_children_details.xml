@@ -1,57 +1,199 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/white">
 
-    <LinearLayout
-        android:id="@+id/nineLayout"
-        style="@style/regLLAll">
 
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/childName"
-            style="@style/inputBox"
-            android:hint="Name" />
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:layout_margin="@dimen/_16sdp"
+        android:layout_above="@+id/stepSubmit">
 
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/childAge"
-            style="@style/inputBox"
-            android:hint="Age"
-            android:maxLength="2"
-            android:inputType="number" />
+        <LinearLayout
+            android:id="@+id/nineLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-        <androidx.appcompat.widget.AppCompatTextView
-            style="@style/subTitle"
-            android:text="Sex" />
+            <!--Name-->
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_10sdp"
+                android:layout_gravity="bottom"
+                android:background="@drawable/card">
 
-        <RelativeLayout style="@style/spinnerLayout">
+                <ImageView
+                    android:layout_width="@dimen/_18sdp"
+                    android:layout_height="@dimen/_18sdp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/_8sdp"
+                    app:tint="@color/value"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/ic_education_name" />
 
-            <com.bbi.bizbulls.utils.CustomSpinner
-                android:id="@+id/spnrChildSex"
-                style="@style/customSpinner"
-                android:entries="@array/gender"/>
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:paddingLeft="@dimen/_50sdp"
+                    android:paddingRight="@dimen/_10sdp">
 
-            <ImageView style="@style/customSpinnerDropDown" />
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:background="@null"
+                        android:id="@+id/childName"
+                        android:lines="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Name"
+                        android:maxLines="1"
+                        android:textSize="@dimen/_12sdp" />
+                </FrameLayout>
 
-        </RelativeLayout>
+            </FrameLayout>
 
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/staysWith"
-            style="@style/inputBox"
-            android:hint="Stays with" />
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/stepSubmit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_margin="@dimen/_8dp"
-            android:background="@drawable/bg_submit"
-            android:gravity="center"
-            android:text="@string/f_submit"
-            android:textAllCaps="false"
-            android:textColor="@color/white"
-            android:textSize="@dimen/large_font" />
+            <!--Age-->
+            <FrameLayout
+                android:layout_marginTop="@dimen/_8sdp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_10sdp"
+                android:layout_gravity="bottom"
+                android:background="@drawable/card">
 
-    </LinearLayout>
+                <ImageView
+                    android:layout_width="@dimen/_18sdp"
+                    android:layout_height="@dimen/_18sdp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/_8sdp"
+                    app:tint="@color/value"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/ic_family_age" />
 
-</androidx.core.widget.NestedScrollView>
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:paddingLeft="@dimen/_50sdp"
+                    android:paddingRight="@dimen/_10sdp">
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:background="@null"
+                        android:id="@+id/childAge"
+                        android:lines="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Age"
+                        android:maxLines="1"
+                        android:inputType="number"
+                        android:textSize="@dimen/_12sdp" />
+                </FrameLayout>
+
+            </FrameLayout>
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/subTitle"
+                android:text="Sex"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:textSize="@dimen/_14ssp"/>
+
+            <!--Gender-->
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_5sdp"
+                android:layout_gravity="bottom"
+                android:background="@drawable/card">
+
+                <ImageView
+                    android:layout_width="@dimen/_18sdp"
+                    android:layout_height="@dimen/_18sdp"
+                    android:visibility="invisible"
+                    app:tint="@color/value"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/_12sdp"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/ic_family_age" />
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:paddingLeft="@dimen/_50sdp"
+                    android:paddingRight="@dimen/_10sdp">
+
+                    <com.bbi.bizbulls.utils.CustomSpinner
+                        android:id="@+id/spnrChildSex"
+                        style="@style/customSpinner"
+                        android:entries="@array/gender"/>
+
+                    <ImageView style="@style/customSpinnerDropDown"
+                        android:layout_gravity="right|center"/>
+                </FrameLayout>
+
+            </FrameLayout>
+
+            <!--Stay with-->
+            <FrameLayout
+                android:layout_marginTop="@dimen/_8sdp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_10sdp"
+                android:layout_gravity="bottom"
+                android:background="@drawable/card">
+
+                <ImageView
+                    android:layout_width="@dimen/_18sdp"
+                    android:layout_height="@dimen/_18sdp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="@dimen/_8sdp"
+                    app:tint="@color/value"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/ic_family_age" />
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:paddingLeft="@dimen/_50sdp"
+                    android:paddingRight="@dimen/_10sdp">
+
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:background="@null"
+                        android:id="@+id/staysWith"
+                        android:lines="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Stays with"
+                        android:maxLines="1"
+                        android:textSize="@dimen/_12sdp" />
+                </FrameLayout>
+
+            </FrameLayout>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/stepSubmit"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_45sdp"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="center"
+        android:layout_marginStart="@dimen/_16sdp"
+        android:layout_marginTop="@dimen/_16sdp"
+        android:layout_marginEnd="@dimen/_16sdp"
+        android:layout_marginBottom="@dimen/_16sdp"
+        android:background="@drawable/bg_submit"
+        android:gravity="center"
+        android:text="@string/f_submit"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_14ssp" />
+</RelativeLayout>

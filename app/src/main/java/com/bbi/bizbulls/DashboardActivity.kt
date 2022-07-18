@@ -1,6 +1,7 @@
 package com.bbi.bizbulls
 
 import android.Manifest
+import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.Address
@@ -10,6 +11,7 @@ import android.os.Bundle
 import android.view.Gravity
 import android.view.KeyEvent
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 import android.widget.RelativeLayout
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
@@ -20,10 +22,15 @@ import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
 import com.bbi.bizbulls.databinding.ActivityDashboardBinding
 import com.bbi.bizbulls.menu.*
+import com.bbi.bizbulls.model.UserDetails
+import com.bbi.bizbulls.remote.RetrofitClient
 import com.bbi.bizbulls.sharedpref.SharedPrefsManager
 import com.bbi.bizbulls.ui.fragment.CustomerFOStatusFragment
 import com.bbi.bizbulls.ui.fragment.HomeCustomerFragment
+import com.bbi.bizbulls.ui.registrationforfo.FoRegistrationDashBoardActivity
 import com.bbi.bizbulls.utils.CommonUtils
+import com.bbi.bizbulls.utils.Globals
+import com.bbi.bizbulls.utils.MyProcessDialog
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.tasks.OnSuccessListener
@@ -33,6 +40,9 @@ import com.karumi.dexter.PermissionToken
 import com.karumi.dexter.listener.PermissionDeniedResponse
 import com.karumi.dexter.listener.PermissionGrantedResponse
 import com.karumi.dexter.listener.single.PermissionListener
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import java.util.*
 
 
@@ -44,9 +54,11 @@ class DashboardActivity : AppCompatActivity(), View.OnClickListener {
     var myRefer: ConstraintLayout? = null
     var myOffer: ConstraintLayout? = null
     var myWallet: ConstraintLayout? = null
+    var layoutcp : ConstraintLayout? = null
     var about: ConstraintLayout? = null
     var termsAndCondition: ConstraintLayout? = null
     var privacyPolicy: ConstraintLayout? = null
+    var docApprovel: ConstraintLayout? = null
     var registerComplaint: ConstraintLayout? = null
     var contactUs: ConstraintLayout? = null
     var followUs: ConstraintLayout? = null
@@ -64,14 +76,74 @@ class DashboardActivity : AppCompatActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         binding = ActivityDashboardBinding.inflate(layoutInflater)
         setContentView(binding!!.root)
+        hideKeyboard(this)
         init()
+        getUserRole(this)
         println("________NAME ::${sharedPrefsHelper.userName}")
         println("________EMAIL  ::${sharedPrefsHelper.email}")
         println("________PHONE  ::${sharedPrefsHelper.phone}")
         println("________TOKEN_ID  ::${sharedPrefsHelper.tokenID}")
         println("________AUTH_TOKEN  ::${sharedPrefsHelper.authToken}")
     }
+    fun getUserRole(activity: DashboardActivity) {
+        val sharedPrefsHelper by lazy { SharedPrefsManager(this) }
 
+        val call: Call<UserDetails> =
+            RetrofitClient.getUrl().userRoleDetails(sharedPrefsHelper.authToken)
+        println("________URL ::${call.request().url}")
+        println("________authToken ::${sharedPrefsHelper.authToken}")
+        var token = sharedPrefsHelper.authToken;
+        MyProcessDialog.showProgressBar(activity, 0)
+        call.enqueue(object : Callback<UserDetails> {
+            override
+            fun onResponse(
+                call: Call<UserDetails>,
+                responseObject: Response<UserDetails>
+            ) {
+                if (responseObject.isSuccessful) {
+                    //responseObject.body()?.data
+                    var userDetails = responseObject.body()
+                  //  Log.d("UserDetails","Role : " + userDetails?.data?.id)
+                 //   Log.d("UserDetails","Role : " + userDetails?.data?.roleId)
+                    sharedPrefsHelper.role = userDetails?.data?.roleId.toString()
+                    sharedPrefsHelper.userId = userDetails?.data?.id.toString()
+                    sharedPrefsHelper.phone = userDetails?.data?.phone.toString()
+                    sharedPrefsHelper.email = userDetails?.data?.email.toString()
+                    try{
+                        if(userDetails?.data?.roleId!= null &&
+                            userDetails?.data?.roleId!!.toInt() == Globals.USER_TYPE_FO_TEAM){
+                            docApprovel!!.visibility = View.VISIBLE
+                        }else{
+                            docApprovel!!.visibility = View.GONE
+                        }
+                    }catch (e  :Exception){
+                        docApprovel!!.visibility = View.GONE
+                    }
+
+                } else {
+                    RetrofitClient.showResponseMessage(activity, responseObject.code())
+                }
+                MyProcessDialog.dismiss()
+            }
+
+            override
+            fun onFailure(call: Call<UserDetails>, t: Throwable) {
+                MyProcessDialog.dismiss()
+                RetrofitClient.showFailedMessage(activity, t)
+            }
+        })
+    }
+    fun hideKeyboard(activity: Activity) {
+        val imm: InputMethodManager =
+            activity.getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
+        //Find the currently focused view, so we can grab the correct window token from it.
+        var view = activity.currentFocus
+        //If no view currently has focus, create a new one, just so we can grab a window token from it
+        if (view == null) {
+            view = View(activity)
+        }
+        imm.hideSoftInputFromWindow(view.windowToken, 0)
+    }
     fun init() {
         binding!!.bottomNavigationView.background = null
         binding!!.bottomNavigationView.setOnItemSelectedListener { item ->
@@ -100,6 +172,8 @@ class DashboardActivity : AppCompatActivity(), View.OnClickListener {
         myRefer?.setOnClickListener(this)
         myOffer = hView.findViewById(R.id.myOffer)
         myOffer?.setOnClickListener(this)
+        docApprovel = hView.findViewById(R.id.docApprovel)
+        docApprovel?.setOnClickListener(this)
         myWallet = hView.findViewById(R.id.myWallet)
         myWallet?.setOnClickListener(this)
         about = hView.findViewById(R.id.about)
@@ -120,6 +194,10 @@ class DashboardActivity : AppCompatActivity(), View.OnClickListener {
         settings?.setOnClickListener(this)
         logout = hView.findViewById(R.id.logout)
         logout?.setOnClickListener(this)
+
+        layoutcp = hView.findViewById(R.id.layoutcp)
+        layoutcp?.setOnClickListener(this)
+
         layoutnotification=findViewById(R.id.layoutnotification);
         layoutnotification?.setOnClickListener(this)
         layoutsearch=findViewById(R.id.layoutsearch);
@@ -150,6 +228,10 @@ class DashboardActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     override fun onClick(view: View) {
+        if (view.id == R.id.layoutcp){
+            val i = Intent(this, FoRegistrationDashBoardActivity::class.java)
+            startActivity(i)
+        }
         if (view.id == R.id.myAccount) {
             binding!!.drawerfomainlayout.closeDrawer(GravityCompat.START)
             val intent = Intent(this, MyProfileActivity::class.java)
@@ -221,6 +303,10 @@ class DashboardActivity : AppCompatActivity(), View.OnClickListener {
         }
         if (view.id==R.id.layoutsearch){
             val intent = Intent(this, AproveStatusActivity::class.java)
+            startActivity(intent)
+        }
+        if(view.id == R.id.docApprovel){
+            val intent = Intent(this, KycListActivity::class.java)
             startActivity(intent)
         }
     }

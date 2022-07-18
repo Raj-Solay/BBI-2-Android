@@ -1,11 +1,15 @@
 package com.bbi.bizbulls
 
+import android.R
+import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.bbi.bizbulls.databinding.ActivityProjectinfoBinding
 import com.bbi.bizbulls.ui.registrationforfo.FoRegistrationDashBoardActivity
+
 
 class ProjectInfoActivity : AppCompatActivity(), View.OnClickListener {
     var binding: ActivityProjectinfoBinding? = null
@@ -23,10 +27,24 @@ class ProjectInfoActivity : AppCompatActivity(), View.OnClickListener {
             val i = Intent(this@ProjectInfoActivity, DashboardActivity::class.java)
             startActivity(i)
         } else if (view === binding!!.tvRegister) {
-            finish()
-            val i = Intent(this@ProjectInfoActivity, FoRegistrationDashBoardActivity::class.java)
-            startActivity(i)
+            showAlert()
         }
 
+    }
+    private fun showAlert(){
+        AlertDialog.Builder(this)
+            .setTitle(getString(com.bbi.bizbulls.R.string.app_name))
+            .setMessage("To proceed with your registration process, you must update your profile first.")
+            .setPositiveButton(
+                R.string.yes,
+                DialogInterface.OnClickListener { dialog, which ->
+                    val i = Intent(this@ProjectInfoActivity, FoRegistrationDashBoardActivity::class.java)
+                    startActivity(i)
+                    finish()
+
+                })
+            .setNegativeButton(R.string.no, null)
+            .setIcon(R.drawable.ic_dialog_alert)
+            .show()
     }
 }

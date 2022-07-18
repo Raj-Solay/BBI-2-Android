@@ -15,8 +15,10 @@ import com.bbi.bizbulls.utils.CommonUtils
  */
 class SharedPrefsManager constructor(private val myContext: Context) {
 
-    private val generalPrefPackageIdentifier = myContext.resources.getString(R.string.generalPrefPackageIdentifier)
-    var sharedPrefs: SharedPreferences = myContext.getSharedPreferences(generalPrefPackageIdentifier, Context.MODE_PRIVATE)
+    private val generalPrefPackageIdentifier =
+        myContext.resources.getString(R.string.generalPrefPackageIdentifier)
+    var sharedPrefs: SharedPreferences =
+        myContext.getSharedPreferences(generalPrefPackageIdentifier, Context.MODE_PRIVATE)
         private set
 
     companion object {
@@ -27,7 +29,10 @@ class SharedPrefsManager constructor(private val myContext: Context) {
         const val KEY_LAST_NAME = "lastName"
         const val KEY_EMAIL = "email"
         const val KEY_PHONE = "phone"
+        const val KEY_USER_ROLE = "user_role"
+        const val KEY_USER_ID = "user_id"
         const val KEY_PERSONAL_DETAIL_ID = "personalDetailID"
+        const val KEY_REGISTER_FORM_ID = "registeruserId"
         const val USER_ID = "user_id"
 
 
@@ -69,12 +74,23 @@ class SharedPrefsManager constructor(private val myContext: Context) {
         set(value) {
             sharedPrefs[KEY_PHONE] = value
         }
+    var role: String
+        get() = sharedPrefs[KEY_USER_ROLE] ?: ""
+        set(value) {
+            sharedPrefs[KEY_USER_ROLE] = value
+        }
+
     var personalDetailID: String
         get() = sharedPrefs[KEY_PERSONAL_DETAIL_ID] ?: ""
         set(value) {
             sharedPrefs[KEY_PERSONAL_DETAIL_ID] = value
         }
- var userId: String
+    var registerFormUserId: String
+        get() = sharedPrefs[KEY_REGISTER_FORM_ID] ?: ""
+        set(value) {
+            sharedPrefs[KEY_REGISTER_FORM_ID] = value
+        }
+    var userId: String
         get() = sharedPrefs[USER_ID] ?: ""
         set(value) {
             sharedPrefs[USER_ID] = value
@@ -106,7 +122,10 @@ class SharedPrefsManager constructor(private val myContext: Context) {
             is Float -> edit { it.putFloat(key, value) }
             is Long -> edit { it.putLong(key, value) }
             null -> edit { it.remove(key) }
-            else -> Log.e(Globals.APPLICATION_NAME, myContext.getString(R.string.unsupported_property_type))
+            else -> Log.e(
+                Globals.APPLICATION_NAME,
+                myContext.getString(R.string.unsupported_property_type)
+            )
         }
     }
 
@@ -126,7 +145,10 @@ class SharedPrefsManager constructor(private val myContext: Context) {
             Float::class -> getFloat(key, defaultValue as? Float ?: -1f) as T?
             Long::class -> getLong(key, defaultValue as? Long ?: 0) as T?
             else -> {
-                Log.e(Globals.APPLICATION_NAME, myContext.getString(R.string.unsupported_property_type)); null
+                Log.e(
+                    Globals.APPLICATION_NAME,
+                    myContext.getString(R.string.unsupported_property_type)
+                ); null
             }
         }
     }
