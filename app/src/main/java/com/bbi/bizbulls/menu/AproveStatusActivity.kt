@@ -30,7 +30,7 @@ class AproveStatusActivity : AppCompatActivity(), AproveStatusAdapter.userassign
         getUserList()
     }
     private fun initView() {
-        binding.customTitleLayout.tvTitle?.setText("Follow us")
+        binding.customTitleLayout.tvTitle?.setText("approve Status")
         binding.customTitleLayout.ivBack?.setOnClickListener { onBackPressed() }
 
     }
