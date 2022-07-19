@@ -218,6 +218,7 @@
                 android:text="Technical Certifications (If Any)" />
 
             <FrameLayout
+                android:id="@+id/frm1"
                 android:layout_marginTop="@dimen/_12sdp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -256,6 +257,7 @@
             </FrameLayout>
 
             <FrameLayout
+                android:id="@+id/frm2"
                 android:layout_marginTop="@dimen/_12sdp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -294,6 +296,7 @@
             </FrameLayout>
 
             <FrameLayout
+                android:id="@+id/frm3"
                 android:layout_marginTop="@dimen/_12sdp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -332,6 +335,7 @@
             </FrameLayout>
 
             <FrameLayout
+                android:id="@+id/frm4"
                 android:layout_marginTop="@dimen/_12sdp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -377,6 +381,7 @@
                 android:text="Extra / Co-curricular Activities (If any)" />
 
             <FrameLayout
+                android:id="@+id/frm5"
                 android:layout_marginTop="@dimen/_12sdp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -427,6 +432,7 @@
                 android:text="Academic / Curricular Achievements (If any)" />
 
             <FrameLayout
+                android:id="@+id/frm6"
                 android:layout_marginTop="@dimen/_12sdp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -470,12 +476,14 @@
 
             <!--Bobbies-->
             <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/title4"
                 style="@style/subTitle"
                 android:layout_marginTop="@dimen/_8sdp"
                 android:textSize="@dimen/_14ssp"
                 android:text="Hobbies / Interests (If any)" />
 
             <FrameLayout
+                android:id="@+id/frm7"
                 android:layout_marginTop="@dimen/_12sdp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

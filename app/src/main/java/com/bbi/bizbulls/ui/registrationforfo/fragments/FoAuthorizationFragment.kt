@@ -68,7 +68,7 @@ class FoAuthorizationFragment(private val stepPosition: Int,private var actionTy
                     call: Call<AuthorizationViewRes>,
                     responseObject: Response<AuthorizationViewRes>) {
                 if (responseObject.code() == 200) {
-                    if (responseObject.body()!!.data?.get(0)   != null) {
+                    if (!responseObject.body()!!.data.isNullOrEmpty() && responseObject.body()!!.data?.get(0)   != null) {
                         responseObject.body()!!.data?.get(0)?.let { setUpDataInUI(it) }
                     }
                 } else {

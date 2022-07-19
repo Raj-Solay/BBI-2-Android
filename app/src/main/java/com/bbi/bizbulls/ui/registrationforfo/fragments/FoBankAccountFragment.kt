@@ -54,7 +54,7 @@ class FoBankAccountFragment(private val stepPosition: Int,private var actionType
                     call: Call<BranchDetailsViewRes>,
                     responseObject: Response<BranchDetailsViewRes>) {
                 if (responseObject.code() == 200 || responseObject.code() == 201) {
-                    if (responseObject.body()?.data?.get(0)  != null) {
+                    if (!responseObject.body()!!.data.isNullOrEmpty() && responseObject.body()?.data?.get(0)  != null) {
                         var res = responseObject.body()!!.data?.last()
                         setUpDataInUI(res!!)
                     }

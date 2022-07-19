@@ -42,6 +42,7 @@ class FranchiseeAdapter(activity: FragmentActivity) :
     )
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): viewHolder {
+        context = parent.context
         val view = LayoutInflater.from(context).inflate(R.layout.item_franchiese, parent, false)
         return viewHolder(view)
     }

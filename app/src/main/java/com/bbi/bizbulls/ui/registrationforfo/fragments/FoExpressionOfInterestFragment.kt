@@ -57,7 +57,7 @@ class FoExpressionOfInterestFragment(private val stepPosition: Int,private var a
                     call: Call<ExpressionDetailsViewRes>,
                     responseObject: Response<ExpressionDetailsViewRes>) {
                 if (responseObject.code() == 200 || responseObject.code() == 201) {
-                    if (responseObject.body()?.data?.get(0)  != null) {
+                    if (!responseObject.body()!!.data.isNullOrEmpty() &&  responseObject.body()?.data?.get(0)  != null) {
                         setUpDataInUI(responseObject.body()?.data!![0])
                     }
                 } else {

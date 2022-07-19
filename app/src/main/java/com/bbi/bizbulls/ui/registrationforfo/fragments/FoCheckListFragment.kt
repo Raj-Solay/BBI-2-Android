@@ -63,7 +63,7 @@ class FoCheckListFragment(private val stepPosition: Int,private var actionType: 
                     call: Call<CheckListDetailsViewRes>,
                     responseObject: Response<CheckListDetailsViewRes>) {
                 if (responseObject.code() == 200) {
-                    if (responseObject.body()!!.data?.get(0)  != null) {
+                    if (!responseObject.body()!!.data.isNullOrEmpty() &&  responseObject.body()!!.data?.get(0)  != null) {
                         responseObject.body()!!.data?.get(0)?.let { setUpDataInUI(it) }
                     }
                 } else {

@@ -54,7 +54,7 @@ class FoChildDetailsFragment(private val stepPosition: Int,private var actionTyp
                     call: Call<ChildrenDetailsViewRes>,
                     responseObject: Response<ChildrenDetailsViewRes>) {
                 if (responseObject.code() == 200 || responseObject.code() == 201) {
-                    if (responseObject.body()?.data?.get(0)  != null) {
+                    if (!responseObject.body()!!.data.isNullOrEmpty() && responseObject.body()?.data?.get(0)  != null) {
                         var res = responseObject.body()!!.data?.last()
                         setUpDataInUI(res!!)
                     }

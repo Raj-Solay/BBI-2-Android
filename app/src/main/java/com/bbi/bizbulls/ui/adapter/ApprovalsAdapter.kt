@@ -30,6 +30,7 @@ class ApprovalsAdapter(var activity: FragmentActivity) :
     )
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): viewHolder {
+        context = parent.context
         val view = LayoutInflater.from(context).inflate(R.layout.itemlist, parent, false)
         return viewHolder(view)
     }

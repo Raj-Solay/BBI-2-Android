@@ -3,11 +3,12 @@ package com.bbi.bizbulls.ui.registrationforfo.fragments
 import android.Manifest.permission.*
 import android.app.AlertDialog
 import android.content.Context
-import android.content.DialogInterface
 import android.content.pm.PackageManager
+import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
+import android.provider.MediaStore
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -27,18 +28,16 @@ import com.bbi.bizbulls.sharedpref.SharedPrefsManager
 import com.bbi.bizbulls.ui.registrationforfo.FranchiseeRegistrationViewModel
 import com.bbi.bizbulls.utils.CommonUtils
 import com.bbi.bizbulls.utils.FileUtils
-import com.bbi.bizbulls.utils.Globals
 import com.bbi.bizbulls.utils.MyProcessDialog
-import com.google.android.material.snackbar.Snackbar
 import com.google.gson.JsonArray
 import com.google.gson.JsonObject
-import com.squareup.picasso.Picasso
 import okhttp3.*
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.RequestBody.Companion.asRequestBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.io.ByteArrayOutputStream
 import java.io.File
 
 
@@ -184,7 +183,7 @@ class FoAttachmentsFragment(private val stepPosition: Int, private var actionTyp
                     call: Call<DocumentsViewRes>,
                     responseObject: Response<DocumentsViewRes>) {
                 if (responseObject.code() == 200 || responseObject.code() == 201) {
-                    if (responseObject.body()?.data?.get(0) != null) {
+                    if (!responseObject.body()!!.data.isNullOrEmpty() && responseObject.body()?.data?.get(0) != null) {
                         setUpDataInUI(responseObject.body()?.data)
                     }
                 } else {
@@ -210,8 +209,8 @@ class FoAttachmentsFragment(private val stepPosition: Int, private var actionTyp
         try {
             if (rList?.get(0) != null) {
                 // Picasso.get().load(data.get(0)?.documentName).into(holder.itemBinding.itemIcon)
-                Picasso.get().load(rList.get(0).documentName.toString())
-                    .into(binding.imgpancard)
+               /* Picasso.get().load(rList.get(0).documentName.toString())
+                    .into(binding.imgpancard)*/
                 val assetReq = AssetUploadReq()
                 //image/jpeg
                 assetReq.mimeType = "image/jpeg"
@@ -227,8 +226,8 @@ class FoAttachmentsFragment(private val stepPosition: Int, private var actionTyp
             if(rList?.size!! > 1){
                 if (rList?.get(1) != null) {
                     // Picasso.get().load(data.get(0)?.documentName).into(holder.itemBinding.itemIcon)
-                    Picasso.get().load(rList.get(1).documentName.toString())
-                        .into(binding.imgaadharcard)
+                   /* Picasso.get().load(rList.get(1).documentName.toString())
+                        .into(binding.imgaadharcard)*/
                     val assetReq = AssetUploadReq()
                     //image/jpeg
                     assetReq.mimeType = "image/jpeg"
@@ -245,8 +244,8 @@ class FoAttachmentsFragment(private val stepPosition: Int, private var actionTyp
             if(rList?.size!! > 2){
                 if (rList?.get(2) != null) {
                     // Picasso.get().load(data.get(0)?.documentName).into(holder.itemBinding.itemIcon)
-                    Picasso.get().load(rList.get(2).documentName.toString())
-                        .into(binding.imgaResidence)
+                    /*Picasso.get().load(rList.get(2).documentName.toString())
+                        .into(binding.imgaResidence)*/
                     val assetReq = AssetUploadReq()
                     //image/jpeg
                     assetReq.mimeType = "image/jpeg"
@@ -263,8 +262,8 @@ class FoAttachmentsFragment(private val stepPosition: Int, private var actionTyp
             if(rList?.size!! > 3){
                 if (rList?.get(3) != null) {
                     // Picasso.get().load(data.get(0)?.documentName).into(holder.itemBinding.itemIcon)
-                    Picasso.get().load(rList.get(3).documentName.toString())
-                        .into(binding.imgaIndividually)
+                  /*  Picasso.get().load(rList.get(3).documentName.toString())
+                        .into(binding.imgaIndividually)*/
                     val assetReq = AssetUploadReq()
                     //image/jpeg
                     assetReq.mimeType = "image/jpeg"
@@ -281,8 +280,8 @@ class FoAttachmentsFragment(private val stepPosition: Int, private var actionTyp
             if(rList?.size!! > 4){
                 if (rList?.get(4) != null) {
                     // Picasso.get().load(data.get(0)?.documentName).into(holder.itemBinding.itemIcon)
-                    Picasso.get().load(rList.get(4).documentName.toString())
-                        .into(binding.imgaRecentPhotographOfApplicant)
+                   /* Picasso.get().load(rList.get(4).documentName.toString())
+                        .into(binding.imgaRecentPhotographOfApplicant)*/
                     val assetReq = AssetUploadReq()
                     //image/jpeg
                     assetReq.mimeType = "image/jpeg"
@@ -299,8 +298,8 @@ class FoAttachmentsFragment(private val stepPosition: Int, private var actionTyp
         try {
             if (rList?.get(5) != null) {
                 // Picasso.get().load(data.get(0)?.documentName).into(holder.itemBinding.itemIcon)
-                Picasso.get().load(rList.get(5).documentName.toString())
-                    .into(binding.imgaBBI)
+               /* Picasso.get().load(rList.get(5).documentName.toString())
+                    .into(binding.imgaBBI)*/
                 val assetReq = AssetUploadReq()
                 //image/jpeg
                 assetReq.mimeType = "image/jpeg"
@@ -446,35 +445,50 @@ class FoAttachmentsFragment(private val stepPosition: Int, private var actionTyp
         return MultipartBody.Part.createFormData(key, file.name, requestFile)
     }
 
+    /**
+     * get URI from Bitmap
+     */
+    fun getImageUri(inContext: Context, inImage: Bitmap): Uri? {
+        val bytes = ByteArrayOutputStream()
+        inImage.compress(Bitmap.CompressFormat.JPEG, 100, bytes)
+        val path =
+            MediaStore.Images.Media.insertImage(inContext.contentResolver, inImage, "Title", null)
+        return Uri.parse(path)
+    }
     private fun setPreviewImage(selectedDocument: String, uri: Uri) {
         when (selectedDocument) {
             requireActivity().resources.getString(R.string.attachmentPanCard) -> {
-                binding.imgpancard.setImageURI(uri)
+               // binding.imgpancard.setImageURI(uri)
                 panCardURI = uri
                 uploadFileOnServer(uri, 1)
             }
             requireActivity().resources.getString(R.string.attachmentAadhaar) -> {
-                binding.imgaadharcard.setImageURI(uri)
+            //    binding.imgaadharcard.setImageURI(uri)
+             /*   val bitmap = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+                    ImageDecoder.decodeBitmap(ImageDecoder.createSource(requireContext().contentResolver, uri))
+                } else {
+                    MediaStore.Images.Media.getBitmap(requireContext().contentResolver, uri)
+                }*/
                 aadhaarCardURI = uri
                 uploadFileOnServer(uri, 2)
             }
             requireActivity().resources.getString(R.string.attachmentResidential) -> {
-                binding.imgaResidence.setImageURI(uri)
+             //   binding.imgaResidence.setImageURI(uri)
                 addressURI = uri
                 uploadFileOnServer(uri, 3)
             }
             requireActivity().resources.getString(R.string.attachmentPhoto) -> {
-                binding.imgaRecentPhotographOfApplicant.setImageURI(uri)
+            //    binding.imgaRecentPhotographOfApplicant.setImageURI(uri)
                 photoURI = uri
                 uploadFileOnServer(uri, 4)
             }
             requireActivity().resources.getString(R.string.attachmentIndividuallyField) -> {
-                binding.imgaIndividually.setImageURI(uri)
+             //   binding.imgaIndividually.setImageURI(uri)
                 individualURI = uri
                 uploadFileOnServer(uri, 5)
             }
             requireActivity().resources.getString(R.string.attachmentarbitary) -> {
-                binding.imgaBBI.setImageURI(uri)
+              //  binding.imgaBBI.setImageURI(uri)
                 bbiURI = uri
                 uploadFileOnServer(uri, 6)
             }

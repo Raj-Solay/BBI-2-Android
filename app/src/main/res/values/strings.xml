@@ -530,4 +530,5 @@ By continuing to access or use Our Service after those revisions become effectiv
     <string name="add_license">Add License</string>
     <string name="pending_approval">Pending Approval</string>
     <string name="atlest_one_error">Please upload at least 1 image in each section.</string>
+    <string name="upload_attachement">Upload</string>
 </resources>

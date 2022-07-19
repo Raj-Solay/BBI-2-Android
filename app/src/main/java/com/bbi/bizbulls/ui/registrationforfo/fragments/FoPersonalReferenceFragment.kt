@@ -55,7 +55,7 @@ class FoPersonalReferenceFragment(private val stepPosition: Int,private var acti
                     call: Call<PersonalReferenceViewRes>,
                     responseObject: Response<PersonalReferenceViewRes>) {
                 if (responseObject.code() == 200) {
-                    if (responseObject.body()!!.data?.get(0)   != null) {
+                    if (!responseObject.body()!!.data.isNullOrEmpty() && responseObject.body()!!.data?.get(0)   != null) {
                         responseObject.body()!!.data?.get(0)?.let { setUpDataInUI(it) }
                     }
                 } else {

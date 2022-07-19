@@ -46,7 +46,9 @@ class FoAcademicEducationFragment(private val stepPosition: Int,private var acti
         }
 
         val sharedPrefsHelper by lazy { SharedPrefsManager(requireContext()) }
-        if(sharedPrefsHelper.role.toInt() == Globals.USER_TYPE_EMPLOYEE){
+
+        if(sharedPrefsHelper.role != null && !sharedPrefsHelper.role.isNullOrEmpty()
+            && sharedPrefsHelper.role.toInt() == Globals.USER_TYPE_EMPLOYEE){
             binding.txtTCTitle.visibility = View.VISIBLE
             binding.txtTitle2.visibility = View.VISIBLE
             binding.txtTitle3.visibility = View.VISIBLE
@@ -58,16 +60,17 @@ class FoAcademicEducationFragment(private val stepPosition: Int,private var acti
             binding.achievements.visibility = View.VISIBLE
             binding.hobbies.visibility = View.VISIBLE
         }else{
+            binding.title4.visibility = View.GONE
             binding.txtTCTitle.visibility = View.GONE
             binding.txtTitle2.visibility = View.GONE
             binding.txtTitle3.visibility = View.GONE
-            binding.tcCourse.visibility = View.GONE
-            binding.tcInstituteName.visibility = View.GONE
-            binding.tcYear.visibility = View.GONE
-            binding.tcLevel.visibility = View.GONE
-            binding.extraActivities.visibility = View.GONE
-            binding.achievements.visibility = View.GONE
-            binding.hobbies.visibility = View.GONE
+            binding.frm1.visibility = View.GONE
+            binding.frm2.visibility = View.GONE
+            binding.frm3.visibility = View.GONE
+            binding.frm4.visibility = View.GONE
+            binding.frm5.visibility = View.GONE
+            binding.frm6.visibility = View.GONE
+            binding.frm7.visibility = View.GONE
         }
 
         return binding.root
@@ -83,7 +86,7 @@ class FoAcademicEducationFragment(private val stepPosition: Int,private var acti
                     call: Call<EducationDetailsViewRes>,
                     responseObject: Response<EducationDetailsViewRes>) {
                if (responseObject.code() == 200 || responseObject.code() == 201) {
-                    if (responseObject.body()!!.data?.get(0) != null) {
+                    if (!responseObject.body()!!.data.isNullOrEmpty() &&  responseObject.body()!!.data?.get(0) != null) {
                         var res = responseObject.body()!!.data?.last()
                         setUpDataInUI(res!!)
                     }
