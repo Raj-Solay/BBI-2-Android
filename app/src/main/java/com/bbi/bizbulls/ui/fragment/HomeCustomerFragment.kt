@@ -148,15 +148,15 @@ class HomeCustomerFragment : Fragment() {
                 R.drawable.slider
             )
         )
-        imagesModel.add("https://images.pexels.com/photos/747964/pexels-photo-747964.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260")
-        imagesModel.add("https://images.pexels.com/photos/929778/pexels-photo-929778.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260")
+        imagesModel.add("https://images.pexels.com/photos/9868884/pexels-photo-9868884.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=3&amp;h=750&amp;w=1260")
+        imagesModel.add("https://images.pexels.com/photos/9868884/pexels-photo-9868884.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=3&amp;h=750&amp;w=1260")
         imagesModel.add("https://images.pexels.com/photos/9868884/pexels-photo-9868884.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=3&amp;h=750&amp;w=1260")
         var icons = intArrayOf(
             R.drawable.biz_bulls,
             R.drawable.biz_bulls,
             R.drawable.biz_bulls,
         )
-        homeSlideAdapter = HomeSlideAdapter(requireContext(), icons)
+        homeSlideAdapter = HomeSlideAdapter(requireContext(), imagesModel)
         binding.viewpager.adapter = homeSlideAdapter
         binding.indicator.setViewPager(binding.viewpager)
         /*binding?.viewpager?.adapter = viewPagerAdapter

@@ -11,7 +11,7 @@ import com.bbi.bizbulls.R
 import com.bbi.bizbulls.menu.data.ImagesModel
 import com.bumptech.glide.Glide
 
-class HomeSlideAdapter(private val context: Context, private var imageList: IntArray) : PagerAdapter() {
+class HomeSlideAdapter(private val context: Context, private var imageList: ArrayList<String>) : PagerAdapter() {
     override fun getCount(): Int {
         return imageList.size
     }
@@ -25,12 +25,12 @@ class HomeSlideAdapter(private val context: Context, private var imageList: IntA
             R.layout.image_slider_item, null)
         val ivImages = view.findViewById<ImageView>(R.id.iv_images)
 
-       /* imageList[position].let {
+        imageList[position].let {
             Glide.with(context)
                 .load(it)
                 .into(ivImages);
-        }*/
-        ivImages.setImageResource(imageList[position])
+        }
+       // ivImages.setImageResource(imageList[position])
         val vp = container as ViewPager
         vp.addView(view, 0)
         return view

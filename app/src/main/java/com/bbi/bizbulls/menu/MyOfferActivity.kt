@@ -6,7 +6,7 @@ import com.bbi.bizbulls.databinding.ActivityMyOfferBinding
 import com.foldio.android.adapter.MyOfferAdapter
 
 class MyOfferActivity : AppCompatActivity() {
-    var binding: ActivityMyOfferBinding?=null
+    lateinit var binding: ActivityMyOfferBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMyOfferBinding.inflate(layoutInflater)
@@ -16,6 +16,7 @@ class MyOfferActivity : AppCompatActivity() {
 
     private fun initView() {
         binding?.customTitleLayout?.tvTitle?.text="My Offer"
+        binding?.nopost?.wallEmptyTv?.text="No Offer Available"
         binding?.customTitleLayout?.ivBack?.setOnClickListener { onBackPressed() }
         var myOfferAdapter=MyOfferAdapter()
         binding?.rcyMyOffer?.adapter=myOfferAdapter
