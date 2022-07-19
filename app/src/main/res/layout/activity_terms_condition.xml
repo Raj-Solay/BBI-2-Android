@@ -22,15 +22,6 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:fontFamily="@font/source_semibold"
-                android:gravity="left|top"
-                android:paddingHorizontal="@dimen/_5dp"
-                android:text="@string/terms_condition1"
-                android:textColor="@color/black"
-                android:textSize="@dimen/_14sdp" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -59,7 +50,7 @@
                 android:gravity="left|top"
                 android:paddingHorizontal="@dimen/_5dp"
                 android:text="@string/Interpretation2"
-                android:textColor="@color/black"
+                android:textColor="@color/important_count"
                 android:textSize="@dimen/_14sdp" />
 
             <TextView
@@ -80,7 +71,7 @@
                 android:gravity="left|top"
                 android:paddingHorizontal="@dimen/_5dp"
                 android:text="@string/Interpretation4"
-                android:textColor="@color/black"
+                android:textColor="@color/important_count"
                 android:textSize="@dimen/_14sdp" />
 
             <TextView
@@ -101,7 +92,7 @@
                 android:gravity="left|top"
                 android:paddingHorizontal="@dimen/_5dp"
                 android:text="@string/Acknowledgment1"
-                android:textColor="@color/black"
+                android:textColor="@color/important_count"
                 android:textSize="@dimen/_14sdp" />
 
             <TextView
@@ -122,7 +113,7 @@
                 android:gravity="left|top"
                 android:paddingHorizontal="@dimen/_5dp"
                 android:text="@string/What_you_can_expect_from_us1"
-                android:textColor="@color/black"
+                android:textColor="@color/important_count"
                 android:textSize="@dimen/_14sdp" />
 
             <TextView
@@ -143,7 +134,7 @@
                 android:gravity="left|top"
                 android:paddingHorizontal="@dimen/_5dp"
                 android:text="@string/Links_to_Other_Websites1"
-                android:textColor="@color/black"
+                android:textColor="@color/important_count"
                 android:textSize="@dimen/_14sdp" />
 
             <TextView
@@ -164,7 +155,7 @@
                 android:gravity="left|top"
                 android:paddingHorizontal="@dimen/_5dp"
                 android:text="@string/Termination1"
-                android:textColor="@color/black"
+                android:textColor="@color/important_count"
                 android:textSize="@dimen/_14sdp" />
 
             <TextView
@@ -185,7 +176,7 @@
                 android:gravity="left|top"
                 android:paddingHorizontal="@dimen/_5dp"
                 android:text="@string/Limitation_of_Liability1"
-                android:textColor="@color/black"
+                android:textColor="@color/important_count"
                 android:textSize="@dimen/_14sdp" />
 
             <TextView
@@ -206,7 +197,7 @@
                 android:gravity="left|top"
                 android:paddingHorizontal="@dimen/_5dp"
                 android:text="@string/Disclaimer1"
-                android:textColor="@color/black"
+                android:textColor="@color/important_count"
                 android:textSize="@dimen/_14sdp" />
 
             <TextView
@@ -227,7 +218,7 @@
                 android:gravity="left|top"
                 android:paddingHorizontal="@dimen/_5dp"
                 android:text="@string/Governing_Law1"
-                android:textColor="@color/black"
+                android:textColor="@color/important_count"
                 android:textSize="@dimen/_14sdp" />
 
             <TextView
@@ -237,7 +228,7 @@
                 android:gravity="left|top"
                 android:paddingHorizontal="@dimen/_5dp"
                 android:text="@string/Disputes_Resolution1"
-                android:textColor="@color/black"
+                android:textColor="@color/important_count"
                 android:textSize="@dimen/_14sdp" />
 
             <TextView
@@ -258,7 +249,7 @@
                 android:gravity="left|top"
                 android:paddingHorizontal="@dimen/_5dp"
                 android:text="@string/Severability1"
-                android:textColor="@color/black"
+                android:textColor="@color/important_count"
                 android:textSize="@dimen/_14sdp" />
 
             <TextView
@@ -279,7 +270,7 @@
                 android:gravity="left|top"
                 android:paddingHorizontal="@dimen/_5dp"
                 android:text="@string/Waiver1"
-                android:textColor="@color/black"
+                android:textColor="@color/important_count"
                 android:textSize="@dimen/_14sdp" />
 
             <TextView
@@ -300,7 +291,7 @@
                 android:gravity="left|top"
                 android:paddingHorizontal="@dimen/_5dp"
                 android:text="@string/Translation_Interpretation1"
-                android:textColor="@color/black"
+                android:textColor="@color/important_count"
                 android:textSize="@dimen/_14sdp" />
 
             <TextView
@@ -321,7 +312,7 @@
                 android:gravity="left|top"
                 android:paddingHorizontal="@dimen/_5dp"
                 android:text="@string/Changes_to_These_Terms_and_Conditions1"
-                android:textColor="@color/black"
+                android:textColor="@color/important_count"
                 android:textSize="@dimen/_14sdp" />
 
         </LinearLayout>
