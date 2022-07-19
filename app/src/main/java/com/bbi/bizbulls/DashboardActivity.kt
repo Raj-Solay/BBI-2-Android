@@ -13,6 +13,7 @@ import android.view.KeyEvent
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.RelativeLayout
+import android.widget.TextView
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatTextView
@@ -69,6 +70,9 @@ class DashboardActivity : AppCompatActivity(), View.OnClickListener {
     var layoutsearch: RelativeLayout?=null
     var layouthelp:RelativeLayout?=null
     var count = 0
+    lateinit var nav_user:TextView
+    lateinit var nav_mobile:TextView
+    lateinit var nav_email:TextView
     var homeCustomerFragment: HomeCustomerFragment? = null
     var customerFOStatusFragment: CustomerFOStatusFragment? = null
     lateinit var client: FusedLocationProviderClient
@@ -110,6 +114,10 @@ class DashboardActivity : AppCompatActivity(), View.OnClickListener {
                     sharedPrefsHelper.userId = userDetails?.data?.id.toString()
                     sharedPrefsHelper.phone = userDetails?.data?.phone.toString()
                     sharedPrefsHelper.email = userDetails?.data?.email.toString()
+                    sharedPrefsHelper.userName = userDetails?.data?.name.toString()
+                    nav_user.text=userDetails?.data?.name.toString()
+                     nav_mobile.text=userDetails?.data?.phone.toString()
+                     nav_email.text=userDetails?.data?.email.toString()
                     try{
                         if(userDetails?.data?.roleId!= null &&
                             userDetails?.data?.roleId!!.toInt() == Globals.USER_TYPE_FO_TEAM){
@@ -161,11 +169,11 @@ class DashboardActivity : AppCompatActivity(), View.OnClickListener {
         val hView = binding!!.navfo.getHeaderView(0)
         val lm = hView.findViewById<LinearProgressIndicator>(R.id.progressBarprofileupdate)
         lm.progress = 25
-        val nav_user = hView.findViewById<AppCompatTextView>(R.id.txtfoname)
+        nav_user= hView.findViewById<AppCompatTextView>(R.id.txtfoname)
         nav_user.text = sharedPrefsHelper.userName
-        val nav_mobile = hView.findViewById<AppCompatTextView>(R.id.txtfomobile)
+        nav_mobile = hView.findViewById<AppCompatTextView>(R.id.txtfomobile)
         nav_mobile.text = sharedPrefsHelper.phone
-        val nav_email = hView.findViewById<AppCompatTextView>(R.id.txtfoemail)
+        nav_email = hView.findViewById<AppCompatTextView>(R.id.txtfoemail)
         nav_email.text = sharedPrefsHelper.email
         myAccount = hView.findViewById(R.id.myAccount)
         myAccount?.setOnClickListener(this)

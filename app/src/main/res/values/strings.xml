@@ -278,7 +278,7 @@
     <string name="b_4">HDFC Bank</string>
     <string name="b_5">ICICI Bank</string>
     <string name="b_6">IDFC FIRST Bank</string>
-    <string name="Rs">\u20B9 50</string>
+    <string name="Rs">\u20B9 0</string>
 
     <string name="bizBullsIndia_url">https://www.bizbullsindia.com</string>
     <string name="logout">Logout Successfully!</string>

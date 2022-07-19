@@ -20,7 +20,7 @@ class PaymentSettingAdapter(/*val linkList: ArrayList<String>*/) :
     // holder.tv_cat_name.text=linkList.get(position)
     }
     override fun getItemCount(): Int {
-        return  10
+        return  1
     }
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         //var tv_cat_name = itemView.findViewById(R.id.tv_cat_name) as TextView

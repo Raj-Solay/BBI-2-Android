@@ -5,12 +5,14 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bbi.bizbulls.databinding.ActivityMyProfileBinding
+import com.bbi.bizbulls.sharedpref.SharedPrefsManager
 import com.foldio.android.adapter.PaymentMethodAdapter
 import com.foldio.android.adapter.PaymentSettingAdapter
 import com.google.android.material.tabs.TabLayout
 
 
 class MyProfileActivity : AppCompatActivity() {
+    private val sharedPrefsHelper by lazy { SharedPrefsManager(this@MyProfileActivity) }
     lateinit var binding:ActivityMyProfileBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,6 +30,8 @@ class MyProfileActivity : AppCompatActivity() {
        binding.rcyPayment.adapter=paymentMethodAdapter
        var paymentSettingAdapter=PaymentSettingAdapter()
        binding.rcyPaymentAll.adapter=paymentSettingAdapter
+       binding.txtfoname.text=sharedPrefsHelper.userName
+       binding.txtfomobile.text=sharedPrefsHelper.phone
     }
 
 }
