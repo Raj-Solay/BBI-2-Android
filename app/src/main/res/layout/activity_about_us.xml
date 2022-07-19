@@ -36,7 +36,7 @@
             android:gravity="left|top"
             android:text="We are BIZBULLS INDIA - The only multi-unit franchising company that helps you create, innovate, and execute your franchisee dreams. We are a complete solution provider to the Franchise business, having acquired a vast base of clients. We help you understand the market and expand your business in a better way."
             android:paddingHorizontal="@dimen/_5dp"
-            android:textColor="@color/black"
+            android:textColor="@color/important_count"
             android:textSize="@dimen/_14sdp" />
             <TextView
                 android:layout_width="match_parent"
@@ -55,7 +55,7 @@
                 android:gravity="left|top"
                 android:text="To become the largest franchising services agency in the country. We look forward to providing the best and most competitive franchise services to our clients and franchisees, supporting our franchisees for sustained growth in the franchise business, and providing them with the best training, marketing, business know-how, and support services."
                 android:paddingHorizontal="@dimen/_5dp"
-                android:textColor="@color/black"
+                android:textColor="@color/important_count"
                 android:textSize="@dimen/_14sdp" />
             <TextView
                 android:layout_width="match_parent"
@@ -74,7 +74,7 @@
                 android:gravity="left|top"
                 android:text="@string/about_us_text"
                 android:paddingHorizontal="@dimen/_5dp"
-                android:textColor="@color/black"
+                android:textColor="@color/important_count"
                 android:textSize="@dimen/_14sdp" />
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
