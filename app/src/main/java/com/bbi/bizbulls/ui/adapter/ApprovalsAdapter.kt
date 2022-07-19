@@ -42,10 +42,7 @@ class ApprovalsAdapter(var activity: FragmentActivity) :
                 val intent = Intent(activity, KycListActivity::class.java)
                 activity.startActivity(intent)
             }else {
-                CommonUtils.toast(
-                    context,
-                    "Please wait!!! FO is not yet registered in your location."
-                )
+                CommonUtils.showServiceDialog(context)
             }
         }
     }

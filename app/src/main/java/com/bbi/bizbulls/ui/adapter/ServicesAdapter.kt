@@ -1,14 +1,18 @@
 package com.bbi.bizbulls.ui.adapter
 
 import android.content.Context
+import android.content.DialogInterface
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.bbi.bizbulls.R
+import com.bbi.bizbulls.ui.registrationforfo.FoRegistrationDashBoardActivity
 import com.bbi.bizbulls.utils.CommonUtils
 
 class ServicesAdapter(activity: FragmentActivity) :
@@ -32,6 +36,7 @@ class ServicesAdapter(activity: FragmentActivity) :
     )
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): viewHolder {
+        context = parent.context
         val view = LayoutInflater.from(context).inflate(R.layout.itemlist, parent, false)
         return viewHolder(view)
     }
@@ -40,12 +45,11 @@ class ServicesAdapter(activity: FragmentActivity) :
         holder.textView.text = iconsName[position]
         holder.imageView.setImageResource(icons[position])
         holder.itemView.setOnClickListener { v: View? ->
-            CommonUtils.toast(
-                context,
-                "Please wait!!! FO is not yet registered in your location."
-            )
+            CommonUtils.showServiceDialog(context)
         }
+
     }
+
 
     override fun getItemCount(): Int {
         return iconsName.size

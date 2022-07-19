@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import android.app.Dialog
 import android.content.Context
+import android.content.DialogInterface
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.os.Build
@@ -15,6 +16,7 @@ import android.view.LayoutInflater
 import android.widget.DatePicker
 import android.widget.Spinner
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.viewbinding.BuildConfig
 import com.bbi.bizbulls.databinding.DialogMessagesBinding
 import com.bbi.bizbulls.enums.Environment
@@ -38,6 +40,20 @@ object CommonUtils {
 
     fun toast(context: Context?, message: String?) {
         Toast.makeText(context, message, Toast.LENGTH_LONG).show()
+    }
+    fun showServiceDialog(context: Context){
+        AlertDialog.Builder(context)
+            //  .setIcon(null)
+            //.setTitle("Dear "+ sharedPrefsManager.userName)
+            .setMessage("This service is not available in your location presently. Our executive will approach you shortly.")
+            .setPositiveButton(
+                android.R.string.yes,
+                DialogInterface.OnClickListener { dialog, which ->
+
+
+                })
+
+            .show()
     }
 
     fun isValidEmail(target: CharSequence?): Boolean {

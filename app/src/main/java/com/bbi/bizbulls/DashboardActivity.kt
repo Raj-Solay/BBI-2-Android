@@ -105,6 +105,7 @@ class DashboardActivity : AppCompatActivity(), View.OnClickListener {
                     var userDetails = responseObject.body()
                   //  Log.d("UserDetails","Role : " + userDetails?.data?.id)
                  //   Log.d("UserDetails","Role : " + userDetails?.data?.roleId)
+                    sharedPrefsHelper.userName = userDetails?.data?.name.toString()
                     sharedPrefsHelper.role = userDetails?.data?.roleId.toString()
                     sharedPrefsHelper.userId = userDetails?.data?.id.toString()
                     sharedPrefsHelper.phone = userDetails?.data?.phone.toString()

@@ -36,10 +36,7 @@ class ProjectsScopeAdapter(activity: FragmentActivity) :
         holder.textView.text = iconsName[position]
         holder.imageView.setImageResource(icons[position])
         holder.itemView.setOnClickListener { v: View? ->
-            CommonUtils.toast(
-                context,
-                "Please wait!!! FO is not yet registered in your location."
-            )
+            CommonUtils.showServiceDialog(context)
         }
     }
 

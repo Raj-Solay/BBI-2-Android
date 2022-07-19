@@ -1,11 +1,13 @@
 package com.bbi.bizbulls.ui.adapter
 
 import android.content.Context
+import android.content.DialogInterface
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.bbi.bizbulls.R
@@ -35,10 +37,7 @@ class RetailAndHouseholdAdapter(activity: FragmentActivity) :
         holder.textView.text = iconsName[position]
         holder.imageView.setImageResource(icons[position])
         holder.itemView.setOnClickListener { v: View? ->
-            CommonUtils.toast(
-                context,
-                "Please wait!!! FO is not yet registered in your location."
-            )
+            CommonUtils.showServiceDialog(context)
         }
     }
 

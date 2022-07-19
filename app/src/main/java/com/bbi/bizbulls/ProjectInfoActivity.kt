@@ -8,6 +8,7 @@ import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.bbi.bizbulls.databinding.ActivityProjectinfoBinding
+import com.bbi.bizbulls.sharedpref.SharedPrefsManager
 import com.bbi.bizbulls.ui.registrationforfo.FoRegistrationDashBoardActivity
 
 
@@ -31,9 +32,12 @@ class ProjectInfoActivity : AppCompatActivity(), View.OnClickListener {
         }
 
     }
+    lateinit var sharedPrefsManager: SharedPrefsManager
     private fun showAlert(){
+        sharedPrefsManager= applicationInfo?.let { SharedPrefsManager(this) }!!
         AlertDialog.Builder(this)
-            .setTitle(getString(com.bbi.bizbulls.R.string.app_name))
+          //  .setIcon(null)
+            .setTitle("Dear "+ sharedPrefsManager.userName)
             .setMessage("To proceed with your registration process, you must update your profile first.")
             .setPositiveButton(
                 R.string.yes,
@@ -44,7 +48,7 @@ class ProjectInfoActivity : AppCompatActivity(), View.OnClickListener {
 
                 })
             .setNegativeButton(R.string.no, null)
-            .setIcon(R.drawable.ic_dialog_alert)
+           // .setIcon(R.drawable.ic_dialog_alert)
             .show()
     }
 }
