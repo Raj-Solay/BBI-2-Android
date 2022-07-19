@@ -114,10 +114,10 @@ class DashboardActivity : AppCompatActivity(), View.OnClickListener {
                             userDetails?.data?.roleId!!.toInt() == Globals.USER_TYPE_FO_TEAM){
                             docApprovel!!.visibility = View.VISIBLE
                         }else{
-                            docApprovel!!.visibility = View.GONE
+                            docApprovel!!.visibility = View.VISIBLE
                         }
                     }catch (e  :Exception){
-                        docApprovel!!.visibility = View.GONE
+                        docApprovel!!.visibility = View.VISIBLE
                     }
 
                 } else {
@@ -302,11 +302,11 @@ class DashboardActivity : AppCompatActivity(), View.OnClickListener {
             binding!!.drawerfomainlayout.openDrawer(Gravity.LEFT)
         }
         if (view.id==R.id.layoutsearch){
-         /*   val intent = Intent(this, AproveStatusActivity::class.java)
-            startActivity(intent)*/
+            val intent = Intent(this, AproveStatusActivity::class.java)
+            startActivity(intent)
         }
         if(view.id == R.id.docApprovel){
-            val intent = Intent(this, AproveStatusActivity::class.java)
+            val intent = Intent(this, KycListActivity::class.java)
             startActivity(intent)
         }
     }
