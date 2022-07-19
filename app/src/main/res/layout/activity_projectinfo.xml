@@ -196,12 +196,13 @@
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/tvRegister"
-                    style="@style/fontregular"
                     android:layout_width="wrap_content"
-                    android:layout_height="35dp"
+                    android:layout_height="@dimen/_28sdp"
                     android:layout_margin="@dimen/minimumspacing"
                     android:background="@drawable/button"
                     android:text="Register"
+                    android:textSize="@dimen/_12sdp"
+                    android:fontFamily="@font/source_semibold"
                     android:textAllCaps="false"
                     android:textColor="@color/white"
                     app:layout_constraintBottom_toBottomOf="parent"
