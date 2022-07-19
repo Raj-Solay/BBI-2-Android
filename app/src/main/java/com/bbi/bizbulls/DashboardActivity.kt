@@ -302,11 +302,11 @@ class DashboardActivity : AppCompatActivity(), View.OnClickListener {
             binding!!.drawerfomainlayout.openDrawer(Gravity.LEFT)
         }
         if (view.id==R.id.layoutsearch){
-            val intent = Intent(this, AproveStatusActivity::class.java)
-            startActivity(intent)
+         /*   val intent = Intent(this, AproveStatusActivity::class.java)
+            startActivity(intent)*/
         }
         if(view.id == R.id.docApprovel){
-            val intent = Intent(this, KycListActivity::class.java)
+            val intent = Intent(this, AproveStatusActivity::class.java)
             startActivity(intent)
         }
     }
