@@ -18,28 +18,57 @@
 
         <LinearLayout
             android:id="@+id/twelveLayout"
+            android:padding="@dimen/_5sdp"
+            android:background="@drawable/edit_text_background"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
 
-                <LinearLayout
-                    style="@style/checkAndTextLayout"
-                    android:orientation="horizontal">
+                <androidx.appcompat.widget.AppCompatCheckBox
+                    android:id="@+id/checkAuthorization"
+                    android:layout_gravity="center"
+                    style="@style/checkBox" />
 
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/checkWithTextLayout"
+                    android:text="@string/ct_authinfo" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                    <View
+                        android:layout_width="@dimen/_8sdp"
+                        android:layout_height="@dimen/_8sdp"/>
                     <androidx.appcompat.widget.AppCompatTextView
                         style="@style/checkWithTextLayout"
                         android:layout_width="wrap_content"
+                        android:layout_marginLeft="@dimen/_8sdp"
+                        android:layout_height="wrap_content"
                         android:text="i)" />
 
                     <androidx.appcompat.widget.AppCompatTextView
                         style="@style/checkWithTextLayout"
+                        android:layout_marginLeft="@dimen/_8sdp"
                         android:text="@string/ct_authinfoone" />
                 </LinearLayout>
 
-                <LinearLayout
-                    style="@style/checkAndTextLayout"
-                    android:orientation="horizontal">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <View
+                    android:layout_width="@dimen/_8sdp"
+                    android:layout_height="@dimen/_8sdp"/>
 
                     <androidx.appcompat.widget.AppCompatTextView
                         style="@style/checkWithTextLayout"
@@ -51,10 +80,14 @@
                         android:text="@string/ct_authinfotwo" />
                 </LinearLayout>
 
-                <LinearLayout
-                    style="@style/checkAndTextLayout"
-                    android:orientation="horizontal">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
 
+                <View
+                    android:layout_width="@dimen/_8sdp"
+                    android:layout_height="@dimen/_8sdp"/>
                     <androidx.appcompat.widget.AppCompatTextView
                         style="@style/checkWithTextLayout"
                         android:layout_width="wrap_content"
@@ -65,18 +98,7 @@
                         android:text="@string/ct_authinfothree" />
                 </LinearLayout>
 
-                <LinearLayout
-                    style="@style/checkAndTextLayout"
-                    android:orientation="horizontal">
 
-                    <androidx.appcompat.widget.AppCompatCheckBox
-                        android:id="@+id/checkAuthorization"
-                        style="@style/checkBox" />
-
-                    <androidx.appcompat.widget.AppCompatTextView
-                        style="@style/checkWithTextLayout"
-                        android:text="@string/ct_authinfo" />
-                </LinearLayout>
             </LinearLayout>
 
 
