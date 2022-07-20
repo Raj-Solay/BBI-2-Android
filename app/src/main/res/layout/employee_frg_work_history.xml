@@ -23,26 +23,24 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
-                android:background="@drawable/card"
-                android:padding="@dimen/_10sdp">
+                android:background="@drawable/card">
 
 
                 <FrameLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:paddingLeft="@dimen/_5sdp"
-                    android:paddingRight="@dimen/_5sdp">
+                    style="@style/formFrameLayoutSmall">
 
                     <androidx.appcompat.widget.AppCompatEditText
                         android:id="@+id/edtOrganization"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        style="@style/formInput"
                         android:background="@null"
                         android:hint="Organization"
                         android:lines="1"
                         android:maxLines="1"
-                        android:textSize="@dimen/_12sdp" />
+                       />
                 </FrameLayout>
 
             </FrameLayout>
@@ -52,26 +50,24 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
-                android:background="@drawable/card"
-                android:padding="@dimen/_10sdp">
+                android:background="@drawable/card">
 
 
                 <FrameLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:paddingLeft="@dimen/_5sdp"
-                    android:paddingRight="@dimen/_5sdp">
+                    style="@style/formFrameLayoutSmall">
 
                     <androidx.appcompat.widget.AppCompatEditText
                         android:id="@+id/edtFiled"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        style="@style/formInput"
                         android:background="@null"
                         android:hint="Field"
                         android:lines="1"
                         android:maxLines="1"
-                        android:textSize="@dimen/_12sdp" />
+                        />
                 </FrameLayout>
 
             </FrameLayout>
@@ -80,26 +76,24 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
-                android:background="@drawable/card"
-                android:padding="@dimen/_10sdp">
+                android:background="@drawable/card">
 
 
                 <FrameLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:paddingLeft="@dimen/_5sdp"
-                    android:paddingRight="@dimen/_5sdp">
+                    style="@style/formFrameLayoutSmall">
 
                     <androidx.appcompat.widget.AppCompatEditText
                         android:id="@+id/edtLocation"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        style="@style/formInput"
                         android:background="@null"
                         android:hint="Location"
                         android:lines="1"
                         android:maxLines="1"
-                        android:textSize="@dimen/_12sdp" />
+                     />
                 </FrameLayout>
 
             </FrameLayout>
@@ -108,26 +102,24 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
-                android:background="@drawable/card"
-                android:padding="@dimen/_10sdp">
+                android:background="@drawable/card">
 
 
                 <FrameLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:paddingLeft="@dimen/_5sdp"
-                    android:paddingRight="@dimen/_5sdp">
+                    style="@style/formFrameLayoutSmall">
 
                     <androidx.appcompat.widget.AppCompatEditText
                         android:id="@+id/edtDateofJoining"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        style="@style/formInput"
                         android:background="@null"
                         android:hint="Date of Joining"
                         android:lines="1"
                         android:maxLines="1"
-                        android:textSize="@dimen/_12sdp" />
+                         />
                 </FrameLayout>
 
             </FrameLayout>
@@ -136,26 +128,24 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
-                android:background="@drawable/card"
-                android:padding="@dimen/_10sdp">
+                android:background="@drawable/card">
 
 
                 <FrameLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:paddingLeft="@dimen/_5sdp"
-                    android:paddingRight="@dimen/_5sdp">
+                    style="@style/formFrameLayoutSmall">
 
                     <androidx.appcompat.widget.AppCompatEditText
                         android:id="@+id/edtDateOfLeaving"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        style="@style/formInput"
                         android:background="@null"
                         android:hint="Date of Leaving"
                         android:lines="1"
                         android:maxLines="1"
-                        android:textSize="@dimen/_12sdp" />
+                        />
                 </FrameLayout>
 
             </FrameLayout>
@@ -165,26 +155,24 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
-                android:background="@drawable/card"
-                android:padding="@dimen/_10sdp">
+                android:background="@drawable/card">
 
 
                 <FrameLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:paddingLeft="@dimen/_5sdp"
-                    android:paddingRight="@dimen/_5sdp">
+                    style="@style/formFrameLayoutSmall">
 
                     <androidx.appcompat.widget.AppCompatEditText
                         android:id="@+id/edtProductService"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        style="@style/formInput"
                         android:background="@null"
                         android:hint="Product / Service"
                         android:lines="1"
                         android:maxLines="1"
-                        android:textSize="@dimen/_12sdp" />
+                       />
                 </FrameLayout>
 
             </FrameLayout>
@@ -193,26 +181,24 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
-                android:background="@drawable/card"
-                android:padding="@dimen/_10sdp">
+                android:background="@drawable/card">
 
 
                 <FrameLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:paddingLeft="@dimen/_5sdp"
-                    android:paddingRight="@dimen/_5sdp">
+                    style="@style/formFrameLayoutSmall">
 
                     <androidx.appcompat.widget.AppCompatEditText
                         android:id="@+id/edtJobDesignation"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        style="@style/formInput"
                         android:background="@null"
                         android:hint="Job Designation"
                         android:lines="1"
                         android:maxLines="1"
-                        android:textSize="@dimen/_12sdp" />
+                       />
                 </FrameLayout>
 
             </FrameLayout>
@@ -221,26 +207,24 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
-                android:background="@drawable/card"
-                android:padding="@dimen/_10sdp">
+                android:background="@drawable/card">
 
 
                 <FrameLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:paddingLeft="@dimen/_5sdp"
-                    android:paddingRight="@dimen/_5sdp">
+                    style="@style/formFrameLayoutSmall">
 
                     <androidx.appcompat.widget.AppCompatEditText
                         android:id="@+id/edtDepartment"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        style="@style/formInput"
                         android:background="@null"
                         android:hint="Department"
                         android:lines="1"
                         android:maxLines="1"
-                        android:textSize="@dimen/_12sdp" />
+                        />
                 </FrameLayout>
 
             </FrameLayout>
@@ -249,26 +233,24 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
-                android:background="@drawable/card"
-                android:padding="@dimen/_10sdp">
+                android:background="@drawable/card">
 
 
                 <FrameLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:paddingLeft="@dimen/_5sdp"
-                    android:paddingRight="@dimen/_5sdp">
+                    style="@style/formFrameLayoutSmall">
 
                     <androidx.appcompat.widget.AppCompatEditText
                         android:id="@+id/edtReportTo"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        style="@style/formInput"
                         android:background="@null"
                         android:hint="Reporting to"
                         android:lines="1"
                         android:maxLines="1"
-                        android:textSize="@dimen/_12sdp" />
+                        />
                 </FrameLayout>
 
             </FrameLayout>
@@ -277,26 +259,24 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
-                android:background="@drawable/card"
-                android:padding="@dimen/_10sdp">
+                android:background="@drawable/card">
 
 
                 <FrameLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:paddingLeft="@dimen/_5sdp"
-                    android:paddingRight="@dimen/_5sdp">
+                    style="@style/formFrameLayoutSmall">
 
                     <androidx.appcompat.widget.AppCompatEditText
                         android:id="@+id/edtBusinessTargets"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        style="@style/formInput"
                         android:background="@null"
                         android:hint="Business Targets"
                         android:lines="1"
                         android:maxLines="1"
-                        android:textSize="@dimen/_12sdp" />
+                        />
                 </FrameLayout>
 
             </FrameLayout>
@@ -305,26 +285,24 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
-                android:background="@drawable/card"
-                android:padding="@dimen/_10sdp">
+                android:background="@drawable/card">
 
 
                 <FrameLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:paddingLeft="@dimen/_5sdp"
-                    android:paddingRight="@dimen/_5sdp">
+                    style="@style/formFrameLayoutSmall">
 
                     <androidx.appcompat.widget.AppCompatEditText
                         android:id="@+id/edtTotalCostToCompany"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        style="@style/formInput"
                         android:background="@null"
                         android:hint="Total Cost to Company"
                         android:lines="1"
                         android:maxLines="1"
-                        android:textSize="@dimen/_12sdp" />
+                         />
                 </FrameLayout>
 
             </FrameLayout>
@@ -333,26 +311,24 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
-                android:background="@drawable/card"
-                android:padding="@dimen/_10sdp">
+                android:background="@drawable/card">
 
 
                 <FrameLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:paddingLeft="@dimen/_5sdp"
-                    android:paddingRight="@dimen/_5sdp">
+                    style="@style/formFrameLayoutSmall">
 
                     <androidx.appcompat.widget.AppCompatEditText
                         android:id="@+id/edtTakeHomePerMonth"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        style="@style/formInput"
                         android:background="@null"
                         android:hint="Take Home per Month"
                         android:lines="1"
                         android:maxLines="1"
-                        android:textSize="@dimen/_12sdp" />
+                        />
                 </FrameLayout>
 
             </FrameLayout>
@@ -361,26 +337,24 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
-                android:background="@drawable/card"
-                android:padding="@dimen/_10sdp">
+                android:background="@drawable/card">
 
 
                 <FrameLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:paddingLeft="@dimen/_5sdp"
-                    android:paddingRight="@dimen/_5sdp">
+                    style="@style/formFrameLayoutSmall">
 
                     <androidx.appcompat.widget.AppCompatEditText
                         android:id="@+id/edtPFNumber"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        style="@style/formInput"
                         android:background="@null"
                         android:hint="PF Number"
                         android:lines="1"
                         android:maxLines="1"
-                        android:textSize="@dimen/_12sdp" />
+                         />
                 </FrameLayout>
 
             </FrameLayout>
@@ -389,26 +363,24 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
-                android:background="@drawable/card"
-                android:padding="@dimen/_10sdp">
+                android:background="@drawable/card">
 
 
                 <FrameLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:paddingLeft="@dimen/_5sdp"
-                    android:paddingRight="@dimen/_5sdp">
+                    style="@style/formFrameLayoutSmall">
 
                     <androidx.appcompat.widget.AppCompatEditText
                         android:id="@+id/edtHealthCardNumber"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        style="@style/formInput"
                         android:background="@null"
                         android:hint="Health Card Number"
                         android:lines="1"
                         android:maxLines="1"
-                        android:textSize="@dimen/_12sdp" />
+                        />
                 </FrameLayout>
 
             </FrameLayout>
@@ -417,26 +389,24 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
-                android:background="@drawable/card"
-                android:padding="@dimen/_10sdp">
+                android:background="@drawable/card">
 
 
                 <FrameLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:paddingLeft="@dimen/_5sdp"
-                    android:paddingRight="@dimen/_5sdp">
+                    style="@style/formFrameLayoutSmall">
 
                     <androidx.appcompat.widget.AppCompatEditText
                         android:id="@+id/edtOtherDetails"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        style="@style/formInput"
                         android:background="@null"
                         android:hint="Other benefits"
                         android:lines="1"
                         android:maxLines="1"
-                        android:textSize="@dimen/_12sdp" />
+                       />
                 </FrameLayout>
 
             </FrameLayout>
@@ -445,26 +415,24 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
-                android:background="@drawable/card"
-                android:padding="@dimen/_10sdp">
+                android:background="@drawable/card">
 
 
                 <FrameLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:paddingLeft="@dimen/_5sdp"
-                    android:paddingRight="@dimen/_5sdp">
+                    style="@style/formFrameLayoutSmall">
 
                     <androidx.appcompat.widget.AppCompatEditText
                         android:id="@+id/edtAchievements"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        style="@style/formInput"
                         android:background="@null"
                         android:hint="Achievements"
                         android:lines="1"
                         android:maxLines="1"
-                        android:textSize="@dimen/_12sdp" />
+                      />
                 </FrameLayout>
 
             </FrameLayout>
@@ -473,26 +441,24 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
-                android:background="@drawable/card"
-                android:padding="@dimen/_10sdp">
+                android:background="@drawable/card">
 
 
                 <FrameLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:paddingLeft="@dimen/_5sdp"
-                    android:paddingRight="@dimen/_5sdp">
+                    style="@style/formFrameLayoutSmall">
 
                     <androidx.appcompat.widget.AppCompatEditText
                         android:id="@+id/edtReasonForChange"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        style="@style/formInput"
                         android:background="@null"
                         android:hint="Reasons for change"
                         android:lines="1"
                         android:maxLines="1"
-                        android:textSize="@dimen/_12sdp" />
+                        />
                 </FrameLayout>
 
             </FrameLayout>
@@ -501,26 +467,24 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
-                android:background="@drawable/card"
-                android:padding="@dimen/_10sdp">
+                android:background="@drawable/card">
 
 
                 <FrameLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:paddingLeft="@dimen/_5sdp"
-                    android:paddingRight="@dimen/_5sdp">
+                    style="@style/formFrameLayoutSmall">
 
                     <androidx.appcompat.widget.AppCompatEditText
                         android:id="@+id/edtJobDescription"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        style="@style/formInput"
                         android:background="@null"
                         android:hint="Your job description in detail"
                         android:lines="1"
                         android:maxLines="1"
-                        android:textSize="@dimen/_12sdp" />
+                       />
                 </FrameLayout>
 
             </FrameLayout>
@@ -529,26 +493,24 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
-                android:background="@drawable/card"
-                android:padding="@dimen/_10sdp">
+                android:background="@drawable/card">
 
 
                 <FrameLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:paddingLeft="@dimen/_5sdp"
-                    android:paddingRight="@dimen/_5sdp">
+                    style="@style/formFrameLayoutSmall">
 
                     <androidx.appcompat.widget.AppCompatEditText
                         android:id="@+id/edtContactBoardNumber"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        style="@style/formInput"
                         android:background="@null"
                         android:hint="Contact / Board Number"
                         android:lines="1"
                         android:maxLines="1"
-                        android:textSize="@dimen/_12sdp" />
+                       />
                 </FrameLayout>
 
             </FrameLayout>
@@ -557,26 +519,24 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
-                android:background="@drawable/card"
-                android:padding="@dimen/_10sdp">
+                android:background="@drawable/card">
 
 
                 <FrameLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:paddingLeft="@dimen/_5sdp"
-                    android:paddingRight="@dimen/_5sdp">
+                    style="@style/formFrameLayoutSmall">
 
                     <androidx.appcompat.widget.AppCompatEditText
                         android:id="@+id/edtOfficialMailId"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        style="@style/formInput"
                         android:background="@null"
                         android:hint="Official Mail ID"
                         android:lines="1"
                         android:maxLines="1"
-                        android:textSize="@dimen/_12sdp" />
+                        />
                 </FrameLayout>
 
             </FrameLayout>
@@ -586,26 +546,24 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
-                android:background="@drawable/card"
-                android:padding="@dimen/_10sdp">
+                android:background="@drawable/card">
 
 
                 <FrameLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:paddingLeft="@dimen/_5sdp"
-                    android:paddingRight="@dimen/_5sdp">
+                    style="@style/formFrameLayoutSmall">
 
                     <androidx.appcompat.widget.AppCompatEditText
                         android:id="@+id/edtWebsite"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        style="@style/formInput"
                         android:background="@null"
                         android:hint="Web Site (if any)"
                         android:lines="1"
                         android:maxLines="1"
-                        android:textSize="@dimen/_12sdp" />
+                       />
                 </FrameLayout>
 
             </FrameLayout>
@@ -617,7 +575,7 @@
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/stepSubmit"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_45sdp"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_gravity="center"
         android:layout_marginStart="@dimen/_16sdp"

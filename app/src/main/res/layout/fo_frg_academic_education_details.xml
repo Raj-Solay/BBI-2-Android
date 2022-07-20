@@ -23,7 +23,6 @@
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/_10sdp"
                 android:layout_gravity="bottom"
                 android:background="@drawable/card">
 
@@ -33,6 +32,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="@dimen/_8sdp"
                     app:tint="@color/value"
+                    android:visibility="gone"
                     android:adjustViewBounds="true"
                     android:src="@drawable/ic_education" />
 
@@ -40,18 +40,17 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:paddingLeft="@dimen/_50sdp"
-                    android:paddingRight="@dimen/_10sdp">
+                    style="@style/formFrameLayoutSmall">
 
                     <androidx.appcompat.widget.AppCompatEditText
                         android:background="@null"
                         android:id="@+id/qualification"
                         android:lines="1"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        style="@style/formInput"
                         android:hint="@string/ct_qualification"
                         android:maxLines="1"
-                        android:textSize="@dimen/_12sdp" />
+                        />
                 </FrameLayout>
 
             </FrameLayout>
@@ -61,7 +60,6 @@
                 android:layout_marginTop="@dimen/_12sdp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/_10sdp"
                 android:layout_gravity="bottom"
                 android:background="@drawable/card">
 
@@ -71,6 +69,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="@dimen/_8sdp"
                     app:tint="@color/value"
+                    android:visibility="gone"
                     android:adjustViewBounds="true"
                     android:src="@drawable/ic_education_inst_name" />
 
@@ -78,18 +77,17 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:paddingLeft="@dimen/_50sdp"
-                    android:paddingRight="@dimen/_10sdp">
+                    style="@style/formFrameLayoutSmall">
 
                     <androidx.appcompat.widget.AppCompatEditText
                         android:background="@null"
                         android:id="@+id/instituteName"
                         android:lines="1"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        style="@style/formInput"
                         android:hint="@string/ct_institute"
                         android:maxLines="1"
-                        android:textSize="@dimen/_13sdp" />
+                         />
                 </FrameLayout>
 
             </FrameLayout>
@@ -99,7 +97,6 @@
                 android:layout_marginTop="@dimen/_12sdp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/_10sdp"
                 android:layout_gravity="bottom"
                 android:background="@drawable/card">
 
@@ -107,6 +104,7 @@
                     android:layout_width="@dimen/_18sdp"
                     android:layout_height="@dimen/_18sdp"
                     app:tint="@color/value"
+                    android:visibility="gone"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="@dimen/_8sdp"
                     android:adjustViewBounds="true"
@@ -116,18 +114,17 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:paddingLeft="@dimen/_50sdp"
-                    android:paddingRight="@dimen/_10sdp">
+                    style="@style/formFrameLayoutSmall">
 
                     <androidx.appcompat.widget.AppCompatEditText
                         android:background="@null"
                         android:id="@+id/boardOrUniversity"
                         android:lines="1"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        style="@style/formInput"
                         android:hint="@string/ct_board"
                         android:maxLines="1"
-                        android:textSize="@dimen/_13sdp" />
+                        />
                 </FrameLayout>
 
             </FrameLayout>
@@ -136,7 +133,6 @@
                 android:layout_marginTop="@dimen/_12sdp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/_10sdp"
                 android:layout_gravity="bottom"
                 android:background="@drawable/card">
 
@@ -146,6 +142,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="@dimen/_8sdp"
                     app:tint="@color/value"
+                    android:visibility="gone"
                     android:adjustViewBounds="true"
                     android:src="@drawable/ic_education_year" />
 
@@ -153,20 +150,19 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:paddingLeft="@dimen/_50sdp"
-                    android:paddingRight="@dimen/_10sdp">
+                    style="@style/formFrameLayoutSmall">
 
                     <androidx.appcompat.widget.AppCompatEditText
                         android:background="@null"
                         android:id="@+id/yearOfPassing"
                         android:lines="1"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        style="@style/formInput"
                         android:hint="@string/ct_passing"
                         android:maxLines="1"
                         android:inputType="number"
                         android:maxLength="4"
-                        android:textSize="@dimen/_13sdp" />
+                        />
                 </FrameLayout>
 
             </FrameLayout>
@@ -176,13 +172,13 @@
                 android:layout_marginTop="@dimen/_12sdp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/_10sdp"
                 android:layout_gravity="bottom"
                 android:background="@drawable/card">
 
                 <ImageView
                     android:layout_width="@dimen/_18sdp"
                     android:layout_height="@dimen/_18sdp"
+                    android:visibility="gone"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="@dimen/_8sdp"
                     app:tint="@color/value"
@@ -193,20 +189,19 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:paddingLeft="@dimen/_50sdp"
-                    android:paddingRight="@dimen/_10sdp">
+                    style="@style/formFrameLayoutSmall">
 
                     <androidx.appcompat.widget.AppCompatEditText
                         android:background="@null"
                         android:id="@+id/percent"
                         android:lines="1"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        style="@style/formInput"
                         android:hint="@string/ct_percentage"
                         android:maxLines="1"
                         android:inputType="number"
                         android:maxLength="2"
-                        android:textSize="@dimen/_13sdp" />
+                       />
                 </FrameLayout>
 
             </FrameLayout>
@@ -214,7 +209,7 @@
                 android:id="@+id/txtTCTitle"
                 style="@style/subTitle"
                 android:layout_marginTop="@dimen/_8sdp"
-                android:textSize="@dimen/_14ssp"
+                android:textSize="@dimen/_12ssp"
                 android:text="Technical Certifications (If Any)" />
 
             <FrameLayout
@@ -222,7 +217,6 @@
                 android:layout_marginTop="@dimen/_12sdp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/_10sdp"
                 android:layout_gravity="bottom"
                 android:background="@drawable/card">
 
@@ -232,6 +226,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="@dimen/_8sdp"
                     app:tint="@color/value"
+                    android:visibility="gone"
                     android:adjustViewBounds="true"
                     android:src="@drawable/ic_education_percentage" />
 
@@ -239,19 +234,18 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:paddingLeft="@dimen/_50sdp"
-                    android:paddingRight="@dimen/_10sdp">
+                    style="@style/formFrameLayoutSmall">
 
                     <androidx.appcompat.widget.AppCompatEditText
                         android:background="@null"
                         android:id="@+id/tcCourse"
                         android:lines="1"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        style="@style/formInput"
                         android:hint="Course"
                         android:maxLines="1"
                         android:maxLength="2"
-                        android:textSize="@dimen/_13sdp" />
+                         />
                 </FrameLayout>
 
             </FrameLayout>
@@ -261,7 +255,6 @@
                 android:layout_marginTop="@dimen/_12sdp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/_10sdp"
                 android:layout_gravity="bottom"
                 android:background="@drawable/card">
 
@@ -271,6 +264,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="@dimen/_8sdp"
                     app:tint="@color/value"
+                    android:visibility="gone"
                     android:adjustViewBounds="true"
                     android:src="@drawable/ic_education_percentage" />
 
@@ -278,19 +272,18 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:paddingLeft="@dimen/_50sdp"
-                    android:paddingRight="@dimen/_10sdp">
+                    style="@style/formFrameLayoutSmall">
 
                     <androidx.appcompat.widget.AppCompatEditText
                         android:background="@null"
                         android:id="@+id/tcInstituteName"
                         android:lines="1"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        style="@style/formInput"
                         android:hint="Institution name"
                         android:maxLines="1"
                         android:maxLength="2"
-                        android:textSize="@dimen/_13sdp" />
+                         />
                 </FrameLayout>
 
             </FrameLayout>
@@ -300,7 +293,6 @@
                 android:layout_marginTop="@dimen/_12sdp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/_10sdp"
                 android:layout_gravity="bottom"
                 android:background="@drawable/card">
 
@@ -310,6 +302,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="@dimen/_8sdp"
                     app:tint="@color/value"
+                    android:visibility="gone"
                     android:adjustViewBounds="true"
                     android:src="@drawable/ic_education_percentage" />
 
@@ -317,19 +310,18 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:paddingLeft="@dimen/_50sdp"
-                    android:paddingRight="@dimen/_10sdp">
+                    style="@style/formFrameLayoutSmall">
 
                     <androidx.appcompat.widget.AppCompatEditText
                         android:background="@null"
                         android:id="@+id/tcYear"
                         android:lines="1"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        style="@style/formInput"
                         android:hint="Year"
                         android:maxLines="1"
                         android:inputType="number"
-                        android:textSize="@dimen/_13sdp" />
+                        />
                 </FrameLayout>
 
             </FrameLayout>
@@ -339,7 +331,6 @@
                 android:layout_marginTop="@dimen/_12sdp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/_10sdp"
                 android:layout_gravity="bottom"
                 android:background="@drawable/card">
 
@@ -349,6 +340,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="@dimen/_8sdp"
                     app:tint="@color/value"
+                    android:visibility="gone"
                     android:adjustViewBounds="true"
                     android:src="@drawable/ic_education_percentage" />
 
@@ -356,18 +348,17 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:paddingLeft="@dimen/_50sdp"
-                    android:paddingRight="@dimen/_10sdp">
+                    style="@style/formFrameLayoutSmall">
 
                     <androidx.appcompat.widget.AppCompatEditText
                         android:background="@null"
                         android:id="@+id/tcLevel"
                         android:lines="1"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        style="@style/formInput"
                         android:hint="Level"
                         android:maxLines="1"
-                        android:textSize="@dimen/_13sdp" />
+                        />
                 </FrameLayout>
 
             </FrameLayout>
@@ -377,7 +368,7 @@
                 android:id="@+id/txtTitle2"
                 style="@style/subTitle"
                 android:layout_marginTop="@dimen/_8sdp"
-                android:textSize="@dimen/_14ssp"
+                android:textSize="@dimen/_12ssp"
                 android:text="Extra / Co-curricular Activities (If any)" />
 
             <FrameLayout
@@ -385,14 +376,13 @@
                 android:layout_marginTop="@dimen/_12sdp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/_10sdp"
                 android:layout_gravity="bottom"
                 android:background="@drawable/card">
 
                 <ImageView
                     android:layout_width="@dimen/_18sdp"
                     android:layout_height="@dimen/_18sdp"
-                    android:visibility="invisible"
+                    android:visibility="gone"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="@dimen/_8sdp"
                     app:tint="@color/value"
@@ -403,14 +393,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:paddingLeft="@dimen/_5sdp"
-                    android:paddingRight="@dimen/_5sdp">
+                    style="@style/formFrameLayoutSmall">
 
                     <androidx.appcompat.widget.AppCompatEditText
                         android:background="@null"
                         android:id="@+id/extraActivities"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        style="@style/formInput"
                         android:hint="NCC/NSS/Sports/Cultural Activities"
                         android:lines="4"
                         android:maxLines="4"
@@ -418,7 +407,7 @@
                         android:overScrollMode="always"
                         android:scrollbarStyle="insideInset"
                         android:scrollbars="vertical"
-                        android:textSize="@dimen/_12sdp" />
+                        />
                 </FrameLayout>
 
             </FrameLayout>
@@ -428,7 +417,7 @@
                 android:id="@+id/txtTitle3"
                 style="@style/subTitle"
                 android:layout_marginTop="@dimen/_8sdp"
-                android:textSize="@dimen/_14ssp"
+                android:textSize="@dimen/_12ssp"
                 android:text="Academic / Curricular Achievements (If any)" />
 
             <FrameLayout
@@ -436,14 +425,13 @@
                 android:layout_marginTop="@dimen/_12sdp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/_10sdp"
                 android:layout_gravity="bottom"
                 android:background="@drawable/card">
 
                 <ImageView
                     android:layout_width="@dimen/_5sdp"
                     android:layout_height="@dimen/_5sdp"
-                    android:visibility="invisible"
+                    android:visibility="gone"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="@dimen/_8sdp"
                     app:tint="@color/value"
@@ -454,14 +442,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:paddingLeft="@dimen/_50sdp"
-                    android:paddingRight="@dimen/_10sdp">
+                    style="@style/formFrameLayoutSmall">
 
                     <androidx.appcompat.widget.AppCompatEditText
                         android:background="@null"
                         android:id="@+id/achievements"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        style="@style/formInput"
                         android:hint="Scholarships/Awards/Prizes etc"
                         android:lines="4"
                         android:maxLines="4"
@@ -469,7 +456,7 @@
                         android:overScrollMode="always"
                         android:scrollbarStyle="insideInset"
                         android:scrollbars="vertical"
-                        android:textSize="@dimen/_12sdp" />
+                        />
                 </FrameLayout>
 
             </FrameLayout>
@@ -479,7 +466,7 @@
                 android:id="@+id/title4"
                 style="@style/subTitle"
                 android:layout_marginTop="@dimen/_8sdp"
-                android:textSize="@dimen/_14ssp"
+                android:textSize="@dimen/_12ssp"
                 android:text="Hobbies / Interests (If any)" />
 
             <FrameLayout
@@ -487,13 +474,12 @@
                 android:layout_marginTop="@dimen/_12sdp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/_10sdp"
                 android:layout_gravity="bottom"
                 android:background="@drawable/card">
 
                 <ImageView
                     android:layout_width="@dimen/_18sdp"
-                    android:visibility="invisible"
+                    android:visibility="gone"
                     android:layout_height="@dimen/_18sdp"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="@dimen/_8sdp"
@@ -505,14 +491,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:paddingLeft="@dimen/_5sdp"
-                    android:paddingRight="@dimen/_5sdp">
+                    style="@style/formFrameLayoutSmall">
 
                     <androidx.appcompat.widget.AppCompatEditText
                         android:background="@null"
                         android:id="@+id/hobbies"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        style="@style/formInput"
                         android:hint=""
                         android:lines="4"
                         android:maxLines="4"
@@ -520,7 +505,7 @@
                         android:overScrollMode="always"
                         android:scrollbarStyle="insideInset"
                         android:scrollbars="vertical"
-                        android:textSize="@dimen/_12sdp" />
+                       />
                 </FrameLayout>
 
             </FrameLayout>
@@ -531,7 +516,7 @@
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/stepSubmit"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_45sdp"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_gravity="center"
         android:layout_marginStart="@dimen/_16sdp"

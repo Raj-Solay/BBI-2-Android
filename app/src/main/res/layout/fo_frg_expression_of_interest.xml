@@ -25,13 +25,13 @@
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/_10sdp"
                 android:layout_gravity="bottom"
                 android:background="@drawable/card">
 
                 <ImageView
                     android:layout_width="@dimen/_18sdp"
                     android:layout_height="@dimen/_18sdp"
+                    android:visibility="gone"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="@dimen/_8sdp"
                     android:adjustViewBounds="true"
@@ -42,18 +42,17 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:paddingLeft="@dimen/_50sdp"
-                    android:paddingRight="@dimen/_10sdp">
+                    style="@style/formFrameLayoutSmall">
 
                     <androidx.appcompat.widget.AppCompatEditText
                         android:background="@null"
                         android:id="@+id/interestedProjectName"
                         android:lines="1"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        style="@style/formInput"
                         android:hint="Interested Project Name"
                         android:maxLines="1"
-                        android:textSize="@dimen/_12sdp" />
+                        />
                 </FrameLayout>
 
             </FrameLayout>
@@ -64,13 +63,13 @@
                 android:layout_marginTop="@dimen/_8sdp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/_10sdp"
                 android:layout_gravity="bottom"
                 android:background="@drawable/card">
 
                 <ImageView
                     android:layout_width="@dimen/_18sdp"
                     android:layout_height="@dimen/_18sdp"
+                    android:visibility="gone"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="@dimen/_8sdp"
                     app:tint="@color/value"
@@ -81,18 +80,17 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:paddingLeft="@dimen/_50sdp"
-                    android:paddingRight="@dimen/_10sdp">
+                    style="@style/formFrameLayoutSmall">
 
                     <androidx.appcompat.widget.AppCompatEditText
                         android:background="@null"
                         android:id="@+id/industryOfProject"
                         android:lines="1"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        style="@style/formInput"
                         android:hint="Industry of Project"
                         android:maxLines="1"
-                        android:textSize="@dimen/_12sdp" />
+                       />
                 </FrameLayout>
 
             </FrameLayout>
@@ -102,7 +100,6 @@
                 android:layout_marginTop="@dimen/_8sdp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/_10sdp"
                 android:layout_gravity="bottom"
                 android:background="@drawable/card">
 
@@ -111,6 +108,7 @@
                     android:layout_height="@dimen/_18sdp"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="@dimen/_8sdp"
+                    android:visibility="gone"
                     app:tint="@color/value"
                     android:adjustViewBounds="true"
                     android:src="@drawable/ic_family_address" />
@@ -119,18 +117,17 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:paddingLeft="@dimen/_50sdp"
-                    android:paddingRight="@dimen/_10sdp">
+                    style="@style/formFrameLayoutSmall">
 
                     <androidx.appcompat.widget.AppCompatEditText
                         android:background="@null"
                         android:id="@+id/locationOfInterest"
                         android:lines="1"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        style="@style/formInput"
                         android:hint="Location of Interest"
                         android:maxLines="1"
-                        android:textSize="@dimen/_12sdp" />
+                         />
                 </FrameLayout>
 
             </FrameLayout>
@@ -141,7 +138,6 @@
                 android:layout_marginTop="@dimen/_8sdp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/_10sdp"
                 android:layout_gravity="bottom"
                 android:background="@drawable/card">
 
@@ -151,6 +147,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="@dimen/_8sdp"
                     app:tint="@color/value"
+                    android:visibility="gone"
                     android:adjustViewBounds="true"
                     android:src="@drawable/ic_education_name" />
 
@@ -158,18 +155,17 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:paddingLeft="@dimen/_50sdp"
-                    android:paddingRight="@dimen/_10sdp">
+                    style="@style/formInput">
 
                     <androidx.appcompat.widget.AppCompatEditText
                         android:background="@null"
                         android:id="@+id/subTitle"
                         android:lines="1"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        style="@style/formInput"
                         android:hint="Financial Assistance"
                         android:maxLines="1"
-                        android:textSize="@dimen/_12sdp" />
+                        />
                 </FrameLayout>
 
             </FrameLayout>
@@ -179,14 +175,13 @@
                 android:layout_marginTop="@dimen/_8sdp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/_5sdp"
                 android:layout_gravity="bottom"
                 android:background="@drawable/card">
 
                 <ImageView
                     android:layout_width="@dimen/_18sdp"
                     android:layout_height="@dimen/_18sdp"
-                    android:visibility="invisible"
+                    android:visibility="gone"
                     android:layout_gravity="center_vertical"
                     app:tint="@color/value"
                     android:layout_marginLeft="@dimen/_14sdp"
@@ -197,8 +192,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:paddingLeft="@dimen/_50sdp"
-                    android:paddingRight="@dimen/_10sdp">
+                    style="@style/formFrameLayoutSmall">
 
                     <com.bbi.bizbulls.utils.CustomSpinner
                         android:id="@+id/spnrFinancialAssistance"
@@ -217,7 +211,6 @@
                 android:layout_marginTop="@dimen/_8sdp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/_10sdp"
                 android:layout_gravity="bottom"
                 android:background="@drawable/card">
 
@@ -226,6 +219,7 @@
                     android:layout_height="@dimen/_18sdp"
                     android:layout_gravity="center_vertical"
                     app:tint="@color/value"
+                    android:visibility="gone"
                     android:layout_marginLeft="@dimen/_8sdp"
                     android:adjustViewBounds="true"
                     android:src="@drawable/ic_tax" />
@@ -234,19 +228,18 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:paddingLeft="@dimen/_50sdp"
-                    android:paddingRight="@dimen/_10sdp">
+                    style="@style/formFrameLayoutSmall">
 
                     <androidx.appcompat.widget.AppCompatEditText
                         android:background="@null"
                         android:id="@+id/registrationFee"
                         android:lines="1"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        style="@style/formInput"
                         android:hint="Registration Fee"
                         android:maxLines="1"
                         android:inputType="number"
-                        android:textSize="@dimen/_12sdp" />
+                       />
                 </FrameLayout>
 
             </FrameLayout>
@@ -257,7 +250,6 @@
                 android:layout_marginTop="@dimen/_8sdp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/_10sdp"
                 android:layout_gravity="bottom"
                 android:background="@drawable/card">
 
@@ -266,6 +258,7 @@
                     android:layout_height="@dimen/_18sdp"
                     android:layout_gravity="center_vertical"
                     app:tint="@color/value"
+                    android:visibility="gone"
                     android:layout_marginLeft="@dimen/_8sdp"
                     android:adjustViewBounds="true"
                     android:src="@drawable/ic_desc" />
@@ -274,18 +267,17 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:paddingLeft="@dimen/_50sdp"
-                    android:paddingRight="@dimen/_10sdp">
+                    style="@style/formFrameLayoutSmall">
 
                     <androidx.appcompat.widget.AppCompatEditText
                         android:background="@null"
                         android:id="@+id/franchisePlanningFor"
                         android:lines="1"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        style="@style/formInput"
                         android:hint="Franchisee Planning For"
                         android:maxLines="1"
-                        android:textSize="@dimen/_12sdp" />
+                        />
                 </FrameLayout>
 
             </FrameLayout>
@@ -296,13 +288,13 @@
                 android:layout_marginTop="@dimen/_8sdp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/_10sdp"
                 android:layout_gravity="bottom"
                 android:background="@drawable/card">
 
                 <ImageView
                     android:layout_width="@dimen/_18sdp"
                     android:layout_height="@dimen/_18sdp"
+                    android:visibility="gone"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="@dimen/_8sdp"
                     app:tint="@color/value"
@@ -313,18 +305,17 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:paddingLeft="@dimen/_50sdp"
-                    android:paddingRight="@dimen/_10sdp">
+                    style="@style/formFrameLayoutSmall">
 
                     <androidx.appcompat.widget.AppCompatEditText
                         android:background="@null"
                         android:id="@+id/franchisePlanningAs"
                         android:lines="1"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        style="@style/formInput"
                         android:hint="Franchisee Planning As"
                         android:maxLines="1"
-                        android:textSize="@dimen/_12sdp" />
+                        />
                 </FrameLayout>
 
             </FrameLayout>
@@ -335,14 +326,13 @@
                 style="@style/subTitle"
                 android:text="Business Place Type"
                 android:layout_marginTop="@dimen/_8sdp"
-                android:textSize="@dimen/_14ssp"/>
+                android:textSize="@dimen/_12ssp"/>
 
 
             <FrameLayout
                 android:layout_marginTop="@dimen/_8sdp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/_5sdp"
                 android:layout_gravity="bottom"
                 android:background="@drawable/card">
 
@@ -352,7 +342,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="@dimen/_14sdp"
                     app:tint="@color/value"
-                    android:visibility="invisible"
+                    android:visibility="gone"
                     android:adjustViewBounds="true"
                     android:src="@drawable/ic_family_age" />
 
@@ -360,8 +350,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:paddingLeft="@dimen/_50sdp"
-                    android:paddingRight="@dimen/_10sdp">
+                    style="@style/formFrameLayoutSmall">
 
                     <com.bbi.bizbulls.utils.CustomSpinner
                         android:id="@+id/spnrBusinessPlaceType"
@@ -380,7 +369,6 @@
                 android:layout_marginTop="@dimen/_8sdp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/_10sdp"
                 android:layout_gravity="bottom"
                 android:background="@drawable/card">
 
@@ -390,6 +378,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="@dimen/_8sdp"
                     app:tint="@color/value"
+                    android:visibility="gone"
                     android:adjustViewBounds="true"
                     android:src="@drawable/ic_desc" />
 
@@ -397,18 +386,17 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:paddingLeft="@dimen/_50sdp"
-                    android:paddingRight="@dimen/_10sdp">
+                    style="@style/formFrameLayoutSmall">
 
                     <androidx.appcompat.widget.AppCompatEditText
                         android:background="@null"
                         android:id="@+id/businessPlaceSize"
                         android:lines="1"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        style="@style/formInput"
                         android:hint="Business Place Size  (Area in Square Ft.)"
                         android:maxLines="1"
-                        android:textSize="@dimen/_12sdp" />
+                        />
                 </FrameLayout>
 
             </FrameLayout>
@@ -419,7 +407,7 @@
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/stepSubmit"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_45sdp"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_gravity="center"
         android:background="@drawable/bg_submit"

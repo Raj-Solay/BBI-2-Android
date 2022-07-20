@@ -23,7 +23,6 @@
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/_10sdp"
                 android:layout_gravity="bottom"
                 android:background="@drawable/card">
 
@@ -33,6 +32,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="@dimen/_8sdp"
                     app:tint="@color/value"
+                    android:visibility="gone"
                     android:adjustViewBounds="true"
                     android:src="@drawable/ic_education_name" />
 
@@ -40,18 +40,17 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:paddingLeft="@dimen/_50sdp"
-                    android:paddingRight="@dimen/_10sdp">
+                    style="@style/formInput">
 
                     <androidx.appcompat.widget.AppCompatEditText
                         android:background="@null"
                         android:id="@+id/childName"
                         android:lines="1"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        style="@style/formInput"
                         android:hint="Name"
                         android:maxLines="1"
-                        android:textSize="@dimen/_12sdp" />
+                       />
                 </FrameLayout>
 
             </FrameLayout>
@@ -61,7 +60,6 @@
                 android:layout_marginTop="@dimen/_8sdp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/_10sdp"
                 android:layout_gravity="bottom"
                 android:background="@drawable/card">
 
@@ -71,6 +69,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="@dimen/_8sdp"
                     app:tint="@color/value"
+                    android:visibility="gone"
                     android:adjustViewBounds="true"
                     android:src="@drawable/ic_family_age" />
 
@@ -78,19 +77,18 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:paddingLeft="@dimen/_50sdp"
-                    android:paddingRight="@dimen/_10sdp">
+                    style="@style/formFrameLayoutSmall">
 
                     <androidx.appcompat.widget.AppCompatEditText
                         android:background="@null"
                         android:id="@+id/childAge"
                         android:lines="1"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        style="@style/formInput"
                         android:hint="Age"
                         android:maxLines="1"
                         android:inputType="number"
-                        android:textSize="@dimen/_12sdp" />
+                         />
                 </FrameLayout>
 
             </FrameLayout>
@@ -100,20 +98,19 @@
                 style="@style/subTitle"
                 android:text="Sex"
                 android:layout_marginTop="@dimen/_8sdp"
-                android:textSize="@dimen/_14ssp"/>
+                android:textSize="@dimen/_12ssp"/>
 
             <!--Gender-->
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/_5sdp"
                 android:layout_gravity="bottom"
                 android:background="@drawable/card">
 
                 <ImageView
                     android:layout_width="@dimen/_18sdp"
                     android:layout_height="@dimen/_18sdp"
-                    android:visibility="invisible"
+                    android:visibility="gone"
                     app:tint="@color/value"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="@dimen/_12sdp"
@@ -124,8 +121,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:paddingLeft="@dimen/_50sdp"
-                    android:paddingRight="@dimen/_10sdp">
+                    style="@style/formFrameLayoutSmall">
 
                     <com.bbi.bizbulls.utils.CustomSpinner
                         android:id="@+id/spnrChildSex"
@@ -143,7 +139,6 @@
                 android:layout_marginTop="@dimen/_8sdp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/_10sdp"
                 android:layout_gravity="bottom"
                 android:background="@drawable/card">
 
@@ -151,6 +146,7 @@
                     android:layout_width="@dimen/_18sdp"
                     android:layout_height="@dimen/_18sdp"
                     android:layout_gravity="center_vertical"
+                    android:visibility="gone"
                     android:layout_marginLeft="@dimen/_8sdp"
                     app:tint="@color/value"
                     android:adjustViewBounds="true"
@@ -160,18 +156,17 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:paddingLeft="@dimen/_50sdp"
-                    android:paddingRight="@dimen/_10sdp">
+                    style="@style/formFrameLayoutSmall">
 
                     <androidx.appcompat.widget.AppCompatEditText
                         android:background="@null"
                         android:id="@+id/staysWith"
                         android:lines="1"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        style="@style/formInput"
                         android:hint="Stays with"
                         android:maxLines="1"
-                        android:textSize="@dimen/_12sdp" />
+                        />
                 </FrameLayout>
 
             </FrameLayout>
@@ -183,7 +178,7 @@
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/stepSubmit"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_45sdp"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_gravity="center"
         android:layout_marginStart="@dimen/_16sdp"
