@@ -2,6 +2,7 @@ package com.foldio.android.adapter
 
 import android.content.Context
 import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -29,7 +30,21 @@ class DocApprovalAdapter(var userList: List<ApprovalDocRes.Data>?,var docViewLis
         return ViewHolder(v)
     }
     override fun onBindViewHolder(holder: DocApprovalAdapter.ViewHolder, position: Int) {
-     holder.txtDocName.text="Document Id or Name : "+userList!!.get(position).id+"\nDocuemtn Type : "+ userList!!.get(position).documentType
+        var documentName  =""
+        if(userList!!.get(position).documentId == "1"){
+            documentName = "Pan Card"
+        }else if(userList!!.get(position).documentId == "2"){
+            documentName = "Aadhaar Card"
+        }else if(userList!!.get(position).documentId == "3"){
+            documentName = "Residential Address Proof"
+        }else if(userList!!.get(position).documentId == "4"){
+            documentName = "Recent Photograph of applicant"
+        }else if(userList!!.get(position).documentId == "5"){
+            documentName = "Individually filled &amp; signed copies of this form (in case of partnership)"
+        }else if(userList!!.get(position).documentId == "6"){
+            documentName = "BIZ BULLS Arbitrary Agreement"
+        }
+      holder.txtDocName.text = ""+documentName
         Picasso.get().load(userList!!.get(position).documentName)
             .placeholder(R.drawable.img_default)
             .into(holder.imgDocView)
@@ -38,8 +53,10 @@ class DocApprovalAdapter(var userList: List<ApprovalDocRes.Data>?,var docViewLis
         }
         if(userList!!.get(position).isApproved || userList!!.get(position).documentStatus == "1"){
             holder.txtVerify.setText("Approved")
+            holder.txtVerify.setBackgroundResource(R.drawable.button_green)
         }else{
             holder.txtVerify.setText("Verify")
+            holder.txtVerify.setBackgroundResource(R.drawable.button)
         }
     }
     override fun getItemCount(): Int {

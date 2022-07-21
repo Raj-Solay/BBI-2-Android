@@ -23,7 +23,21 @@ class StatusDocAdapter(var userList: List<StatusDataRes.Doc>?, var docViewListen
         return ViewHolder(v)
     }
     override fun onBindViewHolder(holder: StatusDocAdapter.ViewHolder, position: Int) {
-     holder.txtDocName.text="Document Id or Name : "+userList!!.get(position).documentId
+        var documentName  =""
+        if(userList!!.get(position).documentId == "1"){
+            documentName = "Pan Card"
+        }else if(userList!!.get(position).documentId == "2"){
+            documentName = "Aadhaar Card"
+        }else if(userList!!.get(position).documentId == "3"){
+            documentName = "Residential Address Proof"
+        }else if(userList!!.get(position).documentId == "4"){
+            documentName = "Recent Photograph of applicant"
+        }else if(userList!!.get(position).documentId == "5"){
+            documentName = "Individually filled &amp; signed copies of this form (in case of partnership)"
+        }else if(userList!!.get(position).documentId == "6"){
+            documentName = "BIZ BULLS Arbitrary Agreement"
+        }
+     holder.txtDocName.text=""+documentName
         Picasso.get().load(userList!!.get(position).documentName)
             .placeholder(R.drawable.img_default)
             .into(holder.imgDocView)

@@ -39,6 +39,15 @@ class FoPersonalDetailsFragment(private val stepPosition: Int, private var actio
                         }
                     })
         }
+        binding.edtplaceofbirth.setOnClickListener {
+            CommonUtils.commonDatePickerDialog(
+                requireActivity(),
+                object : CommonUtils.DatePickerListener {
+                    override fun setDate(dateStr: String?) {
+                        binding.edtplaceofbirth.setText(dateStr)
+                    }
+                })
+        }
         binding.stepSubmit.setOnClickListener {
             sendPersonalDetail()
         }

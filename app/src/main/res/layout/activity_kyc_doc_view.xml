@@ -177,7 +177,6 @@
             android:layout_width="match_parent"
             android:layout_marginTop="@dimen/_10dp"
             android:paddingHorizontal="@dimen/_10dp"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             android:layout_height="wrap_content"/>
     </LinearLayout>
     <TextView
@@ -190,6 +189,7 @@
         android:id="@+id/linerApprove"
         android:layout_width="match_parent"
         android:visibility="visible"
+        android:alpha="0.5"
         android:layout_marginLeft="@dimen/_8sdp"
         android:layout_marginBottom="@dimen/_8sdp"
         android:layout_marginRight="@dimen/_8sdp"

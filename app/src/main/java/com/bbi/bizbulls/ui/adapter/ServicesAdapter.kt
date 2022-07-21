@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.widget.AppCompatImageView
 import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.bbi.bizbulls.R
@@ -56,7 +57,7 @@ class ServicesAdapter(activity: FragmentActivity) :
     }
 
     inner class viewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var imageView: ImageView
+        var imageView: AppCompatImageView
         var textView: TextView
 
         init {

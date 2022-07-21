@@ -333,26 +333,27 @@
                     android:layout_marginStart="12dp"
                     android:layout_marginTop="3dp"
                     android:padding="@dimen/overrallspacing"
-                    android:text="@string/gst_cgst_sgst_18"
+                    android:text="@string/special_discount"
                     android:textColor="@color/heading"
                     android:textSize="@dimen/small_font"
-                    app:layout_constraintEnd_toStartOf="@+id/txtGstValue"
+                    app:layout_constraintEnd_toStartOf="@+id/txtSpecialDiscountVal"
                     app:layout_constraintTop_toBottomOf="@+id/txtRegFee"
                     app:layout_constraintStart_toStartOf="parent" />
 
 
                 <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/txtGstValue"
+                    android:id="@+id/txtSpecialDiscountVal"
                     style="@style/fontregular"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="12dp"
                     android:padding="@dimen/overrallspacing"
-                    android:text="Rs. 4500"
+                    android:text="Rs. 00"
                     android:textColor="@color/heading"
                     android:textSize="@dimen/small_font"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="@id/txtGst" />
+
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/txtSubTotal"
                     style="@style/fontregular"
@@ -390,22 +391,22 @@
                     android:layout_marginStart="12dp"
                     android:layout_marginTop="3dp"
                     android:padding="@dimen/overrallspacing"
-                    android:text="@string/special_discount"
+                    android:text="@string/gst_cgst_sgst_18"
                     android:textColor="@color/heading"
                     android:textSize="@dimen/small_font"
-                    app:layout_constraintEnd_toStartOf="@+id/txtSpecialDiscountValue"
+                    app:layout_constraintEnd_toStartOf="@+id/txtGstVal"
                     app:layout_constraintTop_toBottomOf="@+id/txtSubTotalValue"
                     app:layout_constraintStart_toStartOf="parent" />
 
 
                 <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/txtSpecialDiscountValue"
+                    android:id="@+id/txtGstVal"
                     style="@style/fontregular"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="12dp"
                     android:padding="@dimen/overrallspacing"
-                    android:text="Rs. 14750"
+                    android:text="Rs. 00"
                     android:textColor="@color/heading"
                     android:textSize="@dimen/small_font"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -489,7 +490,7 @@
                     android:layout_marginTop="4dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     android:paddingBottom="@dimen/_5sdp"
-                    android:text="@string/initial_registartion_fee_is_non_refundable_non_transferable_in_any_circumtances_once_paid_and_is_valid_upto_6_months"
+                    android:text="@string/non_refundable_large"
                     android:textColor="@color/heading"
                     android:textSize="@dimen/medium_font"
                     app:layout_constraintStart_toStartOf="parent"

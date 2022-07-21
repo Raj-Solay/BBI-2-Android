@@ -58,23 +58,23 @@ class OrderDetailActivity : AppCompatActivity(), CFCheckoutResponseCallback {
             {
                 txtAmount.text = getString(R.string.rs).plus(statusData?.frenchiseeFee?.amount)
                 txtRegFeeValue.text = getString(R.string.rs).plus(statusData?.frenchiseeFee?.amount)
-                txtGstValue.text = getString(R.string.rs).plus(statusData?.frenchiseeFee?.gst)
+                txtGstVal.text = getString(R.string.rs).plus(statusData?.frenchiseeFee?.gst)
                 subTotal =
                     (statusData?.frenchiseeFee?.amount?.toInt()!! + statusData?.frenchiseeFee?.gst!!)
                 txtSubTotalValue.text = getString(R.string.rs).plus(subTotal)
-                txtSpecialDiscountValue.text =
-                    getString(R.string.rs).plus(statusData?.frenchiseeFee?.discount?.toInt()!!)
+             //   txtSpecialDiscountVal.text =
+              //      getString(R.string.rs).plus(statusData?.frenchiseeFee?.discount?.toInt()!!)
                 netPayable = subTotal - statusData?.frenchiseeFee?.discount?.toInt()!!
             }
             else{
                 txtAmount.text = getString(R.string.rs).plus(statusData?.registrationFees?.amount)
                 txtRegFeeValue.text = getString(R.string.rs).plus(statusData?.registrationFees?.amount)
-                txtGstValue.text = getString(R.string.rs).plus(statusData?.registrationFees?.gst)
+                txtGstVal.text = getString(R.string.rs).plus(statusData?.registrationFees?.gst)
                 subTotal =
                     (statusData?.registrationFees?.amount?.toInt()!! + statusData?.registrationFees?.gst!!)
                 txtSubTotalValue.text = getString(R.string.rs).plus(subTotal)
-                txtSpecialDiscountValue.text =
-                    getString(R.string.rs).plus(statusData?.registrationFees?.discount?.toInt()!!)
+            //    txtSpecialDiscountVal.text =
+             //       getString(R.string.rs).plus(statusData?.registrationFees?.discount?.toInt()!!)
                 netPayable = subTotal - statusData?.registrationFees?.discount?.toInt()!!
             }
 
@@ -234,18 +234,39 @@ class OrderDetailActivity : AppCompatActivity(), CFCheckoutResponseCallback {
                 if (response.isSuccessful) {
                     if(isFranchiseeFee)
                     {
-                        binding.txtSpecialDiscountValue.text =
-                            getString(R.string.rs).plus(statusData?.frenchiseeFee?.discount?.plus(
-                                response.body()?.discountAmt!!
-                            ))
-                        netPayable = subTotal - statusData?.frenchiseeFee?.discount!! - response.body()?.discountAmt!!
+                        //{"payAmt":12500,"discountAmt":12500,"status":"success"}
+                        binding.txtSpecialDiscountVal.text =
+                            getString(R.string.rs)+""+response.body()?.discountAmt!!.toString()
+
+
+                        var subTotalValue = response.body()?.discountAmt!!.toInt() - statusData?.frenchiseeFee?.amount!!.toInt()
+                        binding.txtSubTotalValue.setText("Rs. "+Math.abs(subTotalValue))
+
+                        var gstVal = 0
+                        try{
+                            gstVal = (subTotalValue * 18 ) / 100
+
+                        }catch (e : Exception){
+
+                        }
+                        binding.txtGstVal.setText("Rs. "+Math.abs(gstVal))
+                       // netPayable = subTotal - statusData?.frenchiseeFee?.discount!! - response.body()?.discountAmt!!
+                        netPayable = (Math.abs(subTotalValue) + Math.abs(gstVal))
                     }
                     else{
-                        binding.txtSpecialDiscountValue.text =
-                            getString(R.string.rs).plus(statusData?.registrationFees?.discount?.plus(
-                                response.body()?.discountAmt!!
-                            ))
-                        netPayable = subTotal - statusData?.registrationFees?.discount!! - response.body()?.discountAmt!!
+                        binding.txtSpecialDiscountVal.text = getString(R.string.rs)+""+response.body()?.discountAmt!!.toString()
+
+                        var subTotalValue = response.body()?.discountAmt!!.toInt() - statusData?.frenchiseeFee?.amount!!.toInt()
+                        binding.txtSubTotalValue.setText("Rs. "+Math.abs(subTotalValue))
+                        var gstVal = 0
+                        try{
+                            gstVal = (subTotalValue * 18 ) / 100
+
+                        }catch (e : Exception){
+
+                        }
+                        binding.txtGstVal.setText("Rs. "+Math.abs(gstVal))
+                        netPayable = (Math.abs(subTotalValue) + Math.abs(gstVal))
                     }
 
                     binding.txtNetAmountValue.text = getString(R.string.rs).plus(netPayable)

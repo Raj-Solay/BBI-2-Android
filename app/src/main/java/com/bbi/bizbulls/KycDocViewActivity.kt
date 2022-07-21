@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import androidx.recyclerview.widget.GridLayoutManager
 import com.bbi.bizbulls.databinding.ActivityKycDocViewBinding
 import com.bbi.bizbulls.model.ApprovalDocRes
 import com.bbi.bizbulls.model.PersonalUserAll
@@ -90,6 +91,7 @@ class KycDocViewActivity : AppCompatActivity(),DocViewListener {
     var docApprovalAdapter : DocApprovalAdapter? = null
     private fun setAdapter(userList: List<ApprovalDocRes.Data>?) {
         docApprovalAdapter= DocApprovalAdapter(userList,this)
+        binding?.listDocuments!!.layoutManager = GridLayoutManager(this,2)
        binding?.listDocuments?.adapter = docApprovalAdapter
 
         var count = 0
@@ -97,13 +99,19 @@ class KycDocViewActivity : AppCompatActivity(),DocViewListener {
             if(it.isApproved || it!!.documentStatus == "1" )
                 count++
         }
-       /* if(count >0){
+        if(count == docList.size){
             binding.linerApprove.visibility = View.VISIBLE
             binding.txtBg.visibility = View.VISIBLE
+            binding.linerApprove.alpha = 1f
+            binding.btnCancelFinal.isEnabled = true
+            binding.btnApproveFinal.isEnabled = true
         }else{
-            binding.linerApprove.visibility = View.INVISIBLE
-            binding.txtBg.visibility = View.INVISIBLE
-        }*/
+            binding.linerApprove.visibility = View.VISIBLE
+            binding.txtBg.visibility = View.VISIBLE
+            binding.linerApprove.alpha = 0.5f
+            binding.btnCancelFinal.isEnabled = false
+            binding.btnApproveFinal.isEnabled = false
+        }
     }
 
     private fun showDocDialog(data: ApprovalDocRes.Data?) {
@@ -137,13 +145,19 @@ class KycDocViewActivity : AppCompatActivity(),DocViewListener {
                 if(it.isApproved)
                     count++
             }
-           /* if(count >0){
+            if(count == docList.size){
                 binding.linerApprove.visibility = View.VISIBLE
                 binding.txtBg.visibility = View.VISIBLE
+                binding.linerApprove.alpha = 1f
+                binding.btnCancelFinal.isEnabled = true
+                binding.btnApproveFinal.isEnabled = true
             }else{
-                binding.linerApprove.visibility = View.INVISIBLE
-                binding.txtBg.visibility = View.INVISIBLE
-            }*/
+                binding.linerApprove.visibility = View.VISIBLE
+                binding.txtBg.visibility = View.VISIBLE
+                binding.linerApprove.alpha = 0.5f
+                binding.btnCancelFinal.isEnabled = false
+                binding.btnApproveFinal.isEnabled = false
+            }
         }
     }
     private fun callApi(){
@@ -171,7 +185,7 @@ class KycDocViewActivity : AppCompatActivity(),DocViewListener {
             jsonArray.add(jsonObjectDoc)
 
         }
-        if(count > 0){
+        if(count == docList.size){
             jsonObject.addProperty("status","approved")
         }else{
             jsonObject.addProperty("status","pending")

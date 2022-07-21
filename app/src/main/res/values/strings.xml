@@ -487,7 +487,7 @@ By continuing to access or use Our Service after those revisions become effectiv
     <string name="email_">Email Address</string>
     <string name="initial_registration_fee">Initial Registration Fee</string>
     <string name="non_refundable">Non Refundable</string>
-    <string name="initial_registartion_fee_is_non_refundable_non_transferable_in_any_circumtances_once_paid_and_is_valid_upto_6_months"><![CDATA[Initial registartion fee is non refundable & non transferable in any circumtances. Once paid and is valid upto 6 months.]]></string>
+    <string name="non_refundable_large"><![CDATA[Initial registartion fee is non refundable & non transferable in any circumtances. Once paid and is valid upto 3 months.]]></string>
     <string name="payment_summery">Payment Summery</string>
     <string name="reg_fees">Registration Fees</string>
     <string name="gst_cgst_sgst_18">GST (CGST+SGST) - 18%</string>

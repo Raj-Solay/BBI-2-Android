@@ -123,10 +123,18 @@ class DashboardActivity : AppCompatActivity(), View.OnClickListener {
                             userDetails?.data?.roleId!!.toInt() == Globals.USER_TYPE_FO_TEAM){
                             docApprovel!!.visibility = View.VISIBLE
                         }else{
-                            docApprovel!!.visibility = View.VISIBLE
+                            docApprovel!!.visibility = View.GONE
                         }
                     }catch (e  :Exception){
-                        docApprovel!!.visibility = View.VISIBLE
+                        docApprovel!!.visibility = View.GONE
+                    }
+                    val menu = binding!!.bottomNavigationView.menu
+                    if(sharedPrefsHelper.role.toInt() == Globals.USER_TYPE_FM){
+                        menu.findItem(R.id.navigation_fohome).isVisible = true
+                        menu.findItem(R.id.navigation_forevenue).isVisible = true
+                    }else{
+                        menu.findItem(R.id.navigation_forevenue).isVisible = false
+                        menu.findItem(R.id.navigation_fohome).isVisible = false
                     }
 
                 } else {
@@ -154,6 +162,9 @@ class DashboardActivity : AppCompatActivity(), View.OnClickListener {
         imm.hideSoftInputFromWindow(view.windowToken, 0)
     }
     fun init() {
+
+
+
         binding!!.bottomNavigationView.background = null
         binding!!.bottomNavigationView.setOnItemSelectedListener { item ->
             val id = item.itemId
@@ -164,6 +175,14 @@ class DashboardActivity : AppCompatActivity(), View.OnClickListener {
                     .replace(R.id.flFragment, customerFOStatusFragment!!).commit()
             }
             true
+        }
+        val menu = binding!!.bottomNavigationView.menu
+        if(sharedPrefsHelper.role.toInt() == Globals.USER_TYPE_EMPLOYEE){
+            menu.findItem(R.id.navigation_forevenue).isVisible = false
+            menu.findItem(R.id.navigation_fohome).isVisible = false
+        }else{
+            menu.findItem(R.id.navigation_fohome).isVisible = true
+            menu.findItem(R.id.navigation_forevenue).isVisible = true
         }
         binding!!.navfo.bringToFront()
         val hView = binding!!.navfo.getHeaderView(0)
