@@ -31,6 +31,7 @@ import com.bbi.bizbulls.utils.Globals.REQUEST_CODE_LOCATION_SETUP
 import com.bbi.bizbulls.utils.Globals.REQUEST_CODE_PDF_SELECT
 import com.bbi.bizbulls.utils.Globals.REQUEST_CODE_REGISTRATION_FEE
 import com.bbi.bizbulls.utils.Globals.REQUEST_CODE_SETUP
+import com.bbi.bizbulls.utils.Globals.dateFormat
 import com.bbi.bizbulls.utils.MyProcessDialog
 import com.yanzhenjie.album.Action
 import com.yanzhenjie.album.Album
@@ -310,7 +311,7 @@ class CustomerFOStatusFragment : Fragment(), View.OnClickListener {
                     if(statusData?.kyc?.status!!.size > 0){
                         if(statusData?.kyc?.status!!.get(0)!!.kycStatus.toString().equals("approved",true))
                         {
-                            binding.txtkycdate.setText(statusData?.kyc?.status!!.get(0)!!.createdAt.toString().toString())
+                            binding.txtkycdate.setText(dateFormat(statusData.kyc?.status!!.get(0).createdAt.toString()))
                             setKycComplete()
                         }
                     }
