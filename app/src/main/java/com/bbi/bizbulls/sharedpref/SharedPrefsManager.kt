@@ -34,11 +34,23 @@ class SharedPrefsManager constructor(private val myContext: Context) {
         const val KEY_PERSONAL_DETAIL_ID = "personalDetailID"
         const val KEY_REGISTER_FORM_ID = "registeruserId"
         const val USER_ID = "user_id"
+        const val IS_STEP_COMPLETED = "is_step_completed"
+        const val FORM_STEP_INIT = "form_step_init"
 
 
         const val DEFAULT_KEY_IS_LOGIN = false
     }
+    var isFromStepInit: Boolean
+        get() = sharedPrefs[FORM_STEP_INIT] ?: false
+        set(value) {
+            sharedPrefs[FORM_STEP_INIT] = value
+        }
 
+    var isFormCompleted: Boolean
+        get() = sharedPrefs[IS_STEP_COMPLETED] ?: false
+        set(value) {
+            sharedPrefs[IS_STEP_COMPLETED] = value
+        }
     var isLogin: Boolean
         get() = sharedPrefs[KEY_IS_LOGIN] ?: DEFAULT_KEY_IS_LOGIN
         set(value) {

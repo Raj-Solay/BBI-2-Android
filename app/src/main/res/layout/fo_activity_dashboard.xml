@@ -46,8 +46,26 @@
         android:id="@+id/recyclerView"
         android:layout_margin="@dimen/_12sdp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/_56sdp"
         tools:listitem="@layout/fo_adapter_dashboard"
         android:layout_below="@+id/appCompatTextView" />
 
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnNextProcess"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="center"
+        android:layout_marginStart="@dimen/_8sdp"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:layout_marginEnd="@dimen/_8sdp"
+        android:layout_marginBottom="@dimen/_8sdp"
+        android:alpha="0.6"
+        android:background="@drawable/bg_submit"
+        android:gravity="center"
+        android:text="@string/f_submit"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_14ssp" />
 </RelativeLayout>

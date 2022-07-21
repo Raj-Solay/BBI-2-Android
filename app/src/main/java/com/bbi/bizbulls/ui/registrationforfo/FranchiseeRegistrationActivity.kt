@@ -43,6 +43,8 @@ class FranchiseeRegistrationActivity : AppCompatActivity() {
 
     }
 
+
+
     private fun init() {
         //Get the bundle
         val bundle = intent.extras

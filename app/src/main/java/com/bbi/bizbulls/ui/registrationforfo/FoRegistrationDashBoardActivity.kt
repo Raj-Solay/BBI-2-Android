@@ -5,9 +5,12 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.KeyEvent
+import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
+import com.bbi.bizbulls.DashboardActivity
 import com.bbi.bizbulls.ProjectInfoActivity
 import com.bbi.bizbulls.R
 import com.bbi.bizbulls.data.foregistration.steps.Data
@@ -69,7 +72,17 @@ class FoRegistrationDashBoardActivity : AppCompatActivity(), IFoRegistrationStep
         }catch (e : Exception){
 
         }
-
+        binding.btnNextProcess.setOnClickListener {
+            if(!isFormStatusComplted){
+                Toast.makeText(this@FoRegistrationDashBoardActivity,"Please completed the Form process First.",Toast.LENGTH_SHORT).show()
+            }else{
+                CommonUtils.isRedirectToStatus = true
+                val i = Intent(this, DashboardActivity::class.java)
+                i.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK
+                startActivity(i)
+                finish()
+            }
+        }
 
         listSteps.add(Data(1,R.drawable.icn_personal_profile,"Personal Profile","1",0))
         listSteps.add(Data(2,R.drawable.icn_health_details,"Health Details","",0))
@@ -151,6 +164,7 @@ class FoRegistrationDashBoardActivity : AppCompatActivity(), IFoRegistrationStep
             true
         } else super.onKeyDown(keyCode, event)
     }
+    var isFormStatusComplted = false
     private fun getstatus() {
         MyProcessDialog.showProgressBar(this@FoRegistrationDashBoardActivity, 0)
         var token:String=sharedPrefsHelper.authToken
@@ -175,6 +189,53 @@ class FoRegistrationDashBoardActivity : AppCompatActivity(), IFoRegistrationStep
                         listSteps.get(9).status= responseObject.body()!!.data.PersonalReference
                         listSteps.get(10).status= responseObject.body()!!.data.UserDocument
                         listSteps.get(11).status= responseObject.body()!!.data.Authorization
+
+                        var isCompleted = 0
+                        if(responseObject.body()!!.data.personal == 1){
+                            isCompleted++
+                        }
+                        if(responseObject.body()!!.data.Healthdetail == 1){
+                            isCompleted++
+                        }
+                        if(responseObject.body()!!.data.UserExpressionInterest == 1){
+                            isCompleted++
+                        }
+                        if(responseObject.body()!!.data.UserChecklist == 1){
+                            isCompleted++
+                        }
+                        if(responseObject.body()!!.data.Educationaldetail == 1){
+                            isCompleted++
+                        }
+                        if(responseObject.body()!!.data.UserSocialIdentityDetail == 1){
+                            isCompleted++
+                        }
+                        if(responseObject.body()!!.data.Bankdetail == 1){
+                            isCompleted++
+                        }
+                        if(responseObject.body()!!.data.FamilyDetail == 1){
+                            isCompleted++
+                        }
+                        if(responseObject.body()!!.data.Childrendetail == 1){
+                            isCompleted++
+                        }
+                        if(responseObject.body()!!.data.PersonalReference == 1){
+                            isCompleted++
+                        }
+                        if(responseObject.body()!!.data.UserDocument == 1){
+                            isCompleted++
+                        }
+                        if(responseObject.body()!!.data.Authorization  == 1){
+                            isCompleted++
+                        }
+
+                        isFormStatusComplted = isCompleted == 12
+                        sharedPrefsHelper.isFormCompleted = isFormStatusComplted
+                        if(isFormStatusComplted){
+                            binding.btnNextProcess.alpha = 1f
+                            sharedPrefsHelper.isFromStepInit = true
+                        }else{
+                            binding.btnNextProcess.alpha = 0.6f;
+                        }
                         adapter.notifyDataSetChanged()
                     }
                 } else {
@@ -190,5 +251,11 @@ class FoRegistrationDashBoardActivity : AppCompatActivity(), IFoRegistrationStep
                 RetrofitClient.showFailedMessage(this@FoRegistrationDashBoardActivity, t)
             }
         })
+    }
+    override fun onResume() {
+        super.onResume()
+        if(CommonUtils.isFormEdit){
+            CommonUtils.isFormEdit = false
+        }
     }
 }

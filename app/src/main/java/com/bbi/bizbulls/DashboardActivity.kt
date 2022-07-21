@@ -8,12 +8,14 @@ import android.location.Address
 import android.location.Geocoder
 import android.location.Location
 import android.os.Bundle
+import android.util.Log
 import android.view.Gravity
 import android.view.KeyEvent
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.RelativeLayout
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatTextView
@@ -21,6 +23,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.app.ActivityCompat
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
+import com.bbi.bizbulls.data.health.FormStatus
 import com.bbi.bizbulls.databinding.ActivityDashboardBinding
 import com.bbi.bizbulls.menu.*
 import com.bbi.bizbulls.model.UserDetails
@@ -44,6 +47,7 @@ import com.karumi.dexter.listener.single.PermissionListener
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.text.SimpleDateFormat
 import java.util.*
 
 
@@ -82,13 +86,100 @@ class DashboardActivity : AppCompatActivity(), View.OnClickListener {
         setContentView(binding!!.root)
         hideKeyboard(this)
         init()
-        getUserRole(this)
-        println("________NAME ::${sharedPrefsHelper.userName}")
+        if(!CommonUtils.isRedirectToStatus){
+            getUserRole(this)
+        }
+       /* println("________NAME ::${sharedPrefsHelper.userName}")
         println("________EMAIL  ::${sharedPrefsHelper.email}")
         println("________PHONE  ::${sharedPrefsHelper.phone}")
         println("________TOKEN_ID  ::${sharedPrefsHelper.tokenID}")
-        println("________AUTH_TOKEN  ::${sharedPrefsHelper.authToken}")
+        println("________AUTH_TOKEN  ::${sharedPrefsHelper.authToken}")*/
+
     }
+
+
+
+    override fun onResume() {
+        super.onResume()
+        if(CommonUtils.isRedirectToStatus){
+            CommonUtils.isRedirectToStatus = false
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.flFragment, customerFOStatusFragment!!).commit()
+        }
+    }
+
+    var isFormStatusComplted = false
+    fun getFormStatus(){
+          //  MyProcessDialog.showProgressBar(this@DashboardActivity, 0)
+            var token:String=sharedPrefsHelper.authToken
+            val call = RetrofitClient.getUrl().formStatus(token)
+            call?.enqueue(object : Callback<FormStatus> {
+                override
+                fun onResponse(
+                    call: Call<FormStatus>,
+                    responseObject: Response<FormStatus>
+                ) {
+                    MyProcessDialog.dismiss()
+                    if (responseObject.code() == 200 || responseObject.code() == 201) {
+                        if (responseObject.body()?.data!= null) {
+                            var isCompleted = 0
+                            if(responseObject.body()!!.data.personal == 1){
+                                isCompleted++
+                            }
+                            if(responseObject.body()!!.data.Healthdetail == 1){
+                                isCompleted++
+                            }
+                            if(responseObject.body()!!.data.UserExpressionInterest == 1){
+                                isCompleted++
+                            }
+                            if(responseObject.body()!!.data.UserChecklist == 1){
+                                isCompleted++
+                            }
+                            if(responseObject.body()!!.data.Educationaldetail == 1){
+                                isCompleted++
+                            }
+                            if(responseObject.body()!!.data.UserSocialIdentityDetail == 1){
+                                isCompleted++
+                            }
+                            if(responseObject.body()!!.data.Bankdetail == 1){
+                                isCompleted++
+                            }
+                            if(responseObject.body()!!.data.FamilyDetail == 1){
+                                isCompleted++
+                            }
+                            if(responseObject.body()!!.data.Childrendetail == 1){
+                                isCompleted++
+                            }
+                            if(responseObject.body()!!.data.PersonalReference == 1){
+                                isCompleted++
+                            }
+                            if(responseObject.body()!!.data.UserDocument == 1){
+                                isCompleted++
+                            }
+                            if(responseObject.body()!!.data.Authorization  == 1){
+                                isCompleted++
+                            }
+
+                            isFormStatusComplted = isCompleted == 12
+                            sharedPrefsHelper.isFormCompleted = isFormStatusComplted
+                            MyProcessDialog.dismiss()
+                        }
+                    } else {
+                        RetrofitClient.showResponseMessage(this@DashboardActivity, responseObject.code())
+
+                    }
+                    MyProcessDialog.dismiss()
+                }
+
+                override
+                fun onFailure(call: Call<FormStatus>, t: Throwable) {
+                    MyProcessDialog.dismiss()
+                    RetrofitClient.showFailedMessage(this@DashboardActivity, t)
+                }
+            })
+
+    }
+
     fun getUserRole(activity: DashboardActivity) {
         val sharedPrefsHelper by lazy { SharedPrefsManager(this) }
 
@@ -97,6 +188,7 @@ class DashboardActivity : AppCompatActivity(), View.OnClickListener {
         println("________URL ::${call.request().url}")
         println("________authToken ::${sharedPrefsHelper.authToken}")
         var token = sharedPrefsHelper.authToken;
+
         MyProcessDialog.showProgressBar(activity, 0)
         call.enqueue(object : Callback<UserDetails> {
             override
@@ -132,6 +224,7 @@ class DashboardActivity : AppCompatActivity(), View.OnClickListener {
                     if(sharedPrefsHelper.role.toInt() == Globals.USER_TYPE_FM){
                         menu.findItem(R.id.navigation_fohome).isVisible = true
                         menu.findItem(R.id.navigation_forevenue).isVisible = true
+                        getFormStatus()
                     }else{
                         menu.findItem(R.id.navigation_forevenue).isVisible = false
                         menu.findItem(R.id.navigation_fohome).isVisible = false
@@ -169,10 +262,20 @@ class DashboardActivity : AppCompatActivity(), View.OnClickListener {
         binding!!.bottomNavigationView.setOnItemSelectedListener { item ->
             val id = item.itemId
             when (id) {
-                R.id.navigation_fohome -> supportFragmentManager.beginTransaction()
-                    .replace(R.id.flFragment, homeCustomerFragment!!).commit()
-                R.id.navigation_forevenue -> supportFragmentManager.beginTransaction()
-                    .replace(R.id.flFragment, customerFOStatusFragment!!).commit()
+                R.id.navigation_fohome -> {
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.flFragment, homeCustomerFragment!!).commit()
+
+                }
+                R.id.navigation_forevenue ->{
+                    if(!isFormStatusComplted){
+                        Toast.makeText(this, "Please Completed the Registration Forms First.", Toast.LENGTH_LONG).show()
+                    }else{
+                        supportFragmentManager.beginTransaction()
+                            .replace(R.id.flFragment, customerFOStatusFragment!!).commit()
+                    }
+
+                }
             }
             true
         }
@@ -257,8 +360,14 @@ class DashboardActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onClick(view: View) {
         if (view.id == R.id.layoutcp){
-            val i = Intent(this, FoRegistrationDashBoardActivity::class.java)
-            startActivity(i)
+            if(sharedPrefsHelper.isFormCompleted){
+                supportFragmentManager.beginTransaction()
+                    .replace(R.id.flFragment, customerFOStatusFragment!!).commit()
+            }else{
+                val i = Intent(this, FoRegistrationDashBoardActivity::class.java)
+                startActivity(i)
+            }
+
         }
         if (view.id == R.id.myAccount) {
             binding!!.drawerfomainlayout.closeDrawer(GravityCompat.START)

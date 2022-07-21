@@ -12,6 +12,7 @@ object Globals {
     private const val BASE_URL_QA = "https://bizbulls.beurboss.com/"
     private const val BASE_URL_DEV = "https://bizbulls.beurboss.com/"
 
+
      const val ASSET_URL = "api/assets/"
 
     val BASE_URL = when (CommonUtils.environment) {

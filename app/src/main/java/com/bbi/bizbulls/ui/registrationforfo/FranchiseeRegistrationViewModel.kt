@@ -150,6 +150,11 @@ class FranchiseeRegistrationViewModel : ViewModel() {
                 if (responseObject.code() == 201 || responseObject.code() == 200) {
                    // sharedPrefsHelper.personalDetailID = responseObject.body()?.data?.id.toString()
                     responseSuccessMessage(context, stepPosition,0)
+                    when (actionType) {
+                        CommonUtils.ACTION_TYPE_EDIT -> {
+                            CommonUtils.isFormEdit = true
+                        }
+                    }
                 } else {
                     RetrofitClient.showResponseMessage(context, responseObject.code())
 
@@ -389,6 +394,11 @@ class FranchiseeRegistrationViewModel : ViewModel() {
                 if (responseObject.code() == 201 || responseObject.code() == 200) {
                     // sharedPrefsHelper.personalDetailID = responseObject.body()?.data?.id.toString()
                     responseSuccessMessage(context, stepPosition,actionType)
+                    when (actionType) {
+                        CommonUtils.ACTION_TYPE_EDIT -> {
+                            CommonUtils.isFormEdit = true
+                        }
+                    }
                 } else {
                     RetrofitClient.showResponseMessage(context, responseObject.code())
 

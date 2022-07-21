@@ -320,7 +320,7 @@
                         android:layout_width="match_parent"
                         style="@style/formInput"
                         android:hint="Permanent Address"
-                        android:inputType="number"
+                        android:inputType="text"
                         android:maxLines="1"
                          />
                 </FrameLayout>

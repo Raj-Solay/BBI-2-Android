@@ -164,5 +164,7 @@ object CommonUtils {
     fun getUserIdFromToken() : String{
         return ""
     }
+    var isRedirectToStatus = false
+    var isFormEdit = false
 
 }

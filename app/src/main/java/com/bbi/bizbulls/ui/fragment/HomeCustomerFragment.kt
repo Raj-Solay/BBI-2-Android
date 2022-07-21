@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.bbi.bizbulls.DashboardActivity
 import com.bbi.bizbulls.ProjectInfoActivity
 import com.bbi.bizbulls.R
 import com.bbi.bizbulls.adapter.HomeSlideAdapter
@@ -17,6 +18,7 @@ import com.bbi.bizbulls.model.UserDetails
 import com.bbi.bizbulls.remote.RetrofitClient
 import com.bbi.bizbulls.sharedpref.SharedPrefsManager
 import com.bbi.bizbulls.ui.adapter.*
+import com.bbi.bizbulls.utils.CommonUtils
 import com.bbi.bizbulls.utils.MyProcessDialog
 import retrofit2.Call
 import retrofit2.Callback
@@ -29,6 +31,8 @@ class HomeCustomerFragment : Fragment() {
    lateinit var homeSlideAdapter: HomeSlideAdapter
    private lateinit var imagesModel:ArrayList<String>
    lateinit var sharedPrefsManager: SharedPrefsManager
+
+    var customerFOStatusFragment: CustomerFOStatusFragment? = null
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -49,9 +53,23 @@ class HomeCustomerFragment : Fragment() {
         assingnmentView()
         projectScopeView()
         referView()
+
+        if(sharedPrefsManager.isFormCompleted){
+            binding.tvRegistration.text = "Status"
+        }else{
+            binding.tvRegistration.text = "Register"
+        }
+
         binding.tvRegistration.setOnClickListener {
-            val i = Intent(activity, ProjectInfoActivity::class.java)
-            startActivity(i)
+            if(sharedPrefsManager.isFormCompleted){
+                customerFOStatusFragment = CustomerFOStatusFragment()
+                requireActivity().supportFragmentManager.beginTransaction()
+                    .replace(R.id.flFragment, customerFOStatusFragment!!).commit()
+            }else{
+                val i = Intent(activity, ProjectInfoActivity::class.java)
+                startActivity(i)
+            }
+
         }
         return binding.root
     }
