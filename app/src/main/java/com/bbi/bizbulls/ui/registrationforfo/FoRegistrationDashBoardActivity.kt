@@ -39,6 +39,7 @@ class FoRegistrationDashBoardActivity : AppCompatActivity(), IFoRegistrationStep
     var listSteps = arrayListOf<Data>()
 
     private fun activityCalling() {
+        CommonUtils.isHideProgress = true
         val i = Intent(this, ProjectInfoActivity::class.java)
         i.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK
         startActivity(i)
@@ -191,40 +192,40 @@ class FoRegistrationDashBoardActivity : AppCompatActivity(), IFoRegistrationStep
                         listSteps.get(11).status= responseObject.body()!!.data.Authorization
 
                         var isCompleted = 0
-                        if(responseObject.body()!!.data.personal == 1){
+                        if(responseObject.body()!!.data.personal >= 1){
                             isCompleted++
                         }
-                        if(responseObject.body()!!.data.Healthdetail == 1){
+                        if(responseObject.body()!!.data.Healthdetail >= 1){
                             isCompleted++
                         }
-                        if(responseObject.body()!!.data.UserExpressionInterest == 1){
+                        if(responseObject.body()!!.data.UserExpressionInterest >= 1){
                             isCompleted++
                         }
-                        if(responseObject.body()!!.data.UserChecklist == 1){
+                        if(responseObject.body()!!.data.UserChecklist >= 1){
                             isCompleted++
                         }
-                        if(responseObject.body()!!.data.Educationaldetail == 1){
+                        if(responseObject.body()!!.data.Educationaldetail >= 1){
                             isCompleted++
                         }
-                        if(responseObject.body()!!.data.UserSocialIdentityDetail == 1){
+                        if(responseObject.body()!!.data.UserSocialIdentityDetail >= 1){
                             isCompleted++
                         }
-                        if(responseObject.body()!!.data.Bankdetail == 1){
+                        if(responseObject.body()!!.data.Bankdetail >= 1){
                             isCompleted++
                         }
-                        if(responseObject.body()!!.data.FamilyDetail == 1){
+                        if(responseObject.body()!!.data.FamilyDetail >= 1){
                             isCompleted++
                         }
-                        if(responseObject.body()!!.data.Childrendetail == 1){
+                        if(responseObject.body()!!.data.Childrendetail >= 1){
                             isCompleted++
                         }
-                        if(responseObject.body()!!.data.PersonalReference == 1){
+                        if(responseObject.body()!!.data.PersonalReference >= 1){
                             isCompleted++
                         }
-                        if(responseObject.body()!!.data.UserDocument == 1){
+                        if(responseObject.body()!!.data.UserDocument >= 1){
                             isCompleted++
                         }
-                        if(responseObject.body()!!.data.Authorization  == 1){
+                        if(responseObject.body()!!.data.Authorization  >= 1){
                             isCompleted++
                         }
 

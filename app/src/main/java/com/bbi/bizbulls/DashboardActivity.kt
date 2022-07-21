@@ -8,7 +8,6 @@ import android.location.Address
 import android.location.Geocoder
 import android.location.Location
 import android.os.Bundle
-import android.util.Log
 import android.view.Gravity
 import android.view.KeyEvent
 import android.view.View
@@ -22,6 +21,7 @@ import androidx.appcompat.widget.AppCompatTextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.app.ActivityCompat
 import androidx.core.view.GravityCompat
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import com.bbi.bizbulls.data.health.FormStatus
 import com.bbi.bizbulls.databinding.ActivityDashboardBinding
@@ -47,7 +47,6 @@ import com.karumi.dexter.listener.single.PermissionListener
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.text.SimpleDateFormat
 import java.util.*
 
 
@@ -86,9 +85,9 @@ class DashboardActivity : AppCompatActivity(), View.OnClickListener {
         setContentView(binding!!.root)
         hideKeyboard(this)
         init()
-        if(!CommonUtils.isRedirectToStatus){
+       // if(!CommonUtils.isRedirectToStatus){
             getUserRole(this)
-        }
+     //   }
        /* println("________NAME ::${sharedPrefsHelper.userName}")
         println("________EMAIL  ::${sharedPrefsHelper.email}")
         println("________PHONE  ::${sharedPrefsHelper.phone}")
@@ -123,45 +122,52 @@ class DashboardActivity : AppCompatActivity(), View.OnClickListener {
                     if (responseObject.code() == 200 || responseObject.code() == 201) {
                         if (responseObject.body()?.data!= null) {
                             var isCompleted = 0
-                            if(responseObject.body()!!.data.personal == 1){
+                            if(responseObject.body()!!.data.personal >= 1){
                                 isCompleted++
                             }
-                            if(responseObject.body()!!.data.Healthdetail == 1){
+                            if(responseObject.body()!!.data.Healthdetail >= 1){
                                 isCompleted++
                             }
-                            if(responseObject.body()!!.data.UserExpressionInterest == 1){
+                            if(responseObject.body()!!.data.UserExpressionInterest >= 1){
                                 isCompleted++
                             }
-                            if(responseObject.body()!!.data.UserChecklist == 1){
+                            if(responseObject.body()!!.data.UserChecklist >= 1){
                                 isCompleted++
                             }
-                            if(responseObject.body()!!.data.Educationaldetail == 1){
+                            if(responseObject.body()!!.data.Educationaldetail >= 1){
                                 isCompleted++
                             }
-                            if(responseObject.body()!!.data.UserSocialIdentityDetail == 1){
+                            if(responseObject.body()!!.data.UserSocialIdentityDetail >= 1){
                                 isCompleted++
                             }
-                            if(responseObject.body()!!.data.Bankdetail == 1){
+                            if(responseObject.body()!!.data.Bankdetail >= 1){
                                 isCompleted++
                             }
-                            if(responseObject.body()!!.data.FamilyDetail == 1){
+                            if(responseObject.body()!!.data.FamilyDetail >= 1){
                                 isCompleted++
                             }
-                            if(responseObject.body()!!.data.Childrendetail == 1){
+                            if(responseObject.body()!!.data.Childrendetail >= 1){
                                 isCompleted++
                             }
-                            if(responseObject.body()!!.data.PersonalReference == 1){
+                            if(responseObject.body()!!.data.PersonalReference >= 1){
                                 isCompleted++
                             }
-                            if(responseObject.body()!!.data.UserDocument == 1){
+                            if(responseObject.body()!!.data.UserDocument >= 1){
                                 isCompleted++
                             }
-                            if(responseObject.body()!!.data.Authorization  == 1){
+                            if(responseObject.body()!!.data.Authorization  >= 1){
                                 isCompleted++
                             }
 
                             isFormStatusComplted = isCompleted == 12
                             sharedPrefsHelper.isFormCompleted = isFormStatusComplted
+                            var progress = (isCompleted * 8.33333333)
+                            if(progress > 90){
+                                progress = 100.0
+                            }
+                            if(linearProgressbar != null){
+                                linearProgressbar!!.progress = progress.toInt()
+                            }
                             MyProcessDialog.dismiss()
                         }
                     } else {
@@ -189,7 +195,10 @@ class DashboardActivity : AppCompatActivity(), View.OnClickListener {
         println("________authToken ::${sharedPrefsHelper.authToken}")
         var token = sharedPrefsHelper.authToken;
 
-        MyProcessDialog.showProgressBar(activity, 0)
+        if(CommonUtils.isHideProgress){
+            CommonUtils.isHideProgress = false
+            MyProcessDialog.showProgressBar(activity, 0)
+        }
         call.enqueue(object : Callback<UserDetails> {
             override
             fun onResponse(
@@ -221,6 +230,7 @@ class DashboardActivity : AppCompatActivity(), View.OnClickListener {
                         docApprovel!!.visibility = View.GONE
                     }
                     val menu = binding!!.bottomNavigationView.menu
+
                     if(sharedPrefsHelper.role.toInt() == Globals.USER_TYPE_FM){
                         menu.findItem(R.id.navigation_fohome).isVisible = true
                         menu.findItem(R.id.navigation_forevenue).isVisible = true
@@ -243,6 +253,7 @@ class DashboardActivity : AppCompatActivity(), View.OnClickListener {
             }
         })
     }
+     var  linearProgressbar : LinearProgressIndicator? = null
     fun hideKeyboard(activity: Activity) {
         val imm: InputMethodManager =
             activity.getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
@@ -289,8 +300,8 @@ class DashboardActivity : AppCompatActivity(), View.OnClickListener {
         }
         binding!!.navfo.bringToFront()
         val hView = binding!!.navfo.getHeaderView(0)
-        val lm = hView.findViewById<LinearProgressIndicator>(R.id.progressBarprofileupdate)
-        lm.progress = 25
+        linearProgressbar = hView.findViewById<LinearProgressIndicator>(R.id.progressBarprofileupdate)
+        linearProgressbar!!.progress = 0
         nav_user= hView.findViewById<AppCompatTextView>(R.id.txtfoname)
         nav_user.text = sharedPrefsHelper.userName
         nav_mobile = hView.findViewById<AppCompatTextView>(R.id.txtfomobile)
@@ -358,11 +369,21 @@ class DashboardActivity : AppCompatActivity(), View.OnClickListener {
         getCurrentLOcation(this@DashboardActivity)
     }
 
+    fun hideDrawer(){
+        binding!!.drawerfomainlayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
+    }
     override fun onClick(view: View) {
         if (view.id == R.id.layoutcp){
+            hideDrawer()
             if(sharedPrefsHelper.isFormCompleted){
-                supportFragmentManager.beginTransaction()
-                    .replace(R.id.flFragment, customerFOStatusFragment!!).commit()
+                if(CommonUtils.appInitFirstTime){
+                    CommonUtils.appInitFirstTime = false
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.flFragment, customerFOStatusFragment!!).commit()
+                }else{
+                    val i = Intent(this, FoRegistrationDashBoardActivity::class.java)
+                    startActivity(i)
+                }
             }else{
                 val i = Intent(this, FoRegistrationDashBoardActivity::class.java)
                 startActivity(i)

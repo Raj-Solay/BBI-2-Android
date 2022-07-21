@@ -161,10 +161,27 @@ object CommonUtils {
         return 0
     }
 
+
+    //const val FORMATEZTIME = "yyyy-MM-dd'T'HH:mm:ss'Z'"
+    fun stringToDateFormat(date:String): String?{
+        return try{
+            val dateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSSSS'Z'")
+            val objDate = dateFormat.parse(date)
+
+            val dateFormat2 = SimpleDateFormat("yyyy-MM-dd HH:mm");
+            val finalDate = dateFormat2.format(objDate)
+            finalDate
+        }catch (e : Exception){
+            date
+        }
+    }
+
     fun getUserIdFromToken() : String{
         return ""
     }
     var isRedirectToStatus = false
     var isFormEdit = false
+    var appInitFirstTime = true
+    var isHideProgress = false
 
 }

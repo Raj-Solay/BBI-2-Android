@@ -52,16 +52,4 @@ object Globals {
     const val USER_TYPE_FO_TEAM = 3
     const val USER_TYPE_FM = 6
     const val USER_TYPE_FO = 1
-    //const val FORMATEZTIME = "yyyy-MM-dd'T'HH:mm:ss'Z'"
-    fun dateFormat(dete:String): String?{
-
-        var dateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSSSS'Z'")
-
-        var objDate = dateFormat.parse(dete);
-
-        var dateFormat2 = SimpleDateFormat("yyyy-MM-dd HH:mm");
-
-        var finalDate = dateFormat2.format(objDate)
-       return finalDate
-    }
 }

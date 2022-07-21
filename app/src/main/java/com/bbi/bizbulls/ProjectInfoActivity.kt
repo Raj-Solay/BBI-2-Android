@@ -24,17 +24,28 @@ class ProjectInfoActivity : AppCompatActivity(), View.OnClickListener {
         binding!!.backNavigation.setOnClickListener(this)
 
         if(sharedPrefsHelper.isFormCompleted){
-            binding!!.tvRegister.text = "Status"
+            if(CommonUtils.appInitFirstTime){
+                binding!!.tvRegister.text = "Status"
+            }else{
+                binding!!.tvRegister.text = "Register"
+            }
+
         }else{
             binding!!.tvRegister.text = "Register"
         }
         binding!!.tvRegister.setOnClickListener {
             if(sharedPrefsHelper.isFormCompleted){
-                CommonUtils.isRedirectToStatus = true
-                val i = Intent(this, DashboardActivity::class.java)
-                i.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK
-                startActivity(i)
-                finish()
+                if(CommonUtils.appInitFirstTime){
+                    CommonUtils.isRedirectToStatus = true
+                    val i = Intent(this, DashboardActivity::class.java)
+                    i.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK
+                    startActivity(i)
+                    finish()
+                }else{
+                    val i = Intent(this@ProjectInfoActivity, FoRegistrationDashBoardActivity::class.java)
+                    startActivity(i)
+                    finish()
+                }
             }else{
                showAlert()
             }

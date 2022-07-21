@@ -55,16 +55,28 @@ class HomeCustomerFragment : Fragment() {
         referView()
 
         if(sharedPrefsManager.isFormCompleted){
-            binding.tvRegistration.text = "Status"
+            if(CommonUtils.appInitFirstTime){
+                binding.tvRegistration.text = "Status"
+            }else{
+                binding.tvRegistration.text = "Register"
+            }
+
         }else{
             binding.tvRegistration.text = "Register"
         }
 
         binding.tvRegistration.setOnClickListener {
             if(sharedPrefsManager.isFormCompleted){
-                customerFOStatusFragment = CustomerFOStatusFragment()
-                requireActivity().supportFragmentManager.beginTransaction()
-                    .replace(R.id.flFragment, customerFOStatusFragment!!).commit()
+                if(CommonUtils.appInitFirstTime){
+                    CommonUtils.appInitFirstTime = false
+                    customerFOStatusFragment = CustomerFOStatusFragment()
+                    requireActivity().supportFragmentManager.beginTransaction()
+                        .replace(R.id.flFragment, customerFOStatusFragment!!).commit()
+                }else{
+                    val i = Intent(activity, ProjectInfoActivity::class.java)
+                    startActivity(i)
+                }
+
             }else{
                 val i = Intent(activity, ProjectInfoActivity::class.java)
                 startActivity(i)

@@ -22,6 +22,7 @@ import com.bbi.bizbulls.model.StatusDataRes
 import com.bbi.bizbulls.remote.RetrofitClient
 import com.bbi.bizbulls.sharedpref.SharedPrefsManager
 import com.bbi.bizbulls.ui.adapter.DatesAdapter
+import com.bbi.bizbulls.utils.CommonUtils
 import com.bbi.bizbulls.utils.Globals.IS_FRANCHISEE_FEE
 import com.bbi.bizbulls.utils.Globals.REGISTRATION_FEES_DATA
 import com.bbi.bizbulls.utils.Globals.REQUEST_CODE_ADD_AGREEMENT
@@ -31,7 +32,6 @@ import com.bbi.bizbulls.utils.Globals.REQUEST_CODE_LOCATION_SETUP
 import com.bbi.bizbulls.utils.Globals.REQUEST_CODE_PDF_SELECT
 import com.bbi.bizbulls.utils.Globals.REQUEST_CODE_REGISTRATION_FEE
 import com.bbi.bizbulls.utils.Globals.REQUEST_CODE_SETUP
-import com.bbi.bizbulls.utils.Globals.dateFormat
 import com.bbi.bizbulls.utils.MyProcessDialog
 import com.yanzhenjie.album.Action
 import com.yanzhenjie.album.Album
@@ -214,6 +214,22 @@ class CustomerFOStatusFragment : Fragment(), View.OnClickListener {
         }
         binding.imgregisterstatus.setImageResource(R.drawable.ic_done)
     }
+    private fun hideRegisterFee(){
+            binding.laoutregisterincomplete.visibility = View.GONE
+            binding.laoutregistercomplete.visibility = View.GONE
+            if(isCustomer) {
+                binding.finabilityLayout.layoutfinabilityincomplete.visibility = View.VISIBLE
+            } else {
+                binding.layoutlocationidentityincomplete.visibility = View.VISIBLE
+            }
+            try{
+                binding.txtregisterdate.setText(statusData?.registrationFees?.date.toString())
+
+            }catch (e  :Exception){
+
+            }
+            binding.imgregisterstatus.setImageResource(R.drawable.ic_done)
+    }
 
     private fun setFinabilityDone() {
         binding.finabilityLayout.layoutfinabilityincomplete.visibility = View.GONE
@@ -225,6 +241,12 @@ class CustomerFOStatusFragment : Fragment(), View.OnClickListener {
         binding.layoutlocationidentityincomplete.visibility = View.GONE
         binding.layoutlocationidentitycomplete.visibility = View.VISIBLE
         binding.layoutagreementincomplete.visibility = View.VISIBLE
+        binding.imglocationidentity.setImageResource(R.drawable.ic_done)
+    }
+    private fun hideLocation(){
+        binding.layoutlocationidentityincomplete.visibility = View.GONE
+        binding.layoutlocationidentitycomplete.visibility = View.GONE
+        binding.layoutagreementincomplete.visibility = View.GONE
         binding.imglocationidentity.setImageResource(R.drawable.ic_done)
     }
     private fun setAgreementDone() {
@@ -311,7 +333,7 @@ class CustomerFOStatusFragment : Fragment(), View.OnClickListener {
                     if(statusData?.kyc?.status!!.size > 0){
                         if(statusData?.kyc?.status!!.get(0)!!.kycStatus.toString().equals("approved",true))
                         {
-                            binding.txtkycdate.setText(dateFormat(statusData.kyc?.status!!.get(0).createdAt.toString()))
+                            binding.txtkycdate.setText(CommonUtils.stringToDateFormat(statusData.kyc?.status!!.get(0).createdAt.toString()))
                             setKycComplete()
                         }
                     }
@@ -325,6 +347,8 @@ class CustomerFOStatusFragment : Fragment(), View.OnClickListener {
                     {
                         binding.txtregisterdate.setText(statusData?.registrationFees?.date.toString())
                         showfinancialRelibility()
+                    }else{
+                       // hideRegisterFee()
                     }
                     if(statusData?.finability?.status.equals("Completed",true))
                     {
@@ -334,6 +358,8 @@ class CustomerFOStatusFragment : Fragment(), View.OnClickListener {
                     if(statusData?.locationUpdate?.status.equals("Completed",true))
                     {
                         setLocationDone()
+                    }else{
+                        hideLocation()
                     }
                     if(statusData?.agreement?.status.equals("Completed",true))
                     {
