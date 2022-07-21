@@ -35,6 +35,12 @@ class FoRegistrationDashBoardActivity : AppCompatActivity(), IFoRegistrationStep
     lateinit var  adapter: FoRegistrationDashboardAdapter
     var listSteps = arrayListOf<Data>()
 
+    private fun activityCalling() {
+        val i = Intent(this, ProjectInfoActivity::class.java)
+        i.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK
+        startActivity(i)
+        finish()
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = FoActivityDashboardBinding.inflate(layoutInflater)
@@ -52,7 +58,9 @@ class FoRegistrationDashBoardActivity : AppCompatActivity(), IFoRegistrationStep
         foRegistrationViewModel.allSteps.observe(this) { steps ->
          //   setUI(steps)
         }
-
+        binding.foBack.setOnClickListener {
+            activityCalling()
+        }
         try{
             userRole =  sharedPrefsHelper.role.toInt()
             userId =  sharedPrefsHelper.userId
@@ -74,9 +82,9 @@ class FoRegistrationDashBoardActivity : AppCompatActivity(), IFoRegistrationStep
             listSteps.add(Data(4,R.drawable.icn_checklist_details,"Check list details","",0))
 
         }*/
-        listSteps.add(Data(3,R.drawable.icn_interest_details,"Expression of interest details",""))
-        listSteps.add(Data(4,R.drawable.icn_checklist_details,"Check list details",""))
 
+        listSteps.add(Data(3,R.drawable.icn_interest_details,"Expression of interest details","",0))
+        listSteps.add(Data(4,R.drawable.icn_checklist_details,"Check list details","",0))
 
         listSteps.add(Data(5,R.drawable.icn_education,"Academic education details","",0))
         listSteps.add(Data(6,R.drawable.icn_social_identify,"Social Identity details","",0))
@@ -86,24 +94,17 @@ class FoRegistrationDashBoardActivity : AppCompatActivity(), IFoRegistrationStep
         listSteps.add(Data(10,R.drawable.icn_personal_refrence,"Personal references details","",0))
 
         if(Globals.USER_TYPE_EMPLOYEE == userRole){
-        /*    listSteps.add(Data(13,R.drawable.icn_family_details,"Work History",""))
-            listSteps.add(Data(14,R.drawable.icn_family_details,"Professional References",""))
-            listSteps.add(Data(15,R.drawable.icn_family_details,"Leave & Holiday Requests",""))
-            listSteps.add(Data(16,R.drawable.icn_family_details,"Referral Details",""))
-*/
-            listSteps.add(Data(13,R.drawable.icn_family_details,"Work History","",0))
+       /*     listSteps.add(Data(13,R.drawable.icn_family_details,"Work History","",0))
             listSteps.add(Data(14,R.drawable.icn_family_details,"Professional References","",0))
             listSteps.add(Data(15,R.drawable.icn_family_details,"Leave & Holiday Requests","",0))
             listSteps.add(Data(16,R.drawable.icn_family_details,"Referral Details","",0))
-
+*/
         }else{
 //            listSteps.add(Data(11,R.drawable.icn_attachment,"Attachment details",""))
         }
-        listSteps.add(Data(11,R.drawable.icn_attachment,"Attachment details",""))
 
-        listSteps.add(Data(12,R.drawable.icn_authorization,"Authorization details",""))
-            listSteps.add(Data(11,R.drawable.icn_attachment,"Attachment details","",0))
-        }
+        listSteps.add(Data(11,R.drawable.icn_attachment,"Attachment details","",0))
+
         listSteps.add(Data(12,R.drawable.icn_authorization,"Authorization details","",0))
 
         var gson = Gson();
