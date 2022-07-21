@@ -10,5 +10,6 @@ data class Data(
     @SerializedName("link_name")
     val linkName: String,
     @SerializedName("profile_updated_on")
-    val profileUpdatedOn: String
+    val profileUpdatedOn: String,
+    var status: Int,
 )

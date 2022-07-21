@@ -11,7 +11,6 @@ import com.bbi.bizbulls.databinding.ActivityProjectinfoBinding
 import com.bbi.bizbulls.sharedpref.SharedPrefsManager
 import com.bbi.bizbulls.ui.registrationforfo.FoRegistrationDashBoardActivity
 
-
 class ProjectInfoActivity : AppCompatActivity(), View.OnClickListener {
     var binding: ActivityProjectinfoBinding? = null
     override fun onCreate(savedInstanceState: Bundle?) {

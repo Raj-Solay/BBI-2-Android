@@ -46,7 +46,12 @@ class FoRegistrationDashboardAdapter(
         holder.itemBinding.icnMenu.setOnClickListener {
            showPopupMenu(holder.itemBinding.icnMenu,model,position)
         }
+       if (model.status!=0){
+           holder.itemBinding.llStatus.setBackgroundResource(R.color.status_green)
+       }else{
+           holder.itemBinding.llStatus.setBackgroundResource(R.color.light_orange)
 
+       }
         holder.itemBinding.itemProgress.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0)
         holder.itemBinding.itemProgress.setBackgroundResource(com.bbi.bizbulls.R.color.status_green)
 

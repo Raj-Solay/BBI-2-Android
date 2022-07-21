@@ -5,7 +5,6 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.bbi.bizbulls.databinding.ActivitySplashBinding
 import com.bbi.bizbulls.sharedpref.SharedPrefsManager
-import com.bbi.bizbulls.ui.registrationforfo.FoRegistrationDashBoardActivity
 
 class SplashScreenActivity : AppCompatActivity() {
     private val sharedPrefsHelper by lazy { SharedPrefsManager(this@SplashScreenActivity) }
