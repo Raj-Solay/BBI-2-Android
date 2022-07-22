@@ -43,6 +43,9 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import java.io.File
+import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.collections.ArrayList
 
 
 class CustomerFOStatusFragment : Fragment(), View.OnClickListener {
@@ -238,7 +241,11 @@ class CustomerFOStatusFragment : Fragment(), View.OnClickListener {
         binding.finabilityLayout.imgfinabilitystatus.setImageResource(R.drawable.ic_done)
     }
     private fun setLocationDone() {
+        val dateFormat2 = SimpleDateFormat("yyyy-MM-dd HH:mm aa");
+        val finalDate = dateFormat2.format(Date())
+        binding.txtlocationidentitydate.setText(finalDate)
         binding.layoutlocationidentityincomplete.visibility = View.GONE
+        binding.btnaddlocationidentity.visibility = View.GONE
         binding.layoutlocationidentitycomplete.visibility = View.VISIBLE
         binding.layoutagreementincomplete.visibility = View.VISIBLE
         binding.imglocationidentity.setImageResource(R.drawable.ic_done)
@@ -345,7 +352,9 @@ class CustomerFOStatusFragment : Fragment(), View.OnClickListener {
                     }
                     if(statusData?.registrationFees?.status.equals("Completed",true))
                     {
-                        binding.txtregisterdate.setText(statusData?.registrationFees?.date.toString())
+                        val dateFormat2 = SimpleDateFormat("yyyy-MM-dd HH:mm aa");
+                        val finalDate = dateFormat2.format(Date())
+                        binding.txtregisterdate.setText(finalDate.toString())
                         showfinancialRelibility()
                     }else{
                        // hideRegisterFee()
@@ -363,7 +372,9 @@ class CustomerFOStatusFragment : Fragment(), View.OnClickListener {
                     }
                     if(statusData?.agreement?.status.equals("Completed",true))
                     {
-                        binding.txtagreementdate.setText(statusData?.agreement?.date.toString())
+                        val dateFormat2 = SimpleDateFormat("yyyy-MM-dd HH:mm aa");
+                        val finalDate = dateFormat2.format(Date())
+                        binding.txtagreementdate.setText(finalDate.toString())
                         setAgreementDone()
                     }
                     if(statusData?.frenchiseeFee?.status.equals("Completed",true))

@@ -10,11 +10,13 @@ import android.os.Bundle
 import android.os.StrictMode
 import android.os.StrictMode.ThreadPolicy
 import android.text.TextUtils
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.core.app.ActivityCompat
 import androidx.core.content.FileProvider
+import androidx.core.view.isVisible
 import com.bbi.bizbulls.databinding.ActivityOfficeLocationMapsBinding
 import com.bbi.bizbulls.model.FileUpload
 import com.bbi.bizbulls.remote.AddLocationResponse
@@ -56,11 +58,15 @@ import java.util.*
 class OfficeLocationMapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
     private lateinit var requestBody: RequestBody
-    private lateinit var mMap: GoogleMap
+     lateinit var mMap: GoogleMap
     private lateinit var binding: ActivityOfficeLocationMapsBinding
 
     var officeBluePrintPath = ""
     var officeImagePath = ""
+    var officeImagePath2 = ""
+    var officeImagePath3 = ""
+    var officeImagePath4 = ""
+    var officeImagePath5 = ""
     var officeVideoPath = ""
     var lati = ""
     var longi = ""
@@ -183,11 +189,14 @@ class OfficeLocationMapsActivity : AppCompatActivity(), OnMapReadyCallback {
                         lati = latLng.latitude.toString()
                         longi = latLng.longitude.toString()
                         address = location
-                        // on below line we are adding marker to that position.
-                        mMap.addMarker(MarkerOptions().position(latLng).title(location))
+                        if(this@OfficeLocationMapsActivity::mMap.isInitialized){
+                            // on below line we are adding marker to that position.
+                            mMap.addMarker(MarkerOptions().position(latLng).title(location))
 
-                        // below line is to animate camera to that position.
-                        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 10f))
+                            // below line is to animate camera to that position.
+                            mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 10f))
+                        }
+
                     }
                     }
 
@@ -199,6 +208,118 @@ class OfficeLocationMapsActivity : AppCompatActivity(), OnMapReadyCallback {
                 return false
             }
         })
+
+        /*--Added--*/
+        binding.llUploadPhoto2.setOnClickListener {
+            Album.image(this) // Image selection.
+                .singleChoice()
+                .camera(true)
+                .onResult { result ->
+
+                    Glide.with(this@OfficeLocationMapsActivity)
+                        .load(Uri.fromFile(File(result.get(0).path)))
+                        .into(binding.imgpancard2);
+                    uploadDocument(File(result.get(0).path), 4) //2
+                }
+                .onCancel(object : Action<String?> {
+                    override fun onAction(result: String) {}
+                })
+                .start()
+        }
+        binding.llUploadPhoto3.setOnClickListener {
+            Album.image(this) // Image selection.
+                .singleChoice()
+                .camera(true)
+                .onResult { result ->
+
+                    Glide.with(this@OfficeLocationMapsActivity)
+                        .load(Uri.fromFile(File(result.get(0).path)))
+                        .into(binding.imgpancard3);
+                    uploadDocument(File(result.get(0).path), 5) //3
+                }
+                .onCancel(object : Action<String?> {
+                    override fun onAction(result: String) {}
+                })
+                .start()
+        }
+        binding.llUploadPhoto4.setOnClickListener {
+            Album.image(this) // Image selection.
+                .singleChoice()
+                .camera(true)
+                .onResult { result ->
+
+                    Glide.with(this@OfficeLocationMapsActivity)
+                        .load(Uri.fromFile(File(result.get(0).path)))
+                        .into(binding.imgpancard4);
+                    uploadDocument(File(result.get(0).path), 6) //4
+                }
+                .onCancel(object : Action<String?> {
+                    override fun onAction(result: String) {}
+                })
+                .start()
+        }
+        binding.llUploadPhoto5.setOnClickListener {
+            Album.image(this) // Image selection.
+                .singleChoice()
+                .camera(true)
+                .onResult { result ->
+
+                    Glide.with(this@OfficeLocationMapsActivity)
+                        .load(Uri.fromFile(File(result.get(0).path)))
+                        .into(binding.imgpancard5);
+                    uploadDocument(File(result.get(0).path), 7) //5
+                }
+                .onCancel(object : Action<String?> {
+                    override fun onAction(result: String) {}
+                })
+                .start()
+        }
+
+        binding.imgAdd.setOnClickListener {
+            if(!binding.uploadImageOne.isVisible){
+                binding.uploadImageOne.visibility = View.VISIBLE
+                return@setOnClickListener
+            }
+            if(!binding.uploadImageTwo.isVisible){
+                binding.uploadImageTwo.visibility = View.VISIBLE
+                return@setOnClickListener
+            }
+            if(!binding.uploadImageThree.isVisible){
+                binding.uploadImageThree.visibility = View.VISIBLE
+                return@setOnClickListener
+            }
+            if(!binding.uploadImageFour.isVisible){
+                binding.uploadImageFour.visibility = View.VISIBLE
+                return@setOnClickListener
+            }
+            if(!binding.uploadImageFive.isVisible){
+                binding.uploadImageFive.visibility = View.VISIBLE
+                binding.lnrViewMultiAdd.visibility = View.GONE
+                return@setOnClickListener
+            }
+        }
+        binding.btnSaveLocation.setOnClickListener {
+            val location: String = binding.idSearchView.getQuery().toString()
+            sharedPrefsHelper.officeLocationBookmark = location.toString()
+        }
+        if(!sharedPrefsHelper.officeLocationBookmark.isNullOrEmpty()){
+            binding.idSearchView.setQuery(sharedPrefsHelper.officeLocationBookmark, true)
+        }
+
+        binding.imgZoomOut.setOnClickListener {
+            if(this@OfficeLocationMapsActivity::mMap.isInitialized){
+                cuurentZoomLevel -= 3f
+                mMap.animateCamera( CameraUpdateFactory.zoomTo( cuurentZoomLevel ) )
+            }
+        }
+        binding.imgZoomIn.setOnClickListener {
+            cuurentZoomLevel += 3f
+            if(this@OfficeLocationMapsActivity::mMap.isInitialized){
+                mMap.animateCamera( CameraUpdateFactory.zoomTo( cuurentZoomLevel ) )
+            }
+        }
+
+        getCurrentLOcation(this@OfficeLocationMapsActivity)
 
         binding.btnsubmit.setOnClickListener {
             when {
@@ -243,7 +364,110 @@ class OfficeLocationMapsActivity : AppCompatActivity(), OnMapReadyCallback {
             }
         }
     }
+    var cuurentZoomLevel = 10f;
+    var myCurrentLocation = ""
+    lateinit var client: FusedLocationProviderClient
+    fun getCurrentLOcation(officeLocationMapsActivity:  OfficeLocationMapsActivity) {
+        client= LocationServices.getFusedLocationProviderClient(this@OfficeLocationMapsActivity)
+        Dexter.withContext(officeLocationMapsActivity)
+            .withPermission(Manifest.permission.ACCESS_FINE_LOCATION)
+            .withListener(object : PermissionListener {
+                override fun onPermissionGranted(response: PermissionGrantedResponse) {
+                    getmyLocation()
+                }
 
+                override fun onPermissionDenied(response: PermissionDeniedResponse) { /* ... */
+                }
+
+                override fun onPermissionRationaleShouldBeShown(p0: com.karumi.dexter.listener.PermissionRequest?,token: PermissionToken? ) {
+                    token?.continuePermissionRequest()
+                }
+
+            }).check()
+    }
+    fun getmyLocation(){
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return
+        }
+        var tast= client.lastLocation
+        tast.addOnSuccessListener(object: OnSuccessListener<Location> {
+            override fun onSuccess(location: Location?) {
+                /*smf.getMapAsync( object : OnMapReadyCallback {
+                    override fun onMapReady(googleMap: GoogleMap) {
+                        var latLng= location?.let { LatLng(it?.latitude,location?.longitude) }
+                        var markerOptions= MarkerOptions().position(latLng).title("You are here ......!!")
+                        googleMap.addMarker(markerOptions)
+                        googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15F))
+                    }
+
+                })*/
+                try {
+                    val geo = Geocoder(
+                        this@OfficeLocationMapsActivity.getApplicationContext(),
+                        Locale.getDefault()
+                    )
+                    val addresses: List<Address> =
+                        location?.let { geo.getFromLocation(it.latitude, it.longitude, 1) } as List<Address>
+                    if (addresses.isEmpty()) {
+                        /*yourtextfieldname.setText("Waiting for Location")*/
+                    } else {
+                        if (addresses.size > 0) {
+
+                            myCurrentLocation = addresses[0].locality;
+
+                            val location: String = myCurrentLocation
+
+                            // below line is to create a list of address
+                            // where we will store the list of all- address.
+                            var addressList: List<Address>? = null
+                            // checking if the entered location is null or not.
+                            if (location != null || location == "") {
+                                // on below line we are creating and initializing a geo coder.
+                                val geocoder = Geocoder(this@OfficeLocationMapsActivity)
+                                try {
+                                    // on below line we are getting location from the
+                                    // location name and adding that location to address list.
+                                    addressList = geocoder.getFromLocationName(location, 1)
+                                } catch (e: IOException) {
+                                    e.printStackTrace()
+                                }
+                                // on below line we are getting the location
+                                // from our list a first position.
+                                if(addressList?.isNotEmpty() == true) {
+                                    val address1: Address? = addressList?.get(0)
+
+                                    // on below line we are creating a variable for our location
+                                    // where we will add our locations latitude and longitude.
+                                    address1?.let {
+                                        val latLng = LatLng(address1.getLatitude(), address1.getLongitude())
+                                        lati = latLng.latitude.toString()
+                                        longi = latLng.longitude.toString()
+                                        address = location
+                                        // on below line we are adding marker to that position.
+                                        mMap.addMarker(MarkerOptions().position(latLng).title(location))
+
+                                        // below line is to animate camera to that position.
+                                        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 10f))
+                                    }
+                                }
+
+                            }
+                        }
+                    }
+                } catch (e: Exception) {
+                    e.printStackTrace() // getFromLocation() may sometimes fail
+                }
+            }
+
+        })
+    }
     /**
      * Manipulates the map once available.
      * This callback is triggered when the map is ready to be used.
@@ -255,7 +479,7 @@ class OfficeLocationMapsActivity : AppCompatActivity(), OnMapReadyCallback {
      */
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
-
+        mMap.mapType = GoogleMap.MAP_TYPE_SATELLITE
         // Add a marker in Sydney and move the camera
         if(::currentLocation.isInitialized) {
             val sydney = LatLng(currentLocation.latitude, currentLocation.longitude)
@@ -302,6 +526,18 @@ class OfficeLocationMapsActivity : AppCompatActivity(), OnMapReadyCallback {
                     if (path == 3) {
                         officeVideoPath = responseObject.body()?.data?.path ?: ""
                     }
+                    if(path == 4){
+                        officeImagePath2 = responseObject.body()?.data?.path ?: ""
+                    }
+                    if(path == 5){
+                        officeImagePath3 = responseObject.body()?.data?.path ?: ""
+                    }
+                    if(path == 6){
+                        officeImagePath4 = responseObject.body()?.data?.path ?: ""
+                    }
+                    if(path == 7){
+                        officeImagePath5 = responseObject.body()?.data?.path ?: ""
+                    }
 
                 } else {
                     RetrofitClient.showResponseMessage(
@@ -333,7 +569,25 @@ class OfficeLocationMapsActivity : AppCompatActivity(), OnMapReadyCallback {
             binding.txtOfficeSpaceMeasurement.text.toString()
         )
         jsonObject.addProperty("space_blue_print_file", officeBluePrintPath)
-        jsonObject.addProperty("images", officeImagePath)
+
+
+        var ImageList = ""
+        if(!officeImagePath.isNullOrEmpty()){
+            ImageList += officeImagePath
+        }
+        if(!officeImagePath2.isNullOrEmpty()){
+            ImageList += ",$officeImagePath2"
+        }
+        if(!officeImagePath3.isNullOrEmpty()){
+            ImageList += ",$officeImagePath3"
+        }
+        if(!officeImagePath4.isNullOrEmpty()){
+            ImageList += ",$officeImagePath4"
+        }
+        if(!officeImagePath5.isNullOrEmpty()){
+            ImageList += ",$officeImagePath5"
+        }
+        jsonObject.addProperty("images", ImageList)
         jsonObject.addProperty("videos", officeVideoPath)
         val call: Call<AddLocationResponse> =
             RetrofitClient.getUrl().addOfficeLocation(sharedPrefsHelper.authToken, jsonObject)
@@ -343,6 +597,7 @@ class OfficeLocationMapsActivity : AppCompatActivity(), OnMapReadyCallback {
                 response: Response<AddLocationResponse>
             ) {
                 if (response.isSuccessful) {
+                   // sharedPrefsHelper.officeLocationBookmark = ""
                     setResult(RESULT_OK)
                     finish()
                 } else {

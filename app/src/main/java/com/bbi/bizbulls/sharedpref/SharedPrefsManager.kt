@@ -36,10 +36,17 @@ class SharedPrefsManager constructor(private val myContext: Context) {
         const val USER_ID = "user_id"
         const val IS_STEP_COMPLETED = "is_step_completed"
         const val FORM_STEP_INIT = "form_step_init"
+        const val OFFICE_LOCATION_BOOKMARK = "office_location_bookmark"
 
 
         const val DEFAULT_KEY_IS_LOGIN = false
     }
+    var officeLocationBookmark: String
+        get() = sharedPrefs[OFFICE_LOCATION_BOOKMARK] ?: ""
+        set(value) {
+            sharedPrefs[OFFICE_LOCATION_BOOKMARK] = value
+        }
+
     var isFromStepInit: Boolean
         get() = sharedPrefs[FORM_STEP_INIT] ?: false
         set(value) {

@@ -103,7 +103,8 @@
                     android:text="07-11-2021 6:00PM"
                     android:textColor="@color/heading"
                     android:textSize="@dimen/small_font"
-                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginLeft="@dimen/_14sdp"
+                    app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/imglocation" />
 
                 <View
@@ -228,7 +229,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="6dp"
                             android:layout_marginEnd="4dp"
-                            android:text="@string/c_viewdetail"
+                            android:text="@string/c_viewdetail_agrement"
                             android:textColor="@color/orange_700"
                             android:textSize="@dimen/medium_font"
                             app:layout_constraintEnd_toEndOf="parent"
@@ -353,8 +354,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="4dp"
-                            android:text="@string/c_download"
-                            android:textColor="@color/heading"
+                            android:text="@string/c_download_receipt"
+                            android:textColor="@color/orange_700"
                             android:textSize="@dimen/medium_font"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
@@ -529,7 +530,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
-                            android:text="Completed"
+                            android:text="Pending Approval"
                             android:textColor="@color/status_green"
                             android:textSize="@dimen/medium_font"
                             app:layout_constraintStart_toStartOf="parent"
@@ -542,7 +543,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="4dp"
                             android:text="@string/c_download"
-                            android:textColor="@color/heading"
+                            android:textColor="@color/orange_700"
                             android:textSize="@dimen/medium_font"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
@@ -583,40 +584,49 @@
                         android:layout_height="0dp"
                         android:minHeight="52dp"
                         android:paddingBottom="@dimen/overrallspacing"
-                        android:visibility="gone"
+                        android:visibility="visible"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent">
 
-                        <androidx.appcompat.widget.AppCompatTextView
-                            android:id="@+id/txtlocationidentitypendingapproval"
-                            style="@style/fontregular"
-                            android:layout_width="wrap_content"
+                        <androidx.appcompat.widget.LinearLayoutCompat
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="8dp"
-                            android:layout_marginTop="2dp"
-                            android:text="Pending Approval"
-                            android:textColor="@color/status_red"
-                            android:textSize="@dimen/medium_font"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
+                            app:layout_constraintTop_toTopOf="parent"
+                            android:orientation="vertical">
 
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/txtlocationidentitypendingapproval"
+                                style="@style/fontregular"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginTop="2dp"
+                                android:text="Pending Approval"
+                                android:visibility="gone"
+                                android:textColor="@color/status_red"
+                                android:textSize="@dimen/medium_font"
+                                />
 
-                        <androidx.appcompat.widget.AppCompatButton
-                            android:id="@+id/btnaddlocationidentity"
-                            style="@style/fontregular"
-                            android:layout_width="wrap_content"
-                            android:layout_height="22dp"
-                            android:layout_marginStart="8dp"
-                            android:background="@drawable/bg_submit"
-                            android:paddingStart="8dp"
-                            android:paddingEnd="8dp"
-                            android:text="Update"
-                            android:textColor="@color/white"
-                            android:textSize="@dimen/medium_font"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            tools:ignore="TouchTargetSizeCheck" />
+                            <androidx.appcompat.widget.AppCompatButton
+                                android:id="@+id/btnaddlocationidentity"
+                                style="@style/fontregular"
+                                android:layout_width="wrap_content"
+                                android:layout_height="22dp"
+                                android:layout_marginStart="8dp"
+                                android:background="@drawable/bg_submit"
+                                android:paddingStart="8dp"
+                                android:gravity="center"
+                                android:paddingEnd="8dp"
+                                android:text="Update"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/medium_font"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                tools:ignore="TouchTargetSizeCheck" />
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+
 
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -704,7 +714,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="4dp"
                             android:text="@string/c_download"
-                            android:textColor="@color/heading"
+                            android:textColor="@color/orange_700"
                             android:textSize="@dimen/medium_font"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
@@ -882,7 +892,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="4dp"
                             android:text="@string/c_download"
-                            android:textColor="@color/heading"
+                            android:textColor="@color/orange_700"
                             android:textSize="@dimen/medium_font"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />

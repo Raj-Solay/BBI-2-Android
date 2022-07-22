@@ -8,6 +8,7 @@ import android.location.Address
 import android.location.Geocoder
 import android.location.Location
 import android.os.Bundle
+import android.util.Log
 import android.view.Gravity
 import android.view.KeyEvent
 import android.view.View
@@ -525,6 +526,7 @@ class DashboardActivity : AppCompatActivity(), View.OnClickListener {
         var tast= client.lastLocation
         tast.addOnSuccessListener(object: OnSuccessListener<Location> {
             override fun onSuccess(location: Location?) {
+
                 /*smf.getMapAsync( object : OnMapReadyCallback {
                     override fun onMapReady(googleMap: GoogleMap) {
                         var latLng= location?.let { LatLng(it?.latitude,location?.longitude) }
@@ -545,6 +547,7 @@ class DashboardActivity : AppCompatActivity(), View.OnClickListener {
                         /*yourtextfieldname.setText("Waiting for Location")*/
                     } else {
                         if (addresses.size > 0) {
+
                             binding?.txtlcoationname?.setText(
                                 /*addresses[0].getFeatureName().toString() + ", " +*/ addresses[0].getLocality() /*+ ", " + addresses[0].getAdminArea() + ", " + addresses[0].getCountryName()*/
                             )

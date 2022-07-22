@@ -168,7 +168,7 @@ object CommonUtils {
             val dateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSSSS'Z'")
             val objDate = dateFormat.parse(date)
 
-            val dateFormat2 = SimpleDateFormat("yyyy-MM-dd HH:mm");
+            val dateFormat2 = SimpleDateFormat("yyyy-MM-dd HH:mm aa");
             val finalDate = dateFormat2.format(objDate)
             finalDate
         }catch (e : Exception){
