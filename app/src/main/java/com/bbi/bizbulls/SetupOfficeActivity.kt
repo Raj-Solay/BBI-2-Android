@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.FileProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -33,20 +34,33 @@ class SetupOfficeActivity : AppCompatActivity() {
     private var imagePath2 = ""
     private val sharedPrefsHelper by lazy { SharedPrefsManager(this@SetupOfficeActivity) }
     var staffList = mutableListOf<StaffMembersResponse.StaffMember>()
+    var counsellorCount = 0
+    var filedStaffCount = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySetupOfficeBinding.inflate(layoutInflater)
         setContentView(binding.root)
         binding.apply {
             btnAddCounceller.setOnClickListener{
-                val intent = Intent(this@SetupOfficeActivity, AddStaffDetailActivity::class.java)
-                intent.putExtra(Globals.TYPE,1)
-                startActivityForResult(intent, Globals.REQUEST_CODE_ADD_STAFF)
+                if(counsellorCount > 2){
+                        Toast.makeText(this@SetupOfficeActivity,"Max Counsellor 2 allow",Toast.LENGTH_SHORT).show()
+                }else{
+                    val intent = Intent(this@SetupOfficeActivity, AddStaffDetailActivity::class.java)
+                    intent.putExtra(Globals.TYPE,1)
+                    startActivityForResult(intent, Globals.REQUEST_CODE_ADD_STAFF)
+                }
+
             }
             btnAddFieldStaff.setOnClickListener{
-                val intent = Intent(this@SetupOfficeActivity, AddStaffDetailActivity::class.java)
-                intent.putExtra(Globals.TYPE,2)
-                startActivityForResult(intent, Globals.REQUEST_CODE_ADD_STAFF)
+                if(filedStaffCount > 10){
+                    Toast.makeText(this@SetupOfficeActivity,"Max 10 Filed Staff allow",Toast.LENGTH_SHORT).show()
+                }else{
+                    val intent = Intent(this@SetupOfficeActivity, AddStaffDetailActivity::class.java)
+                    intent.putExtra(Globals.TYPE,2)
+                    startActivityForResult(intent, Globals.REQUEST_CODE_ADD_STAFF)
+                }
+
             }
         }
         binding.btnsubmitrefferance.setOnClickListener {
@@ -118,6 +132,13 @@ class SetupOfficeActivity : AppCompatActivity() {
                 if (responseObject.isSuccessful) {
 
                     staffList = responseObject.body()?.data as MutableList<StaffMembersResponse.StaffMember>
+                    staffList.forEach {
+                        if(it.type == "1"){
+                            counsellorCount++
+                        }else{
+                            filedStaffCount++
+                        }
+                    }
                     mAdapter = StaffMemberAdapter(
                         this@SetupOfficeActivity,staffList
                     )

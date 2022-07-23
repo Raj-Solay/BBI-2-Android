@@ -2,8 +2,11 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_margin="@dimen/_16sdp"
     android:layout_height="match_parent"
+    android:layout_marginLeft="@dimen/_16sdp"
+    android:layout_marginRight="@dimen/_16sdp"
+    android:layout_marginBottom="@dimen/_16sdp"
+    android:layout_marginTop="@dimen/_4sdp"
     android:background="@color/white">
 
     <androidx.core.widget.NestedScrollView
@@ -56,7 +59,7 @@
 
             <!--Fathers Name-->
             <FrameLayout
-                android:layout_marginTop="@dimen/_8sdp"
+                android:layout_marginTop="@dimen/_4sdp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
@@ -93,7 +96,7 @@
 
             <!--Mothers Name-->
             <FrameLayout
-                android:layout_marginTop="@dimen/_8sdp"
+                android:layout_marginTop="@dimen/_4sdp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
@@ -131,82 +134,91 @@
 
             <!--DOB-->
 
-            <FrameLayout
-                android:layout_marginTop="@dimen/_8sdp"
+            <LinearLayout
+                android:layout_marginTop="@dimen/_4sdp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:background="@drawable/card">
-
-                <ImageView
-                    android:layout_width="@dimen/_18sdp"
-                    android:layout_height="@dimen/_18sdp"
-                    android:visibility="gone"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="@dimen/_8sdp"
-                    android:adjustViewBounds="true"
-                    app:tint="@color/value"
-                    android:src="@drawable/ic_calendar" />
-
+                android:orientation="horizontal">
                 <FrameLayout
-                    android:layout_width="match_parent"
+                    android:layout_marginRight="@dimen/_4sdp"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    style="@style/formFrameLayoutSmall">
+                    android:layout_gravity="bottom"
+                    android:background="@drawable/card">
 
-                    <androidx.appcompat.widget.AppCompatEditText
-                        android:background="@null"
-                        android:id="@+id/edtdob"
-                        android:lines="1"
+                    <ImageView
+                        android:layout_width="@dimen/_18sdp"
+                        android:layout_height="@dimen/_18sdp"
+                        android:visibility="gone"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="@dimen/_8sdp"
+                        android:adjustViewBounds="true"
+                        app:tint="@color/value"
+                        android:src="@drawable/ic_calendar" />
+
+                    <FrameLayout
                         android:layout_width="match_parent"
-                        style="@style/formInput"
-                        android:hint="Date of Birth"
-                        android:maxLines="1"
-                         />
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        style="@style/formFrameLayoutSmall">
+
+                        <androidx.appcompat.widget.AppCompatEditText
+                            android:background="@null"
+                            android:id="@+id/edtdob"
+                            android:lines="1"
+                            android:layout_width="match_parent"
+                            style="@style/formInput"
+                            android:hint="Date of Birth"
+                            android:maxLines="1"
+                            />
+                    </FrameLayout>
+
                 </FrameLayout>
 
-            </FrameLayout>
-
-            <!--Place of birth-->
-            <FrameLayout
-                android:layout_marginTop="@dimen/_8sdp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:background="@drawable/card">
-
-                <ImageView
-                    android:layout_width="@dimen/_18sdp"
-                    android:layout_height="@dimen/_18sdp"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="@dimen/_8sdp"
-                    android:adjustViewBounds="true"
-                    app:tint="@color/value"
-                    android:visibility="gone"
-                    android:src="@drawable/ic_family_address" />
-
+                <!--Place of birth-->
                 <FrameLayout
-                    android:layout_width="match_parent"
+                    android:layout_marginLeft="@dimen/_4sdp"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    style="@style/formFrameLayoutSmall">
+                    android:layout_gravity="bottom"
+                    android:background="@drawable/card">
 
-                    <androidx.appcompat.widget.AppCompatEditText
-                        android:background="@null"
-                        android:id="@+id/edtplaceofbirth"
-                        android:lines="1"
+                    <ImageView
+                        android:layout_width="@dimen/_18sdp"
+                        android:layout_height="@dimen/_18sdp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="@dimen/_8sdp"
+                        android:adjustViewBounds="true"
+                        app:tint="@color/value"
+                        android:visibility="gone"
+                        android:src="@drawable/ic_family_address" />
+
+                    <FrameLayout
                         android:layout_width="match_parent"
-                        style="@style/formInput"
-                        android:hint="@string/ct_writeplaceofbirth"
-                        android:maxLines="1"
-                       />
-                </FrameLayout>
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        style="@style/formFrameLayoutSmall">
 
-            </FrameLayout>
+                        <androidx.appcompat.widget.AppCompatEditText
+                            android:background="@null"
+                            android:id="@+id/edtplaceofbirth"
+                            android:lines="1"
+                            android:layout_width="match_parent"
+                            style="@style/formInput"
+                            android:hint="@string/ct_writeplaceofbirth"
+                            android:maxLines="1"
+                            />
+                    </FrameLayout>
+
+                </FrameLayout>
+            </LinearLayout>
+
 
             <!--Age-->
             <FrameLayout
-                android:layout_marginTop="@dimen/_8sdp"
+                android:layout_marginTop="@dimen/_4sdp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
@@ -243,7 +255,7 @@
 
             <!--Email id-->
             <FrameLayout
-                android:layout_marginTop="@dimen/_8sdp"
+                android:layout_marginTop="@dimen/_4sdp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
@@ -283,20 +295,22 @@
             <!--Sex-->
 
             <LinearLayout
-                android:layout_marginTop="@dimen/_8sdp"
+                android:layout_marginTop="@dimen/_4sdp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/card"
-                android:orientation="vertical">
+                android:orientation="horizontal">
 
                 <androidx.appcompat.widget.AppCompatTextView
                     style="@style/subTitle"
                     android:text="@string/ct_sex"
+                    android:layout_width="wrap_content"
                     android:layout_marginStart="@dimen/_10sdp"
                     android:textSize="@dimen/_12ssp"/>
 
                 <RadioGroup
                     android:id="@+id/rgGender"
+                    android:layout_gravity="center"
                     android:layout_marginStart="@dimen/_10sdp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -321,7 +335,7 @@
             <!--Mother Tongue-->
 
             <FrameLayout
-                android:layout_marginTop="@dimen/_8sdp"
+                android:layout_marginTop="@dimen/_4sdp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
@@ -360,7 +374,7 @@
             <!--Maritial Status-->
 
             <LinearLayout
-                android:layout_marginTop="@dimen/_8sdp"
+                android:layout_marginTop="@dimen/_4sdp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/card"
@@ -412,7 +426,7 @@
 
             <!--Whatsapp Number-->
             <FrameLayout
-                android:layout_marginTop="@dimen/_8sdp"
+                android:layout_marginTop="@dimen/_4sdp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
@@ -450,7 +464,7 @@
 
             <!--Alternamte number-->
             <FrameLayout
-                android:layout_marginTop="@dimen/_8sdp"
+                android:layout_marginTop="@dimen/_4sdp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
@@ -489,7 +503,7 @@
 
             <!--Residential address-->
             <FrameLayout
-                android:layout_marginTop="@dimen/_8sdp"
+                android:layout_marginTop="@dimen/_4sdp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
@@ -522,12 +536,12 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 style="@style/subTitle"
-                android:layout_marginTop="@dimen/_8sdp"
+                android:layout_marginTop="@dimen/_4sdp"
                 android:text="Permanent Residence Address :-"
                 android:textSize="@dimen/_12ssp"/>
 
             <LinearLayout
-                android:layout_marginTop="@dimen/_8sdp"
+                android:layout_marginTop="@dimen/_4sdp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/card"
@@ -579,7 +593,7 @@
 
             <!--Accommodation since-->
             <FrameLayout
-                android:layout_marginTop="@dimen/_8sdp"
+                android:layout_marginTop="@dimen/_4sdp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
@@ -617,7 +631,7 @@
 
             <!--Emergency Contact number-->
             <FrameLayout
-                android:layout_marginTop="@dimen/_8sdp"
+                android:layout_marginTop="@dimen/_4sdp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
@@ -658,13 +672,13 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 style="@style/subTitle"
-                android:layout_marginTop="@dimen/_8sdp"
+                android:layout_marginTop="@dimen/_4sdp"
                 android:layout_marginStart="@dimen/_10sdp"
                 android:text="Present Residence Address :-"
                 android:textSize="@dimen/_12ssp"/>
 
             <FrameLayout
-                android:layout_marginTop="@dimen/_8sdp"
+                android:layout_marginTop="@dimen/_4sdp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
@@ -694,86 +708,95 @@
 
             </FrameLayout>
 
-            <!--state-->
-            <FrameLayout
-                android:layout_marginTop="@dimen/_8sdp"
+            <LinearLayout
+                android:layout_marginTop="@dimen/_4sdp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:background="@drawable/card">
-
-                <ImageView
-                    android:layout_width="@dimen/_18sdp"
-                    android:layout_height="@dimen/_18sdp"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="@dimen/_8sdp"
-                    android:adjustViewBounds="true"
-                    android:visibility="gone"
-                    app:tint="@color/value"
-                    android:src="@drawable/ic_education_name" />
-
+                android:orientation="horizontal">
+                <!--state-->
                 <FrameLayout
-                    android:layout_width="match_parent"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_marginRight="@dimen/_4sdp"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    style="@style/formFrameLayoutSmall">
+                    android:layout_gravity="bottom"
+                    android:background="@drawable/card">
 
-                    <androidx.appcompat.widget.AppCompatEditText
-                        android:background="@null"
-                        android:id="@+id/edtState"
-                        android:lines="1"
+                    <ImageView
+                        android:layout_width="@dimen/_18sdp"
+                        android:layout_height="@dimen/_18sdp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="@dimen/_8sdp"
+                        android:adjustViewBounds="true"
+                        android:visibility="gone"
+                        app:tint="@color/value"
+                        android:src="@drawable/ic_education_name" />
+
+                    <FrameLayout
                         android:layout_width="match_parent"
-                        style="@style/formInput"
-                        android:hint="State"
-                        android:maxLines="1"
-                        android:inputType="text"
-                        />
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        style="@style/formFrameLayoutSmall">
+
+                        <androidx.appcompat.widget.AppCompatEditText
+                            android:background="@null"
+                            android:id="@+id/edtState"
+                            android:lines="1"
+                            android:layout_width="match_parent"
+                            style="@style/formInput"
+                            android:hint="State"
+                            android:maxLines="1"
+                            android:inputType="text"
+                            />
+                    </FrameLayout>
+
                 </FrameLayout>
 
-            </FrameLayout>
-
-          <!--Zip-->
-            <FrameLayout
-                android:layout_marginTop="@dimen/_8sdp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:background="@drawable/card">
-
-                <ImageView
-                    android:layout_width="@dimen/_18sdp"
-                    android:layout_height="@dimen/_18sdp"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="@dimen/_8sdp"
-                    android:adjustViewBounds="true"
-                    app:tint="@color/value"
-                    android:visibility="gone"
-                    android:src="@drawable/ic_education_name" />
-
+                <!--Zip-->
                 <FrameLayout
-                    android:layout_width="match_parent"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_marginLeft="@dimen/_4sdp"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    style="@style/formFrameLayoutSmall">
+                    android:layout_gravity="bottom"
+                    android:background="@drawable/card">
 
-                    <androidx.appcompat.widget.AppCompatEditText
-                        android:background="@null"
-                        android:id="@+id/edtZip"
-                        android:lines="1"
+                    <ImageView
+                        android:layout_width="@dimen/_18sdp"
+                        android:layout_height="@dimen/_18sdp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="@dimen/_8sdp"
+                        android:adjustViewBounds="true"
+                        app:tint="@color/value"
+                        android:visibility="gone"
+                        android:src="@drawable/ic_education_name" />
+
+                    <FrameLayout
                         android:layout_width="match_parent"
-                        style="@style/formInput"
-                        android:hint="Zip"
-                        android:maxLines="1"
-                        android:inputType="number"
-                        />
-                </FrameLayout>
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        style="@style/formFrameLayoutSmall">
 
-            </FrameLayout>
+                        <androidx.appcompat.widget.AppCompatEditText
+                            android:background="@null"
+                            android:id="@+id/edtZip"
+                            android:lines="1"
+                            android:layout_width="match_parent"
+                            style="@style/formInput"
+                            android:hint="Zip"
+                            android:maxLines="1"
+                            android:inputType="number"
+                            />
+                    </FrameLayout>
+
+                </FrameLayout>
+            </LinearLayout>
+
 
 
             <!--Accommodation type-->
             <LinearLayout
-                android:layout_marginTop="@dimen/_8sdp"
+                android:layout_marginTop="@dimen/_4sdp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/card"
@@ -825,7 +848,7 @@
 
             <!--Accommodation since-->
             <FrameLayout
-                android:layout_marginTop="@dimen/_8sdp"
+                android:layout_marginTop="@dimen/_4sdp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
@@ -862,7 +885,7 @@
             </FrameLayout>
 
             <FrameLayout
-                android:layout_marginTop="@dimen/_8sdp"
+                android:layout_marginTop="@dimen/_4sdp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"

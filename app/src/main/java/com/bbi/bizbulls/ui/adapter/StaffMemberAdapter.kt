@@ -21,7 +21,7 @@ class StaffMemberAdapter(var context: Context, academic_List: MutableList<StaffM
         val aceAcademic = academicList[position]
         holder.txtStaffName.text = aceAcademic.firstName
         var degignation = context.getString(R.string.counsellor)
-        if(aceAcademic.id=="2"){
+        if(aceAcademic.type=="2"){
             degignation = context.getString(R.string.staff_member)
         }
         holder.txtStaffDesignation.text = degignation

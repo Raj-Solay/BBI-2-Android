@@ -257,6 +257,9 @@ class CustomerFOStatusFragment : Fragment(), View.OnClickListener {
         binding.imglocationidentity.setImageResource(R.drawable.ic_done)
     }
     private fun setAgreementDone() {
+        val dateFormat2 = SimpleDateFormat("yyyy-MM-dd HH:mm aa");
+        val finalDate = dateFormat2.format(Date())
+        binding.txtagreementdate.setText(finalDate.toString())
         binding.layoutagreementincomplete.visibility = View.GONE
         binding.layoutagreementcomplete.visibility = View.VISIBLE
         if(isCustomer){
@@ -268,6 +271,10 @@ class CustomerFOStatusFragment : Fragment(), View.OnClickListener {
     }
 
     private fun setSiteVisitDone() {
+        val dateFormat2 = SimpleDateFormat("yyyy-MM-dd HH:mm aa");
+        val finalDate = dateFormat2.format(Date())
+        binding.txtsetupdate.setText(finalDate.toString())
+
         binding.siteVisitLayout.layoutsiteVisitincomplete.visibility = View.GONE
         binding.siteVisitLayout.layoutsiteVisitcomplete.visibility = View.VISIBLE
         binding.franchiseeFeeLayout.layoutfranchiseeFeeincomplete.visibility = View.VISIBLE
@@ -287,10 +294,14 @@ class CustomerFOStatusFragment : Fragment(), View.OnClickListener {
         binding.imgsetupstatus.setImageResource(R.drawable.ic_done)
     }
     private fun setLicenceDone() {
+        val dateFormat2 = SimpleDateFormat("yyyy-MM-dd HH:mm aa");
+        val finalDate = dateFormat2.format(Date())
+        binding.txtlicensedate.setText(finalDate.toString())
         binding.layoutlicenseincomplete.visibility = View.GONE
         binding.layoutlicensecomplete.visibility = View.VISIBLE
         binding.imglicensestatus.setImageResource(R.drawable.ic_done)
         binding.txtinfomsg.visibility = View.VISIBLE
+        binding.imgLicence.visibility = View.VISIBLE
         binding.txtviewcontactdetails.visibility = View.VISIBLE
     }
 

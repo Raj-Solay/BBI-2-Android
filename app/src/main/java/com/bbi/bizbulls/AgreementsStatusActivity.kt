@@ -1,7 +1,11 @@
 package com.bbi.bizbulls
 
+import android.app.Activity
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
+import android.provider.DocumentsContract
+import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.FileProvider
@@ -11,7 +15,9 @@ import com.bbi.bizbulls.media.Adapter
 import com.bbi.bizbulls.model.FileUpload
 import com.bbi.bizbulls.remote.RetrofitClient
 import com.bbi.bizbulls.sharedpref.SharedPrefsManager
+import com.bbi.bizbulls.ui.FileSeletionDialog
 import com.bbi.bizbulls.utils.CommonUtils
+import com.bbi.bizbulls.utils.FileUtils
 import com.bbi.bizbulls.utils.MyProcessDialog
 import com.google.gson.JsonArray
 import com.google.gson.JsonObject
@@ -61,7 +67,7 @@ class AgreementsStatusActivity : AppCompatActivity() {
             finish()
         }
         binding?.btnSubmit?.setOnClickListener {
-               if(franchiseeImageList.isNotEmpty() && thirdPartyImageList.isNotEmpty())
+               if(franchiseeImageList.isNotEmpty()/* && thirdPartyImageList.isNotEmpty()*/)
                {
                    uploadAgreements()
                }
@@ -71,23 +77,7 @@ class AgreementsStatusActivity : AppCompatActivity() {
         }
 
         binding?.llUploadFranchiseeAgreement?.setOnClickListener {
-            Album.image(this) // Image selection.
-                .multipleChoice()
-                .camera(true)
-                .columnCount(3)
-                .selectCount(3)
-                .checkedList(mAlbumFiles)
-                .onResult { result ->
-                    mAlbumFiles = result
-                    mAdapter?.notifyDataSetChanged(mAlbumFiles)
-                    mAlbumFiles?.forEach {
-                        uploadDocument(File(it.path),1)
-                    }
-                }
-                .onCancel(object : Action<String?> {
-                    override fun onAction(result: String) {}
-                })
-                .start()
+            showDialog()
         }
 
         binding?.llUploadThirdPartyAgreement?.setOnClickListener {
@@ -111,7 +101,69 @@ class AgreementsStatusActivity : AppCompatActivity() {
         }
 
     }
+    fun showDialog(){
+        var fileSelectionDialog = FileSeletionDialog(this@AgreementsStatusActivity)
+        fileSelectionDialog.show()
 
+        fileSelectionDialog.txtImage!!.setOnClickListener {
+            fileSelectionDialog.dismiss()
+            selectImageIntent()
+        }
+        fileSelectionDialog.txtPdf!!.setOnClickListener {
+            fileSelectionDialog.dismiss()
+            selectPdfIntent()
+        }
+    }
+
+    fun selectPdfIntent(){
+        val intentPDF = Intent(Intent.ACTION_OPEN_DOCUMENT).apply {
+            type = "application/pdf"
+            addCategory(Intent.CATEGORY_OPENABLE)
+            putExtra(DocumentsContract.EXTRA_INITIAL_URI, true)
+        }
+        startActivityForResult(
+            Intent.createChooser(intentPDF, "Open with"),
+            1001
+        )
+    }
+    fun selectImageIntent(){
+        Album.image(this) // Image selection.
+            .multipleChoice()
+            .camera(true)
+            .columnCount(3)
+            .selectCount(3)
+            .checkedList(mAlbumFiles)
+            .onResult { result ->
+                mAlbumFiles = result
+                mAdapter?.notifyDataSetChanged(mAlbumFiles)
+                mAlbumFiles?.forEach {
+                    uploadDocument(File(it.path),1)
+                }
+            }
+            .onCancel(object : Action<String?> {
+                override fun onAction(result: String) {}
+            })
+            .start()
+    }
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (resultCode == Activity.RESULT_OK) {
+            when (requestCode) {
+
+                1001 -> {
+                    data?.let {
+                        it.data?.also { uri ->
+                            Log.d("UploadPDF","URI : "+ uri)
+                            var fileUtils = FileUtils(this@AgreementsStatusActivity)
+
+                            Log.d("UploadPDF","getPath : "+   fileUtils.getPath(uri))
+                            uploadDocument(File(fileUtils.getPath(uri)),1)
+                        }
+                    }
+                }
+            }
+        }
+    }
     private fun setFranchiseeData() {
         binding?.recyclerViewFranchisee?.layoutManager = GridLayoutManager(this, 3)
         val divider: Divider = Api21ItemDivider(Color.TRANSPARENT, 10, 10)
@@ -158,9 +210,11 @@ class AgreementsStatusActivity : AppCompatActivity() {
             ) {
                 if (responseObject.isSuccessful) {
                     if (type == 1) {
+                        Toast.makeText(this@AgreementsStatusActivity,"Upload completed",Toast.LENGTH_SHORT).show()
                         responseObject.body()?.data?.path?.let { franchiseeImageList.add(it) }
                     }
                     if (type == 2) {
+
                         responseObject.body()?.data?.path?.let { thirdPartyImageList.add(it) }
                     }
                 } else {

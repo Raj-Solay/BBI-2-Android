@@ -23,6 +23,8 @@ data class StaffMembersResponse(
         @SerializedName("photo")
         var photo: String,
         @SerializedName("resume")
-        var resume: String
+        var resume: String,
+        @SerializedName("type")
+        var type: String
     ) : Parcelable
 }

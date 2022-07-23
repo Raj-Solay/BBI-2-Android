@@ -1,12 +1,17 @@
 package com.bbi.bizbulls.ui.registrationforfo.fragments
 
+import android.R
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import androidx.fragment.app.Fragment
 import com.bbi.bizbulls.databinding.FoFrgExpressionOfInterestBinding
+import com.bbi.bizbulls.model.CityRes
 import com.bbi.bizbulls.model.ExpressionDetailsViewRes
+import com.bbi.bizbulls.model.LocalityRes
+import com.bbi.bizbulls.model.StateRes
 import com.bbi.bizbulls.remote.RetrofitClient
 import com.bbi.bizbulls.sharedpref.SharedPrefsManager
 import com.bbi.bizbulls.ui.registrationforfo.FranchiseeRegistrationViewModel
@@ -16,6 +21,7 @@ import com.google.gson.JsonObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+
 
 class FoExpressionOfInterestFragment(private val stepPosition: Int,private var actionType : Int) : Fragment() {
     private lateinit var binding: FoFrgExpressionOfInterestBinding
@@ -37,14 +43,102 @@ class FoExpressionOfInterestFragment(private val stepPosition: Int,private var a
             }
             CommonUtils.ACTION_TYPE_EDIT -> {
                 getRecordFromAPI(true)
+               // getStateAPI()
                 binding.stepSubmit.setText("Update")
             }
             CommonUtils.ACTION_TYPE_ADD -> {
+              //  getStateAPI()
                 binding.stepSubmit.setText("Submit")
             }
         }
 
         return binding.root
+    }
+    private fun getStateAPI(){
+        MyProcessDialog.showProgressBar(requireContext(), 0)
+        val sharedPrefsHelper by lazy { SharedPrefsManager(requireContext()) }
+        val call = RetrofitClient.getUrl().getState(sharedPrefsHelper.authToken)
+        call?.enqueue(object : Callback<StateRes> {
+            override
+            fun onResponse(
+                call: Call<StateRes>,
+                responseObject: Response<StateRes>) {
+                if (responseObject.code() == 200 || responseObject.code() == 201) {
+                   /* val spinnerArrayAdapter: ArrayAdapter<String> = ArrayAdapter<String>(
+                        this, R.layout.simple_spinner_item,
+                        spinnerArray
+                    ) //selected item will look like a spinner set from XML
+
+                    spinnerArrayAdapter.setDropDownViewResource(R.layout.simple_spinner_dropdown_item)
+                    spinner.setAdapter(spinnerArrayAdapter)*/
+                    getCityAPI()
+                } else {
+                    RetrofitClient.showResponseMessage(requireContext(), responseObject.code())
+
+                }
+                MyProcessDialog.dismiss()
+            }
+
+            override
+            fun onFailure(call: Call<StateRes>, t: Throwable) {
+                MyProcessDialog.dismiss()
+                RetrofitClient.showFailedMessage(requireContext(), t)
+            }
+        })
+    }
+    private fun getCityAPI(){
+        var jsonObject = JsonObject();
+        jsonObject.addProperty("state_id","1")
+     //   MyProcessDialog.showProgressBar(requireContext(), 0)
+        val sharedPrefsHelper by lazy { SharedPrefsManager(requireContext()) }
+        val call = RetrofitClient.getUrl().getCity(sharedPrefsHelper.authToken,jsonObject)
+        call?.enqueue(object : Callback<CityRes> {
+            override
+            fun onResponse(
+                call: Call<CityRes>,
+                responseObject: Response<CityRes>) {
+                if (responseObject.code() == 200 || responseObject.code() == 201) {
+                        getLocalityApi()
+                } else {
+                    RetrofitClient.showResponseMessage(requireContext(), responseObject.code())
+
+                }
+                MyProcessDialog.dismiss()
+            }
+
+            override
+            fun onFailure(call: Call<CityRes>, t: Throwable) {
+                MyProcessDialog.dismiss()
+                RetrofitClient.showFailedMessage(requireContext(), t)
+            }
+        })
+    }
+    private fun getLocalityApi(){
+        var jsonObject = JsonObject();
+        jsonObject.addProperty("state_id","1")
+       // MyProcessDialog.showProgressBar(requireContext(), 0)
+        val sharedPrefsHelper by lazy { SharedPrefsManager(requireContext()) }
+        val call = RetrofitClient.getUrl().getLocality(sharedPrefsHelper.authToken,jsonObject)
+        call?.enqueue(object : Callback<LocalityRes> {
+            override
+            fun onResponse(
+                call: Call<LocalityRes>,
+                responseObject: Response<LocalityRes>) {
+                if (responseObject.code() == 200 || responseObject.code() == 201) {
+
+                } else {
+                    RetrofitClient.showResponseMessage(requireContext(), responseObject.code())
+
+                }
+                MyProcessDialog.dismiss()
+            }
+
+            override
+            fun onFailure(call: Call<LocalityRes>, t: Throwable) {
+                MyProcessDialog.dismiss()
+                RetrofitClient.showFailedMessage(requireContext(), t)
+            }
+        })
     }
 
     private fun getRecordFromAPI(isFromEdit: Boolean) {

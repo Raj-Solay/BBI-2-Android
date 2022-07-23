@@ -43,11 +43,15 @@
     <string name="c_agreement">Agreement</string>
     <string name="c_license">License</string>
     <string name="c_download"><u>Download</u></string>
+    <string name="c_download_agr"><u>Download Agreement</u></string>
+    <string name="c_download_lic"><u>Download License</u></string>
+    <string name="c_download_setup_inst"><u>Download Setup\nInstructions</u></string>
     <string name="c_download_receipt"><u>Download Receipt</u></string>
     <string name="c_viewdetail"><u>View Details</u></string>
     <string name="c_viewdetail_agrement"><u>Download Agreement</u></string>
     <string name="c_viewcdetail">View Contact Details</string>
     <string name="c_licensensehasbeen">License has been issued</string>
+    <string name="c_licensensehasbeen_update">Congratulations..!! Now you\'re successfully associated with us as our official Franchise Partner.</string>
 
     <!--     Franchise Registration -->
     <string name="f_submit">Submit</string>

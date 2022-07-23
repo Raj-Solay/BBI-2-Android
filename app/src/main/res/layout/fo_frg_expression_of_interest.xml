@@ -131,6 +131,110 @@
                 </FrameLayout>
 
             </FrameLayout>
+            <!--State-->
+            <FrameLayout
+                android:visibility="gone"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:background="@drawable/card">
+
+                <ImageView
+                    android:layout_width="@dimen/_18sdp"
+                    android:layout_height="@dimen/_18sdp"
+                    android:visibility="gone"
+                    android:layout_gravity="center_vertical"
+                    app:tint="@color/value"
+                    android:layout_marginLeft="@dimen/_14sdp"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/ic_family_age" />
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    style="@style/formFrameLayoutSmall">
+
+                    <com.bbi.bizbulls.utils.CustomSpinner
+                        android:id="@+id/spnrState"
+                        style="@style/customSpinner"
+                        android:entries="@array/financialAssistance"/>
+
+                    <ImageView style="@style/customSpinnerDropDown"
+                        android:layout_gravity="right|center"/>
+                </FrameLayout>
+
+            </FrameLayout>
+            <!--City-->
+            <FrameLayout
+                android:visibility="gone"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:background="@drawable/card">
+
+                <ImageView
+                    android:layout_width="@dimen/_18sdp"
+                    android:layout_height="@dimen/_18sdp"
+                    android:visibility="gone"
+                    android:layout_gravity="center_vertical"
+                    app:tint="@color/value"
+                    android:layout_marginLeft="@dimen/_14sdp"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/ic_family_age" />
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    style="@style/formFrameLayoutSmall">
+
+                    <com.bbi.bizbulls.utils.CustomSpinner
+                        android:id="@+id/spnrCity"
+                        style="@style/customSpinner"
+                        android:entries="@array/financialAssistance"/>
+
+                    <ImageView style="@style/customSpinnerDropDown"
+                        android:layout_gravity="right|center"/>
+                </FrameLayout>
+
+            </FrameLayout>
+            <FrameLayout
+                android:visibility="gone"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:background="@drawable/card">
+
+                <ImageView
+                    android:layout_width="@dimen/_18sdp"
+                    android:layout_height="@dimen/_18sdp"
+                    android:visibility="gone"
+                    android:layout_gravity="center_vertical"
+                    app:tint="@color/value"
+                    android:layout_marginLeft="@dimen/_14sdp"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/ic_family_age" />
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    style="@style/formFrameLayoutSmall">
+
+                    <com.bbi.bizbulls.utils.CustomSpinner
+                        android:id="@+id/spnrLocality"
+                        style="@style/customSpinner"
+                        android:entries="@array/financialAssistance"/>
+
+                    <ImageView style="@style/customSpinnerDropDown"
+                        android:layout_gravity="right|center"/>
+                </FrameLayout>
+
+            </FrameLayout>
 
             <!--Financial Assistance-->
 

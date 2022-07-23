@@ -56,9 +56,9 @@ class HomeCustomerFragment : Fragment() {
 
         if(sharedPrefsManager.isFormCompleted){
             if(CommonUtils.appInitFirstTime){
-                binding.tvRegistration.text = "Status"
+              //  binding.tvRegistration.text = "Status"
             }else{
-                binding.tvRegistration.text = "Register"
+              //  binding.tvRegistration.text = "Register"
             }
 
         }else{

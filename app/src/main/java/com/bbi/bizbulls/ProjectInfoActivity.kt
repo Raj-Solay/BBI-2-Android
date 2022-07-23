@@ -25,9 +25,9 @@ class ProjectInfoActivity : AppCompatActivity(), View.OnClickListener {
 
         if(sharedPrefsHelper.isFormCompleted){
             if(CommonUtils.appInitFirstTime){
-                binding!!.tvRegister.text = "Status"
+                //binding!!.tvRegister.text = "Status"
             }else{
-                binding!!.tvRegister.text = "Register"
+              // binding!!.tvRegister.text = "Register"
             }
 
         }else{

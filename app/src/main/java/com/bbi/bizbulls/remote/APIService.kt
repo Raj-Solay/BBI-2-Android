@@ -441,4 +441,21 @@ interface APIService {
 
     @GET("/api/alluser")
     fun AllUser(@Header("Authorization") token: String): Call<List<GetAllUserDataModel>>
+
+    /*--Location API--*/
+    @GET("/api/state")
+    fun getState(
+        @Header("Authorization") token: String
+    ): Call<StateRes>
+
+    @POST("/api/city")
+    fun getCity(
+        @Header("Authorization") token: String, @Body jsonObject: JsonObject
+    ): Call<CityRes>
+
+    @POST("/api/locality")
+    fun getLocality(
+        @Header("Authorization") token: String, @Body jsonObject: JsonObject
+    ): Call<LocalityRes>
+
 }

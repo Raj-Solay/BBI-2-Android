@@ -118,6 +118,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:visibility="gone"
             style="@style/checkAndTextLayout"
             android:orientation="vertical"
             android:paddingBottom="@dimen/_10sdp">

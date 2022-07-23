@@ -161,7 +161,7 @@ class AddStaffDetailActivity : AppCompatActivity() {
         jsonObject.addProperty("mobile", binding.etMobileNumber.text.toString().trim())
         jsonObject.addProperty("photo", imagePath)
         jsonObject.addProperty("resume", resumePath)
-        jsonObject.addProperty("type", staffType)
+        jsonObject.addProperty("type", ""+staffType)
         val call: Call<ResponseBody> =
             RetrofitClient.getUrl().addStaffDetail(sharedPrefsHelper.authToken, jsonObject)
         call.enqueue(object : Callback<ResponseBody> {

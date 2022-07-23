@@ -196,10 +196,10 @@ class DashboardActivity : AppCompatActivity(), View.OnClickListener {
         println("________authToken ::${sharedPrefsHelper.authToken}")
         var token = sharedPrefsHelper.authToken;
 
-        if(CommonUtils.isHideProgress){
+       // if(CommonUtils.isHideProgress){
             CommonUtils.isHideProgress = false
             MyProcessDialog.showProgressBar(activity, 0)
-        }
+      //  }
         call.enqueue(object : Callback<UserDetails> {
             override
             fun onResponse(

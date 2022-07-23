@@ -10,6 +10,7 @@ import android.os.Bundle
 import android.os.StrictMode
 import android.os.StrictMode.ThreadPolicy
 import android.text.TextUtils
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -319,7 +320,7 @@ class OfficeLocationMapsActivity : AppCompatActivity(), OnMapReadyCallback {
             }
         }
 
-        getCurrentLOcation(this@OfficeLocationMapsActivity)
+        //getCurrentLOcation(this@OfficeLocationMapsActivity)
 
         binding.btnsubmit.setOnClickListener {
             when {
@@ -367,107 +368,7 @@ class OfficeLocationMapsActivity : AppCompatActivity(), OnMapReadyCallback {
     var cuurentZoomLevel = 10f;
     var myCurrentLocation = ""
     lateinit var client: FusedLocationProviderClient
-    fun getCurrentLOcation(officeLocationMapsActivity:  OfficeLocationMapsActivity) {
-        client= LocationServices.getFusedLocationProviderClient(this@OfficeLocationMapsActivity)
-        Dexter.withContext(officeLocationMapsActivity)
-            .withPermission(Manifest.permission.ACCESS_FINE_LOCATION)
-            .withListener(object : PermissionListener {
-                override fun onPermissionGranted(response: PermissionGrantedResponse) {
-                    getmyLocation()
-                }
 
-                override fun onPermissionDenied(response: PermissionDeniedResponse) { /* ... */
-                }
-
-                override fun onPermissionRationaleShouldBeShown(p0: com.karumi.dexter.listener.PermissionRequest?,token: PermissionToken? ) {
-                    token?.continuePermissionRequest()
-                }
-
-            }).check()
-    }
-    fun getmyLocation(){
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
-            return
-        }
-        var tast= client.lastLocation
-        tast.addOnSuccessListener(object: OnSuccessListener<Location> {
-            override fun onSuccess(location: Location?) {
-                /*smf.getMapAsync( object : OnMapReadyCallback {
-                    override fun onMapReady(googleMap: GoogleMap) {
-                        var latLng= location?.let { LatLng(it?.latitude,location?.longitude) }
-                        var markerOptions= MarkerOptions().position(latLng).title("You are here ......!!")
-                        googleMap.addMarker(markerOptions)
-                        googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15F))
-                    }
-
-                })*/
-                try {
-                    val geo = Geocoder(
-                        this@OfficeLocationMapsActivity.getApplicationContext(),
-                        Locale.getDefault()
-                    )
-                    val addresses: List<Address> =
-                        location?.let { geo.getFromLocation(it.latitude, it.longitude, 1) } as List<Address>
-                    if (addresses.isEmpty()) {
-                        /*yourtextfieldname.setText("Waiting for Location")*/
-                    } else {
-                        if (addresses.size > 0) {
-
-                            myCurrentLocation = addresses[0].locality;
-
-                            val location: String = myCurrentLocation
-
-                            // below line is to create a list of address
-                            // where we will store the list of all- address.
-                            var addressList: List<Address>? = null
-                            // checking if the entered location is null or not.
-                            if (location != null || location == "") {
-                                // on below line we are creating and initializing a geo coder.
-                                val geocoder = Geocoder(this@OfficeLocationMapsActivity)
-                                try {
-                                    // on below line we are getting location from the
-                                    // location name and adding that location to address list.
-                                    addressList = geocoder.getFromLocationName(location, 1)
-                                } catch (e: IOException) {
-                                    e.printStackTrace()
-                                }
-                                // on below line we are getting the location
-                                // from our list a first position.
-                                if(addressList?.isNotEmpty() == true) {
-                                    val address1: Address? = addressList?.get(0)
-
-                                    // on below line we are creating a variable for our location
-                                    // where we will add our locations latitude and longitude.
-                                    address1?.let {
-                                        val latLng = LatLng(address1.getLatitude(), address1.getLongitude())
-                                        lati = latLng.latitude.toString()
-                                        longi = latLng.longitude.toString()
-                                        address = location
-                                        // on below line we are adding marker to that position.
-                                        mMap.addMarker(MarkerOptions().position(latLng).title(location))
-
-                                        // below line is to animate camera to that position.
-                                        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 10f))
-                                    }
-                                }
-
-                            }
-                        }
-                    }
-                } catch (e: Exception) {
-                    e.printStackTrace() // getFromLocation() may sometimes fail
-                }
-            }
-
-        })
-    }
     /**
      * Manipulates the map once available.
      * This callback is triggered when the map is ready to be used.
@@ -483,9 +384,9 @@ class OfficeLocationMapsActivity : AppCompatActivity(), OnMapReadyCallback {
         // Add a marker in Sydney and move the camera
         if(::currentLocation.isInitialized) {
             val sydney = LatLng(currentLocation.latitude, currentLocation.longitude)
-            mMap.addMarker(MarkerOptions().position(sydney).title(address))
+          //  mMap.addMarker(MarkerOptions().position(sydney).title(address))
 
-            mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
+           // mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
         }
     }
 
@@ -597,7 +498,7 @@ class OfficeLocationMapsActivity : AppCompatActivity(), OnMapReadyCallback {
                 response: Response<AddLocationResponse>
             ) {
                 if (response.isSuccessful) {
-                   // sharedPrefsHelper.officeLocationBookmark = ""
+                    sharedPrefsHelper.officeLocationBookmark = ""
                     setResult(RESULT_OK)
                     finish()
                 } else {
@@ -631,7 +532,9 @@ class OfficeLocationMapsActivity : AppCompatActivity(), OnMapReadyCallback {
         }
         val task: Task<Location> = fusedLocationProviderClient.lastLocation
         task.addOnSuccessListener(OnSuccessListener<Location> { location ->
+
             if (location != null) {
+
                 currentLocation = location
                 lati = location.latitude.toString()
                 longi = location.longitude.toString()
@@ -652,7 +555,8 @@ class OfficeLocationMapsActivity : AppCompatActivity(), OnMapReadyCallback {
                 val postalCode = addresses[0].postalCode
                 address =
                     city.plus(",").plus(state).plus(",").plus(country).plus(",").plus(postalCode)
-
+                binding.idSearchView.setQuery(address, true)
+                Log.d("MyCurrentLocation","success...not null")
                if(::mMap.isInitialized)
                {
                    val sydney = LatLng(location.latitude, location.longitude)
@@ -661,7 +565,9 @@ class OfficeLocationMapsActivity : AppCompatActivity(), OnMapReadyCallback {
                    mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
                }
             }
-        })
+        }).addOnFailureListener {
+            Log.d("MyCurrentLocation","addOnFailureListener : "+ it.message)
+        }
     }
 
     override fun onRequestPermissionsResult(
