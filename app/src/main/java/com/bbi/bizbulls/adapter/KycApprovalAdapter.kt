@@ -13,10 +13,11 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bbi.bizbulls.FilterActivity
 import com.bbi.bizbulls.KycDocViewActivity
+import com.bbi.bizbulls.LocationDocViewActivity
 import com.bbi.bizbulls.R
 import com.bbi.bizbulls.model.PersonalUserAll
 
-class KycApprovalAdapter(var userList: ArrayList<PersonalUserAll.Data>) :
+class KycApprovalAdapter(var userList: ArrayList<PersonalUserAll.Data>,var approval_type: Int) :
     RecyclerView.Adapter<KycApprovalAdapter.ViewHolder>(), Filterable {
     private var context: Context? = null
     var photosListFiltered: ArrayList<PersonalUserAll.Data> = arrayListOf()
@@ -36,9 +37,18 @@ class KycApprovalAdapter(var userList: ArrayList<PersonalUserAll.Data>) :
             holder.txtFullname.text=userList.get(position).emailid.toString()
         }
         holder.txtView.setOnClickListener {
-            val intent = Intent(context, KycDocViewActivity::class.java)
-            intent.putExtra("model",userList.get(position))
-            context?.startActivity(intent)
+            if(approval_type == 0){
+                val intent = Intent(context, KycDocViewActivity::class.java)
+                intent.putExtra("model",userList.get(position))
+                intent.putExtra("APPROVAL_TYPE",approval_type)
+                context?.startActivity(intent)
+            }else if(approval_type == 1){
+                val intent = Intent(context, LocationDocViewActivity::class.java)
+                intent.putExtra("model",userList.get(position))
+                intent.putExtra("APPROVAL_TYPE",approval_type)
+                context?.startActivity(intent)
+            }
+
         }
     }
     override fun getItemCount(): Int {

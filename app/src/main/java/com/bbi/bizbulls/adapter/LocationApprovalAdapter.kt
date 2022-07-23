@@ -15,27 +15,28 @@ import com.bbi.bizbulls.FilterActivity
 import com.bbi.bizbulls.KycDocViewActivity
 import com.bbi.bizbulls.R
 import com.bbi.bizbulls.model.ApprovalDocRes
+import com.bbi.bizbulls.model.LocationApprovalRes
 import com.bbi.bizbulls.model.PersonalUserAll
 import com.bbi.bizbulls.utils.Globals
 import com.squareup.picasso.Picasso
 
-class DocApprovalAdapter(
-    var userList: List<ApprovalDocRes.Data>?,
+class LocationApprovalAdapter(
+    var userList: List<LocationApprovalRes.Data>?,
     var docViewListener: DocViewListener,
     var approval_type: Int
 ) :
-    RecyclerView.Adapter<DocApprovalAdapter.ViewHolder>() {
+    RecyclerView.Adapter<LocationApprovalAdapter.ViewHolder>() {
     private var context: Context? = null;
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DocApprovalAdapter.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LocationApprovalAdapter.ViewHolder {
         val v =
-            LayoutInflater.from(parent.context).inflate(R.layout.doc_approval_adapter,
+            LayoutInflater.from(parent.context).inflate(R.layout.location_approval_adapter,
                 parent, false)
         context = parent.context;
         return ViewHolder(v)
     }
-    override fun onBindViewHolder(holder: DocApprovalAdapter.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: LocationApprovalAdapter.ViewHolder, position: Int) {
         var documentName  =""
-        if(userList!!.get(position).documentId == "1"){
+      /*  if(userList!!.get(position).documentId == "1"){
             documentName = "Pan Card"
         }else if(userList!!.get(position).documentId == "2"){
             documentName = "Aadhaar Card"
@@ -61,7 +62,7 @@ class DocApprovalAdapter(
         }else{
             holder.txtVerify.setText("Verify")
             holder.txtVerify.setBackgroundResource(R.drawable.button)
-        }
+        }*/
     }
     override fun getItemCount(): Int {
         return  userList!!.size

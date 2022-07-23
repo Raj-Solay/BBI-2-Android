@@ -458,4 +458,20 @@ interface APIService {
         @Header("Authorization") token: String, @Body jsonObject: JsonObject
     ): Call<LocalityRes>
 
+    /*--Approval API--*/
+    @GET("/api/me/agreement/pending/{user_id}")
+    fun getPendingAgreement(
+        @Header("Authorization") token: String,@Path(value = "user_id", encoded = true) userId: String
+    ): Call<AgreementsApprovalRes>
+
+    @GET("/api/me/staff/pending/{user_id}")
+    fun getPendingStaff(
+        @Header("Authorization") token: String,@Path(value = "user_id", encoded = true) userId: String
+    ): Call<StaffApprovalRes>
+
+    @GET("/api/me/location/pending/{user_id}")
+    fun getPendingLocation(
+        @Header("Authorization") token: String,@Path(value = "user_id", encoded = true) userId: String
+    ): Call<LocationApprovalRes>
+
 }

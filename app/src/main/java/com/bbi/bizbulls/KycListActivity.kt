@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
+import android.view.View
 import com.bbi.bizbulls.databinding.ActivityKycListBinding
 import com.bbi.bizbulls.model.PersonalUserAll
 import com.bbi.bizbulls.remote.RetrofitClient
@@ -19,17 +21,34 @@ class KycListActivity : AppCompatActivity() {
     lateinit var binding:ActivityKycListBinding
     private val sharedPrefsHelper by lazy { SharedPrefsManager(this@KycListActivity) }
 
+    var approval_type = 0;
     private var userList : ArrayList<PersonalUserAll.Data> = arrayListOf();
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding=ActivityKycListBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        approval_type = intent.getIntExtra("APPROVAL_TYPE",0)
+        Log.d("ATYPE",""+ approval_type)
+
         initView()
         getUserList()
     }
     private fun initView() {
-        binding?.customTitleLayout?.tvTitle?.text="KYC Approval"
+        var toolBarTitle = ""
+        if(approval_type == 0){
+            toolBarTitle = "KYC Approval"
+        }else if(approval_type == 1){
+            toolBarTitle = "Location Approval"
+        }else if(approval_type == 2){
+            toolBarTitle = "Agreements Approval"
+        }else if(approval_type == 3){
+            toolBarTitle = "SetUp Approval"
+        }else if(approval_type == 4){
+            toolBarTitle = "License Approval"
+        }
+
+        binding?.customTitleLayout?.tvTitle?.text = toolBarTitle
         binding?.customTitleLayout?.ivBack?.setOnClickListener { onBackPressed() }
        /* var kycApprovalAdapter= KycApprovalAdapter()
         binding?.rcyKycApproval?.adapter=kycApprovalAdapter*/
@@ -50,6 +69,13 @@ class KycListActivity : AppCompatActivity() {
             ) {
                 if (response.isSuccessful) {
                     userList = response?.body()?.data!!
+                    if(userList.size > 0){
+                        binding.txtEmptyRecord.visibility = View.GONE
+                        binding.rcyKycApproval.visibility = View.VISIBLE
+                    }else{
+                        binding.txtEmptyRecord.visibility = View.VISIBLE
+                        binding.rcyKycApproval.visibility = View.GONE
+                    }
                     setAdapter(userList)
                 } else {
                     RetrofitClient.showResponseMessage(this@KycListActivity, response.code())
@@ -64,7 +90,7 @@ class KycListActivity : AppCompatActivity() {
         })
     }
     private fun setAdapter(userList: ArrayList<PersonalUserAll.Data>) {
-        var kycApprovalAdapter= KycApprovalAdapter(userList)
+        var kycApprovalAdapter= KycApprovalAdapter(userList,approval_type)
         binding?.rcyKycApproval?.adapter=kycApprovalAdapter
         kycApprovalAdapter.addList(userList)
 

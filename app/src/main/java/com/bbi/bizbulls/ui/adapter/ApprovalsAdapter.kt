@@ -18,20 +18,22 @@ class ApprovalsAdapter(var activity: FragmentActivity) :
     var context: Context
     var iconsName = arrayOf(
         "KYC",
-        "Finability",
+        "Location",
         "Agreements",
-        "Set-Up"
+        "Set-Up",
+        "License"
     )
     var icons = intArrayOf(
         R.drawable.kyc,
-        R.drawable._lowinvetment,
+        R.drawable.ic__location,
         R.drawable.agreement,
-        R.drawable.facility_arrangement
+        R.drawable.facility_arrangement,
+        R.drawable.ic_certificate
     )
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): viewHolder {
         context = parent.context
-        val view = LayoutInflater.from(context).inflate(R.layout.itemlist, parent, false)
+        val view = LayoutInflater.from(context).inflate(R.layout.itemlist_approval, parent, false)
         return viewHolder(view)
     }
 
@@ -39,12 +41,11 @@ class ApprovalsAdapter(var activity: FragmentActivity) :
         holder.textView.text = iconsName[position]
         holder.imageView.setImageResource(icons[position])
         holder.itemView.setOnClickListener { v: View? ->
-            if (position==0){
-                val intent = Intent(activity, KycListActivity::class.java)
-                activity.startActivity(intent)
-            }else {
-                CommonUtils.showServiceDialog(context)
-            }
+            val intent = Intent(activity, KycListActivity::class.java)
+            intent.putExtra("APPROVAL_TYPE",position)
+            activity.startActivity(intent)
+
+          //  CommonUtils.showServiceDialog(context)
         }
     }
 

@@ -175,10 +175,13 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/listDocuments"
             android:padding="@dimen/_10sdp"
+            android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_marginTop="@dimen/_10dp"
             android:paddingHorizontal="@dimen/_10dp"
             android:layout_height="wrap_content"/>
+
+
     </LinearLayout>
     <TextView
         android:id="@+id/txtBg"

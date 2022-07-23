@@ -376,11 +376,16 @@ class DashboardActivity : AppCompatActivity(), View.OnClickListener {
     override fun onClick(view: View) {
         if (view.id == R.id.layoutcp){
             hideDrawer()
-            if(sharedPrefsHelper.isFormCompleted){
-                if(CommonUtils.appInitFirstTime){
-                    CommonUtils.appInitFirstTime = false
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.flFragment, customerFOStatusFragment!!).commit()
+            if(isFormStatusComplted){
+                if(sharedPrefsHelper.isFormCompleted){
+                    if(CommonUtils.appInitFirstTime){
+                        CommonUtils.appInitFirstTime = false
+                        supportFragmentManager.beginTransaction()
+                            .replace(R.id.flFragment, customerFOStatusFragment!!).commit()
+                    }else{
+                        val i = Intent(this, FoRegistrationDashBoardActivity::class.java)
+                        startActivity(i)
+                    }
                 }else{
                     val i = Intent(this, FoRegistrationDashBoardActivity::class.java)
                     startActivity(i)
@@ -389,6 +394,7 @@ class DashboardActivity : AppCompatActivity(), View.OnClickListener {
                 val i = Intent(this, FoRegistrationDashBoardActivity::class.java)
                 startActivity(i)
             }
+
 
         }
         if (view.id == R.id.myAccount) {

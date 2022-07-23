@@ -5,14 +5,16 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.recyclerview.widget.GridLayoutManager
-import com.bbi.bizbulls.databinding.ActivityKycDocViewBinding
+import com.bbi.bizbulls.databinding.ActivityLocationApprovalViewBinding
 import com.bbi.bizbulls.model.ApprovalDocRes
+import com.bbi.bizbulls.model.LocationApprovalRes
 import com.bbi.bizbulls.model.PersonalUserAll
 import com.bbi.bizbulls.remote.RetrofitClient
 import com.bbi.bizbulls.sharedpref.SharedPrefsManager
 import com.bbi.bizbulls.ui.DialogDocApprove
 import com.bbi.bizbulls.utils.MyProcessDialog
 import com.foldio.android.adapter.DocApprovalAdapter
+import com.foldio.android.adapter.LocationApprovalAdapter
 import com.google.gson.JsonArray
 import com.google.gson.JsonObject
 import com.squareup.picasso.Picasso
@@ -21,17 +23,17 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class KycDocViewActivity : AppCompatActivity(),DocViewListener {
-    lateinit var binding:ActivityKycDocViewBinding
-    private val sharedPrefsHelper by lazy { SharedPrefsManager(this@KycDocViewActivity) }
+class LocationDocViewActivity : AppCompatActivity(),DocViewListener {
+    lateinit var binding:ActivityLocationApprovalViewBinding
+    private val sharedPrefsHelper by lazy { SharedPrefsManager(this@LocationDocViewActivity) }
 
     var approval_type = 0
     private lateinit var userData  : PersonalUserAll.Data
-    private var docList : List<ApprovalDocRes.Data> = arrayListOf()
+    private var docList : List<LocationApprovalRes.Data> = arrayListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding=ActivityKycDocViewBinding.inflate(layoutInflater)
+        binding=ActivityLocationApprovalViewBinding.inflate(layoutInflater)
         setContentView(binding.root)
         approval_type = intent.getIntExtra("APPROVAL_TYPE",0)
         userData = intent.getSerializableExtra("model") as PersonalUserAll.Data
@@ -66,35 +68,35 @@ class KycDocViewActivity : AppCompatActivity(),DocViewListener {
     }
     private fun getUserList(){
         MyProcessDialog.showProgressBar(this, 0)
-        val call: Call<ApprovalDocRes> =
-            RetrofitClient.getUrl().viewUserDoc(sharedPrefsHelper.authToken,userData.userId.toString())
-        call.enqueue(object : Callback<ApprovalDocRes> {
+        val call: Call<LocationApprovalRes> =
+            RetrofitClient.getUrl().getPendingLocation(sharedPrefsHelper.authToken,userData.userId.toString())
+        call.enqueue(object : Callback<LocationApprovalRes> {
             override fun onResponse(
-                call: Call<ApprovalDocRes>,
-                response: Response<ApprovalDocRes>
+                call: Call<LocationApprovalRes>,
+                response: Response<LocationApprovalRes>
             ) {
                 if (response.isSuccessful) {
                     docList= response.body()?.data!!
                     setAdapter(docList)
                 } else {
-                    RetrofitClient.showResponseMessage(this@KycDocViewActivity, response.code())
+                    RetrofitClient.showResponseMessage(this@LocationDocViewActivity, response.code())
                 }
                 MyProcessDialog.dismiss()
             }
 
-            override fun onFailure(call: Call<ApprovalDocRes>, t: Throwable) {
+            override fun onFailure(call: Call<LocationApprovalRes>, t: Throwable) {
                 MyProcessDialog.dismiss()
-                RetrofitClient.showFailedMessage(this@KycDocViewActivity, t)
+                RetrofitClient.showFailedMessage(this@LocationDocViewActivity, t)
             }
         })
     }
-    var docApprovalAdapter : DocApprovalAdapter? = null
-    private fun setAdapter(userList: List<ApprovalDocRes.Data>?) {
-        docApprovalAdapter= DocApprovalAdapter(userList,this,approval_type)
+    var locationApprovalAdapter : LocationApprovalAdapter? = null
+    private fun setAdapter(userList: List<LocationApprovalRes.Data>) {
+        locationApprovalAdapter= LocationApprovalAdapter(userList,this,approval_type)
         binding?.listDocuments!!.layoutManager = GridLayoutManager(this,2)
-       binding?.listDocuments?.adapter = docApprovalAdapter
+       binding?.listDocuments?.adapter = locationApprovalAdapter
 
-        var count = 0
+      /*  var count = 0
         docList.forEach {
             if(it.isApproved || it!!.documentStatus == "1" )
                 count++
@@ -111,7 +113,7 @@ class KycDocViewActivity : AppCompatActivity(),DocViewListener {
             binding.linerApprove.alpha = 0.5f
             binding.btnCancelFinal.isEnabled = false
             binding.btnApproveFinal.isEnabled = false
-        }
+        }*/
     }
 
     private fun showDocDialog(data: ApprovalDocRes.Data?) {
@@ -134,16 +136,16 @@ class KycDocViewActivity : AppCompatActivity(),DocViewListener {
         docDialogDocApprove.btnApproval!!.setOnClickListener {
             docDialogDocApprove.dismiss()
             docList.forEach {
-                if(it.documentId == data.documentId){
+              /*  if(it.documentId == data.documentId){
                     it.isApproved = !it.isApproved
-                }
+                }*/
             }
-            docApprovalAdapter?.notifyDataSetChanged()
+            locationApprovalAdapter?.notifyDataSetChanged()
 
             var count = 0;
             docList.forEach {
-                if(it.isApproved)
-                    count++
+               /* if(it.isApproved)
+                    count++*/
             }
             if(count == docList.size){
                 binding.linerApprove.visibility = View.VISIBLE
@@ -173,7 +175,7 @@ class KycDocViewActivity : AppCompatActivity(),DocViewListener {
         docList.forEach {
             var jsonObjectDoc = JsonObject()
             jsonObjectDoc.addProperty("doc_id",it!!.id.toString())
-            if(it!!.documentType.toString() == "null"){
+           /* if(it!!.documentType.toString() == "null"){
                 it!!.documentType = "1"
             }
             if(it!!.isApproved || it!!.documentStatus == "1" ) {
@@ -181,7 +183,7 @@ class KycDocViewActivity : AppCompatActivity(),DocViewListener {
                 jsonObjectDoc.addProperty("document_type","1")
             }else{
                 jsonObjectDoc.addProperty("document_type","0")
-            }
+            }*/
             jsonArray.add(jsonObjectDoc)
 
         }
@@ -203,14 +205,14 @@ class KycDocViewActivity : AppCompatActivity(),DocViewListener {
                 if (response.isSuccessful) {
                    finish()
                 } else {
-                    RetrofitClient.showResponseMessage(this@KycDocViewActivity, response.code())
+                    RetrofitClient.showResponseMessage(this@LocationDocViewActivity, response.code())
                 }
                 MyProcessDialog.dismiss()
             }
 
             override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
                 MyProcessDialog.dismiss()
-                RetrofitClient.showFailedMessage(this@KycDocViewActivity, t)
+                RetrofitClient.showFailedMessage(this@LocationDocViewActivity, t)
             }
         })
     }

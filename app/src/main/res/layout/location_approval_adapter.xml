@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/_180sdp"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_marginTop="@dimen/_4sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/button"
+        android:backgroundTint="@color/white"
+        android:padding="@dimen/_10sdp">
+
+
+        <TextView
+            android:id="@+id/txtDocName"
+            android:textSize="@dimen/_9ssp"
+            android:textColor="@color/black"
+            android:text="Document Name"
+            android:lines="1"
+            android:layout_marginStart="@dimen/_8sdp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+        <ImageView
+            android:id="@+id/imgDocView"
+            android:src="@drawable/app_logo"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/_4sdp"
+            android:layout_weight="1"
+            android:layout_marginLeft="@dimen/_16sdp"
+            android:layout_marginRight="@dimen/_16sdp"
+            android:layout_width="@dimen/_120sdp"
+            android:layout_height="@dimen/_160sdp"/>
+
+        <TextView
+            android:id="@+id/txtVerify"
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_26sdp"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:layout_alignParentRight="true"
+            android:layout_gravity="center"
+            android:background="@drawable/button"
+            android:fontFamily="@font/source_semibold"
+            android:paddingHorizontal="@dimen/_20sdp"
+            android:paddingVertical="@dimen/_10dp"
+            android:text="Verify"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_9sdp" />
+
+
+
+
+
+    </LinearLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_10dp"/>
+
+
+
+</LinearLayout>

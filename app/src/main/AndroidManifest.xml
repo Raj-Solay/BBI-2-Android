@@ -143,6 +143,7 @@
             android:exported="true" />
         <activity android:name=".KycDocViewActivity" />
         <activity android:name=".KycStatusViewActivity" />
+        <activity android:name=".LocationDocViewActivity" />
 
         <provider
             android:name="androidx.core.content.FileProvider"
