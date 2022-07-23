@@ -1,12 +1,14 @@
 package com.bbi.bizbulls.ui.registrationforfo.fragments
 
-import android.R
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import androidx.fragment.app.Fragment
+import com.bbi.bizbulls.R
 import com.bbi.bizbulls.databinding.FoFrgExpressionOfInterestBinding
 import com.bbi.bizbulls.model.CityRes
 import com.bbi.bizbulls.model.ExpressionDetailsViewRes
@@ -43,18 +45,50 @@ class FoExpressionOfInterestFragment(private val stepPosition: Int,private var a
             }
             CommonUtils.ACTION_TYPE_EDIT -> {
                 getRecordFromAPI(true)
-               // getStateAPI()
+                getStateAPI()
                 binding.stepSubmit.setText("Update")
             }
             CommonUtils.ACTION_TYPE_ADD -> {
-              //  getStateAPI()
+                getStateAPI()
                 binding.stepSubmit.setText("Submit")
             }
         }
 
         return binding.root
     }
+    var stateList = arrayListOf<String>()
+    var stateListId = arrayListOf<String>()
+    var cityList = arrayListOf<String>()
+    var cityListId = arrayListOf<String>()
+    var localityList = arrayListOf<String>()
+    var localityListId = arrayListOf<String>()
+
+    val adapterState : ArrayAdapter<String>? = null
+    val adapterCity : ArrayAdapter<String>? = null
+    val adapterLocality : ArrayAdapter<String>? = null
+
     private fun getStateAPI(){
+
+        stateList.add("Select State")
+        cityList.add("Select City")
+        localityList.add("Select Locality")
+
+        stateListId.add("0")
+        cityListId.add("0")
+        localityListId.add("0")
+
+        val adapterState = ArrayAdapter<String>(requireContext(),
+            R.layout.spinner_item, stateList)
+        binding.spnrState.adapter = adapterState
+
+        val adapterCity = ArrayAdapter<String>(requireContext(),
+            R.layout.spinner_item, cityList)
+        binding.spnrCity.adapter = adapterCity
+
+        val adapterLocality = ArrayAdapter<String>(requireContext(),
+            R.layout.spinner_item, localityList)
+        binding.spnrLocality.adapter = adapterLocality
+
         MyProcessDialog.showProgressBar(requireContext(), 0)
         val sharedPrefsHelper by lazy { SharedPrefsManager(requireContext()) }
         val call = RetrofitClient.getUrl().getState(sharedPrefsHelper.authToken)
@@ -64,14 +98,18 @@ class FoExpressionOfInterestFragment(private val stepPosition: Int,private var a
                 call: Call<StateRes>,
                 responseObject: Response<StateRes>) {
                 if (responseObject.code() == 200 || responseObject.code() == 201) {
-                   /* val spinnerArrayAdapter: ArrayAdapter<String> = ArrayAdapter<String>(
-                        this, R.layout.simple_spinner_item,
-                        spinnerArray
-                    ) //selected item will look like a spinner set from XML
+                    try{
+                        var stateRes = responseObject.body()!!.data!!.state
+                        stateRes!!.forEach {
+                            stateList.add(it.name.toString())
+                            stateListId.add(it.id.toString())
+                        }
+                       setStateAdapter()
+                      //  getCityAPI()
+                    }catch (e  :Exception){
+                        e.printStackTrace()
+                    }
 
-                    spinnerArrayAdapter.setDropDownViewResource(R.layout.simple_spinner_dropdown_item)
-                    spinner.setAdapter(spinnerArrayAdapter)*/
-                    getCityAPI()
                 } else {
                     RetrofitClient.showResponseMessage(requireContext(), responseObject.code())
 
@@ -86,9 +124,50 @@ class FoExpressionOfInterestFragment(private val stepPosition: Int,private var a
             }
         })
     }
-    private fun getCityAPI(){
+
+    fun setStateAdapter(){
+        val adapterState = ArrayAdapter<String>(requireContext(),
+            R.layout.spinner_item, stateList)
+        binding.spnrState.adapter = adapterState
+        adapterState.notifyDataSetChanged()
+
+        binding.spnrState.setOnItemSelectedListener(object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(p0: AdapterView<*>?, p1: View?, position: Int, p3: Long) {
+                if(position != 0){
+                    getCityAPI(stateListId.get(position))
+                }
+            }
+
+            override fun onNothingSelected(p0: AdapterView<*>?) {
+
+            }
+
+        })
+
+        binding.spnrCity.setOnItemSelectedListener(object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(p0: AdapterView<*>?, p1: View?, position: Int, p3: Long) {
+                if(position != 0){
+                    getLocalityApi(cityListId.get(position).toString())
+                }
+            }
+
+            override fun onNothingSelected(p0: AdapterView<*>?) {
+
+            }
+
+        })
+
+
+        /*binding.spnrLocality.setOnItemClickListener { adapterView, view, i, l ->
+            if(i != 0){
+                getCityAPI()
+            }
+        }*/
+    }
+
+    private fun getCityAPI(stateId : String){
         var jsonObject = JsonObject();
-        jsonObject.addProperty("state_id","1")
+        jsonObject.addProperty("state_id",stateId)
      //   MyProcessDialog.showProgressBar(requireContext(), 0)
         val sharedPrefsHelper by lazy { SharedPrefsManager(requireContext()) }
         val call = RetrofitClient.getUrl().getCity(sharedPrefsHelper.authToken,jsonObject)
@@ -98,7 +177,25 @@ class FoExpressionOfInterestFragment(private val stepPosition: Int,private var a
                 call: Call<CityRes>,
                 responseObject: Response<CityRes>) {
                 if (responseObject.code() == 200 || responseObject.code() == 201) {
-                        getLocalityApi()
+                    var stateRes = responseObject.body()!!.data!!.city
+                    if(stateRes!!.size> 0){
+                        stateRes!!.forEach {
+                            cityList.add(it.name.toString())
+                            cityListId.add(it.id.toString())
+                        }
+                        val adapterState = ArrayAdapter<String>(requireContext(),
+                            R.layout.spinner_item, cityList)
+                        binding.spnrCity.adapter = adapterState
+                        adapterState.notifyDataSetChanged()
+                    }else{
+                        cityList.add("City not found")
+                        cityListId.add("0")
+                        val adapterState = ArrayAdapter<String>(requireContext(),
+                            R.layout.spinner_item, cityList)
+                        binding.spnrCity.adapter = adapterState
+                        adapterState.notifyDataSetChanged()
+                    }
+
                 } else {
                     RetrofitClient.showResponseMessage(requireContext(), responseObject.code())
 
@@ -113,9 +210,9 @@ class FoExpressionOfInterestFragment(private val stepPosition: Int,private var a
             }
         })
     }
-    private fun getLocalityApi(){
+    private fun getLocalityApi(city_id :String){
         var jsonObject = JsonObject();
-        jsonObject.addProperty("state_id","1")
+        jsonObject.addProperty("city_id",city_id)
        // MyProcessDialog.showProgressBar(requireContext(), 0)
         val sharedPrefsHelper by lazy { SharedPrefsManager(requireContext()) }
         val call = RetrofitClient.getUrl().getLocality(sharedPrefsHelper.authToken,jsonObject)
@@ -125,6 +222,24 @@ class FoExpressionOfInterestFragment(private val stepPosition: Int,private var a
                 call: Call<LocalityRes>,
                 responseObject: Response<LocalityRes>) {
                 if (responseObject.code() == 200 || responseObject.code() == 201) {
+                    var stateRes = responseObject.body()!!.data!!.locality
+                    if(stateRes!!.size > 0){
+                        stateRes!!.forEach {
+                            localityList.add(it.name.toString())
+                            localityListId.add(it.id.toString())
+                        }
+                        val adapterState = ArrayAdapter<String>(requireContext(),
+                            R.layout.spinner_item, localityList)
+                        binding.spnrLocality.adapter = adapterState
+                        adapterState.notifyDataSetChanged()
+                    }else{
+                        localityList.add("Locality not found")
+                        localityListId.add("0")
+                        val adapterState = ArrayAdapter<String>(requireContext(),
+                            R.layout.spinner_item, localityList)
+                        binding.spnrLocality.adapter = adapterState
+                        adapterState.notifyDataSetChanged()
+                    }
 
                 } else {
                     RetrofitClient.showResponseMessage(requireContext(), responseObject.code())
@@ -220,7 +335,8 @@ class FoExpressionOfInterestFragment(private val stepPosition: Int,private var a
 
         jsonObject.addProperty("project_name", binding.interestedProjectName.text.toString().trim())
         jsonObject.addProperty("industry", binding.industryOfProject.text.toString().trim())
-        jsonObject.addProperty("location_interest", binding.locationOfInterest.text.toString().trim())
+      //  jsonObject.addProperty("location_interest", binding.locationOfInterest.text.toString().trim())
+        jsonObject.addProperty("location_interest", binding.spnrState.selectedItem.toString().trim()+","+binding.spnrCity.selectedItem.toString().trim()+","+binding.spnrLocality.selectedItem.toString().trim())
         jsonObject.addProperty("financial_assistance", binding.spnrFinancialAssistance.selectedItem.toString().trim())
         jsonObject.addProperty("registration_fee", binding.registrationFee.text.toString().trim())
         jsonObject.addProperty("franchisee_planning_for", binding.franchisePlanningFor.text.toString().trim())

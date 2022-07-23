@@ -97,6 +97,7 @@
 
             <!--Location of interest-->
             <FrameLayout
+                android:visibility="gone"
                 android:layout_marginTop="@dimen/_8sdp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -133,7 +134,7 @@
             </FrameLayout>
             <!--State-->
             <FrameLayout
-                android:visibility="gone"
+                android:visibility="visible"
                 android:layout_marginTop="@dimen/_8sdp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -158,8 +159,7 @@
 
                     <com.bbi.bizbulls.utils.CustomSpinner
                         android:id="@+id/spnrState"
-                        style="@style/customSpinner"
-                        android:entries="@array/financialAssistance"/>
+                        style="@style/customSpinnerLocation"/>
 
                     <ImageView style="@style/customSpinnerDropDown"
                         android:layout_gravity="right|center"/>
@@ -168,7 +168,7 @@
             </FrameLayout>
             <!--City-->
             <FrameLayout
-                android:visibility="gone"
+                android:visibility="visible"
                 android:layout_marginTop="@dimen/_8sdp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -193,8 +193,7 @@
 
                     <com.bbi.bizbulls.utils.CustomSpinner
                         android:id="@+id/spnrCity"
-                        style="@style/customSpinner"
-                        android:entries="@array/financialAssistance"/>
+                        style="@style/customSpinnerLocation"/>
 
                     <ImageView style="@style/customSpinnerDropDown"
                         android:layout_gravity="right|center"/>
@@ -202,7 +201,7 @@
 
             </FrameLayout>
             <FrameLayout
-                android:visibility="gone"
+                android:visibility="visible"
                 android:layout_marginTop="@dimen/_8sdp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -227,8 +226,7 @@
 
                     <com.bbi.bizbulls.utils.CustomSpinner
                         android:id="@+id/spnrLocality"
-                        style="@style/customSpinner"
-                        android:entries="@array/financialAssistance"/>
+                        style="@style/customSpinnerLocation"/>
 
                     <ImageView style="@style/customSpinnerDropDown"
                         android:layout_gravity="right|center"/>
