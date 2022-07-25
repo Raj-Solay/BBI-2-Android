@@ -83,6 +83,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_margin="@dimen/minimumspacing"
+                            android:fontFamily="@font/source_semibold"
                             android:text="Partner with us (Register your FO)"
                             android:textColor="@color/orange_700"
                             android:textSize="@dimen/medium_font" />
@@ -136,12 +137,13 @@
                         </androidx.cardview.widget.CardView>
 
 
-                        <androidx.appcompat.widget.AppCompatButton
+                        <TextView
                             android:id="@+id/tv_registration"
                             style="@style/fontregular"
                             android:layout_width="wrap_content"
-                            android:layout_height="@dimen/_24sdp"
+                            android:layout_height="wrap_content"
                             android:layout_gravity="center"
+                            android:paddingHorizontal="@dimen/_5sdp"
                             android:background="@drawable/button"
                             android:gravity="center"
                             android:text="Register"
@@ -180,6 +182,7 @@
                             android:layout_marginStart="12dp"
                             android:layout_marginTop="@dimen/overrallspacing"
                             android:gravity="center"
+                            android:fontFamily="@font/source_semibold"
                             android:text="Franchising projects"
                             android:textColor="@color/orange_700"
                             android:textSize="@dimen/medium_font" />
@@ -240,6 +243,7 @@
                             android:layout_marginTop="@dimen/overrallspacing"
                             android:gravity="center"
                             android:text="Business Services"
+                            android:fontFamily="@font/source_semibold"
                             android:textColor="@color/orange_700"
                             android:textSize="@dimen/medium_font" />
 
@@ -299,6 +303,7 @@
                             android:layout_marginStart="12dp"
                             android:layout_marginTop="@dimen/overrallspacing"
                             android:gravity="center"
+                            android:fontFamily="@font/source_semibold"
                             android:text="Personal Services"
                             android:textColor="@color/orange_700"
                             android:textSize="@dimen/medium_font" />
@@ -351,6 +356,7 @@
                         android:layout_marginTop="@dimen/overrallspacing"
                         android:gravity="center"
                         android:text="Loans"
+                        android:fontFamily="@font/source_semibold"
                         android:textColor="@color/orange_700"
                         android:textSize="@dimen/medium_font"
                         app:layout_constraintStart_toStartOf="parent"
@@ -406,6 +412,7 @@
                         android:layout_marginTop="@dimen/overrallspacing"
                         android:gravity="center"
                         android:text="Insurance"
+                        android:fontFamily="@font/source_semibold"
                         android:textColor="@color/orange_700"
                         android:textSize="@dimen/medium_font"
                         app:layout_constraintStart_toStartOf="parent"
@@ -458,6 +465,7 @@
                         android:layout_marginStart="12dp"
                         android:layout_marginTop="@dimen/overrallspacing"
                         android:gravity="center"
+                        android:fontFamily="@font/source_semibold"
                         android:text="Bills &amp; Recharges"
                         android:textColor="@color/orange_700"
                         android:textSize="@dimen/medium_font"
@@ -511,6 +519,7 @@
                         android:layout_marginStart="12dp"
                         android:layout_marginTop="12dp"
                         android:gravity="center"
+                        android:fontFamily="@font/source_semibold"
                         android:text="Beauty &amp; Health"
                         android:textColor="@color/orange_700"
                         android:textSize="@dimen/medium_font"
@@ -550,6 +559,7 @@
                         android:layout_marginEnd="12dp"
                         android:gravity="left"
                         android:padding="@dimen/minimumspacing"
+                        android:fontFamily="@font/source_semibold"
                         android:text="*Projects of this industry are in progress for your location. Please visit again.*"
                         android:textColor="@color/heading"
                         android:textSize="@dimen/small_font"
@@ -577,6 +587,7 @@
                         android:layout_marginTop="12dp"
                         android:gravity="center"
                         android:text="Education"
+                        android:fontFamily="@font/source_semibold"
                         android:textColor="@color/orange_700"
                         android:textSize="@dimen/medium_font"
                         app:layout_constraintStart_toStartOf="parent"
@@ -615,6 +626,7 @@
                         android:layout_marginEnd="12dp"
                         android:gravity="left"
                         android:padding="@dimen/minimumspacing"
+                        android:fontFamily="@font/source_semibold"
                         android:text="*Projects of this industry are in progress for your location. Please visit again.*"
                         android:textColor="@color/heading"
                         android:textSize="@dimen/small_font"
@@ -641,6 +653,7 @@
                         android:layout_marginStart="12dp"
                         android:layout_marginTop="12dp"
                         android:gravity="center"
+                        android:fontFamily="@font/source_semibold"
                         android:text="Retail And Household"
                         android:textColor="@color/orange_700"
                         android:textSize="@dimen/medium_font"
@@ -680,6 +693,7 @@
                         android:layout_marginEnd="12dp"
                         android:gravity="left"
                         android:padding="@dimen/minimumspacing"
+                        android:fontFamily="@font/source_semibold"
                         android:text="*Projects of this industry are in progress for your location. Please visit again.*"
                         android:textColor="@color/heading"
                         android:textSize="@dimen/small_font"
@@ -706,6 +720,7 @@
                         android:layout_marginStart="12dp"
                         android:layout_marginTop="12dp"
                         android:gravity="center"
+                        android:fontFamily="@font/source_semibold"
                         android:text="Automotive &amp; Spares"
                         android:textColor="@color/orange_700"
                         android:textSize="@dimen/medium_font"
@@ -745,6 +760,7 @@
                         android:layout_marginEnd="12dp"
                         android:gravity="left"
                         android:padding="@dimen/minimumspacing"
+                        android:fontFamily="@font/source_semibold"
                         android:text="*Projects of this industry are in progress for your location. Please visit again.*"
                         android:textColor="@color/heading"
                         android:textSize="@dimen/small_font"
@@ -771,6 +787,7 @@
                         android:layout_marginStart="12dp"
                         android:layout_marginTop="12dp"
                         android:gravity="center"
+                        android:fontFamily="@font/source_semibold"
                         android:text="Fashion &amp; Textile"
                         android:textColor="@color/orange_700"
                         android:textSize="@dimen/medium_font"
@@ -811,6 +828,7 @@
                         android:layout_marginEnd="12dp"
                         android:gravity="left"
                         android:padding="@dimen/minimumspacing"
+                        android:fontFamily="@font/source_semibold"
                         android:text="*Projects of this industry are in progress for your location. Please visit again.*"
                         android:textColor="@color/heading"
                         android:textSize="@dimen/small_font"
@@ -837,6 +855,7 @@
                         android:layout_marginStart="12dp"
                         android:layout_marginTop="12dp"
                         android:gravity="center"
+                        android:fontFamily="@font/source_semibold"
                         android:text="Sports, Fitness &amp; Entertainment"
                         android:textColor="@color/orange_700"
                         android:textSize="@dimen/medium_font"
@@ -876,6 +895,7 @@
                         android:layout_marginEnd="12dp"
                         android:gravity="left"
                         android:padding="@dimen/minimumspacing"
+                        android:fontFamily="@font/source_semibold"
                         android:text="*Projects of this industry are in progress for your location. Please visit again.*"
                         android:textColor="@color/heading"
                         android:textSize="@dimen/small_font"
@@ -902,6 +922,7 @@
                         android:layout_marginStart="12dp"
                         android:layout_marginTop="12dp"
                         android:gravity="center"
+                        android:fontFamily="@font/source_semibold"
                         android:text="Agri &amp; Organic Products"
                         android:textColor="@color/orange_700"
                         android:textSize="@dimen/medium_font"
@@ -943,6 +964,7 @@
                         android:layout_marginEnd="12dp"
                         android:gravity="left"
                         android:padding="@dimen/minimumspacing"
+                        android:fontFamily="@font/source_semibold"
                         android:text="*Projects of this industry are in progress for your location. Please visit again.*"
                         android:textColor="@color/heading"
                         android:textSize="@dimen/small_font"
@@ -982,6 +1004,7 @@
                         android:layout_toLeftOf="@+id/tv_Update"
                         android:gravity="center|left"
                         android:text="Update Profile"
+                        android:fontFamily="@font/source_semibold"
                         android:textColor="@color/heading"
                         android:textSize="@dimen/small_font" />
 
@@ -1029,6 +1052,7 @@
                             android:layout_marginTop="@dimen/overrallspacing"
                             android:gravity="center"
                             android:text="Services"
+                            android:fontFamily="@font/source_semibold"
                             android:textColor="@color/orange_700"
                             android:textSize="@dimen/medium_font" />
 
@@ -1087,6 +1111,7 @@
                             android:layout_marginTop="@dimen/overrallspacing"
                             android:gravity="center"
                             android:text="Approvals"
+                            android:fontFamily="@font/source_semibold"
                             android:textColor="@color/orange_700"
                             android:textSize="@dimen/medium_font" />
 
@@ -1145,6 +1170,7 @@
                             android:layout_marginTop="@dimen/overrallspacing"
                             android:gravity="center"
                             android:text="Services"
+                            android:fontFamily="@font/source_semibold"
                             android:textColor="@color/orange_700"
                             android:textSize="@dimen/medium_font" />
 
@@ -1202,6 +1228,7 @@
                             android:layout_marginStart="12dp"
                             android:layout_marginTop="@dimen/overrallspacing"
                             android:gravity="center"
+                            android:fontFamily="@font/source_semibold"
                             android:text="My Assignments"
                             android:textColor="@color/orange_700"
                             android:textSize="@dimen/medium_font" />
@@ -1261,6 +1288,7 @@
                             android:layout_marginTop="@dimen/overrallspacing"
                             android:gravity="center"
                             android:text="My Assignments"
+                            android:fontFamily="@font/source_semibold"
                             android:textColor="@color/orange_700"
                             android:textSize="@dimen/medium_font" />
 
@@ -1318,6 +1346,7 @@
                             android:layout_marginStart="12dp"
                             android:layout_marginTop="@dimen/overrallspacing"
                             android:gravity="center"
+                            android:fontFamily="@font/source_semibold"
                             android:text="My Assignments"
                             android:textColor="@color/orange_700"
                             android:textSize="@dimen/medium_font" />
