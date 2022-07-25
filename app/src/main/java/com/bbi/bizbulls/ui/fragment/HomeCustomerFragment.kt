@@ -25,7 +25,6 @@ import retrofit2.Response
 
 class HomeCustomerFragment : Fragment() {
     private lateinit var binding: FragmentHomeBinding
-   // var foSliderAdapter: FOSliderAdapter? = null
    lateinit var homeSlideAdapter: HomeSlideAdapter
    private lateinit var imagesModel:ArrayList<String>
    lateinit var sharedPrefsManager: SharedPrefsManager
@@ -47,6 +46,7 @@ class HomeCustomerFragment : Fragment() {
         serviceView()
         approvalesView()
         billsRecharge()
+        billsRechargeemp()
         myHrView()
         assingnmentView()
         projectScopeView()
@@ -101,6 +101,12 @@ class HomeCustomerFragment : Fragment() {
         binding.rcyBills.layoutManager =  LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         val billsRechargeAdapter = activity?.let { BillsRechargeAdapter(it) }
         binding.rcyBills.adapter = billsRechargeAdapter
+    }
+    private fun billsRechargeemp() {
+        binding.rcyBillsEmp.setHasFixedSize(true)
+        binding.rcyBillsEmp.layoutManager =  LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        val billsRechargeAdapter = activity?.let { BillsRechargeAdapter(it) }
+        binding.rcyBillsEmp.adapter = billsRechargeAdapter
     }
     private fun myHrView() {
         binding.rcyHr.setHasFixedSize(true)

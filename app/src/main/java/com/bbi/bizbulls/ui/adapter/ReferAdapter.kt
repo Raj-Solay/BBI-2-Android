@@ -1,15 +1,18 @@
 package com.bbi.bizbulls.ui.adapter
 
+import android.app.Activity
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.bbi.bizbulls.R
 import com.bbi.bizbulls.utils.CommonUtils
+import com.bbi.bizbulls.utils.CommonUtils.showCustomToast
 
 class ReferAdapter(activity: FragmentActivity) :
     RecyclerView.Adapter<ReferAdapter.viewHolder>() {
@@ -32,9 +35,10 @@ class ReferAdapter(activity: FragmentActivity) :
         holder.textView.text = iconsName[position]
         holder.imageView.setImageResource(icons[position])
         holder.itemView.setOnClickListener { v: View? ->
-            CommonUtils.toast(
-                context,
-                "Please wait!!! FO is not yet registered in your location."
+            Toast(context).showCustomToast(
+                "Currently your location is not registered but we are launching in your area soon.\n" +
+                        "\n" +
+                        "Please visit us again.", context as Activity
             )
         }
     }

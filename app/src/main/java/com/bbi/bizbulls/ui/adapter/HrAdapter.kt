@@ -1,28 +1,43 @@
 package com.bbi.bizbulls.ui.adapter
 
+import android.app.Activity
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.bbi.bizbulls.R
 import com.bbi.bizbulls.utils.CommonUtils
+import com.bbi.bizbulls.utils.CommonUtils.showCustomToast
 
 class HrAdapter(activity: FragmentActivity) :
     RecyclerView.Adapter<HrAdapter.viewHolder>() {
     var context: Context
     var iconsName = arrayOf(
-        "My Profile",
-        "Permission",
-        "My Pay",
+        "Admin",
+        "Hr",
+        "Accounts",
+        "IT",
+        "Branding",
+        "Logistics",
+        "Support",
+        "Security",
+
+
     )
     var icons = intArrayOf(
         R.drawable.emp_profile,
         R.drawable.permissions,
         R.drawable._lowinvetment,
+        R.drawable.emp_profile,
+        R.drawable.permissions,
+        R.drawable._lowinvetment,
+        R.drawable.emp_profile,
+        R.drawable.permissions,
     )
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): viewHolder {
@@ -34,9 +49,11 @@ class HrAdapter(activity: FragmentActivity) :
         holder.textView.text = iconsName[position]
         holder.imageView.setImageResource(icons[position])
         holder.itemView.setOnClickListener { v: View? ->
-            CommonUtils.toast(
-                context,
-                "Please wait!!! FO is not yet registered in your location."
+            Toast(context).showCustomToast(
+
+                "Currently your location is not registered but we are launching in your area soon.\n" +
+                        "\n" +
+                        "Please visit us again.", context as Activity
             )
         }
     }
