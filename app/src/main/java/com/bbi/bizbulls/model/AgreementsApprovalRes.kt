@@ -20,5 +20,6 @@ class AgreementsApprovalRes {
         @SerializedName("file_type")
         @Expose
         var fileType: String? = null
+        var isApproved = false
     }
 }

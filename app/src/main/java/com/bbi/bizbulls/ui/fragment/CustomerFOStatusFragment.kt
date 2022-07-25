@@ -130,7 +130,7 @@ class CustomerFOStatusFragment : Fragment(), View.OnClickListener {
             startActivityForResult(intent,REQUEST_CODE_ADD_AGREEMENT)
         }
         if (view === binding.btnaddsetup) {
-           setOfficeSetupDone()
+           setOfficeSetupDone(false)
             val intent = Intent(activity, SetupOfficeActivity::class.java)
             startActivityForResult(intent, REQUEST_CODE_SETUP)
         }
@@ -201,7 +201,7 @@ class CustomerFOStatusFragment : Fragment(), View.OnClickListener {
         binding.bbiLayout.imgbbiAgreementstatus.setImageResource(R.drawable.ic_done)
     }
 
-    private fun showfinancialRelibility() {
+    private fun showfinancialRelibility(fromAPI : Boolean) {
         binding.laoutregisterincomplete.visibility = View.GONE
         binding.laoutregistercomplete.visibility = View.VISIBLE
         if(isCustomer) {
@@ -240,10 +240,15 @@ class CustomerFOStatusFragment : Fragment(), View.OnClickListener {
         binding.layoutlocationidentityincomplete.visibility = View.VISIBLE
         binding.finabilityLayout.imgfinabilitystatus.setImageResource(R.drawable.ic_done)
     }
-    private fun setLocationDone() {
+    private fun setLocationDone(fromAPI: Boolean) {
         val dateFormat2 = SimpleDateFormat("yyyy-MM-dd HH:mm aa");
         val finalDate = dateFormat2.format(Date())
         binding.txtlocationidentitydate.setText(finalDate)
+        if(fromAPI){
+            binding.txtlocationidentitypendingapproval.setText("Completed")
+        }else{
+            binding.txtlocationidentitypendingapproval.setText("Pending Approval")
+        }
         binding.layoutlocationidentityincomplete.visibility = View.GONE
         binding.btnaddlocationidentity.visibility = View.GONE
         binding.layoutlocationidentitycomplete.visibility = View.VISIBLE
@@ -256,9 +261,14 @@ class CustomerFOStatusFragment : Fragment(), View.OnClickListener {
         binding.layoutagreementincomplete.visibility = View.GONE
         binding.imglocationidentity.setImageResource(R.drawable.ic_done)
     }
-    private fun setAgreementDone() {
+    private fun setAgreementDone(fromAPI: Boolean) {
         val dateFormat2 = SimpleDateFormat("yyyy-MM-dd HH:mm aa");
         val finalDate = dateFormat2.format(Date())
+        if(fromAPI){
+            binding.txtagreementstatus.setText("Completed")
+        }else{
+            binding.txtagreementstatus.setText("Pending Approval")
+        }
         binding.txtagreementdate.setText(finalDate.toString())
         binding.layoutagreementincomplete.visibility = View.GONE
         binding.layoutagreementcomplete.visibility = View.VISIBLE
@@ -287,7 +297,12 @@ class CustomerFOStatusFragment : Fragment(), View.OnClickListener {
         binding.layoutsetupincomplete.visibility = View.VISIBLE
         binding.franchiseeFeeLayout.imgfranchiseeFeestatus.setImageResource(R.drawable.ic_done)
     }
-    private fun setOfficeSetupDone() {
+    private fun setOfficeSetupDone(fromAPI: Boolean) {
+        if(fromAPI){
+            binding.txtsetupstatus.setText("Completed")
+        }else{
+            binding.txtsetupstatus.setText("Pending Approval")
+        }
         binding.layoutsetupincomplete.visibility = View.GONE
         binding.layoutsetupcomplete.visibility = View.VISIBLE
         binding.layoutlicenseincomplete.visibility = View.VISIBLE
@@ -366,7 +381,7 @@ class CustomerFOStatusFragment : Fragment(), View.OnClickListener {
                         val dateFormat2 = SimpleDateFormat("yyyy-MM-dd HH:mm aa");
                         val finalDate = dateFormat2.format(Date())
                         binding.txtregisterdate.setText(finalDate.toString())
-                        showfinancialRelibility()
+                        showfinancialRelibility(true)
                     }else{
                        // hideRegisterFee()
                     }
@@ -377,7 +392,7 @@ class CustomerFOStatusFragment : Fragment(), View.OnClickListener {
                     }
                     if(statusData?.locationUpdate?.status.equals("Completed",true))
                     {
-                        setLocationDone()
+                        setLocationDone(true)
                     }else{
                         hideLocation()
                     }
@@ -386,7 +401,7 @@ class CustomerFOStatusFragment : Fragment(), View.OnClickListener {
                         val dateFormat2 = SimpleDateFormat("yyyy-MM-dd HH:mm aa");
                         val finalDate = dateFormat2.format(Date())
                         binding.txtagreementdate.setText(finalDate.toString())
-                        setAgreementDone()
+                        setAgreementDone(true)
                     }
                     if(statusData?.frenchiseeFee?.status.equals("Completed",true))
                     {
@@ -400,7 +415,7 @@ class CustomerFOStatusFragment : Fragment(), View.OnClickListener {
                     if(statusData?.setup?.status.equals("Completed",true))
                     {
                         binding.txtsetupdate.setText(statusData?.setup?.date.toString())
-                        setOfficeSetupDone()
+                        setOfficeSetupDone(true)
                     }
                     if(statusData?.licence?.status.equals("Completed",true))
                     {
@@ -425,19 +440,19 @@ class CustomerFOStatusFragment : Fragment(), View.OnClickListener {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == REQUEST_CODE_REGISTRATION_FEE && resultCode == RESULT_OK) {
-            showfinancialRelibility()
+            showfinancialRelibility(false)
         }
         else if (requestCode == REQUEST_CODE_LOCATION_SETUP && resultCode == RESULT_OK) {
-            setLocationDone()
+            setLocationDone(false)
         }
         else if (requestCode == REQUEST_CODE_ADD_AGREEMENT && resultCode == RESULT_OK) {
-            setAgreementDone()
+            setAgreementDone(false)
         }
         else if(requestCode == REQUEST_CODE_ADD_FINABILITY && resultCode == RESULT_OK){
             setFinabilityDone()
         }
         else if(requestCode == REQUEST_CODE_SETUP && resultCode == RESULT_OK){
-            setOfficeSetupDone()
+            setOfficeSetupDone(false)
         }
         else if(requestCode == REQUEST_CODE_FRANCHISEE_FEE && resultCode == RESULT_OK){
             setFranchiseeRegistrationFeeDone()

@@ -182,10 +182,10 @@ class SetupOfficeActivity : AppCompatActivity() {
             ) {
                 if (responseObject.isSuccessful) {
                     if (type == 1) {
-                        imagePath1 = responseObject.body()?.data?.path ?: ""
+                        imagePath1 = responseObject.body()?.data?.links?.full ?: ""
                     }
                     if (type == 2) {
-                        imagePath2 = responseObject.body()?.data?.path ?: ""
+                        imagePath2 = responseObject.body()?.data?.links?.full ?: ""
                     }
                 } else {
                     RetrofitClient.showResponseMessage(

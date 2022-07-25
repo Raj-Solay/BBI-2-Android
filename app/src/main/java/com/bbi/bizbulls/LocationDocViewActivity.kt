@@ -27,7 +27,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class LocationDocViewActivity : AppCompatActivity(),DocViewListener , OnMapReadyCallback {
+class LocationDocViewActivity : AppCompatActivity() , OnMapReadyCallback {
     lateinit var binding:ActivityLocationApprovalViewBinding
     private val sharedPrefsHelper by lazy { SharedPrefsManager(this@LocationDocViewActivity) }
 
@@ -63,10 +63,6 @@ class LocationDocViewActivity : AppCompatActivity(),DocViewListener , OnMapReady
                 mMap.animateCamera( CameraUpdateFactory.zoomTo( cuurentZoomLevel ) )
             }
         }
-    }
-
-    override fun onDocView(data: ApprovalDocRes.Data?) {
-
     }
 
     override fun onMapReady(mMapTmp: GoogleMap) {

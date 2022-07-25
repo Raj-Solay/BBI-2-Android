@@ -17,7 +17,7 @@ import com.bbi.bizbulls.R
 import com.bbi.bizbulls.model.PersonalUserAll
 
 class KycApprovalAdapter(var userList: ArrayList<PersonalUserAll.Data>,var approval_type: Int) :
-    RecyclerView.Adapter<KycApprovalAdapter.ViewHolder>(), Filterable {
+    RecyclerView.Adapter<KycApprovalAdapter.ViewHolder>() {
     private var context: Context? = null
     var photosListFiltered: ArrayList<PersonalUserAll.Data> = arrayListOf()
 
@@ -58,37 +58,4 @@ class KycApprovalAdapter(var userList: ArrayList<PersonalUserAll.Data>,var appro
         this.userList = userList
     }
 
-    override fun getFilter(): Filter {
-        return object : Filter() {
-            override fun performFiltering(constraint: CharSequence?): FilterResults {
-                val charString = constraint?.toString() ?: ""
-
-                if (charString.isEmpty()) photosListFiltered = userList else {
-                    val filteredList = ArrayList<PersonalUserAll.Data>()
-                    userList
-                        .filter {
-                            if(it.whatsappnumber == null){
-                                it.whatsappnumber = 0
-                            }
-                            Log.d("Filter","Contins : "+ it.fullname!! + " : "+ constraint.toString())
-                            (it.whatsappnumber!!.toString().contains(constraint!!)) or (it.fullname!!.toString().contains(constraint.toString()))
-
-                        }
-                        .forEach { filteredList.add(it) }
-                    photosListFiltered = filteredList
-
-                }
-                return FilterResults().apply { values = photosListFiltered }
-            }
-
-            override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
-
-                photosListFiltered = if (results?.values == null)
-                    ArrayList()
-                else
-                    results.values as ArrayList<PersonalUserAll.Data>
-                notifyDataSetChanged()
-            }
-        }
-    }
 }

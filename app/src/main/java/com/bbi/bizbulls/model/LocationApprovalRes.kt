@@ -40,5 +40,6 @@ class LocationApprovalRes {
         @SerializedName("videos")
         @Expose
         var videos: String? = null
+        var isApproved = false
     }
 }

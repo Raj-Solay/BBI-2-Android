@@ -187,7 +187,7 @@
                         <androidx.appcompat.widget.AppCompatTextView
                             style="@style/checkWithTextLayout"
                             android:layout_width="wrap_content"
-                            android:text="@string/upload_photo"
+                            android:text="Photos2"
                             app:layout_constraintEnd_toEndOf="@id/llUploadPhoto"
                             app:layout_constraintStart_toStartOf="@+id/llUploadPhoto"
                             app:layout_constraintTop_toBottomOf="@+id/llUploadPhoto" />
@@ -234,7 +234,7 @@
                         <androidx.appcompat.widget.AppCompatTextView
                             style="@style/checkWithTextLayout"
                             android:layout_width="wrap_content"
-                            android:text="@string/upload_photo"
+                            android:text="Photos3"
                             app:layout_constraintEnd_toEndOf="@id/llUploadPhoto"
                             app:layout_constraintStart_toStartOf="@+id/llUploadPhoto"
                             app:layout_constraintTop_toBottomOf="@+id/llUploadPhoto" />
@@ -281,7 +281,7 @@
                         <androidx.appcompat.widget.AppCompatTextView
                             style="@style/checkWithTextLayout"
                             android:layout_width="wrap_content"
-                            android:text="@string/upload_photo"
+                            android:text="Photos4"
                             app:layout_constraintEnd_toEndOf="@id/llUploadPhoto"
                             app:layout_constraintStart_toStartOf="@+id/llUploadPhoto"
                             app:layout_constraintTop_toBottomOf="@+id/llUploadPhoto" />
@@ -328,7 +328,7 @@
                         <androidx.appcompat.widget.AppCompatTextView
                             style="@style/checkWithTextLayout"
                             android:layout_width="wrap_content"
-                            android:text="@string/upload_photo"
+                            android:text="Photos5"
                             app:layout_constraintEnd_toEndOf="@id/llUploadPhoto"
                             app:layout_constraintStart_toStartOf="@+id/llUploadPhoto"
                             app:layout_constraintTop_toBottomOf="@+id/llUploadPhoto" />

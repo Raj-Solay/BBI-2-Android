@@ -420,6 +420,22 @@ interface APIService {
         @Header("Authorization") token: String
     ): Call<PersonalUserAll>
 
+    @GET("/api/me/agreement/all")
+    fun getAgreementAll(
+        @Header("Authorization") token: String
+    ): Call<PersonalUserAll>
+
+    @GET("/api/me/location/all")
+    fun getLocationAll(
+        @Header("Authorization") token: String
+    ): Call<PersonalUserAll>
+
+    @GET("/api/me/staff/all")
+    fun getStaffAll(
+        @Header("Authorization") token: String
+    ): Call<PersonalUserAll>
+
+
     @GET("/api/me/document/user/{user_id}")
     fun viewUserDoc(
         @Header("Authorization") token: String,
@@ -473,5 +489,20 @@ interface APIService {
     fun getPendingLocation(
         @Header("Authorization") token: String,@Path(value = "user_id", encoded = true) userId: String
     ): Call<LocationApprovalRes>
+
+    @POST("/api/me/location/approve/{doc_id}")
+    fun approvalLocation(
+        @Header("Authorization") token: String,@Path(value = "doc_id", encoded = true) userId: String
+    ): Call<ResponseBody>
+
+    @POST("/api/me/agreement/approve/{doc_id}")
+    fun approvalAgreement(
+        @Header("Authorization") token: String,@Path(value = "doc_id", encoded = true) userId: String
+    ): Call<ResponseBody>
+
+    @POST("/api/me/staff/approve/{doc_id}")
+    fun approvalStaff(
+        @Header("Authorization") token: String,@Path(value = "doc_id", encoded = true) userId: String
+    ): Call<ResponseBody>
 
 }

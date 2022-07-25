@@ -129,10 +129,10 @@ class AddStaffDetailActivity : AppCompatActivity() {
             ) {
                 if (responseObject.isSuccessful) {
                     if (type == 1) {
-                        imagePath = responseObject.body()?.data?.path ?: ""
+                        imagePath = responseObject.body()?.data?.links?.full ?: ""
                     }
                     if (type == 2) {
-                        resumePath = responseObject.body()?.data?.path ?: ""
+                        resumePath = responseObject.body()?.data?.links?.full ?: ""
                     }
                 } else {
                     RetrofitClient.showResponseMessage(

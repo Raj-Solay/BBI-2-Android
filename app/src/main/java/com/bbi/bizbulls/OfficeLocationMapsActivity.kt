@@ -300,6 +300,7 @@ class OfficeLocationMapsActivity : AppCompatActivity(), OnMapReadyCallback {
             }
         }
         binding.btnSaveLocation.setOnClickListener {
+            binding.btnSaveLocation.alpha = 0.5f
             val location: String = binding.idSearchView.getQuery().toString()
             sharedPrefsHelper.officeLocationBookmark = location.toString()
         }
@@ -417,27 +418,28 @@ class OfficeLocationMapsActivity : AppCompatActivity(), OnMapReadyCallback {
                 call: Call<FileUpload>,
                 responseObject: Response<FileUpload>
             ) {
+                Log.d("ImageFullPath","Link :"+ responseObject.body()?.data?.links?.full)
                 if (responseObject.code() == 201 || responseObject.code() == 200) {
                     if (path == 1) {
-                        officeBluePrintPath = responseObject.body()?.data?.path ?: ""
+                        officeBluePrintPath = responseObject.body()?.data?.links?.full ?: ""
                     }
                     if (path == 2) {
-                        officeImagePath = responseObject.body()?.data?.path ?: ""
+                        officeImagePath = responseObject.body()?.data?.links?.full ?: ""
                     }
                     if (path == 3) {
-                        officeVideoPath = responseObject.body()?.data?.path ?: ""
+                        officeVideoPath = responseObject.body()?.data?.links?.full ?: ""
                     }
                     if(path == 4){
-                        officeImagePath2 = responseObject.body()?.data?.path ?: ""
+                        officeImagePath2 = responseObject.body()?.data?.links?.full ?: ""
                     }
                     if(path == 5){
-                        officeImagePath3 = responseObject.body()?.data?.path ?: ""
+                        officeImagePath3 = responseObject.body()?.data?.links?.full ?: ""
                     }
                     if(path == 6){
-                        officeImagePath4 = responseObject.body()?.data?.path ?: ""
+                        officeImagePath4 = responseObject.body()?.data?.links?.full ?: ""
                     }
                     if(path == 7){
-                        officeImagePath5 = responseObject.body()?.data?.path ?: ""
+                        officeImagePath5 = responseObject.body()?.data?.links?.full ?: ""
                     }
 
                 } else {
@@ -471,7 +473,7 @@ class OfficeLocationMapsActivity : AppCompatActivity(), OnMapReadyCallback {
         )
         jsonObject.addProperty("space_blue_print_file", officeBluePrintPath)
 
-
+        Log.d("ImageFullPath","officeImagePath :"+ officeImagePath)
         var ImageList = ""
         if(!officeImagePath.isNullOrEmpty()){
             ImageList += officeImagePath
@@ -488,6 +490,7 @@ class OfficeLocationMapsActivity : AppCompatActivity(), OnMapReadyCallback {
         if(!officeImagePath5.isNullOrEmpty()){
             ImageList += ",$officeImagePath5"
         }
+        Log.d("ImageFullPath","ImageList :"+ ImageList)
         jsonObject.addProperty("images", ImageList)
         jsonObject.addProperty("videos", officeVideoPath)
         val call: Call<AddLocationResponse> =

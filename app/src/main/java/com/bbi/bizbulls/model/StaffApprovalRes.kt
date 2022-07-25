@@ -36,5 +36,6 @@ class StaffApprovalRes {
         @SerializedName("resume")
         @Expose
         var resume: String? = null
+        var isApproved = false
     }
 }

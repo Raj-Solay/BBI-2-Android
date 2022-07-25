@@ -32,7 +32,19 @@ class KycListActivity : AppCompatActivity() {
         Log.d("ATYPE",""+ approval_type)
 
         initView()
+        /*if(approval_type == 0){
+            getUserList()
+        }else if(approval_type == 1){
+            getUserList()
+        }else if(approval_type == 2){
+            getAgreementList()
+        }else if(approval_type == 3){
+            getSetupList()
+        }else if(approval_type == 4){
+            getLicenseList()
+        }*/
         getUserList()
+
     }
     private fun initView() {
         var toolBarTitle = ""
@@ -58,6 +70,20 @@ class KycListActivity : AppCompatActivity() {
        }
 
     }
+
+    private fun getLocationList(){
+
+    }
+    private fun getAgreementList(){
+
+    }
+    private fun getSetupList(){
+
+    }
+    private fun getLicenseList(){
+
+    }
+
     private fun getUserList(){
         MyProcessDialog.showProgressBar(this, 0)
         val call: Call<PersonalUserAll> =

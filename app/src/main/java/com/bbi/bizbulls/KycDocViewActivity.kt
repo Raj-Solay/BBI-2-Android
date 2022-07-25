@@ -12,6 +12,7 @@ import com.bbi.bizbulls.sharedpref.SharedPrefsManager
 import com.bbi.bizbulls.ui.DialogDocApprove
 import com.bbi.bizbulls.utils.MyProcessDialog
 import com.bbi.bizbulls.adapter.DocApprovalAdapter
+import com.bbi.bizbulls.adapter.LicenseApprovalAdapter
 import com.bbi.bizbulls.adapter.SetupApprovalAdapter
 import com.bbi.bizbulls.model.*
 import com.foldio.android.adapter.LocationApprovalAdapter
@@ -33,6 +34,7 @@ class KycDocViewActivity : AppCompatActivity(),DocViewListener {
     private var docListLocation : List<LocationApprovalRes.Data> = arrayListOf()
     private var docListAgreement : List<AgreementsApprovalRes.Data> = arrayListOf()
     private var docListStaff : List<StaffApprovalRes.Data> = arrayListOf()
+    private var docListLicense : List<StaffApprovalRes.Data> = arrayListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,11 +49,17 @@ class KycDocViewActivity : AppCompatActivity(),DocViewListener {
         if(approval_type == 0){
             getUserList()
         }else if(approval_type == 1){
+            binding.linerApprove.visibility = View.GONE
             getLocationList()
         }else if(approval_type == 2){
+            binding.linerApprove.visibility = View.GONE
             getAgreementList()
         }else if(approval_type == 3){
+            binding.linerApprove.visibility = View.GONE
             getSetupList()
+        }else if(approval_type == 4){
+            binding.linerApprove.visibility = View.GONE
+            getLicenseList()
         }
 
         binding.btnCancelFinal.setOnClickListener {
@@ -173,9 +181,33 @@ class KycDocViewActivity : AppCompatActivity(),DocViewListener {
             }
         })
     }
+    fun getLicenseList(){
+        MyProcessDialog.showProgressBar(this, 0)
+        val call: Call<AgreementsApprovalRes> =
+            RetrofitClient.getUrl().getPendingAgreement(sharedPrefsHelper.authToken,userData.userId.toString())
+        call.enqueue(object : Callback<AgreementsApprovalRes> {
+            override fun onResponse(
+                call: Call<AgreementsApprovalRes>,
+                response: Response<AgreementsApprovalRes>
+            ) {
+                if (response.isSuccessful) {
+                    /*docListLicense = response.body()?.data!!
+                    setAdapterLicense(docListLicense)*/
+                } else {
+                    RetrofitClient.showResponseMessage(this@KycDocViewActivity, response.code())
+                }
+                MyProcessDialog.dismiss()
+            }
+
+            override fun onFailure(call: Call<AgreementsApprovalRes>, t: Throwable) {
+                MyProcessDialog.dismiss()
+                RetrofitClient.showFailedMessage(this@KycDocViewActivity, t)
+            }
+        })
+    }
     var setupApprovalAdapter : SetupApprovalAdapter? = null
     private fun setAdapterSetUp(userList: List<StaffApprovalRes.Data>?) {
-        setupApprovalAdapter= SetupApprovalAdapter(userList,this,approval_type)
+        setupApprovalAdapter= SetupApprovalAdapter(this,userList,this,approval_type)
         binding?.listDocuments!!.layoutManager = GridLayoutManager(this,1)
         binding?.listDocuments?.adapter = setupApprovalAdapter
 
@@ -185,13 +217,13 @@ class KycDocViewActivity : AppCompatActivity(),DocViewListener {
                 count++*/
         }
         if(count == docListLocation.size){
-            binding.linerApprove.visibility = View.VISIBLE
+            binding.linerApprove.visibility = View.GONE
             binding.txtBg.visibility = View.VISIBLE
             binding.linerApprove.alpha = 1f
             binding.btnCancelFinal.isEnabled = true
             binding.btnApproveFinal.isEnabled = true
         }else{
-            binding.linerApprove.visibility = View.VISIBLE
+            binding.linerApprove.visibility = View.GONE
             binding.txtBg.visibility = View.VISIBLE
             binding.linerApprove.alpha = 0.5f
             binding.btnCancelFinal.isEnabled = false
@@ -200,9 +232,34 @@ class KycDocViewActivity : AppCompatActivity(),DocViewListener {
     }
     var agreementApprovalAdapter : AgreementApprovalAdapter? = null
     private fun setAdapterAgreement(userList: List<AgreementsApprovalRes.Data>?) {
-        agreementApprovalAdapter= AgreementApprovalAdapter(userList,this,approval_type)
+        agreementApprovalAdapter= AgreementApprovalAdapter(this,userList,this,approval_type)
         binding?.listDocuments!!.layoutManager = GridLayoutManager(this,1)
         binding?.listDocuments?.adapter = agreementApprovalAdapter
+
+        var count = 0
+        docListLocation.forEach {
+            /*if(it.isApproved || it!!.documentStatus == "1" )
+                count++*/
+        }
+        if(count == docListLocation.size){
+            binding.linerApprove.visibility = View.GONE
+            binding.txtBg.visibility = View.VISIBLE
+            binding.linerApprove.alpha = 1f
+            binding.btnCancelFinal.isEnabled = true
+            binding.btnApproveFinal.isEnabled = true
+        }else{
+            binding.linerApprove.visibility = View.GONE
+            binding.txtBg.visibility = View.VISIBLE
+            binding.linerApprove.alpha = 0.5f
+            binding.btnCancelFinal.isEnabled = false
+            binding.btnApproveFinal.isEnabled = false
+        }
+    }
+    var licenseApprovalAdapter : LicenseApprovalAdapter? = null
+    private fun setAdapterLicense(userList: List<AgreementsApprovalRes.Data>?) {
+        licenseApprovalAdapter= LicenseApprovalAdapter(this,userList,this,approval_type)
+        binding?.listDocuments!!.layoutManager = GridLayoutManager(this,1)
+        binding?.listDocuments?.adapter = licenseApprovalAdapter
 
         var count = 0
         docListLocation.forEach {
@@ -216,7 +273,7 @@ class KycDocViewActivity : AppCompatActivity(),DocViewListener {
             binding.btnCancelFinal.isEnabled = true
             binding.btnApproveFinal.isEnabled = true
         }else{
-            binding.linerApprove.visibility = View.VISIBLE
+            binding.linerApprove.visibility = View.GONE
             binding.txtBg.visibility = View.VISIBLE
             binding.linerApprove.alpha = 0.5f
             binding.btnCancelFinal.isEnabled = false
@@ -235,13 +292,13 @@ class KycDocViewActivity : AppCompatActivity(),DocViewListener {
                 count++*/
         }
         if(count == docListLocation.size){
-            binding.linerApprove.visibility = View.VISIBLE
+            binding.linerApprove.visibility = View.GONE
             binding.txtBg.visibility = View.VISIBLE
             binding.linerApprove.alpha = 1f
             binding.btnCancelFinal.isEnabled = true
             binding.btnApproveFinal.isEnabled = true
         }else{
-            binding.linerApprove.visibility = View.VISIBLE
+            binding.linerApprove.visibility = View.GONE
             binding.txtBg.visibility = View.VISIBLE
             binding.linerApprove.alpha = 0.5f
             binding.btnCancelFinal.isEnabled = false
@@ -331,26 +388,27 @@ class KycDocViewActivity : AppCompatActivity(),DocViewListener {
         var jsonArray = JsonArray()
 
         var count = 0
-        docList.forEach {
-            var jsonObjectDoc = JsonObject()
-            jsonObjectDoc.addProperty("doc_id",it!!.id.toString())
-            if(it!!.documentType.toString() == "null"){
-                it!!.documentType = "1"
+
+        if(approval_type == 0){
+            docList.forEach {
+                var jsonObjectDoc = JsonObject()
+                jsonObjectDoc.addProperty("doc_id",it!!.id.toString())
+                if(it!!.documentType.toString() == "null"){
+                    it!!.documentType = "1"
+                }
+                if(it!!.isApproved || it!!.documentStatus == "1" ) {
+                    count++
+                    jsonObjectDoc.addProperty("document_type","1")
+                }else{
+                    jsonObjectDoc.addProperty("document_type","0")
+                }
+                jsonArray.add(jsonObjectDoc)
+
             }
-            if(it!!.isApproved || it!!.documentStatus == "1" ) {
-                count++
-                jsonObjectDoc.addProperty("document_type","1")
-            }else{
-                jsonObjectDoc.addProperty("document_type","0")
-            }
-            jsonArray.add(jsonObjectDoc)
 
         }
-        if(count == docList.size){
-            jsonObject.addProperty("status","approved")
-        }else{
-            jsonObject.addProperty("status","pending")
-        }
+        jsonObject.addProperty("status","approved")
+
 
         jsonObject.add("data",jsonArray)
 
@@ -379,4 +437,102 @@ class KycDocViewActivity : AppCompatActivity(),DocViewListener {
     override fun onDocView(data: ApprovalDocRes.Data?) {
         showDocDialog(data)
     }
+
+    override fun onDocLocationView(data: LocationApprovalRes.Data?) {
+       // showDocLocationDialog(data)
+        docListLocation.forEach {
+            if(it.id == data!!.id){
+                it.isApproved = !it.isApproved
+            }
+        }
+        locationApprovalAdapter?.notifyDataSetChanged()
+
+        MyProcessDialog.showProgressBar(this, 0)
+
+        val call: Call<ResponseBody> =
+            RetrofitClient.getUrl().approvalLocation(sharedPrefsHelper.authToken,data!!.id.toString())
+        call.enqueue(object : Callback<ResponseBody> {
+            override fun onResponse(
+                call: Call<ResponseBody>,
+                response: Response<ResponseBody>
+            ) {
+                if (response.isSuccessful) {
+                   // finish()
+                } else {
+                    RetrofitClient.showResponseMessage(this@KycDocViewActivity, response.code())
+                }
+                MyProcessDialog.dismiss()
+            }
+
+            override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+                MyProcessDialog.dismiss()
+                RetrofitClient.showFailedMessage(this@KycDocViewActivity, t)
+            }
+        })
+    }
+
+    override fun onDocAgreementView(data: AgreementsApprovalRes.Data?) {
+        docListAgreement.forEach {
+            if(it.id == data!!.id){
+                it.isApproved = !it.isApproved
+            }
+        }
+        agreementApprovalAdapter?.notifyDataSetChanged()
+
+        MyProcessDialog.showProgressBar(this, 0)
+
+        val call: Call<ResponseBody> =
+            RetrofitClient.getUrl().approvalAgreement(sharedPrefsHelper.authToken,data!!.id.toString())
+        call.enqueue(object : Callback<ResponseBody> {
+            override fun onResponse(
+                call: Call<ResponseBody>,
+                response: Response<ResponseBody>
+            ) {
+                if (response.isSuccessful) {
+                    // finish()
+                } else {
+                    RetrofitClient.showResponseMessage(this@KycDocViewActivity, response.code())
+                }
+                MyProcessDialog.dismiss()
+            }
+
+            override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+                MyProcessDialog.dismiss()
+                RetrofitClient.showFailedMessage(this@KycDocViewActivity, t)
+            }
+        })
+    }
+
+    override fun onDocSetupView(data: StaffApprovalRes.Data?) {
+        docListStaff.forEach {
+            if(it.id == data!!.id){
+                it.isApproved = !it.isApproved
+            }
+        }
+        setupApprovalAdapter?.notifyDataSetChanged()
+
+        MyProcessDialog.showProgressBar(this, 0)
+
+        val call: Call<ResponseBody> =
+            RetrofitClient.getUrl().approvalStaff(sharedPrefsHelper.authToken,data!!.id.toString())
+        call.enqueue(object : Callback<ResponseBody> {
+            override fun onResponse(
+                call: Call<ResponseBody>,
+                response: Response<ResponseBody>
+            ) {
+                if (response.isSuccessful) {
+                    // finish()
+                } else {
+                    RetrofitClient.showResponseMessage(this@KycDocViewActivity, response.code())
+                }
+                MyProcessDialog.dismiss()
+            }
+
+            override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+                MyProcessDialog.dismiss()
+                RetrofitClient.showFailedMessage(this@KycDocViewActivity, t)
+            }
+        })
+    }
+
 }

@@ -1,73 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/_220sdp"
+    android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_margin="@dimen/_16sdp">
 
 
-    <FrameLayout
-        android:id="@+id/frmLayout"
+    <ImageView
+        android:id="@+id/imgFull"
+        android:layout_above="@+id/btnCancel"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_180sdp">
-
-        <fragment
-            android:id="@+id/mapLayout"
-            android:name="com.google.android.gms.maps.SupportMapFragment"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/_180sdp"
-            app:layout_constraintEnd_toEndOf="@+id/txtLocateAddress"
-            app:layout_constraintStart_toStartOf="@+id/txtLocateAddress"
-            app:layout_constraintTop_toBottomOf="@+id/idSearchView"
-            tools:context=".OfficeLocationMapsActivity" />
-
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right|bottom"
-            android:layout_marginRight="@dimen/_10sdp"
-            android:layout_marginBottom="@dimen/_10sdp"
-            android:orientation="vertical">
-
-            <ImageView
-                android:id="@+id/imgZoomOut"
-                android:layout_width="@dimen/_20sdp"
-                android:layout_height="@dimen/_20sdp"
-                android:layout_gravity="right|center"
-                android:layout_marginEnd="@dimen/_16sdp"
-                android:layout_marginBottom="@dimen/_2sdp"
-                android:src="@drawable/ic_zoomout"
-                app:tint="@color/orange_700" />
-
-            <ImageView
-                android:id="@+id/imgZoomIn"
-                android:layout_width="@dimen/_20sdp"
-                android:layout_height="@dimen/_20sdp"
-                android:layout_gravity="right"
-                app:tint="@color/orange_700"
-                android:layout_marginEnd="@dimen/_16sdp"
-                android:layout_marginBottom="@dimen/_4sdp"
-                android:src="@drawable/ic_zoomin" />
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btnSaveLocation"
-                style="@style/fontregular"
-                android:layout_width="wrap_content"
-                android:layout_height="22dp"
-                android:layout_gravity="right"
-                android:visibility="gone"
-                android:background="@drawable/bg_rounddarkorange"
-                android:paddingStart="8dp"
-                android:paddingEnd="8dp"
-                android:text="Save"
-                android:textAllCaps="false"
-                android:textColor="@color/white"
-                android:textSize="@dimen/small_font"
-                tools:ignore="TouchTargetSizeCheck" />
-        </androidx.appcompat.widget.LinearLayoutCompat>
-
-    </FrameLayout>
+        android:layout_height="match_parent"/>
 
     <TextView
         android:id="@+id/btnCancel"
@@ -84,5 +28,4 @@
         android:text="Cancel"
         android:textColor="@color/white"
         android:textSize="@dimen/_12sdp" />
-
 </RelativeLayout>

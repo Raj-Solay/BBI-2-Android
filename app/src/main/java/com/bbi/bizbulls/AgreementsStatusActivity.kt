@@ -211,11 +211,11 @@ class AgreementsStatusActivity : AppCompatActivity() {
                 if (responseObject.isSuccessful) {
                     if (type == 1) {
                         Toast.makeText(this@AgreementsStatusActivity,"Upload completed",Toast.LENGTH_SHORT).show()
-                        responseObject.body()?.data?.path?.let { franchiseeImageList.add(it) }
+                        responseObject.body()?.data?.links?.full?.let { franchiseeImageList.add(it) }
                     }
                     if (type == 2) {
 
-                        responseObject.body()?.data?.path?.let { thirdPartyImageList.add(it) }
+                        responseObject.body()?.data?.links?.full?.let { thirdPartyImageList.add(it) }
                     }
                 } else {
                     RetrofitClient.showResponseMessage(
