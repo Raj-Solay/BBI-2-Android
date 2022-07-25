@@ -40,11 +40,13 @@ class HomeCustomerFragment : Fragment() {
         getUserRole(activity )
         sliderUpdate()
         loadServices()
+        loadBusiness()
         loadRetailView()
         loadFranchiseView()
         loadFoodView()
         serviceView()
         approvalesView()
+        billsRecharge()
         myHrView()
         assingnmentView()
         projectScopeView()
@@ -61,6 +63,12 @@ class HomeCustomerFragment : Fragment() {
         binding.rvServices.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         val servicesAdapter = activity?.let { ServicesAdapter(it) }
         binding.rvServices.adapter = servicesAdapter
+    }
+    private fun loadBusiness() {
+        binding.rcyBusiness.setHasFixedSize(true)
+        binding.rcyBusiness.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        val businesAdapter = activity?.let { BusinesAdapter(it) }
+        binding.rcyBusiness.adapter = businesAdapter
     }
 
     private fun loadRetailView() {
@@ -87,6 +95,12 @@ class HomeCustomerFragment : Fragment() {
         binding.rcyAproval.layoutManager =  LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         val approvalsAdapter = activity?.let { ApprovalsAdapter(it) }
         binding.rcyAproval.adapter = approvalsAdapter
+    }
+    private fun billsRecharge() {
+        binding.rcyBills.setHasFixedSize(true)
+        binding.rcyBills.layoutManager =  LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        val billsRechargeAdapter = activity?.let { BillsRechargeAdapter(it) }
+        binding.rcyBills.adapter = billsRechargeAdapter
     }
     private fun myHrView() {
         binding.rcyHr.setHasFixedSize(true)

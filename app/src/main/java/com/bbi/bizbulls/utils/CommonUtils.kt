@@ -37,7 +37,13 @@ object CommonUtils {
     const val  ACTION_TYPE_EDIT = 2
 
     fun toast(context: Context?, message: String?) {
-        Toast.makeText(context, message, Toast.LENGTH_LONG).show()
+       /* Toast.makeText(context, message, Toast.LENGTH_LONG).show()*/
+        val toast = Toast.makeText(
+            context?.getApplicationContext(),
+            message, Toast.LENGTH_SHORT
+        )
+        toast.setGravity(Gravity.BOTTOM or Gravity.CENTER_HORIZONTAL, 0, 0)
+        toast.show()
     }
 
     fun isValidEmail(target: CharSequence?): Boolean {

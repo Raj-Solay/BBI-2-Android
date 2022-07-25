@@ -11,27 +11,30 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bbi.bizbulls.R
 import com.bbi.bizbulls.utils.CommonUtils
 
-class FranchiseeAdapter(activity: FragmentActivity) :
-    RecyclerView.Adapter<FranchiseeAdapter.viewHolder>() {
+class BillsRechargeAdapter(activity: FragmentActivity) :
+    RecyclerView.Adapter<BillsRechargeAdapter.viewHolder>() {
     var context: Context
     var iconsName = arrayOf(
-        "Personal",
-        "Business",
-        "Home",
-        "Vehicle",
-        "Education",
-        "Mortgage")
+        "Mobile Recharge",
+        "DTH",
+        "Electricity",
+        "Credit Card Bill",
+        "Rent Parment",
+        "Load Repayment",
+        "Education Fees"
+    )
     var icons = intArrayOf(
-        R.drawable._loaning,
-        R.drawable._conttraining,
-        R.drawable.property_broker,
         R.drawable.delivery,
-        R.drawable._conttraining,
-        R.drawable._technologyenable,
+        R.drawable.g_services,
+        R.drawable.cab,
+        R.drawable.maintaince,
+        R.drawable.property_broker,
+        R.drawable.cab,
+        R.drawable.schedule
     )
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): viewHolder {
-        val view = LayoutInflater.from(context).inflate(R.layout.item_franchiese, parent, false)
+        val view = LayoutInflater.from(context).inflate(R.layout.itemlist, parent, false)
         return viewHolder(view)
     }
 
@@ -41,9 +44,7 @@ class FranchiseeAdapter(activity: FragmentActivity) :
         holder.itemView.setOnClickListener { v: View? ->
             CommonUtils.toast(
                 context,
-                "Currently your location is not registered but we are launching in your area soon.\n" +
-                        "\n" +
-                        "Please visit us again."
+                "Please wait!!! FO is not yet registered in your location."
             )
         }
     }

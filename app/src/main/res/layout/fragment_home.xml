@@ -152,67 +152,6 @@
                     </LinearLayout>
 
                 </LinearLayout>
-
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="@dimen/minimumspacing"
-                    android:layout_marginEnd="8dp"
-                    android:background="@drawable/bg_roundwhite"
-                    android:visibility="visible"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/constraintscope">
-
-                    <RelativeLayout
-                        android:id="@+id/rl_service"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent">
-
-                        <androidx.appcompat.widget.AppCompatTextView
-                            android:id="@+id/txtservices"
-                            style="@style/fontregular"
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:layout_alignParentLeft="true"
-                            android:layout_marginStart="12dp"
-                            android:layout_marginTop="@dimen/overrallspacing"
-                            android:gravity="center"
-                            android:text="Services"
-                            android:textColor="@color/orange_700"
-                            android:textSize="@dimen/medium_font" />
-
-                        <androidx.appcompat.widget.AppCompatTextView
-                            android:id="@+id/tv_all"
-                            style="@style/fontregular"
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:layout_alignParentRight="true"
-                            android:layout_marginStart="12dp"
-                            android:layout_marginTop="@dimen/overrallspacing"
-                            android:gravity="center"
-                            android:paddingRight="12dp"
-                            android:text="View All"
-                            android:textColor="@color/facebook_color"
-                            android:textSize="@dimen/medium_font" />
-
-                    </RelativeLayout>
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/rv_services"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/minimumspacing"
-                        android:nestedScrollingEnabled="true"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/rl_service" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -272,6 +211,124 @@
                         app:layout_constraintTop_toBottomOf="@+id/rlleads" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="@dimen/minimumspacing"
+                    android:layout_marginEnd="8dp"
+                    android:background="@drawable/bg_roundwhite"
+                    android:visibility="visible"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/constraintscope">
+
+                    <RelativeLayout
+                        android:id="@+id/rl_Business"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/txt_Business"
+                            style="@style/fontregular"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_alignParentLeft="true"
+                            android:layout_marginStart="12dp"
+                            android:layout_marginTop="@dimen/overrallspacing"
+                            android:gravity="center"
+                            android:text="Business Services"
+                            android:textColor="@color/orange_700"
+                            android:textSize="@dimen/medium_font" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tv_all_Business"
+                            style="@style/fontregular"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginStart="12dp"
+                            android:layout_marginTop="@dimen/overrallspacing"
+                            android:gravity="center"
+                            android:paddingRight="12dp"
+                            android:text="View All"
+                            android:textColor="@color/facebook_color"
+                            android:textSize="@dimen/medium_font" />
+
+                    </RelativeLayout>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rcy_Business"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="0dp"
+                        android:layout_marginTop="@dimen/minimumspacing"
+                        android:nestedScrollingEnabled="true"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/rl_Business" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="@dimen/minimumspacing"
+                    android:layout_marginEnd="8dp"
+                    android:background="@drawable/bg_roundwhite"
+                    android:visibility="visible"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/constraintscope">
+
+                    <RelativeLayout
+                        android:id="@+id/rl_service"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/txtservices"
+                            style="@style/fontregular"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_alignParentLeft="true"
+                            android:layout_marginStart="12dp"
+                            android:layout_marginTop="@dimen/overrallspacing"
+                            android:gravity="center"
+                            android:text="Personal Services"
+                            android:textColor="@color/orange_700"
+                            android:textSize="@dimen/medium_font" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tv_all"
+                            style="@style/fontregular"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginStart="12dp"
+                            android:layout_marginTop="@dimen/overrallspacing"
+                            android:gravity="center"
+                            android:paddingRight="12dp"
+                            android:text="View All"
+                            android:textColor="@color/facebook_color"
+                            android:textSize="@dimen/medium_font" />
+
+                    </RelativeLayout>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rv_services"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/minimumspacing"
+                        android:nestedScrollingEnabled="true"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/rl_service" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
@@ -293,7 +350,7 @@
                         android:layout_marginStart="12dp"
                         android:layout_marginTop="@dimen/overrallspacing"
                         android:gravity="center"
-                        android:text="Franchisee Services"
+                        android:text="Loans"
                         android:textColor="@color/orange_700"
                         android:textSize="@dimen/medium_font"
                         app:layout_constraintStart_toStartOf="parent"
@@ -328,12 +385,12 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/cons_insurance"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="@dimen/minimumspacing"
                     android:layout_marginEnd="8dp"
-                    android:layout_marginBottom="92dp"
                     android:background="@drawable/bg_roundwhite"
                     android:visibility="visible"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -348,31 +405,26 @@
                         android:layout_marginStart="12dp"
                         android:layout_marginTop="@dimen/overrallspacing"
                         android:gravity="center"
-                        android:text="Franchisor Services"
+                        android:text="Insurance"
                         android:textColor="@color/orange_700"
                         android:textSize="@dimen/medium_font"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
-
-                    <androidx.appcompat.widget.AppCompatButton
-                        android:id="@+id/txtCompanyRegistration"
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/text_view_all_insurence"
                         style="@style/fontregular"
                         android:layout_width="wrap_content"
-                        android:layout_height="@dimen/smallbutton"
-                        android:layout_gravity="center"
-                        android:layout_marginStart="12dp"
-                        android:layout_marginTop="@dimen/overrallspacing"
-                        android:layout_marginEnd="@dimen/sub_heading"
-                        android:background="@drawable/button"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="7dp"
+                        android:layout_marginEnd="12dp"
                         android:gravity="center"
-                        android:paddingStart="4dp"
-                        android:paddingEnd="4dp"
-                        android:text=" Register my project "
-                        android:textAllCaps="false"
-                        android:textColor="@color/white"
-                        android:textSize="@dimen/extrasmall_font"
+                        android:text="View All"
+                        android:textColor="@color/facebook_color"
+                        android:textSize="@dimen/small_font"
+                        android:visibility="visible"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
+
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/rv_rental"
@@ -383,10 +435,61 @@
                         android:nestedScrollingEnabled="true"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/txtleads1" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="@dimen/minimumspacing"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="92dp"
+                    android:background="@drawable/bg_roundwhite"
+                    android:visibility="visible"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/cons_insurance">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/txtbills"
+                        style="@style/fontregular"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="12dp"
+                        android:layout_marginTop="@dimen/overrallspacing"
+                        android:gravity="center"
+                        android:text="Bills &amp; Recharges"
+                        android:textColor="@color/orange_700"
+                        android:textSize="@dimen/medium_font"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/text_insurence"
+                        style="@style/fontregular"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="7dp"
+                        android:layout_marginEnd="12dp"
+                        android:gravity="center"
+                        android:text="View All"
+                        android:textColor="@color/facebook_color"
+                        android:textSize="@dimen/small_font"
+                        android:visibility="visible"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rcy_bills"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="0dp"
+                        android:layout_marginTop="@dimen/minimumspacing"
+                        android:nestedScrollingEnabled="true"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/txtbills" />
 
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
-
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
