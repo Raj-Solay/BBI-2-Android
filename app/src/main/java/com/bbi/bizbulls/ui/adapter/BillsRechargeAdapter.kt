@@ -2,33 +2,29 @@ package com.bbi.bizbulls.ui.adapter
 
 import android.app.Activity
 import android.content.Context
-import android.content.DialogInterface
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.appcompat.app.AlertDialog
-import androidx.appcompat.widget.AppCompatImageView
 import android.widget.Toast
 import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.bbi.bizbulls.R
-import com.bbi.bizbulls.ui.registrationforfo.FoRegistrationDashBoardActivity
 import com.bbi.bizbulls.utils.CommonUtils
 import com.bbi.bizbulls.utils.CommonUtils.showCustomToast
 
-class ServicesAdapter(activity: FragmentActivity) :
-    RecyclerView.Adapter<ServicesAdapter.viewHolder>() {
+class BillsRechargeAdapter(activity: FragmentActivity) :
+    RecyclerView.Adapter<BillsRechargeAdapter.viewHolder>() {
     var context: Context
     var iconsName = arrayOf(
-        "Food Delivery",
-        "Genie Service",
-        "Book a Ride",
-        "Maintenance Boy",
-        "Property Pasand",
-        "Doctor appointment"
+        "Mobile Recharge",
+        "DTH",
+        "Electricity",
+        "Credit Card Bill",
+        "Rent Parment",
+        "Load Repayment",
+        "Education Fees"
     )
     var icons = intArrayOf(
         R.drawable.delivery,
@@ -36,11 +32,11 @@ class ServicesAdapter(activity: FragmentActivity) :
         R.drawable.cab,
         R.drawable.maintaince,
         R.drawable.property_broker,
+        R.drawable.cab,
         R.drawable.schedule
     )
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): viewHolder {
-        context = parent.context
         val view = LayoutInflater.from(context).inflate(R.layout.itemlist, parent, false)
         return viewHolder(view)
     }
@@ -49,23 +45,20 @@ class ServicesAdapter(activity: FragmentActivity) :
         holder.textView.text = iconsName[position]
         holder.imageView.setImageResource(icons[position])
         holder.itemView.setOnClickListener { v: View? ->
-            //CommonUtils.showServiceDialog(context)
             Toast(context).showCustomToast(
                 "Currently your location is not registered but we are launching in your area soon.\n" +
                         "\n" +
                         "Please visit us again.", context as Activity
             )
         }
-
     }
-
 
     override fun getItemCount(): Int {
         return iconsName.size
     }
 
     inner class viewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var imageView: AppCompatImageView
+        var imageView: ImageView
         var textView: TextView
 
         init {

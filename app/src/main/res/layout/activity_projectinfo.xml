@@ -194,12 +194,15 @@
                     app:layout_constraintStart_toEndOf="@id/tvRate"
                     app:layout_constraintTop_toTopOf="@+id/tvRate" />
 
-                <androidx.appcompat.widget.AppCompatButton
+                <TextView
                     android:id="@+id/tvRegister"
                     android:layout_width="wrap_content"
-                    android:layout_height="@dimen/_24sdp"
+                    android:layout_height="wrap_content"
+                    android:paddingVertical="@dimen/_2dp"
                     android:background="@drawable/button"
                     android:text="Register"
+                    android:gravity="center"
+                    android:paddingHorizontal="@dimen/_10dp"
                     android:textSize="@dimen/_12sdp"
                     android:fontFamily="@font/source_semibold"
                     android:textAllCaps="false"

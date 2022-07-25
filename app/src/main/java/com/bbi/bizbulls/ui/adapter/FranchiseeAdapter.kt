@@ -1,44 +1,36 @@
 package com.bbi.bizbulls.ui.adapter
 
+import android.app.Activity
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.bbi.bizbulls.R
 import com.bbi.bizbulls.utils.CommonUtils
+import com.bbi.bizbulls.utils.CommonUtils.showCustomToast
 
 class FranchiseeAdapter(activity: FragmentActivity) :
     RecyclerView.Adapter<FranchiseeAdapter.viewHolder>() {
     var context: Context
     var iconsName = arrayOf(
-        "Reliable Projects",
-        "Lowest Investment",
-        "Technology Enabled",
-        "Loaning Support",
-        "Continuous Training & Guidance",
-        "Project Site   Visits",
-        "Pre & Post Launch Support",
-        "Licensing & Documentation",
-        "Set-up arrangement",
-        "Arbitrary Service",
-        "Super Support Bot"
-    )
+        "Personal",
+        "Business",
+        "Home",
+        "Vehicle",
+        "Education",
+        "Mortgage")
     var icons = intArrayOf(
-        R.drawable._reliableproject,
-        R.drawable._lowinvetment,
-        R.drawable._technologyenable,
         R.drawable._loaning,
         R.drawable._conttraining,
-        R.drawable._sitevise,
-        R.drawable._launchsupport,
-        R.drawable._liceinsingdoc,
-        R.drawable._setuparrangment,
-        R.drawable._arbitrary,
-        R.drawable._supersupportbot
+        R.drawable.property_broker,
+        R.drawable.delivery,
+        R.drawable._conttraining,
+        R.drawable._technologyenable,
     )
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): viewHolder {
@@ -51,7 +43,13 @@ class FranchiseeAdapter(activity: FragmentActivity) :
         holder.textView.text = iconsName[position]
         holder.imageView.setImageResource(icons[position])
         holder.itemView.setOnClickListener { v: View? ->
-            CommonUtils.showServiceDialog(context)
+          //  CommonUtils.showServiceDialog(context)
+            Toast(context).showCustomToast(
+
+                "Currently your location is not registered but we are launching in your area soon.\n" +
+                        "\n" +
+                        "Please visit us again.", context as Activity
+            )
         }
     }
 

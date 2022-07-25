@@ -1,5 +1,6 @@
 package com.bbi.bizbulls.ui.adapter
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
@@ -7,11 +8,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.bbi.bizbulls.KycListActivity
 import com.bbi.bizbulls.R
 import com.bbi.bizbulls.utils.CommonUtils
+import com.bbi.bizbulls.utils.CommonUtils.showCustomToast
 
 class ApprovalsAdapter(var activity: FragmentActivity) :
     RecyclerView.Adapter<ApprovalsAdapter.viewHolder>() {
@@ -46,6 +49,16 @@ class ApprovalsAdapter(var activity: FragmentActivity) :
             activity.startActivity(intent)
 
           //  CommonUtils.showServiceDialog(context)
+            if (position==0){
+                val intent = Intent(activity, KycListActivity::class.java)
+                activity.startActivity(intent)
+            }else {
+                Toast(context).showCustomToast(
+                    "Currently your location is not registered but we are launching in your area soon.\n" +
+                            "\n" +
+                            "Please visit us again.", context as Activity
+                )
+            }
         }
     }
 

@@ -1,6 +1,7 @@
 package com.bbi.bizbulls.utils
 
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.app.DatePickerDialog
 import android.app.Dialog
 import android.content.Context
@@ -15,9 +16,11 @@ import android.view.Gravity
 import android.view.LayoutInflater
 import android.widget.DatePicker
 import android.widget.Spinner
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.viewbinding.BuildConfig
+import com.bbi.bizbulls.R
 import com.bbi.bizbulls.databinding.DialogMessagesBinding
 import com.bbi.bizbulls.enums.Environment
 import java.text.ParseException
@@ -42,7 +45,13 @@ object CommonUtils {
     const val ADMIN_PASSWORD = "12345678"
 
     fun toast(context: Context?, message: String?) {
-        Toast.makeText(context, message, Toast.LENGTH_LONG).show()
+       /* Toast.makeText(context, message, Toast.LENGTH_LONG).show()*/
+        val toast = Toast.makeText(
+            context?.getApplicationContext(),
+            message, Toast.LENGTH_SHORT
+        )
+        toast.setGravity(Gravity.BOTTOM or Gravity.CENTER_HORIZONTAL, 0, 0)
+        toast.show()
     }
     fun showServiceDialog(context: Context){
         AlertDialog.Builder(context)
@@ -187,4 +196,16 @@ object CommonUtils {
     var appInitFirstTime = true
     var isHideProgress = false
 
+    fun Toast.showCustomToast(message: String, activity: Activity)
+    {
+        val layout = activity.layoutInflater.inflate (R.layout.custom_toast, activity.findViewById(R.id.toast_container))
+        val textView = layout.findViewById<TextView>(R.id.toast_text)
+        textView.text = message
+        this.apply {
+            setGravity(Gravity.CENTER, 0, 40)
+            duration = Toast.LENGTH_LONG
+            view = layout
+            show()
+        }
+    }
 }

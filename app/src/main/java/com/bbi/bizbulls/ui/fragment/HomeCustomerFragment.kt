@@ -27,7 +27,6 @@ import retrofit2.Response
 
 class HomeCustomerFragment : Fragment() {
     private lateinit var binding: FragmentHomeBinding
-   // var foSliderAdapter: FOSliderAdapter? = null
    lateinit var homeSlideAdapter: HomeSlideAdapter
    private lateinit var imagesModel:ArrayList<String>
    lateinit var sharedPrefsManager: SharedPrefsManager
@@ -46,11 +45,14 @@ class HomeCustomerFragment : Fragment() {
 
         sliderUpdate()
         loadServices()
+        loadBusiness()
         loadRetailView()
         loadFranchiseView()
         loadFoodView()
         serviceView()
         approvalesView()
+        billsRecharge()
+        billsRechargeemp()
         myHrView()
         assingnmentView()
         projectScopeView()
@@ -94,6 +96,12 @@ class HomeCustomerFragment : Fragment() {
         val servicesAdapter = activity?.let { ServicesAdapter(it) }
         binding.rvServices.adapter = servicesAdapter
     }
+    private fun loadBusiness() {
+        binding.rcyBusiness.setHasFixedSize(true)
+        binding.rcyBusiness.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        val businesAdapter = activity?.let { BusinesAdapter(it) }
+        binding.rcyBusiness.adapter = businesAdapter
+    }
 
     private fun loadRetailView() {
         binding.rvRental.setHasFixedSize(true)
@@ -119,6 +127,18 @@ class HomeCustomerFragment : Fragment() {
         binding.rcyAproval.layoutManager =  LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         val approvalsAdapter = activity?.let { ApprovalsAdapter(it) }
         binding.rcyAproval.adapter = approvalsAdapter
+    }
+    private fun billsRecharge() {
+        binding.rcyBills.setHasFixedSize(true)
+        binding.rcyBills.layoutManager =  LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        val billsRechargeAdapter = activity?.let { BillsRechargeAdapter(it) }
+        binding.rcyBills.adapter = billsRechargeAdapter
+    }
+    private fun billsRechargeemp() {
+        binding.rcyBillsEmp.setHasFixedSize(true)
+        binding.rcyBillsEmp.layoutManager =  LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        val billsRechargeAdapter = activity?.let { BillsRechargeAdapter(it) }
+        binding.rcyBillsEmp.adapter = billsRechargeAdapter
     }
     private fun myHrView() {
         binding.rcyHr.setHasFixedSize(true)
