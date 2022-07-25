@@ -13,6 +13,7 @@ import com.bbi.bizbulls.ProjectInfoActivity
 import com.bbi.bizbulls.R
 import com.bbi.bizbulls.adapter.HomeSlideAdapter
 import com.bbi.bizbulls.data.adaptermodel.SliderItem
+import com.bbi.bizbulls.databinding.FragmentAdminBinding
 import com.bbi.bizbulls.databinding.FragmentHomeBinding
 import com.bbi.bizbulls.model.UserDetails
 import com.bbi.bizbulls.remote.RetrofitClient
@@ -25,8 +26,8 @@ import retrofit2.Callback
 import retrofit2.Response
 
 
-class HomeCustomerFragment : Fragment() {
-    private lateinit var binding: FragmentHomeBinding
+class HomeAdminFragment : Fragment() {
+    private lateinit var binding: FragmentAdminBinding
    // var foSliderAdapter: FOSliderAdapter? = null
    lateinit var homeSlideAdapter: HomeSlideAdapter
    private lateinit var imagesModel:ArrayList<String>
@@ -38,11 +39,11 @@ class HomeCustomerFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentHomeBinding.inflate(layoutInflater)
+        binding = FragmentAdminBinding.inflate(layoutInflater)
         sharedPrefsManager= activity?.let { SharedPrefsManager(it) }!!
         imagesModel= ArrayList()
         isAdminLog = sharedPrefsManager.isAdminLogin
-        getUserRole(activity )
+       // getUserRole(activity )
 
         sliderUpdate()
         loadServices()
@@ -56,35 +57,6 @@ class HomeCustomerFragment : Fragment() {
         projectScopeView()
         referView()
 
-        if(sharedPrefsManager.isFormCompleted){
-            if(CommonUtils.appInitFirstTime){
-              //  binding.tvRegistration.text = "Status"
-            }else{
-              //  binding.tvRegistration.text = "Register"
-            }
-
-        }else{
-            binding.tvRegistration.text = "Register"
-        }
-
-        binding.tvRegistration.setOnClickListener {
-            if(sharedPrefsManager.isFormCompleted){
-                if(CommonUtils.appInitFirstTime){
-                    CommonUtils.appInitFirstTime = false
-                    customerFOStatusFragment = CustomerFOStatusFragment()
-                    requireActivity().supportFragmentManager.beginTransaction()
-                        .replace(R.id.flFragment, customerFOStatusFragment!!).commit()
-                }else{
-                    val i = Intent(activity, ProjectInfoActivity::class.java)
-                    startActivity(i)
-                }
-
-            }else{
-                val i = Intent(activity, ProjectInfoActivity::class.java)
-                startActivity(i)
-            }
-
-        }
         return binding.root
     }
 
@@ -93,20 +65,19 @@ class HomeCustomerFragment : Fragment() {
         binding.rvServices.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         val servicesAdapter = activity?.let { ServicesAdapter(it) }
         binding.rvServices.adapter = servicesAdapter
+
+        binding.recyclerleads.setHasFixedSize(true)
+        binding.recyclerleads.layoutManager =  LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        val foodAndBeverageAdapter = activity?.let { FoodAndBeverageAdapter(it) }
+        binding.recyclerleads.adapter = foodAndBeverageAdapter
     }
 
     private fun loadRetailView() {
-        binding.rvRental.setHasFixedSize(true)
-        binding.rvRental.layoutManager =  LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-        val retailAndHouseholdAdapter = activity?.let { RetailAndHouseholdAdapter(it) }
-        binding.rvRental.adapter = retailAndHouseholdAdapter
+
     }
 
     private fun loadFranchiseView() {
-        binding.rvFranchise.setHasFixedSize(true)
-        binding.rvFranchise.layoutManager =  LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-        val franchiseeAdapter = activity?.let { FranchiseeAdapter(it) }
-        binding.rvFranchise.adapter = franchiseeAdapter
+
     }
     private fun serviceView() {
         binding.rcyServicesEmp.setHasFixedSize(true)
@@ -146,14 +117,7 @@ class HomeCustomerFragment : Fragment() {
     }
 
     private fun loadFoodView() {
-        binding.recyclerleads.setHasFixedSize(true)
-        binding.recyclerleads.layoutManager =  LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-        val foodAndBeverageAdapter = activity?.let { FoodAndBeverageAdapter(it) }
-        binding.recyclerleads.adapter = foodAndBeverageAdapter
-//        foodAndBeverageAdapter.setClickListener { view, position ->
-//            val i = Intent(activity, ProjectInfoActivity::class.java)
-//            startActivityForResult(i, 99)
-//        }
+
     }
 
     fun sliderUpdate() {

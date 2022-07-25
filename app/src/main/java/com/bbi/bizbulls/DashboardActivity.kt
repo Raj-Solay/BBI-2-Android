@@ -31,6 +31,7 @@ import com.bbi.bizbulls.model.UserDetails
 import com.bbi.bizbulls.remote.RetrofitClient
 import com.bbi.bizbulls.sharedpref.SharedPrefsManager
 import com.bbi.bizbulls.ui.fragment.CustomerFOStatusFragment
+import com.bbi.bizbulls.ui.fragment.HomeAdminFragment
 import com.bbi.bizbulls.ui.fragment.HomeCustomerFragment
 import com.bbi.bizbulls.ui.registrationforfo.FoRegistrationDashBoardActivity
 import com.bbi.bizbulls.utils.CommonUtils
@@ -79,16 +80,24 @@ class DashboardActivity : AppCompatActivity(), View.OnClickListener {
     lateinit var nav_email:TextView
     var homeCustomerFragment: HomeCustomerFragment? = null
     var customerFOStatusFragment: CustomerFOStatusFragment? = null
+    var adminFragment: HomeAdminFragment? = null
     lateinit var client: FusedLocationProviderClient
+    var isAdminLogin = false
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDashboardBinding.inflate(layoutInflater)
         setContentView(binding!!.root)
         hideKeyboard(this)
+        isAdminLogin = sharedPrefsHelper.isAdminLogin
         init()
-       // if(!CommonUtils.isRedirectToStatus){
+
+        if(!isAdminLogin){
+
+            // if(!CommonUtils.isRedirectToStatus){
             getUserRole(this)
-     //   }
+            //   }
+        }
+
        /* println("________NAME ::${sharedPrefsHelper.userName}")
         println("________EMAIL  ::${sharedPrefsHelper.email}")
         println("________PHONE  ::${sharedPrefsHelper.phone}")
@@ -268,7 +277,9 @@ class DashboardActivity : AppCompatActivity(), View.OnClickListener {
     }
     fun init() {
 
+        if(isAdminLogin){
 
+        }
 
         binding!!.bottomNavigationView.background = null
         binding!!.bottomNavigationView.setOnItemSelectedListener { item ->
@@ -348,10 +359,17 @@ class DashboardActivity : AppCompatActivity(), View.OnClickListener {
         binding!!.layoutdraweropen.setOnClickListener(this)
         binding!!.layouthelp.setOnClickListener(this)
         homeCustomerFragment = HomeCustomerFragment()
-        customerFOStatusFragment = CustomerFOStatusFragment()
+        if(isAdminLogin){
+            adminFragment = HomeAdminFragment()
+            binding!!.bottomNavigationView.selectedItemId = R.id.navigation_fohome
+            loadFragment(adminFragment)
+        }else{
+            customerFOStatusFragment = CustomerFOStatusFragment()
 
-        binding!!.bottomNavigationView.selectedItemId = R.id.navigation_fohome
-        loadFragment(homeCustomerFragment)
+            binding!!.bottomNavigationView.selectedItemId = R.id.navigation_fohome
+            loadFragment(homeCustomerFragment)
+        }
+
         actionBarDrawerToggle = ActionBarDrawerToggle(
             this,
             binding!!.drawerfomainlayout,

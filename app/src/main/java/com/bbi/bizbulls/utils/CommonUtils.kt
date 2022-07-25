@@ -38,6 +38,9 @@ object CommonUtils {
     const val  ACTION_TYPE_VIEW = 1
     const val  ACTION_TYPE_EDIT = 2
 
+    const val ADMIN_USERNAME = "admin@bizbullsindia.com"
+    const val ADMIN_PASSWORD = "12345678"
+
     fun toast(context: Context?, message: String?) {
         Toast.makeText(context, message, Toast.LENGTH_LONG).show()
     }

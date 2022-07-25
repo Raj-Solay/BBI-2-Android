@@ -73,7 +73,22 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
                     CommonUtils.isValidEmail(binding!!.etUsername.text.toString().trim())
                 ) {
                     if (binding!!.etPassword.text.toString().isNotEmpty()) {
-                        login()
+
+                        //check admin login
+                        if(binding!!.etUsername.text.toString() == CommonUtils.ADMIN_USERNAME &&
+                                 binding!!.etPassword.text.toString() == CommonUtils.ADMIN_PASSWORD){
+                            sharedPrefsHelper.isAdminLogin = true
+                            val i = Intent(this@LoginActivity, DashboardActivity::class.java)
+                            i.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK
+                            i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                            startActivity(i)
+                            CommonUtils.toast(this@LoginActivity, "Login Successfully!")
+                        }else{
+                            sharedPrefsHelper.isAdminLogin = false
+                            login()
+                        }
+
                     } else {
                         Toast.makeText(this, "Please type correct password!", Toast.LENGTH_SHORT)
                             .show()
