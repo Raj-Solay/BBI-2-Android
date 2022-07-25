@@ -2,26 +2,20 @@ package com.foldio.android.adapter
 
 import android.content.Context
 import android.content.Intent
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.bbi.bizbulls.DocViewListener
-import com.bbi.bizbulls.FilterActivity
-import com.bbi.bizbulls.KycDocViewActivity
-import com.bbi.bizbulls.R
-import com.bbi.bizbulls.model.ApprovalDocRes
+import com.bbi.bizbulls.*
 import com.bbi.bizbulls.model.LocationApprovalRes
-import com.bbi.bizbulls.model.PersonalUserAll
-import com.bbi.bizbulls.utils.Globals
-import com.squareup.picasso.Picasso
+import com.bbi.bizbulls.ui.MapApprovalDialog
+import com.google.android.gms.maps.model.LatLng
 
 class LocationApprovalAdapter(
-    var userList: List<LocationApprovalRes.Data>?,
+    var kycDocViewActivity: KycDocViewActivity,
+    var userListLocation: List<LocationApprovalRes.Data>?,
     var docViewListener: DocViewListener,
     var approval_type: Int
 ) :
@@ -36,42 +30,42 @@ class LocationApprovalAdapter(
     }
     override fun onBindViewHolder(holder: LocationApprovalAdapter.ViewHolder, position: Int) {
         var documentName  =""
-      /*  if(userList!!.get(position).documentId == "1"){
-            documentName = "Pan Card"
-        }else if(userList!!.get(position).documentId == "2"){
-            documentName = "Aadhaar Card"
-        }else if(userList!!.get(position).documentId == "3"){
-            documentName = "Residential Address Proof"
-        }else if(userList!!.get(position).documentId == "4"){
-            documentName = "Recent Photograph of applicant"
-        }else if(userList!!.get(position).documentId == "5"){
-            documentName = "Individually filled &amp; signed copies of this form (in case of partnership)"
-        }else if(userList!!.get(position).documentId == "6"){
-            documentName = "BIZ BULLS Arbitrary Agreement"
-        }
-      holder.txtDocName.text = ""+documentName
-        Picasso.get().load(userList!!.get(position).documentName)
+
+      holder.txtDocName.text = ""+userListLocation!!.get(position).locationName
+       /* Picasso.get().load(userListLocation!!.get(position).locationName)
             .placeholder(R.drawable.img_default)
-            .into(holder.imgDocView)
+            .into(holder.imgDocView)*/
         holder.txtVerify.setOnClickListener {
-            docViewListener.onDocView(userList!!.get(position))
+           // docViewListener.onDocView(userListLocation!!.get(position))
         }
-        if(userList!!.get(position).isApproved || userList!!.get(position).documentStatus == "1"){
+      /*  if(userListLocation!!.get(position).isApproved || userListLocation!!.get(position).documentStatus == "1"){
             holder.txtVerify.setText("Approved")
             holder.txtVerify.setBackgroundResource(R.drawable.button_green)
         }else{
             holder.txtVerify.setText("Verify")
             holder.txtVerify.setBackgroundResource(R.drawable.button)
         }*/
+        holder.imgMap.setOnClickListener {
+            showMapDialog(userListLocation!!.get(position))
+        }
     }
     override fun getItemCount(): Int {
-        return  userList!!.size
+        return  userListLocation!!.size
     }
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var imgDocView = itemView.findViewById(R.id.imgDocView) as ImageView
+        var imgMap = itemView.findViewById(R.id.imgMap) as ImageView
         var txtDocName = itemView.findViewById(R.id.txtDocName) as TextView
         var txtVerify = itemView.findViewById(R.id.txtVerify) as TextView
        // var txtApproved = itemView.findViewById(R.id.txtApproved) as TextView
 
+    }
+
+    fun showMapDialog(get: LocationApprovalRes.Data) {
+
+        val intent = Intent(context, LocationDocViewActivity::class.java)
+        intent.putExtra("LAT",""+get.latitute)
+        intent.putExtra("LOG",""+get.longitude)
+        intent.putExtra("ADDRESS",""+get.locationName)
+        context!!.startActivity(intent)
     }
 }

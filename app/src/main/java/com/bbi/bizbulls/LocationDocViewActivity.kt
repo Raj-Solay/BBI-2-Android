@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import androidx.recyclerview.widget.GridLayoutManager
 import com.bbi.bizbulls.databinding.ActivityLocationApprovalViewBinding
 import com.bbi.bizbulls.model.ApprovalDocRes
 import com.bbi.bizbulls.model.LocationApprovalRes
@@ -13,8 +12,13 @@ import com.bbi.bizbulls.remote.RetrofitClient
 import com.bbi.bizbulls.sharedpref.SharedPrefsManager
 import com.bbi.bizbulls.ui.DialogDocApprove
 import com.bbi.bizbulls.utils.MyProcessDialog
-import com.foldio.android.adapter.DocApprovalAdapter
 import com.foldio.android.adapter.LocationApprovalAdapter
+import com.google.android.gms.maps.CameraUpdateFactory
+import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.OnMapReadyCallback
+import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.MarkerOptions
 import com.google.gson.JsonArray
 import com.google.gson.JsonObject
 import com.squareup.picasso.Picasso
@@ -23,201 +27,53 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class LocationDocViewActivity : AppCompatActivity(),DocViewListener {
+class LocationDocViewActivity : AppCompatActivity(),DocViewListener , OnMapReadyCallback {
     lateinit var binding:ActivityLocationApprovalViewBinding
     private val sharedPrefsHelper by lazy { SharedPrefsManager(this@LocationDocViewActivity) }
 
-    var approval_type = 0
-    private lateinit var userData  : PersonalUserAll.Data
-    private var docList : List<LocationApprovalRes.Data> = arrayListOf()
+    var lat = ""
+    var log = ""
+    var address = ""
+    lateinit var mMap: GoogleMap
 
+    var cuurentZoomLevel = 10f
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding=ActivityLocationApprovalViewBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        approval_type = intent.getIntExtra("APPROVAL_TYPE",0)
-        userData = intent.getSerializableExtra("model") as PersonalUserAll.Data
 
-        Log.d("UserData","id : "+ userData.userId)
+        lat = intent.getStringExtra("LAT").toString()
+        log = intent.getStringExtra("LOG").toString()
+        address = intent.getStringExtra("ADDRESS").toString()
 
-        initView()
-        getUserList()
+        val mapFragment =
+            supportFragmentManager.findFragmentById(R.id.mapLayout) as SupportMapFragment
+        mapFragment.getMapAsync(this)
 
-        binding.btnCancelFinal.setOnClickListener {
-            onBackPressed()
-        }
-        binding.btnApproveFinal.setOnClickListener {
-            callApi()
-        }
-    }
-    private fun initView() {
-        binding?.customTitleLayout?.tvTitle?.text="Approval Doc View"
-        binding?.customTitleLayout?.ivBack?.setOnClickListener { onBackPressed() }
-
-        binding.txtName.setText(userData.fullname)
-        binding.txtAddress.setText(userData.permanentAdd.toString())
-        binding.txtDate.setText(userData.emailid.toString())
-        binding.txtFullname.setText(userData.emailid.toString())
-
-        binding.txtCName.setText(userData.fullname.toString())
-        binding.txtCGender.setText(userData.gender.toString())
-
-        binding.txtCAddress.setText(userData.presentAdd.toString())
-        binding.txtCAge.setText(userData.age.toString()+" Years")
-
-    }
-    private fun getUserList(){
-        MyProcessDialog.showProgressBar(this, 0)
-        val call: Call<LocationApprovalRes> =
-            RetrofitClient.getUrl().getPendingLocation(sharedPrefsHelper.authToken,userData.userId.toString())
-        call.enqueue(object : Callback<LocationApprovalRes> {
-            override fun onResponse(
-                call: Call<LocationApprovalRes>,
-                response: Response<LocationApprovalRes>
-            ) {
-                if (response.isSuccessful) {
-                    docList= response.body()?.data!!
-                    setAdapter(docList)
-                } else {
-                    RetrofitClient.showResponseMessage(this@LocationDocViewActivity, response.code())
-                }
-                MyProcessDialog.dismiss()
-            }
-
-            override fun onFailure(call: Call<LocationApprovalRes>, t: Throwable) {
-                MyProcessDialog.dismiss()
-                RetrofitClient.showFailedMessage(this@LocationDocViewActivity, t)
-            }
-        })
-    }
-    var locationApprovalAdapter : LocationApprovalAdapter? = null
-    private fun setAdapter(userList: List<LocationApprovalRes.Data>) {
-        locationApprovalAdapter= LocationApprovalAdapter(userList,this,approval_type)
-        binding?.listDocuments!!.layoutManager = GridLayoutManager(this,2)
-       binding?.listDocuments?.adapter = locationApprovalAdapter
-
-      /*  var count = 0
-        docList.forEach {
-            if(it.isApproved || it!!.documentStatus == "1" )
-                count++
-        }
-        if(count == docList.size){
-            binding.linerApprove.visibility = View.VISIBLE
-            binding.txtBg.visibility = View.VISIBLE
-            binding.linerApprove.alpha = 1f
-            binding.btnCancelFinal.isEnabled = true
-            binding.btnApproveFinal.isEnabled = true
-        }else{
-            binding.linerApprove.visibility = View.VISIBLE
-            binding.txtBg.visibility = View.VISIBLE
-            binding.linerApprove.alpha = 0.5f
-            binding.btnCancelFinal.isEnabled = false
-            binding.btnApproveFinal.isEnabled = false
-        }*/
-    }
-
-    private fun showDocDialog(data: ApprovalDocRes.Data?) {
-
-        val docDialogDocApprove = DialogDocApprove(this)
-        docDialogDocApprove.show()
-
-        Picasso.get().load(
-            data!!.documentName)
-            .placeholder(R.drawable.img_default)
-            .into(docDialogDocApprove.imdDocView)
-        docDialogDocApprove.btnCancel!!.setOnClickListener {
-            docDialogDocApprove.dismiss()
-        }
-        if(data.isApproved || data.documentStatus == "1"){
-            docDialogDocApprove.btnApproval!!.setText("DisApprove")
-        }else{
-            docDialogDocApprove.btnApproval!!.setText("Approve")
-        }
-        docDialogDocApprove.btnApproval!!.setOnClickListener {
-            docDialogDocApprove.dismiss()
-            docList.forEach {
-              /*  if(it.documentId == data.documentId){
-                    it.isApproved = !it.isApproved
-                }*/
-            }
-            locationApprovalAdapter?.notifyDataSetChanged()
-
-            var count = 0;
-            docList.forEach {
-               /* if(it.isApproved)
-                    count++*/
-            }
-            if(count == docList.size){
-                binding.linerApprove.visibility = View.VISIBLE
-                binding.txtBg.visibility = View.VISIBLE
-                binding.linerApprove.alpha = 1f
-                binding.btnCancelFinal.isEnabled = true
-                binding.btnApproveFinal.isEnabled = true
-            }else{
-                binding.linerApprove.visibility = View.VISIBLE
-                binding.txtBg.visibility = View.VISIBLE
-                binding.linerApprove.alpha = 0.5f
-                binding.btnCancelFinal.isEnabled = false
-                binding.btnApproveFinal.isEnabled = false
+        binding.btnCancel.setOnClickListener { onBackPressed() }
+        binding.imgZoomOut!!.setOnClickListener {
+            if(this@LocationDocViewActivity::mMap.isInitialized){
+                cuurentZoomLevel -= 3f
+                mMap.animateCamera( CameraUpdateFactory.zoomTo( cuurentZoomLevel ) )
             }
         }
-    }
-    private fun callApi(){
-        MyProcessDialog.showProgressBar(this, 0)
-
-        var jsonObject = JsonObject();
-        jsonObject.addProperty("user_id",userData.userId)
-
-
-        var jsonArray = JsonArray()
-
-        var count = 0
-        docList.forEach {
-            var jsonObjectDoc = JsonObject()
-            jsonObjectDoc.addProperty("doc_id",it!!.id.toString())
-           /* if(it!!.documentType.toString() == "null"){
-                it!!.documentType = "1"
+        binding.imgZoomIn!!.setOnClickListener {
+            cuurentZoomLevel += 3f
+            if(this@LocationDocViewActivity::mMap.isInitialized){
+                mMap.animateCamera( CameraUpdateFactory.zoomTo( cuurentZoomLevel ) )
             }
-            if(it!!.isApproved || it!!.documentStatus == "1" ) {
-                count++
-                jsonObjectDoc.addProperty("document_type","1")
-            }else{
-                jsonObjectDoc.addProperty("document_type","0")
-            }*/
-            jsonArray.add(jsonObjectDoc)
-
         }
-        if(count == docList.size){
-            jsonObject.addProperty("status","approved")
-        }else{
-            jsonObject.addProperty("status","pending")
-        }
-
-        jsonObject.add("data",jsonArray)
-
-        val call: Call<ResponseBody> =
-            RetrofitClient.getUrl().approveDoc(sharedPrefsHelper.authToken,jsonObject)
-        call.enqueue(object : Callback<ResponseBody> {
-            override fun onResponse(
-                call: Call<ResponseBody>,
-                response: Response<ResponseBody>
-            ) {
-                if (response.isSuccessful) {
-                   finish()
-                } else {
-                    RetrofitClient.showResponseMessage(this@LocationDocViewActivity, response.code())
-                }
-                MyProcessDialog.dismiss()
-            }
-
-            override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
-                MyProcessDialog.dismiss()
-                RetrofitClient.showFailedMessage(this@LocationDocViewActivity, t)
-            }
-        })
     }
 
     override fun onDocView(data: ApprovalDocRes.Data?) {
-        showDocDialog(data)
+
+    }
+
+    override fun onMapReady(mMapTmp: GoogleMap) {
+        mMap = mMapTmp
+        mMapTmp.mapType = GoogleMap.MAP_TYPE_SATELLITE
+        val sydney = LatLng(lat.toDouble(), log.toDouble())
+        mMapTmp.addMarker(MarkerOptions().position(sydney).title(address))
+        mMapTmp.moveCamera(CameraUpdateFactory.newLatLng(sydney))
     }
 }

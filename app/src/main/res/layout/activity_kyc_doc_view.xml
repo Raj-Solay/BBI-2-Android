@@ -179,6 +179,7 @@
             android:layout_marginTop="@dimen/_10dp"
             android:paddingHorizontal="@dimen/_10dp"
             android:layout_height="wrap_content"/>
+
     </LinearLayout>
     <TextView
         android:id="@+id/txtBg"

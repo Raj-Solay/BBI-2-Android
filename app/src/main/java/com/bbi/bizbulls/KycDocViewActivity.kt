@@ -5,14 +5,16 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.recyclerview.widget.GridLayoutManager
+import com.bbi.bizbulls.adapter.AgreementApprovalAdapter
 import com.bbi.bizbulls.databinding.ActivityKycDocViewBinding
-import com.bbi.bizbulls.model.ApprovalDocRes
-import com.bbi.bizbulls.model.PersonalUserAll
 import com.bbi.bizbulls.remote.RetrofitClient
 import com.bbi.bizbulls.sharedpref.SharedPrefsManager
 import com.bbi.bizbulls.ui.DialogDocApprove
 import com.bbi.bizbulls.utils.MyProcessDialog
-import com.foldio.android.adapter.DocApprovalAdapter
+import com.bbi.bizbulls.adapter.DocApprovalAdapter
+import com.bbi.bizbulls.adapter.SetupApprovalAdapter
+import com.bbi.bizbulls.model.*
+import com.foldio.android.adapter.LocationApprovalAdapter
 import com.google.gson.JsonArray
 import com.google.gson.JsonObject
 import com.squareup.picasso.Picasso
@@ -28,6 +30,9 @@ class KycDocViewActivity : AppCompatActivity(),DocViewListener {
     var approval_type = 0
     private lateinit var userData  : PersonalUserAll.Data
     private var docList : List<ApprovalDocRes.Data> = arrayListOf()
+    private var docListLocation : List<LocationApprovalRes.Data> = arrayListOf()
+    private var docListAgreement : List<AgreementsApprovalRes.Data> = arrayListOf()
+    private var docListStaff : List<StaffApprovalRes.Data> = arrayListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,7 +44,15 @@ class KycDocViewActivity : AppCompatActivity(),DocViewListener {
         Log.d("UserData","id : "+ userData.userId)
 
         initView()
-        getUserList()
+        if(approval_type == 0){
+            getUserList()
+        }else if(approval_type == 1){
+            getLocationList()
+        }else if(approval_type == 2){
+            getAgreementList()
+        }else if(approval_type == 3){
+            getSetupList()
+        }
 
         binding.btnCancelFinal.setOnClickListener {
             onBackPressed()
@@ -88,6 +101,154 @@ class KycDocViewActivity : AppCompatActivity(),DocViewListener {
             }
         })
     }
+    private fun getLocationList(){
+        MyProcessDialog.showProgressBar(this, 0)
+        val call: Call<LocationApprovalRes> =
+            RetrofitClient.getUrl().getPendingLocation(sharedPrefsHelper.authToken,userData.userId.toString())
+        call.enqueue(object : Callback<LocationApprovalRes> {
+            override fun onResponse(
+                call: Call<LocationApprovalRes>,
+                response: Response<LocationApprovalRes>
+            ) {
+                if (response.isSuccessful) {
+                    docListLocation = response.body()?.data!!
+                    setAdapterLocation(docListLocation)
+                } else {
+                    RetrofitClient.showResponseMessage(this@KycDocViewActivity, response.code())
+                }
+                MyProcessDialog.dismiss()
+            }
+
+            override fun onFailure(call: Call<LocationApprovalRes>, t: Throwable) {
+                MyProcessDialog.dismiss()
+                RetrofitClient.showFailedMessage(this@KycDocViewActivity, t)
+            }
+        })
+    }
+    private fun getAgreementList(){
+        MyProcessDialog.showProgressBar(this, 0)
+        val call: Call<AgreementsApprovalRes> =
+            RetrofitClient.getUrl().getPendingAgreement(sharedPrefsHelper.authToken,userData.userId.toString())
+        call.enqueue(object : Callback<AgreementsApprovalRes> {
+            override fun onResponse(
+                call: Call<AgreementsApprovalRes>,
+                response: Response<AgreementsApprovalRes>
+            ) {
+                if (response.isSuccessful) {
+                    docListAgreement = response.body()?.data!!
+                    setAdapterAgreement(docListAgreement)
+                } else {
+                    RetrofitClient.showResponseMessage(this@KycDocViewActivity, response.code())
+                }
+                MyProcessDialog.dismiss()
+            }
+
+            override fun onFailure(call: Call<AgreementsApprovalRes>, t: Throwable) {
+                MyProcessDialog.dismiss()
+                RetrofitClient.showFailedMessage(this@KycDocViewActivity, t)
+            }
+        })
+    }
+    fun getSetupList(){
+        MyProcessDialog.showProgressBar(this, 0)
+        val call: Call<StaffApprovalRes> =
+            RetrofitClient.getUrl().getPendingStaff(sharedPrefsHelper.authToken,userData.userId.toString())
+        call.enqueue(object : Callback<StaffApprovalRes> {
+            override fun onResponse(
+                call: Call<StaffApprovalRes>,
+                response: Response<StaffApprovalRes>
+            ) {
+                if (response.isSuccessful) {
+                    docListStaff = response.body()?.data!!
+                    setAdapterSetUp(docListStaff)
+                } else {
+                    RetrofitClient.showResponseMessage(this@KycDocViewActivity, response.code())
+                }
+                MyProcessDialog.dismiss()
+            }
+
+            override fun onFailure(call: Call<StaffApprovalRes>, t: Throwable) {
+                MyProcessDialog.dismiss()
+                RetrofitClient.showFailedMessage(this@KycDocViewActivity, t)
+            }
+        })
+    }
+    var setupApprovalAdapter : SetupApprovalAdapter? = null
+    private fun setAdapterSetUp(userList: List<StaffApprovalRes.Data>?) {
+        setupApprovalAdapter= SetupApprovalAdapter(userList,this,approval_type)
+        binding?.listDocuments!!.layoutManager = GridLayoutManager(this,1)
+        binding?.listDocuments?.adapter = setupApprovalAdapter
+
+        var count = 0
+        docListLocation.forEach {
+            /*if(it.isApproved || it!!.documentStatus == "1" )
+                count++*/
+        }
+        if(count == docListLocation.size){
+            binding.linerApprove.visibility = View.VISIBLE
+            binding.txtBg.visibility = View.VISIBLE
+            binding.linerApprove.alpha = 1f
+            binding.btnCancelFinal.isEnabled = true
+            binding.btnApproveFinal.isEnabled = true
+        }else{
+            binding.linerApprove.visibility = View.VISIBLE
+            binding.txtBg.visibility = View.VISIBLE
+            binding.linerApprove.alpha = 0.5f
+            binding.btnCancelFinal.isEnabled = false
+            binding.btnApproveFinal.isEnabled = false
+        }
+    }
+    var agreementApprovalAdapter : AgreementApprovalAdapter? = null
+    private fun setAdapterAgreement(userList: List<AgreementsApprovalRes.Data>?) {
+        agreementApprovalAdapter= AgreementApprovalAdapter(userList,this,approval_type)
+        binding?.listDocuments!!.layoutManager = GridLayoutManager(this,1)
+        binding?.listDocuments?.adapter = agreementApprovalAdapter
+
+        var count = 0
+        docListLocation.forEach {
+            /*if(it.isApproved || it!!.documentStatus == "1" )
+                count++*/
+        }
+        if(count == docListLocation.size){
+            binding.linerApprove.visibility = View.VISIBLE
+            binding.txtBg.visibility = View.VISIBLE
+            binding.linerApprove.alpha = 1f
+            binding.btnCancelFinal.isEnabled = true
+            binding.btnApproveFinal.isEnabled = true
+        }else{
+            binding.linerApprove.visibility = View.VISIBLE
+            binding.txtBg.visibility = View.VISIBLE
+            binding.linerApprove.alpha = 0.5f
+            binding.btnCancelFinal.isEnabled = false
+            binding.btnApproveFinal.isEnabled = false
+        }
+    }
+    var locationApprovalAdapter : LocationApprovalAdapter? = null
+    private fun setAdapterLocation(userList: List<LocationApprovalRes.Data>?) {
+        locationApprovalAdapter= LocationApprovalAdapter(this,userList,this,approval_type)
+        binding?.listDocuments!!.layoutManager = GridLayoutManager(this,1)
+        binding?.listDocuments?.adapter = locationApprovalAdapter
+
+        var count = 0
+        docListLocation.forEach {
+            /*if(it.isApproved || it!!.documentStatus == "1" )
+                count++*/
+        }
+        if(count == docListLocation.size){
+            binding.linerApprove.visibility = View.VISIBLE
+            binding.txtBg.visibility = View.VISIBLE
+            binding.linerApprove.alpha = 1f
+            binding.btnCancelFinal.isEnabled = true
+            binding.btnApproveFinal.isEnabled = true
+        }else{
+            binding.linerApprove.visibility = View.VISIBLE
+            binding.txtBg.visibility = View.VISIBLE
+            binding.linerApprove.alpha = 0.5f
+            binding.btnCancelFinal.isEnabled = false
+            binding.btnApproveFinal.isEnabled = false
+        }
+    }
+
     var docApprovalAdapter : DocApprovalAdapter? = null
     private fun setAdapter(userList: List<ApprovalDocRes.Data>?) {
         docApprovalAdapter= DocApprovalAdapter(userList,this,approval_type)

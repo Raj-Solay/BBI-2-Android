@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="@dimen/_220sdp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_margin="@dimen/_16sdp">
 
 
     <FrameLayout
-        android:layout_above="@+id/btnCancel"
         android:id="@+id/frmLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="@dimen/_180sdp">
 
         <fragment
             android:id="@+id/mapLayout"
             android:name="com.google.android.gms.maps.SupportMapFragment"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="@dimen/_180sdp"
             app:layout_constraintEnd_toEndOf="@+id/txtLocateAddress"
             app:layout_constraintStart_toStartOf="@+id/txtLocateAddress"
             app:layout_constraintTop_toBottomOf="@+id/idSearchView"
@@ -72,8 +72,8 @@
     <TextView
         android:id="@+id/btnCancel"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:background="@drawable/button"
         android:backgroundTint="@color/status_green"

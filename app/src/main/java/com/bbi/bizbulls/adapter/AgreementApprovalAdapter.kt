@@ -9,15 +9,16 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bbi.bizbulls.DocViewListener
 import com.bbi.bizbulls.R
+import com.bbi.bizbulls.model.AgreementsApprovalRes
 import com.bbi.bizbulls.model.ApprovalDocRes
 import com.squareup.picasso.Picasso
 
-class DocApprovalAdapter(
-    var userList: List<ApprovalDocRes.Data>?,
+class AgreementApprovalAdapter(
+    var userList: List<AgreementsApprovalRes.Data>?,
     var docViewListener: DocViewListener,
     var approval_type: Int
 ) :
-    RecyclerView.Adapter<DocApprovalAdapter.ViewHolder>() {
+    RecyclerView.Adapter<AgreementApprovalAdapter.ViewHolder>() {
     private var context: Context? = null;
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val v =
@@ -27,34 +28,15 @@ class DocApprovalAdapter(
         return ViewHolder(v)
     }
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        var documentName  =""
-        if(userList!!.get(position).documentId == "1"){
-            documentName = "Pan Card"
-        }else if(userList!!.get(position).documentId == "2"){
-            documentName = "Aadhaar Card"
-        }else if(userList!!.get(position).documentId == "3"){
-            documentName = "Residential Address Proof"
-        }else if(userList!!.get(position).documentId == "4"){
-            documentName = "Recent Photograph of applicant"
-        }else if(userList!!.get(position).documentId == "5"){
-            documentName = "Individually filled &amp; signed copies of this form (in case of partnership)"
-        }else if(userList!!.get(position).documentId == "6"){
-            documentName = "BIZ BULLS Arbitrary Agreement"
-        }
-      holder.txtDocName.text = ""+documentName
-        Picasso.get().load(userList!!.get(position).documentName)
+
+      holder.txtDocName.text = ""+userList!!.get(position).fileType
+        Picasso.get().load(userList!!.get(position).fileName)
             .placeholder(R.drawable.img_default)
             .into(holder.imgDocView)
         holder.txtVerify.setOnClickListener {
-            docViewListener.onDocView(userList!!.get(position))
+          //  docViewListener.onDocView(userList!!.get(position))
         }
-        if(userList!!.get(position).isApproved || userList!!.get(position).documentStatus == "1"){
-            holder.txtVerify.setText("Approved")
-            holder.txtVerify.setBackgroundResource(R.drawable.button_green)
-        }else{
-            holder.txtVerify.setText("Verify")
-            holder.txtVerify.setBackgroundResource(R.drawable.button)
-        }
+
     }
     override fun getItemCount(): Int {
         return  userList!!.size
