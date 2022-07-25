@@ -394,7 +394,6 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/view4"
                     android:id="@+id/cons_insurance"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
