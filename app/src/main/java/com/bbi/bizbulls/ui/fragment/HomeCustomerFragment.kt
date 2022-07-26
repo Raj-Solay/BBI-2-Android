@@ -18,6 +18,7 @@ import com.bbi.bizbulls.model.UserDetails
 import com.bbi.bizbulls.remote.RetrofitClient
 import com.bbi.bizbulls.sharedpref.SharedPrefsManager
 import com.bbi.bizbulls.ui.adapter.*
+import com.bbi.bizbulls.ui.registrationforfo.FoRegistrationDashBoardActivity
 import com.bbi.bizbulls.utils.CommonUtils
 import com.bbi.bizbulls.utils.MyProcessDialog
 import retrofit2.Call
@@ -86,6 +87,10 @@ class HomeCustomerFragment : Fragment() {
                 startActivity(i)
             }
 
+        }
+        binding.tvUpdate.setOnClickListener {
+            val i = Intent(requireContext(), FoRegistrationDashBoardActivity::class.java)
+            startActivity(i)
         }
         return binding.root
     }

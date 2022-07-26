@@ -41,13 +41,13 @@ class SetupApprovalAdapter(
         }
         holder.txtType.text = ""+degignation
         holder.txtMobile.text = "Mobile No : "+userList!!.get(position).mobile
-        if(userList!!.get(position).isApproved /*|| userListLocation!!.get(position).documentStatus == "1"*/){
+      /*  if(userList!!.get(position).isApproved *//*|| userListLocation!!.get(position).documentStatus == "1"*//*){
             holder.txtVerify.setText("Approved")
             holder.txtVerify.setBackgroundResource(R.drawable.button_green)
         }else{
             holder.txtVerify.setText("Verify")
             holder.txtVerify.setBackgroundResource(R.drawable.button)
-        }
+        }*/
 
         Picasso.get().load(userList!!.get(position).photo)
             .placeholder(R.drawable.img_default)

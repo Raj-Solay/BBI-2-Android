@@ -40,9 +40,6 @@ class FoRegistrationDashBoardActivity : AppCompatActivity(), IFoRegistrationStep
 
     private fun activityCalling() {
         CommonUtils.isHideProgress = true
-        val i = Intent(this, ProjectInfoActivity::class.java)
-        i.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK
-        startActivity(i)
         finish()
     }
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -73,6 +70,11 @@ class FoRegistrationDashBoardActivity : AppCompatActivity(), IFoRegistrationStep
         }catch (e : Exception){
 
         }
+        if(Globals.USER_TYPE_EMPLOYEE == userRole){
+            binding.foStepHeaderName.setText("Employee Profile")
+        }else{
+            binding.foStepHeaderName.setText("Customer Profile")
+        }
         binding.btnNextProcess.setOnClickListener {
             if(!isFormStatusComplted){
                 Toast.makeText(this@FoRegistrationDashBoardActivity,"Please completed the Form process First.",Toast.LENGTH_SHORT).show()
@@ -89,16 +91,16 @@ class FoRegistrationDashBoardActivity : AppCompatActivity(), IFoRegistrationStep
         listSteps.add(Data(2,R.drawable.icn_health_details,"Health Details","",0))
 
 
-       /* if(Globals.USER_TYPE_EMPLOYEE == userRole){
+        if(Globals.USER_TYPE_EMPLOYEE == userRole){
 
         }else{
             listSteps.add(Data(3,R.drawable.icn_interest_details,"Expression of interest details","",0))
             listSteps.add(Data(4,R.drawable.icn_checklist_details,"Check list details","",0))
 
-        }*/
+        }
 
-        listSteps.add(Data(3,R.drawable.icn_interest_details,"Expression of interest details","",0))
-        listSteps.add(Data(4,R.drawable.icn_checklist_details,"Check list details","",0))
+       // listSteps.add(Data(3,R.drawable.icn_interest_details,"Expression of interest details","",0))
+       // listSteps.add(Data(4,R.drawable.icn_checklist_details,"Check list details","",0))
 
         listSteps.add(Data(5,R.drawable.icn_education,"Academic education details","",0))
         listSteps.add(Data(6,R.drawable.icn_social_identify,"Social Identity details","",0))
@@ -108,16 +110,16 @@ class FoRegistrationDashBoardActivity : AppCompatActivity(), IFoRegistrationStep
         listSteps.add(Data(10,R.drawable.icn_personal_refrence,"Personal references details","",0))
 
         if(Globals.USER_TYPE_EMPLOYEE == userRole){
-       /*     listSteps.add(Data(13,R.drawable.icn_family_details,"Work History","",0))
+            listSteps.add(Data(13,R.drawable.icn_family_details,"Work History","",0))
             listSteps.add(Data(14,R.drawable.icn_family_details,"Professional References","",0))
             listSteps.add(Data(15,R.drawable.icn_family_details,"Leave & Holiday Requests","",0))
             listSteps.add(Data(16,R.drawable.icn_family_details,"Referral Details","",0))
-*/
+
         }else{
-//            listSteps.add(Data(11,R.drawable.icn_attachment,"Attachment details",""))
+            listSteps.add(Data(11,R.drawable.icn_attachment,"Attachment details","",0))
         }
 
-        listSteps.add(Data(11,R.drawable.icn_attachment,"Attachment details","",0))
+     //   listSteps.add(Data(11,R.drawable.icn_attachment,"Attachment details","",0))
 
         listSteps.add(Data(12,R.drawable.icn_authorization,"Authorization details","",0))
 

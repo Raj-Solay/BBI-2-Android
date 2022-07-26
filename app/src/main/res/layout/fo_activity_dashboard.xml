@@ -24,7 +24,7 @@
             android:id="@+id/foStepHeaderName"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:gravity="left|center"
+            android:gravity="center"
             android:maxLines="1"
             android:text="@string/f_registration_steps"
             android:textColor="@color/white"

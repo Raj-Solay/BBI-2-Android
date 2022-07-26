@@ -351,6 +351,7 @@ class CustomerFOStatusFragment : Fragment(), View.OnClickListener {
                         txtcustomername.text = statusData?.customerName
                         txtcustomeraddress.text = statusData?.businessName
                         txtcustomertime.text = statusData?.date
+                     //   txtStatusGmail.text = statusData?.
                         dates = statusData.siteVisit!!.dates as MutableList<String>
                         setDatesData()
                     }

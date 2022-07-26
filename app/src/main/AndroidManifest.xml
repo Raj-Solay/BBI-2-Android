@@ -144,6 +144,7 @@
         <activity android:name=".KycDocViewActivity" />
         <activity android:name=".KycStatusViewActivity" />
         <activity android:name=".LocationDocViewActivity" />
+        <activity android:name=".RegisterUserListActivity" />
 
         <provider
             android:name="androidx.core.content.FileProvider"

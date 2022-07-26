@@ -78,10 +78,10 @@ class KycDocViewActivity : AppCompatActivity(),DocViewListener {
         binding.txtDate.setText(userData.emailid.toString())
         binding.txtFullname.setText(userData.emailid.toString())
 
-        binding.txtCName.setText(userData.fullname.toString())
+       // binding.txtCName.setText(userData.fullname.toString())
         binding.txtCGender.setText(userData.gender.toString())
 
-        binding.txtCAddress.setText(userData.presentAdd.toString())
+       // binding.txtCAddress.setText(userData.presentAdd.toString())
         binding.txtCAge.setText(userData.age.toString()+" Years")
 
     }
@@ -95,8 +95,9 @@ class KycDocViewActivity : AppCompatActivity(),DocViewListener {
                 response: Response<ApprovalDocRes>
             ) {
                 if (response.isSuccessful) {
-                    docList= response.body()?.data!!
+                    docList = response.body()?.data!!
                     setAdapter(docList)
+
                 } else {
                     RetrofitClient.showResponseMessage(this@KycDocViewActivity, response.code())
                 }
@@ -144,6 +145,7 @@ class KycDocViewActivity : AppCompatActivity(),DocViewListener {
             ) {
                 if (response.isSuccessful) {
                     docListAgreement = response.body()?.data!!
+
                     setAdapterAgreement(docListAgreement)
                 } else {
                     RetrofitClient.showResponseMessage(this@KycDocViewActivity, response.code())

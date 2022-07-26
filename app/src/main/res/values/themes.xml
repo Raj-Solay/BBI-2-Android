@@ -40,6 +40,9 @@
         <item name="android:fontFamily">@font/source_regular</item>
         <item name="android:color">@color/heading</item>
     </style>
+    <style name="fontNormal">
+        <item name="android:fontFamily">@font/source_light</item>
+    </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
     <style name="MyCustomTabText" parent="TextAppearance.Design.Tab">

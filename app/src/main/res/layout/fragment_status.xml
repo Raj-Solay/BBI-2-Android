@@ -28,84 +28,148 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/txtcustomerid"
-                    style="@style/fontregular"
-                    android:layout_width="wrap_content"
+                <!--Card-->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/userCardView"
+                    android:visibility="visible"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="12dp"
-                    android:layout_marginTop="8dp"
-                    android:background="@drawable/bg_roundlighorange"
-                    android:padding="@dimen/overrallspacing"
-                    android:text="BBDHJSDHJSDJSDNGFGDB"
-                    android:textColor="@color/orange_700"
-                    android:textSize="@dimen/large_font"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/txtcustomername"
-                    style="@style/fontregular"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="18dp"
-                    android:layout_marginTop="4dp"
-                    android:text="BIZ BULLS INDIA"
-                    android:textColor="@color/heading"
-                    android:textSize="@dimen/medium_font"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/txtcustomerid" />
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/txt_customerstatus"
-                    style="@style/fontregular"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:layout_marginEnd="12dp"
-                    android:background="@drawable/bg_roundlighgreen"
-                    android:padding="@dimen/overrallspacing"
-                    android:text="Active"
-                    android:textColor="@color/heading"
-                    android:textSize="@dimen/small_font"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="8dp"
+                    app:cardCornerRadius="8dp"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/imglocation"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_marginStart="13dp"
-                    android:padding="@dimen/minimumspacing"
-                    android:src="@drawable/ic__location"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/txtcustomername" />
+                    app:layout_constraintTop_toTopOf="parent">
 
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/txtcustomeraddress"
-                    style="@style/fontregular"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/sample_username"
-                    android:textColor="@color/heading"
-                    android:textSize="@dimen/small_font"
-                    app:layout_constraintBottom_toBottomOf="@+id/imglocation"
-                    app:layout_constraintStart_toEndOf="@+id/imglocation"
-                    app:layout_constraintTop_toTopOf="@+id/imglocation" />
 
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/txtcustomertime"
-                    style="@style/fontregular"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:layout_marginEnd="12dp"
-                    android:text="07-11-2021 6:00PM"
-                    android:textColor="@color/heading"
-                    android:textSize="@dimen/small_font"
-                    android:layout_marginLeft="@dimen/_14sdp"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/imglocation" />
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_8sdp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:orientation="vertical">
+
+                        <androidx.appcompat.widget.LinearLayoutCompat
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+                            <androidx.appcompat.widget.AppCompatTextView
+                                style="@style/fontregular"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:background="@drawable/bg_roundlighorange"
+                                android:padding="@dimen/overrallspacing"
+                                android:text="BIZ BULLS INDIA"
+                                android:textColor="@color/orange_700"
+                                android:textSize="@dimen/large_font"/>
+
+                            <TextView
+                                android:id="@+id/txtcustomerid"
+                                android:layout_marginLeft="@dimen/_8sdp"
+                                android:text="INDGJAMD12345"
+                                android:textSize="@dimen/_9ssp"
+                                android:textColor="@color/orange_700"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+                        <androidx.appcompat.widget.LinearLayoutCompat
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:src="@drawable/emp_profile"
+                                android:layout_width="@dimen/_52sdp"
+                                android:layout_height="@dimen/_52sdp"/>
+
+                            <androidx.appcompat.widget.LinearLayoutCompat
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/txtcustomername"
+                                    android:layout_marginLeft="@dimen/_8sdp"
+                                    android:text="Raj Sir"
+                                    android:textSize="@dimen/_10ssp"
+                                    style="@style/fontNormal"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"/>
+
+                                <TextView
+                                    android:text="8977362436"
+                                    android:layout_marginLeft="@dimen/_8sdp"
+                                    android:textSize="@dimen/_10ssp"
+                                    style="@style/fontNormal"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"/>
+
+                                <TextView
+                                    android:id="@+id/txtStatusGmail"
+                                    android:text="test@gmail.com"
+                                    style="@style/fontNormal"
+                                    android:layout_marginLeft="@dimen/_8sdp"
+                                    android:textSize="@dimen/_10ssp"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"/>
+
+                                <TextView
+                                    android:id="@+id/txtcustomeraddress"
+                                    android:text="Ahmedabad, Gujarat"
+                                    android:layout_marginLeft="@dimen/_8sdp"
+                                    android:textSize="@dimen/_10ssp"
+                                    style="@style/fontNormal"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"/>
+
+                            </androidx.appcompat.widget.LinearLayoutCompat>
+
+                            <androidx.appcompat.widget.LinearLayoutCompat
+                                android:layout_width="match_parent"
+                                android:layout_gravity="right|end"
+                                android:gravity="right|end"
+                                android:layout_height="match_parent"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/txt_customerstatus"
+                                    android:layout_marginLeft="@dimen/_8sdp"
+                                    android:text="Active"
+                                    android:gravity="right|end"
+                                    android:layout_gravity="right|end"
+                                    android:textSize="@dimen/_10ssp"
+                                    style="@style/fontregular"
+                                    android:textColor="@color/green"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"/>
+
+                                <TextView
+                                    android:id="@+id/txtcustomertime"
+                                    android:layout_gravity="end|bottom"
+                                    android:gravity="end|right|bottom"
+                                    android:layout_marginLeft="@dimen/_8sdp"
+                                    android:text="26-07-2022 22:05 PM"
+                                    android:textSize="@dimen/_10ssp"
+                                    style="@style/fontNormal"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"/>
+
+                            </androidx.appcompat.widget.LinearLayoutCompat>
+
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                </androidx.cardview.widget.CardView>
+
+                <!--End-->
 
                 <View
                     android:layout_width="0dp"
@@ -114,7 +178,7 @@
                     android:background="@color/border"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/txtcustomertime" />
+                    app:layout_constraintTop_toBottomOf="@+id/userCardView" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout

@@ -15,7 +15,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent"
-        app:srcCompat="@drawable/ic_userprofile" />
+        app:srcCompat="@drawable/emp_profile" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/txtfoname"
@@ -85,30 +85,48 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <com.google.android.material.progressindicator.LinearProgressIndicator
-            android:id="@+id/progressBarprofileupdate"
-            style="@style/Widget.MaterialComponents.CircularProgressIndicator.Medium"
-            android:layout_width="0dp"
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/lrPrg"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="18dp"
-            android:layout_marginBottom="8dp"
-            android:indeterminate="false"
-            android:progress="100"
-
-            android:secondaryProgress="25"
-            app:indicatorColor="@color/orange_700"
-            app:indicatorDirectionLinear="startToEnd"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/txtinfoprofilecomplete"
             app:layout_constraintTop_toBottomOf="@+id/txtinfoprofilecomplete"
-            app:showAnimationBehavior="inward"
-            app:trackColor="@color/white"
-            app:trackCornerRadius="6dp"
-            app:trackThickness="6dp" />
+            android:orientation="horizontal">
+
+            <com.google.android.material.progressindicator.LinearProgressIndicator
+                android:id="@+id/progressBarprofileupdate"
+                style="@style/Widget.MaterialComponents.CircularProgressIndicator.Medium"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="18dp"
+                android:layout_marginBottom="8dp"
+                android:indeterminate="false"
+                android:progress="100"
+                android:secondaryProgress="0"
+                app:indicatorColor="@color/orange_700"
+                app:indicatorDirectionLinear="startToEnd"
+                app:showAnimationBehavior="inward"
+                app:trackColor="@color/white"
+                android:layout_weight="1"
+                app:trackCornerRadius="6dp"
+                app:trackThickness="6dp" />
+            <TextView
+                android:id="@+id/txtPercentageValue"
+                android:text=""
+                android:textSize="@dimen/_11ssp"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textColor="@color/orange_700"
+                android:layout_marginRight="@dimen/_4sdp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.core.widget.NestedScrollView

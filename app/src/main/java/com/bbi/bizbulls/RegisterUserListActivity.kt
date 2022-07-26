@@ -8,6 +8,7 @@ import android.text.TextWatcher
 import android.util.Log
 import android.view.View
 import com.bbi.bizbulls.databinding.ActivityKycListBinding
+import com.bbi.bizbulls.databinding.ActivityRegisterUserListBinding
 import com.bbi.bizbulls.model.PersonalUserAll
 import com.bbi.bizbulls.remote.RetrofitClient
 import com.bbi.bizbulls.sharedpref.SharedPrefsManager
@@ -17,50 +18,28 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class KycListActivity : AppCompatActivity() {
-    lateinit var binding:ActivityKycListBinding
-    private val sharedPrefsHelper by lazy { SharedPrefsManager(this@KycListActivity) }
+class RegisterUserListActivity : AppCompatActivity() {
+    lateinit var binding:ActivityRegisterUserListBinding
+    private val sharedPrefsHelper by lazy { SharedPrefsManager(this@RegisterUserListActivity) }
 
     var approval_type = 0;
     private var userList : ArrayList<PersonalUserAll.Data> = arrayListOf();
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding=ActivityKycListBinding.inflate(layoutInflater)
+        binding=ActivityRegisterUserListBinding.inflate(layoutInflater)
         setContentView(binding.root)
         approval_type = intent.getIntExtra("APPROVAL_TYPE",0)
-        Log.d("ATYPE",""+ approval_type)
 
         initView()
-        /*if(approval_type == 0){
-            getUserList()
-        }else if(approval_type == 1){
-            getUserList()
-        }else if(approval_type == 2){
-            getAgreementList()
-        }else if(approval_type == 3){
-            getSetupList()
-        }else if(approval_type == 4){
-            getLicenseList()
-        }*/
+
         getUserList()
 
     }
     private fun initView() {
-        var toolBarTitle = ""
-        if(approval_type == 0){
-            toolBarTitle = "KYC Approval"
-        }else if(approval_type == 1){
-            toolBarTitle = "Location Approval"
-        }else if(approval_type == 2){
-            toolBarTitle = "Agreements Approval"
-        }else if(approval_type == 3){
-            toolBarTitle = "SetUp Approval"
-        }else if(approval_type == 4){
-            toolBarTitle = "License Approval"
-        }
 
-        binding?.customTitleLayout?.tvTitle?.text = toolBarTitle
+
+        binding?.customTitleLayout?.tvTitle?.text = "Register User List"
         binding?.customTitleLayout?.ivBack?.setOnClickListener { onBackPressed() }
        /* var kycApprovalAdapter= KycApprovalAdapter()
         binding?.rcyKycApproval?.adapter=kycApprovalAdapter*/
@@ -96,36 +75,22 @@ class KycListActivity : AppCompatActivity() {
                 if (response.isSuccessful) {
                     userList = response?.body()?.data!!
                     if(userList.size > 0){
-                        binding.txtEmptyRecord.visibility = View.GONE
-                        binding.rcyKycApproval.visibility = View.VISIBLE
-
-                    }else{
-                        var errorMessage = ""
-                        if(approval_type == 0){
-                            errorMessage = "You don't have any pending KYC approvals."
-                        }else if(approval_type == 1){
-                            errorMessage = "You don't have any pending Location approvals."
-                        }else if(approval_type == 2){
-                            errorMessage = "You don't have any pending Agreement approvals."
-                        }else if(approval_type == 3){
-                            errorMessage = "You don't have any pending Setup approvals."
-                        }else if(approval_type == 4){
-                            errorMessage = "You don't have any pending License approvals."
-                        }
-                        binding.txtEmptyRecord.setText(errorMessage)
                         binding.txtEmptyRecord.visibility = View.VISIBLE
                         binding.rcyKycApproval.visibility = View.GONE
+                    }else{
+                        binding.txtEmptyRecord.visibility = View.GONE
+                        binding.rcyKycApproval.visibility = View.VISIBLE
                     }
                     setAdapter(userList)
                 } else {
-                    RetrofitClient.showResponseMessage(this@KycListActivity, response.code())
+                    RetrofitClient.showResponseMessage(this@RegisterUserListActivity, response.code())
                 }
                 MyProcessDialog.dismiss()
             }
 
             override fun onFailure(call: Call<PersonalUserAll>, t: Throwable) {
                 MyProcessDialog.dismiss()
-                RetrofitClient.showFailedMessage(this@KycListActivity, t)
+                RetrofitClient.showFailedMessage(this@RegisterUserListActivity, t)
             }
         })
     }

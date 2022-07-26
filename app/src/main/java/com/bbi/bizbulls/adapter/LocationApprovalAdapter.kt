@@ -131,13 +131,16 @@ class LocationApprovalAdapter(
         holder.txtVerify.setOnClickListener {
             docViewListener.onDocLocationView(userListLocation!!.get(position))
         }
-        if(userListLocation!!.get(position).isApproved /*|| userListLocation!!.get(position).documentStatus == "1"*/){
-            holder.txtVerify.setText("Approved")
+        holder.txtReject.setOnClickListener {
+            docViewListener.onDocLocationView(userListLocation!!.get(position))
+        }
+        /*if(userListLocation!!.get(position).isApproved *//*|| userListLocation!!.get(position).documentStatus == "1"*//*){
+            holder.txtVerify.setText("Reject")
             holder.txtVerify.setBackgroundResource(R.drawable.button_green)
         }else{
-            holder.txtVerify.setText("Verify")
+            holder.txtVerify.setText("Approve")
             holder.txtVerify.setBackgroundResource(R.drawable.button)
-        }
+        }*/
         holder.imgMap.setOnClickListener {
             showMapDialog(userListLocation!!.get(position))
         }
@@ -151,6 +154,7 @@ class LocationApprovalAdapter(
         var imgMap = itemView.findViewById(R.id.imgMap) as ImageView
         var txtDocName = itemView.findViewById(R.id.txtDocName) as TextView
         var txtVerify = itemView.findViewById(R.id.txtVerify) as TextView
+        var txtReject = itemView.findViewById(R.id.txtReject) as TextView
         var uploadImageOne = itemView.findViewById(R.id.uploadImageOne) as LinearLayout
         var uploadImageTwo = itemView.findViewById(R.id.uploadImageTwo) as LinearLayout
         var uploadImageThree = itemView.findViewById(R.id.uploadImageThree) as LinearLayout

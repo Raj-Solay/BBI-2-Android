@@ -42,13 +42,13 @@ class AgreementApprovalAdapter(
         holder.imgDocView.setOnClickListener {
             showFullDialog(userList!!.get(position).fileName)
         }
-        if(userList!!.get(position).isApproved /*|| userListLocation!!.get(position).documentStatus == "1"*/){
+      /*  if(userList!!.get(position).isApproved *//*|| userListLocation!!.get(position).documentStatus == "1"*//*){
             holder.txtVerify.setText("Approved")
             holder.txtVerify.setBackgroundResource(R.drawable.button_green)
         }else{
             holder.txtVerify.setText("Verify")
             holder.txtVerify.setBackgroundResource(R.drawable.button)
-        }
+        }*/
 
     }
     override fun getItemCount(): Int {

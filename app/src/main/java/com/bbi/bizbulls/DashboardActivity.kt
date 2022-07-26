@@ -177,6 +177,7 @@ class DashboardActivity : AppCompatActivity(), View.OnClickListener {
                             }
                             if(linearProgressbar != null){
                                 linearProgressbar!!.progress = progress.toInt()
+                                txtPercentageValue!!.setText(""+progress.toInt()+"%")
                             }
                             MyProcessDialog.dismiss()
                         }
@@ -248,6 +249,7 @@ class DashboardActivity : AppCompatActivity(), View.OnClickListener {
                     }else{
                         menu.findItem(R.id.navigation_forevenue).isVisible = false
                         menu.findItem(R.id.navigation_fohome).isVisible = false
+                        getFormStatus()
                     }
 
                 } else {
@@ -264,6 +266,7 @@ class DashboardActivity : AppCompatActivity(), View.OnClickListener {
         })
     }
      var  linearProgressbar : LinearProgressIndicator? = null
+     var  txtPercentageValue : TextView? = null
     fun hideKeyboard(activity: Activity) {
         val imm: InputMethodManager =
             activity.getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
@@ -313,6 +316,7 @@ class DashboardActivity : AppCompatActivity(), View.OnClickListener {
         binding!!.navfo.bringToFront()
         val hView = binding!!.navfo.getHeaderView(0)
         linearProgressbar = hView.findViewById<LinearProgressIndicator>(R.id.progressBarprofileupdate)
+        txtPercentageValue = hView.findViewById<TextView>(R.id.txtPercentageValue)
         linearProgressbar!!.progress = 0
         nav_user= hView.findViewById<AppCompatTextView>(R.id.txtfoname)
         nav_user.text = sharedPrefsHelper.userName
