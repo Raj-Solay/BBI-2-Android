@@ -58,7 +58,7 @@
                         android:text="Ahmedabad"
                         android:paddingHorizontal="@dimen/_5sdp"
                         android:textColor="@color/white"
-                        android:textSize="@dimen/small_font"
+                        android:textSize="@dimen/medium_font"
                         android:maxLength="30"
                         android:fontFamily="@font/source_semibold"
                         app:layout_constraintBottom_toBottomOf="parent"
