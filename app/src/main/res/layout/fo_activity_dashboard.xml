@@ -44,12 +44,14 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
-        android:layout_margin="@dimen/_12sdp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/_56sdp"
-        tools:listitem="@layout/fo_adapter_dashboard"
-        android:layout_below="@+id/appCompatTextView" />
+        android:layout_below="@+id/appCompatTextView"
+        android:layout_marginStart="@dimen/_12sdp"
+        android:layout_marginTop="@dimen/_12sdp"
+        android:layout_marginEnd="@dimen/_12sdp"
+        android:layout_marginBottom="@dimen/_12sdp"
+        tools:listitem="@layout/fo_adapter_dashboard" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnNextProcess"

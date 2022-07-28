@@ -8,11 +8,11 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.biz.bizbulls.ProjectInfoActivity
 import com.biz.bizbulls.R
+import com.biz.bizbulls.databinding.FragmentHomeBinding
+import com.biz.bizbulls.ProjectInfoActivity
 import com.biz.bizbulls.adapter.HomeSlideAdapter
 import com.biz.bizbulls.data.adaptermodel.SliderItem
-import com.biz.bizbulls.databinding.FragmentHomeBinding
 import com.biz.bizbulls.model.UserDetails
 import com.biz.bizbulls.remote.RetrofitClient
 import com.biz.bizbulls.sharedpref.SharedPrefsManager

@@ -36,5 +36,9 @@ class UserDetails {
         @SerializedName("updated_at")
         @Expose
         var updatedAt: String? = null
+
+        @SerializedName("profile_pic")
+        @Expose
+        var profile_pic: String? = null
     }
 }

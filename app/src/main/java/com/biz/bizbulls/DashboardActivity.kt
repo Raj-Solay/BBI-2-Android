@@ -2,30 +2,37 @@ package com.biz.bizbulls
 
 import android.Manifest
 import android.app.Activity
+import android.app.AlertDialog
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.Address
 import android.location.Geocoder
 import android.location.Location
+import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.view.Gravity
 import android.view.KeyEvent
 import android.view.View
 import android.view.inputmethod.InputMethodManager
-import android.widget.RelativeLayout
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
+import androidx.core.content.FileProvider
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
-import com.biz.bizbulls.data.health.FormStatus
+import com.biz.bizbulls.R
 import com.biz.bizbulls.databinding.ActivityDashboardBinding
+import com.biz.bizbulls.data.health.FormStatus
 import com.biz.bizbulls.menu.*
+import com.biz.bizbulls.model.AssetUploadReq
+import com.biz.bizbulls.model.AssetsRes
 import com.biz.bizbulls.model.UserDetails
 import com.biz.bizbulls.remote.RetrofitClient
 import com.biz.bizbulls.sharedpref.SharedPrefsManager
@@ -34,20 +41,27 @@ import com.biz.bizbulls.ui.fragment.HomeAdminFragment
 import com.biz.bizbulls.ui.fragment.HomeCustomerFragment
 import com.biz.bizbulls.ui.registrationforfo.FoRegistrationDashBoardActivity
 import com.biz.bizbulls.utils.CommonUtils
+import com.biz.bizbulls.utils.FileUtils
 import com.biz.bizbulls.utils.Globals
 import com.biz.bizbulls.utils.MyProcessDialog
+import com.bumptech.glide.Glide
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.tasks.OnSuccessListener
+import com.google.android.material.imageview.ShapeableImageView
 import com.google.android.material.progressindicator.LinearProgressIndicator
 import com.karumi.dexter.Dexter
 import com.karumi.dexter.PermissionToken
 import com.karumi.dexter.listener.PermissionDeniedResponse
 import com.karumi.dexter.listener.PermissionGrantedResponse
 import com.karumi.dexter.listener.single.PermissionListener
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.io.File
 import java.util.*
 
 
@@ -72,7 +86,8 @@ class DashboardActivity : AppCompatActivity(), View.OnClickListener {
     var logout: ConstraintLayout? = null
     var layoutnotification: RelativeLayout?=null
     var layoutsearch: RelativeLayout?=null
-    var layouthelp:RelativeLayout?=null
+    var ll_edit:LinearLayout?=null
+    var imgnavuserprofile: ShapeableImageView?=null
     var count = 0
     lateinit var nav_user:TextView
     lateinit var nav_mobile:TextView
@@ -82,6 +97,9 @@ class DashboardActivity : AppCompatActivity(), View.OnClickListener {
     var adminFragment: HomeAdminFragment? = null
     lateinit var client: FusedLocationProviderClient
     var isAdminLogin = false
+    private var selectedDocument = ""
+    private var imageUri: Uri? = null
+    private var panCardURI: Uri? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDashboardBinding.inflate(layoutInflater)
@@ -89,7 +107,6 @@ class DashboardActivity : AppCompatActivity(), View.OnClickListener {
         hideKeyboard(this)
         isAdminLogin = sharedPrefsHelper.isAdminLogin
         init()
-
         if(!isAdminLogin){
 
             // if(!CommonUtils.isRedirectToStatus){
@@ -102,9 +119,13 @@ class DashboardActivity : AppCompatActivity(), View.OnClickListener {
         println("________PHONE  ::${sharedPrefsHelper.phone}")
         println("________TOKEN_ID  ::${sharedPrefsHelper.tokenID}")
         println("________AUTH_TOKEN  ::${sharedPrefsHelper.authToken}")*/
-
+      initView()
     }
-
+fun initView(){
+    ll_edit?.setOnClickListener {
+        selectImage(selectedDocument)
+    }
+}
 
 
     override fun onResume() {
@@ -229,6 +250,16 @@ class DashboardActivity : AppCompatActivity(), View.OnClickListener {
                     nav_user.text=userDetails?.data?.name.toString()
                      nav_mobile.text=userDetails?.data?.phone.toString()
                      nav_email.text=userDetails?.data?.email.toString()
+                   //imgnavuserprofile
+                    imgnavuserprofile?.let {
+                        Glide.with(this@DashboardActivity)  //2
+                            .load(userDetails?.data?.profile_pic) //3
+                            .centerCrop() //4
+                            .placeholder(R.drawable.emp_profile) //5
+                            .error(R.drawable.emp_profile) //6
+                            .fallback(R.drawable.emp_profile) //7
+                            .into(it)
+                    }
                     try{
                         if(userDetails?.data?.roleId!= null &&
                             userDetails?.data?.roleId!!.toInt() == Globals.USER_TYPE_FO_TEAM){
@@ -356,6 +387,8 @@ class DashboardActivity : AppCompatActivity(), View.OnClickListener {
         settings = hView.findViewById(R.id.settings)
         settings?.setOnClickListener(this)
         logout = hView.findViewById(R.id.logout)
+        imgnavuserprofile=hView.findViewById(R.id.imgnavuserprofile)
+        ll_edit=hView.findViewById(R.id.ll_edit)
         logout?.setOnClickListener(this)
 
         layoutcp = hView.findViewById(R.id.layoutcp)
@@ -593,4 +626,139 @@ class DashboardActivity : AppCompatActivity(), View.OnClickListener {
 
         })
     }
+    private fun createImageUri(fileName: String): Uri? {
+        val name = fileName.replace("\\s".toRegex(), "")
+        val image = File(this.filesDir, "$name.png")
+        return this.let {
+            FileProvider.getUriForFile(
+                it,
+                "com.biz.bizbulls.fileProvider",
+                image)
+        }
+    }
+    private fun selectImage(fileName: String) {
+        if (checkPermission()) {
+            val options = arrayOf<CharSequence>("Take Photo", "Choose from Gallery", "Cancel")
+            val builder: AlertDialog.Builder = AlertDialog.Builder(this)
+            builder.setTitle("Add Photo!")
+            builder.setItems(options) { dialog, item ->
+                if (options[item] == "Take Photo") {
+                    imageUri = createImageUri(fileName)!!
+                    imageFromCamera.launch(imageUri)
+                } else if (options[item] == "Choose from Gallery") {
+                    imageFromGallery.launch("image/*")
+                } else if (options[item] == "Cancel") {
+                    dialog.dismiss()
+                }
+            }
+            builder.show()
+        } else {
+            requestPermission()
+        }
+    }
+    private val imageFromGallery = registerForActivityResult(ActivityResultContracts.GetContent()) {
+        if (it != null) {
+            //  binding.imgpancard.setImageURI(it)
+            setPreviewImage(selectedDocument, it)
+            println("________ImagePathGallery - ${it.path}")
+        } else {
+            CommonUtils.toast(
+                this,
+                this.resources.getString(R.string.something_wrong)
+            )
+        }
+    }
+
+    private val imageFromCamera = registerForActivityResult(ActivityResultContracts.TakePicture()) {
+        if (it) {
+            imageUri?.let { it1 -> setPreviewImage(selectedDocument, it1) }
+            println("_______ImagePathCamera - ${imageUri?.path}")
+        } else {
+            CommonUtils.toast(
+                this,
+                this.resources.getString(R.string.something_wrong)
+            )
+        }
+    }
+
+    private fun checkPermission(): Boolean {
+        val result = ContextCompat.checkSelfPermission(this,
+            Manifest.permission.WRITE_EXTERNAL_STORAGE
+        )
+        val result1 = ContextCompat.checkSelfPermission(this,
+            Manifest.permission.READ_EXTERNAL_STORAGE
+        )
+        return result == PackageManager.PERMISSION_GRANTED && result1 == PackageManager.PERMISSION_GRANTED
+    }
+
+    private fun requestPermission() {
+        ActivityCompat.requestPermissions(this, arrayOf(
+            Manifest.permission.WRITE_EXTERNAL_STORAGE,
+            Manifest.permission.READ_EXTERNAL_STORAGE
+        ), 100)
+    }
+
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        when (requestCode) {
+            100 -> if (grantResults.isNotEmpty()) {
+                val locationAccepted = grantResults[0] == PackageManager.PERMISSION_GRANTED
+                val cameraAccepted = grantResults[1] == PackageManager.PERMISSION_GRANTED
+                if (locationAccepted && cameraAccepted) {
+                    //permission granted
+                }else {
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                        if (shouldShowRequestPermissionRationale(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+                            //You need to allow access to both the permissions
+                            return
+                        }
+                    }
+                }
+            }
+        }
+    }
+    private fun setPreviewImage(selectedDocument: String, uri: Uri) {
+        imgnavuserprofile?.setImageURI(uri);
+                 panCardURI = uri
+                uploadFileOnServer(uri, 1)
+
+    }
+    private fun uploadFileOnServer(uri: Uri, type: Int) {
+        var fileUtils = FileUtils(this)
+
+        val file = File(fileUtils.getPath(uri))
+
+        var mimeType = this.contentResolver.getType(uri!!)
+        val requestBody: RequestBody = RequestBody.create(mimeType?.toMediaTypeOrNull(), file)
+        val part: MultipartBody.Part = MultipartBody.Part.createFormData("profile_pic",
+            file.name, requestBody)
+
+        val sharedPrefsHelper by lazy { SharedPrefsManager(this) }
+        var call: Call<AssetsRes>? = null
+        call = RetrofitClient.getUrl()
+            .updateProfilePic(sharedPrefsHelper.authToken, part)
+        MyProcessDialog.showProgressBar(this, 0)
+        call?.enqueue(object : Callback<AssetsRes> {
+            override
+            fun onResponse(
+                call: Call<AssetsRes>,
+                responseObject: Response<AssetsRes>) {
+                if (responseObject.code() == 201 || responseObject.code() == 200) {
+                    var assetReq = AssetUploadReq()
+                } else {
+                    RetrofitClient.showResponseMessage(this@DashboardActivity, responseObject.code())
+
+                }
+                MyProcessDialog.dismiss()
+            }
+
+            override
+            fun onFailure(call: Call<AssetsRes>, t: Throwable) {
+                t.printStackTrace()
+                MyProcessDialog.dismiss()
+                RetrofitClient.showFailedMessage(this@DashboardActivity, t)
+            }
+        })
+    }
+
 }

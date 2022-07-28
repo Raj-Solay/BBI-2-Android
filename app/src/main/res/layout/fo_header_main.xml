@@ -6,16 +6,38 @@
     android:gravity="bottom"
     android:theme="@style/EmpBottomTheme">
 
-    <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/imgnavuserprofile"
-        android:layout_width="@dimen/toolBarHeight"
-        android:layout_height="@dimen/toolBarHeight"
-        android:layout_marginStart="18dp"
-        android:layout_marginTop="16dp"
+    <FrameLayout
+        android:id="@+id/image_fm"
+        android:layout_width="@dimen/_44sdp"
+        android:layout_height="@dimen/_44sdp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent"
-        app:srcCompat="@drawable/emp_profile" />
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="16dp"
+        >
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/imgnavuserprofile"
+            android:layout_width="@dimen/_42sdp"
+            android:layout_height="@dimen/_42sdp"
+           android:src="@drawable/emp_profile"
+            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent"/>
+
+        <LinearLayout
+            android:id="@+id/ll_edit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right|bottom"
+            android:background="@drawable/image_card"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:src="@drawable/camera"
+                app:tint="@color/white" />
+        </LinearLayout>
+    </FrameLayout>
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/txtfoname"
@@ -29,7 +51,7 @@
         android:textColor="@color/heading"
         android:textSize="@dimen/large_font"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imgnavuserprofile"
+        app:layout_constraintStart_toEndOf="@+id/image_fm"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatTextView
@@ -44,7 +66,7 @@
         android:textColor="@color/heading"
         android:textSize="@dimen/small_font"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imgnavuserprofile"
+        app:layout_constraintStart_toEndOf="@+id/image_fm"
         app:layout_constraintTop_toBottomOf="@+id/txtfoname" />
 
     <androidx.appcompat.widget.AppCompatTextView
@@ -59,7 +81,7 @@
         android:textColor="@color/heading"
         android:textSize="@dimen/small_font"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imgnavuserprofile"
+        app:layout_constraintStart_toEndOf="@+id/image_fm"
         app:layout_constraintTop_toBottomOf="@+id/txtfomobile" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -70,7 +92,7 @@
         android:background="@color/border"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgnavuserprofile">
+        app:layout_constraintTop_toBottomOf="@+id/image_fm">
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/txtinfoprofilecomplete"
