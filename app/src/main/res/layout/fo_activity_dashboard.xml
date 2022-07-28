@@ -2,11 +2,38 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/bg_layout"
     xmlns:tools="http://schemas.android.com/tools">
+    <LinearLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/toolBarHeight"
+        android:background="@color/orange_700"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toTopOf="parent">
 
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/foBack"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:padding="@dimen/_10dp"
+            android:src="@drawable/ic__back_white" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/foStepHeaderName"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:maxLines="1"
+            android:text="@string/f_registration_steps"
+            android:textColor="@color/white"
+            android:textSize="@dimen/large_font" />
+    </LinearLayout>
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/appCompatTextView"
+        android:layout_below="@+id/header"
+        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/orange_700"
@@ -19,8 +46,26 @@
         android:id="@+id/recyclerView"
         android:layout_margin="@dimen/_12sdp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/_56sdp"
         tools:listitem="@layout/fo_adapter_dashboard"
         android:layout_below="@+id/appCompatTextView" />
 
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnNextProcess"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="center"
+        android:layout_marginStart="@dimen/_8sdp"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:layout_marginEnd="@dimen/_8sdp"
+        android:layout_marginBottom="@dimen/_8sdp"
+        android:alpha="0.6"
+        android:background="@drawable/bg_submit"
+        android:gravity="center"
+        android:text="@string/f_submit"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_14ssp" />
 </RelativeLayout>

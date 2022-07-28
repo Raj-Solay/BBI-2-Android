@@ -18,7 +18,7 @@
         app:cardElevation="3dp"
         app:cardMaxElevation="3dp">
 
-        <ImageView
+        <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/iv_top_small_card"
             android:layout_width="40dp"
             android:layout_height="53dp"

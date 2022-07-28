@@ -40,6 +40,9 @@
         <item name="android:fontFamily">@font/source_regular</item>
         <item name="android:color">@color/heading</item>
     </style>
+    <style name="fontNormal">
+        <item name="android:fontFamily">@font/source_light</item>
+    </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
     <style name="MyCustomTabText" parent="TextAppearance.Design.Tab">
@@ -104,6 +107,19 @@
 
     </style>
 
+    <style name="formInput">
+        <item name="android:textSize">@dimen/_11sdp</item>
+        <item name="android:layout_height">@dimen/_20sdp</item>
+    </style>
+    <style name="formFrameLayoutLarge">
+        <item name="android:paddingLeft">@dimen/_10sdp</item>
+        <item name="android:paddingRight">@dimen/_10sdp</item>
+    </style>
+    <style name="formFrameLayoutSmall">
+        <item name="android:paddingLeft">@dimen/_5sdp</item>
+        <item name="android:paddingRight">@dimen/_5sdp</item>
+    </style>
+
     <style name="checkWithTextLayout" parent="titleBox">
         <item name="android:layout_marginLeft">0dp</item>
         <item name="android:layout_marginTop">0dp</item>
@@ -138,6 +154,20 @@
         <item name="android:layout_marginTop">6dp</item>
         <item name="android:layout_marginEnd">8dp</item>
         <item name="android:background">@drawable/edit_text_background</item>
+        <item name="android:fontFamily">@font/source_regular</item>
+        <item name="android:color">@color/heading</item>
+        <item name="android:padding">@dimen/textboxpadding</item>
+        <item name="android:textColor">@color/heading</item>
+        <item name="android:textColorHint">@color/heading</item>
+        <item name="android:textSize">@dimen/medium_font</item>
+    </style>
+
+    <style name="titleBoxWithNoBg">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">8dp</item>
+        <item name="android:layout_marginTop">6dp</item>
+        <item name="android:layout_marginEnd">8dp</item>
         <item name="android:fontFamily">@font/source_regular</item>
         <item name="android:color">@color/heading</item>
         <item name="android:padding">@dimen/textboxpadding</item>
@@ -412,6 +442,19 @@
     <style name="customSpinner">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">@dimen/_28sdp</item>
+        <item name="android:background">@null</item>
+        <item name="android:dropDownWidth">wrap_content</item>
+        <item name="android:textSize">@dimen/small_font</item>
+        <item name="android:dropDownVerticalOffset">?attr/dropdownListPreferredItemHeight</item>
+        <item name="android:popupBackground">@color/white</item>
+        <item name="android:popupElevation">4dp</item>
+        <item name="android:stateListAnimator">@drawable/raise</item>
+        <item name="android:layout_weight">1</item>
+    </style>
+
+    <style name="customSpinnerLocation">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/_22sdp</item>
         <item name="android:background">@null</item>
         <item name="android:dropDownWidth">wrap_content</item>
         <item name="android:textSize">@dimen/small_font</item>

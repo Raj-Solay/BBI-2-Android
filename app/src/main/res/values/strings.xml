@@ -2,7 +2,7 @@
     <string name="app_name">Biz Bulls</string>
     <string name="loading">Please Wait……</string>
 
-    <string name="generalPrefPackageIdentifier">com.bbi.bizbulls.GeneralPrefs</string>
+    <string name="generalPrefPackageIdentifier">com.biz.bizbulls.GeneralPrefs</string>
     <string name="unsupported_property_type">Unsupported property type received in sharedPrefs</string>
     <!--     MENU -->
     <string name="makemoney">Make more money!</string>
@@ -43,9 +43,15 @@
     <string name="c_agreement">Agreement</string>
     <string name="c_license">License</string>
     <string name="c_download"><u>Download</u></string>
+    <string name="c_download_agr"><u>Download Agreement</u></string>
+    <string name="c_download_lic"><u>Download License</u></string>
+    <string name="c_download_setup_inst"><u>Download Setup\nInstructions</u></string>
+    <string name="c_download_receipt"><u>Download Receipt</u></string>
     <string name="c_viewdetail"><u>View Details</u></string>
+    <string name="c_viewdetail_agrement"><u>Download Agreement</u></string>
     <string name="c_viewcdetail">View Contact Details</string>
     <string name="c_licensensehasbeen">License has been issued</string>
+    <string name="c_licensensehasbeen_update">Congratulations..!! Now you\'re successfully associated with us as our official Franchise Partner.</string>
 
     <!--     Franchise Registration -->
     <string name="f_submit">Submit</string>
@@ -487,7 +493,7 @@ By continuing to access or use Our Service after those revisions become effectiv
     <string name="email_">Email Address</string>
     <string name="initial_registration_fee">Initial Registration Fee</string>
     <string name="non_refundable">Non Refundable</string>
-    <string name="initial_registartion_fee_is_non_refundable_non_transferable_in_any_circumtances_once_paid_and_is_valid_upto_6_months"><![CDATA[Initial registartion fee is non refundable & non transferable in any circumtances. Once paid and is valid upto 6 months.]]></string>
+    <string name="non_refundable_large"><![CDATA[Initial registartion fee is non refundable & non transferable in any circumtances. Once paid and is valid upto 3 months.]]></string>
     <string name="payment_summery">Payment Summery</string>
     <string name="reg_fees">Registration Fees</string>
     <string name="gst_cgst_sgst_18">GST (CGST+SGST) - 18%</string>
@@ -530,6 +536,7 @@ By continuing to access or use Our Service after those revisions become effectiv
     <string name="add_license">Add License</string>
     <string name="pending_approval">Pending Approval</string>
     <string name="atlest_one_error">Please upload at least 1 image in each section.</string>
+    <string name="upload_attachement">Upload</string>
     <!--service content-->
     <string name="Branding_Solutions">Branding Solutions</string>
     <string name="Branding_Solutions_text">Biz Bulls branding solutions are trendy and unique in approach which elevates our Franchisor’s brand in most efficient way. We first acquire all inputs from the Franchisor about their brand, industry they deal with and the type of customers they cater, with their services. Basing on the information received, we schedule a relevant approach through our highly proficient vendors in promoting the Franchisor’s brand in targeted audience.We conduct massive campaigns for the brand awareness and elevation of our Franchisor’s products using the print, digital, social &amp; events modules, throughout India. We also provide an exceptional in-office branding through our 500+ Franchise offices, located in all parts of India. We take complete responsibility of promotional campaigns that not only elevate Franchisor’s brand for Franchisees, but also will increase the foot-fall in franchisor’s associated business places.</string>

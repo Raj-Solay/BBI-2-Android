@@ -27,7 +27,7 @@
                 style="@style/subTitle"
                 android:layout_marginTop="@dimen/_8sdp"
                 android:text="Please authorize my rotational weekly-off on______"
-                android:textSize="@dimen/_14ssp" />
+                android:textSize="@dimen/_12ssp" />
 
 
 
@@ -41,7 +41,6 @@
                 android:layout_marginTop="@dimen/_8sdp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/_10sdp"
                 android:layout_gravity="bottom"
                 android:background="@drawable/card">
 
@@ -59,11 +58,11 @@
                         android:id="@+id/otherAge"
                         android:lines="1"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        style="@style/formInput"
                         android:hint="Rotational name"
                         android:maxLines="1"
                         android:maxLength="2"
-                        android:textSize="@dimen/_12sdp" />
+                        />
                 </FrameLayout>
 
             </FrameLayout>
@@ -80,25 +79,24 @@
                 style="@style/subTitle"
                 android:layout_marginTop="@dimen/_8sdp"
                 android:text="I confirm that I will take pre-approval from HR department for any weekly-off adjustment, or I understand that it may be calculated off without permission."
-                android:textSize="@dimen/_14ssp" />
+                android:textSize="@dimen/_12ssp" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 style="@style/subTitle"
                 android:layout_marginTop="@dimen/_8sdp"
                 android:text="I opt for the following festive holidays, as per management terms:"
-                android:textSize="@dimen/_14ssp" />
+                android:textSize="@dimen/_12ssp" />
             <!--Address-->
 
             <androidx.appcompat.widget.AppCompatTextView
                 style="@style/subTitle"
                 android:layout_marginTop="@dimen/_8sdp"
                 android:text="Festivals 1:"
-                android:textSize="@dimen/_14ssp" />
+                android:textSize="@dimen/_12ssp" />
             <FrameLayout
                 android:layout_marginTop="@dimen/_8sdp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/_10sdp"
                 android:layout_gravity="bottom"
                 android:background="@drawable/card">
 
@@ -113,12 +111,12 @@
                         android:background="@null"
                         android:id="@+id/edtFestival1"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        style="@style/formInput"
                         android:gravity="top"
                         android:hint="Occasion (Festival)"
                         android:lines="1"
                         android:maxLines="1"
-                        android:textSize="@dimen/_12sdp" />
+                       />
                 </FrameLayout>
 
             </FrameLayout>
@@ -127,7 +125,6 @@
                 android:layout_marginTop="@dimen/_8sdp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/_10sdp"
                 android:layout_gravity="bottom"
                 android:background="@drawable/card">
 
@@ -142,12 +139,12 @@
                         android:background="@null"
                         android:id="@+id/edtDate1"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        style="@style/formInput"
                         android:gravity="top"
                         android:hint="Date of festival"
                         android:lines="1"
                         android:maxLines="1"
-                        android:textSize="@dimen/_12sdp" />
+                      />
                 </FrameLayout>
 
             </FrameLayout>
@@ -157,12 +154,11 @@
                 style="@style/subTitle"
                 android:layout_marginTop="@dimen/_8sdp"
                 android:text="Festivals 2:"
-                android:textSize="@dimen/_14ssp" />
+                android:textSize="@dimen/_12ssp" />
             <FrameLayout
                 android:layout_marginTop="@dimen/_8sdp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/_10sdp"
                 android:layout_gravity="bottom"
                 android:background="@drawable/card">
 
@@ -177,12 +173,12 @@
                         android:background="@null"
                         android:id="@+id/edtFestival2"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        style="@style/formInput"
                         android:gravity="top"
                         android:hint="Occasion (Festival)"
                         android:lines="1"
                         android:maxLines="1"
-                        android:textSize="@dimen/_12sdp" />
+                       />
                 </FrameLayout>
 
             </FrameLayout>
@@ -191,7 +187,6 @@
                 android:layout_marginTop="@dimen/_8sdp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/_10sdp"
                 android:layout_gravity="bottom"
                 android:background="@drawable/card">
 
@@ -206,12 +201,12 @@
                         android:background="@null"
                         android:id="@+id/edtDate3"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        style="@style/formInput"
                         android:gravity="top"
                         android:hint="Date of festival"
                         android:lines="1"
                         android:maxLines="1"
-                        android:textSize="@dimen/_12sdp" />
+                       />
                 </FrameLayout>
 
             </FrameLayout>
@@ -220,12 +215,11 @@
                 style="@style/subTitle"
                 android:layout_marginTop="@dimen/_8sdp"
                 android:text="Festivals 3:"
-                android:textSize="@dimen/_14ssp" />
+                android:textSize="@dimen/_12ssp" />
             <FrameLayout
                 android:layout_marginTop="@dimen/_8sdp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/_10sdp"
                 android:layout_gravity="bottom"
                 android:background="@drawable/card">
 
@@ -240,12 +234,12 @@
                         android:background="@null"
                         android:id="@+id/edtFestival3"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        style="@style/formInput"
                         android:gravity="top"
                         android:hint="Occasion (Festival)"
                         android:lines="1"
                         android:maxLines="1"
-                        android:textSize="@dimen/_12sdp" />
+                         />
                 </FrameLayout>
 
             </FrameLayout>
@@ -254,7 +248,6 @@
                 android:layout_marginTop="@dimen/_8sdp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/_10sdp"
                 android:layout_gravity="bottom"
                 android:background="@drawable/card">
 
@@ -269,12 +262,12 @@
                         android:background="@null"
                         android:id="@+id/edtDate4"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        style="@style/formFrameLayoutSmall"
                         android:gravity="top"
                         android:hint="Date of festival"
                         android:lines="1"
                         android:maxLines="1"
-                        android:textSize="@dimen/_12sdp" />
+                        />
                 </FrameLayout>
 
             </FrameLayout>
@@ -283,12 +276,11 @@
                 style="@style/subTitle"
                 android:layout_marginTop="@dimen/_8sdp"
                 android:text="Festivals 4:"
-                android:textSize="@dimen/_14ssp" />
+                android:textSize="@dimen/_12ssp" />
             <FrameLayout
                 android:layout_marginTop="@dimen/_8sdp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/_10sdp"
                 android:layout_gravity="bottom"
                 android:background="@drawable/card">
 
@@ -303,12 +295,12 @@
                         android:background="@null"
                         android:id="@+id/edtFestival4"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        style="@style/formInput"
                         android:gravity="top"
                         android:hint="Occasion (Festival)"
                         android:lines="1"
                         android:maxLines="1"
-                        android:textSize="@dimen/_12sdp" />
+                         />
                 </FrameLayout>
 
             </FrameLayout>
@@ -317,7 +309,6 @@
                 android:layout_marginTop="@dimen/_8sdp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/_10sdp"
                 android:layout_gravity="bottom"
                 android:background="@drawable/card">
 
@@ -332,12 +323,12 @@
                         android:background="@null"
                         android:id="@+id/edtDate5"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        style="@style/formInput"
                         android:gravity="top"
                         android:hint="Date of festival"
                         android:lines="1"
                         android:maxLines="1"
-                        android:textSize="@dimen/_12sdp" />
+                        />
                 </FrameLayout>
 
             </FrameLayout>
@@ -346,12 +337,11 @@
                 style="@style/subTitle"
                 android:layout_marginTop="@dimen/_8sdp"
                 android:text="Festivals 5:"
-                android:textSize="@dimen/_14ssp" />
+                android:textSize="@dimen/_12ssp" />
             <FrameLayout
                 android:layout_marginTop="@dimen/_8sdp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/_10sdp"
                 android:layout_gravity="bottom"
                 android:background="@drawable/card">
 
@@ -366,12 +356,12 @@
                         android:background="@null"
                         android:id="@+id/edtFestival5"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        style="@style/formInput"
                         android:gravity="top"
                         android:hint="Occasion (Festival)"
                         android:lines="1"
                         android:maxLines="1"
-                        android:textSize="@dimen/_12sdp" />
+                       />
                 </FrameLayout>
 
             </FrameLayout>
@@ -380,7 +370,6 @@
                 android:layout_marginTop="@dimen/_8sdp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/_10sdp"
                 android:layout_gravity="bottom"
                 android:background="@drawable/card">
 
@@ -395,12 +384,12 @@
                         android:background="@null"
                         android:id="@+id/edtDate2"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        style="@style/formInput"
                         android:gravity="top"
                         android:hint="Date of festival"
                         android:lines="1"
                         android:maxLines="1"
-                        android:textSize="@dimen/_12sdp" />
+                       />
                 </FrameLayout>
 
             </FrameLayout>
@@ -411,7 +400,7 @@
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/stepSubmit"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_45sdp"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_gravity="center"
         android:layout_marginStart="@dimen/_16sdp"

@@ -7,7 +7,6 @@
     android:background="@color/white">
 
     <androidx.core.widget.NestedScrollView
-        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/white"
@@ -39,7 +38,24 @@
 
                     <androidx.appcompat.widget.AppCompatTextView
                         style="@style/checkWithTextLayout"
+                        android:layout_width="wrap_content"
+                        android:layout_weight="1"
                         android:text="@string/attachmentPanCard" />
+
+
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/imgpancard"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/_20sdp"
+                        android:background="@drawable/button"
+                        android:text="@string/upload_attachement"
+                        android:textSize="@dimen/_11sdp"
+                        android:fontFamily="@font/source_semibold"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
 
                 </LinearLayout>
 
@@ -48,6 +64,7 @@
                     android:layout_height="@dimen/_45sdp"
                     android:layout_marginLeft="@dimen/_10sdp"
                     android:foregroundGravity="center"
+                    android:visibility="gone"
                     app:cardBackgroundColor="@color/light_orange"
                     app:cardCornerRadius="6dp"
                     app:cardElevation="0dp"
@@ -66,7 +83,7 @@
                             android:src="@drawable/upload" />
 
                         <ImageView
-                            android:id="@+id/imgpancard"
+
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/_40sdp" />
                     </RelativeLayout>
@@ -88,12 +105,30 @@
 
                     <androidx.appcompat.widget.AppCompatTextView
                         style="@style/checkWithTextLayout"
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
                         android:text="@string/attachmentAadhaar" />
+
+
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/imgaadharcard"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/_20sdp"
+                        android:background="@drawable/button"
+                        android:text="@string/upload_attachement"
+                        android:textSize="@dimen/_11sdp"
+                        android:fontFamily="@font/source_semibold"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
 
                 </LinearLayout>
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="@dimen/_45sdp"
+                    android:visibility="gone"
                     android:layout_height="@dimen/_45sdp"
                     android:layout_marginLeft="@dimen/_10sdp"
                     android:foregroundGravity="center"
@@ -115,7 +150,7 @@
                             android:src="@drawable/upload" />
 
                         <ImageView
-                            android:id="@+id/imgaadharcard"
+
                             android:layout_width="@dimen/_40sdp"
                             android:layout_height="@dimen/_40sdp" />
                     </RelativeLayout>
@@ -137,7 +172,25 @@
 
                     <androidx.appcompat.widget.AppCompatTextView
                         style="@style/checkWithTextLayout"
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
                         android:text="@string/attachmentResidential" />
+
+
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/imgaResidence"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/_20sdp"
+                        android:background="@drawable/button"
+                        android:text="@string/upload_attachement"
+                        android:textSize="@dimen/_11sdp"
+                        android:fontFamily="@font/source_semibold"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
+
 
                 </LinearLayout>
 
@@ -145,6 +198,7 @@
                     android:layout_width="@dimen/_45sdp"
                     android:layout_height="@dimen/_45sdp"
                     android:layout_marginLeft="@dimen/_10sdp"
+                    android:visibility="gone"
                     android:foregroundGravity="center"
                     app:cardBackgroundColor="@color/light_orange"
                     app:cardCornerRadius="6dp"
@@ -164,7 +218,7 @@
                             android:src="@drawable/upload" />
 
                         <ImageView
-                            android:id="@+id/imgaResidence"
+
                             android:layout_width="@dimen/_40sdp"
                             android:layout_height="@dimen/_40sdp" />
                     </RelativeLayout>
@@ -186,14 +240,31 @@
 
                     <androidx.appcompat.widget.AppCompatTextView
                         style="@style/checkWithTextLayout"
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
                         android:text="@string/attachmentPhoto" />
 
+
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/imgaRecentPhotographOfApplicant"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/_20sdp"
+                        android:background="@drawable/button"
+                        android:text="@string/upload_attachement"
+                        android:textSize="@dimen/_11sdp"
+                        android:fontFamily="@font/source_semibold"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
                 </LinearLayout>
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="@dimen/_45sdp"
                     android:layout_height="@dimen/_45sdp"
                     android:layout_marginLeft="@dimen/_10sdp"
+                    android:visibility="gone"
                     android:foregroundGravity="center"
                     app:cardBackgroundColor="@color/light_orange"
                     app:cardCornerRadius="6dp"
@@ -213,7 +284,6 @@
                             android:src="@drawable/upload" />
 
                         <ImageView
-                            android:id="@+id/imgaRecentPhotographOfApplicant"
                             android:layout_width="@dimen/_40sdp"
                             android:layout_height="@dimen/_40sdp" />
                     </RelativeLayout>
@@ -235,7 +305,23 @@
 
                     <androidx.appcompat.widget.AppCompatTextView
                         style="@style/checkWithTextLayout"
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
                         android:text="@string/attachmentIndividuallyField" />
+
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/imgaIndividually"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/_20sdp"
+                        android:background="@drawable/button"
+                        android:text="@string/upload_attachement"
+                        android:textSize="@dimen/_11sdp"
+                        android:fontFamily="@font/source_semibold"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
 
                 </LinearLayout>
 
@@ -244,6 +330,7 @@
                     android:layout_height="@dimen/_45sdp"
                     android:layout_marginLeft="@dimen/_10sdp"
                     android:foregroundGravity="center"
+                    android:visibility="gone"
                     app:cardBackgroundColor="@color/light_orange"
                     app:cardCornerRadius="6dp"
                     app:cardElevation="0dp"
@@ -262,7 +349,7 @@
                             android:src="@drawable/upload" />
 
                         <ImageView
-                            android:id="@+id/imgaIndividually"
+
                             android:layout_width="@dimen/_40sdp"
                             android:layout_height="@dimen/_40sdp" />
                     </RelativeLayout>
@@ -284,7 +371,24 @@
 
                     <androidx.appcompat.widget.AppCompatTextView
                         style="@style/checkWithTextLayout"
+                        android:layout_weight="1"
+                        android:layout_width="wrap_content"
                         android:text="@string/attachmentarbitary" />
+
+
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/imgaBBI"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/_20sdp"
+                        android:background="@drawable/button"
+                        android:text="@string/upload_attachement"
+                        android:textSize="@dimen/_11sdp"
+                        android:fontFamily="@font/source_semibold"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
 
                 </LinearLayout>
 
@@ -293,6 +397,7 @@
                     android:layout_height="@dimen/_45sdp"
                     android:layout_marginLeft="@dimen/_10sdp"
                     android:foregroundGravity="center"
+                    android:visibility="gone"
                     app:cardBackgroundColor="@color/light_orange"
                     app:cardCornerRadius="6dp"
                     app:cardElevation="0dp"
@@ -311,7 +416,7 @@
                             android:src="@drawable/upload" />
 
                         <ImageView
-                            android:id="@+id/imgaBBI"
+
                             android:layout_width="@dimen/_40sdp"
                             android:layout_height="@dimen/_40sdp" />
                     </RelativeLayout>

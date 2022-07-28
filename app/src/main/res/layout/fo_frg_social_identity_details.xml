@@ -24,7 +24,6 @@
                 android:layout_marginTop="@dimen/_12sdp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/_10sdp"
                 android:layout_gravity="bottom"
                 android:background="@drawable/card">
 
@@ -34,6 +33,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="@dimen/_8sdp"
                     app:tint="@color/value"
+                    android:visibility="gone"
                     android:adjustViewBounds="true"
                     android:src="@drawable/ic_social_aadharcard" />
 
@@ -41,19 +41,18 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:paddingLeft="@dimen/_50sdp"
-                    android:paddingRight="@dimen/_10sdp">
+                    style="@style/formFrameLayoutSmall">
 
                     <androidx.appcompat.widget.AppCompatEditText
                         android:background="@null"
                         android:id="@+id/aadharCardNumber"
                         android:lines="1"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        style="@style/formInput"
                         android:hint="@string/ct_aadharcardnumber"
                         android:maxLines="1"
                         android:inputType="number"
-                        android:textSize="@dimen/_13sdp" />
+                        />
                 </FrameLayout>
 
             </FrameLayout>
@@ -62,7 +61,6 @@
                 android:layout_marginTop="@dimen/_12sdp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/_10sdp"
                 android:layout_gravity="bottom"
                 android:background="@drawable/card">
 
@@ -71,6 +69,7 @@
                     android:layout_height="@dimen/_18sdp"
                     android:layout_gravity="center_vertical"
                     app:tint="@color/value"
+                    android:visibility="gone"
                     android:layout_marginLeft="@dimen/_8sdp"
                     android:adjustViewBounds="true"
                     android:src="@drawable/ic_social_pancard" />
@@ -79,20 +78,19 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:paddingLeft="@dimen/_50sdp"
-                    android:paddingRight="@dimen/_10sdp">
+                    style="@style/formFrameLayoutSmall">
 
                     <androidx.appcompat.widget.AppCompatEditText
                         android:background="@null"
                         android:id="@+id/pancard"
                         android:lines="1"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        style="@style/formInput"
                         android:maxLines="1"
                         android:hint="@string/ct_pancardno"
                         android:inputType="text"
                         android:maxLength="10"
-                        android:textSize="@dimen/_13sdp" />
+                         />
                 </FrameLayout>
 
             </FrameLayout>
@@ -102,7 +100,6 @@
                 android:layout_marginTop="@dimen/_12sdp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/_10sdp"
                 android:layout_gravity="bottom"
                 android:background="@drawable/card">
 
@@ -111,6 +108,7 @@
                     android:layout_height="@dimen/_18sdp"
                     android:layout_gravity="center_vertical"
                     app:tint="@color/value"
+                    android:visibility="gone"
                     android:layout_marginLeft="@dimen/_8sdp"
                     android:adjustViewBounds="true"
                     android:src="@drawable/ic_social_votercard" />
@@ -119,19 +117,18 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:paddingLeft="@dimen/_50sdp"
-                    android:paddingRight="@dimen/_10sdp">
+                    style="@style/formFrameLayoutSmall">
 
                     <androidx.appcompat.widget.AppCompatEditText
                         android:background="@null"
                         android:id="@+id/voterId"
                         android:lines="1"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        style="@style/formInput"
                         android:maxLines="1"
                         android:hint="@string/ct_voterno"
                         android:inputType="text"
-                        android:textSize="@dimen/_13sdp" />
+                        />
                 </FrameLayout>
 
             </FrameLayout>
@@ -141,7 +138,6 @@
                 android:layout_marginTop="@dimen/_12sdp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/_10sdp"
                 android:layout_gravity="bottom"
                 android:background="@drawable/card">
 
@@ -149,6 +145,7 @@
                     android:layout_width="@dimen/_18sdp"
                     android:layout_height="@dimen/_18sdp"
                     app:tint="@color/value"
+                    android:visibility="gone"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="@dimen/_8sdp"
                     android:adjustViewBounds="true"
@@ -158,18 +155,17 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:paddingLeft="@dimen/_50sdp"
-                    android:paddingRight="@dimen/_10sdp">
+                    style="@style/formFrameLayoutSmall">
 
                     <androidx.appcompat.widget.AppCompatEditText
                         android:background="@null"
                         android:id="@+id/drivingLicence"
                         android:lines="1"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        style="@style/formInput"
                         android:maxLines="1"
                         android:hint="@string/ct_drivinglicense"
-                        android:textSize="@dimen/_13sdp" />
+                       />
                 </FrameLayout>
 
             </FrameLayout>
@@ -178,7 +174,6 @@
                 android:layout_marginTop="@dimen/_12sdp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/_10sdp"
                 android:layout_gravity="bottom"
                 android:background="@drawable/card">
 
@@ -187,6 +182,7 @@
                     android:layout_height="@dimen/_18sdp"
                     android:layout_gravity="center_vertical"
                     app:tint="@color/value"
+                    android:visibility="gone"
                     android:layout_marginLeft="@dimen/_8sdp"
                     android:adjustViewBounds="true"
                     android:src="@drawable/ic_social_passport" />
@@ -195,18 +191,17 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:paddingLeft="@dimen/_50sdp"
-                    android:paddingRight="@dimen/_10sdp">
+                    style="@style/formFrameLayoutSmall">
 
                     <androidx.appcompat.widget.AppCompatEditText
                         android:background="@null"
                         android:id="@+id/passport"
                         android:lines="1"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        style="@style/formInput"
                         android:maxLines="1"
                         android:hint="@string/ct_passportno"
-                        android:textSize="@dimen/_13sdp" />
+                       />
                 </FrameLayout>
 
             </FrameLayout>
@@ -215,7 +210,6 @@
                 android:layout_marginTop="@dimen/_12sdp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/_10sdp"
                 android:layout_gravity="bottom"
                 android:background="@drawable/card">
 
@@ -225,6 +219,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="@dimen/_8sdp"
                     app:tint="@color/value"
+                    android:visibility="gone"
                     android:adjustViewBounds="true"
                     android:src="@drawable/ic_social_rationcard" />
 
@@ -232,18 +227,17 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:paddingLeft="@dimen/_50sdp"
-                    android:paddingRight="@dimen/_10sdp">
+                    style="@style/formFrameLayoutSmall">
 
                     <androidx.appcompat.widget.AppCompatEditText
                         android:background="@null"
                         android:id="@+id/rationCard"
                         android:lines="1"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        style="@style/formInput"
                         android:maxLines="1"
                         android:hint="@string/ct_rationno"
-                        android:textSize="@dimen/_13sdp" />
+                        />
                 </FrameLayout>
 
             </FrameLayout>
@@ -257,7 +251,7 @@
         android:id="@+id/stepSubmit"
         android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_45sdp"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_margin="@dimen/_16sdp"
         android:background="@drawable/bg_submit"

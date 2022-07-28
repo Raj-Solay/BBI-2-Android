@@ -6,76 +6,235 @@
     android:background="@color/white">
 
 
-    <androidx.core.widget.NestedScrollView
+    <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/white"
-        android:layout_marginBottom="@dimen/_8sdp"
-        android:layout_above="@+id/stepSubmit">
+        android:layout_height="@dimen/_280sdp"
+        android:background="@drawable/edit_text_background"
+        android:layout_marginBottom="@dimen/_8sdp">
 
-        <LinearLayout
-            android:id="@+id/fourLayout"
+        <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:padding="@dimen/_8sdp"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <androidx.appcompat.widget.AppCompatTextView
-                style="@style/titleBox"
-                android:text="@string/ct_checkone" />
-
-            <androidx.appcompat.widget.AppCompatTextView
-                style="@style/titleBox"
-                android:text="@string/ct_checktwo" />
-
-            <androidx.appcompat.widget.AppCompatTextView
-                style="@style/titleBox"
-                android:text="@string/ct_checkthree" />
-
-            <androidx.appcompat.widget.AppCompatTextView
-                style="@style/titleBox"
-                android:text="@string/ct_checkfour" />
-
-            <androidx.appcompat.widget.AppCompatTextView
-                style="@style/titleBox"
-                android:text="@string/ct_checkfive" />
-
-            <androidx.appcompat.widget.AppCompatTextView
-                style="@style/titleBox"
-                android:text="@string/ct_checksix" />
-
-            <androidx.appcompat.widget.AppCompatTextView
-                style="@style/titleBox"
-                android:text="@string/ct_checkseven" />
-
-            <androidx.appcompat.widget.AppCompatTextView
-                style="@style/titleBox"
-                android:text="@string/ct_checkeight" />
-
-            <androidx.appcompat.widget.AppCompatTextView
-                style="@style/titleBox"
-                android:text="@string/ct_checknine" />
-
-            <androidx.appcompat.widget.AppCompatTextView
-                style="@style/titleBox"
-                android:text="@string/ct_checkten" />
-
-            <LinearLayout style="@style/checkAndTextLayout">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
 
                 <androidx.appcompat.widget.AppCompatCheckBox
                     android:id="@+id/checklistForFranchise"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:button="@drawable/custom_checkbox"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    style="@style/checkBox" />
+                    android:layout_height="match_parent" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     style="@style/checkWithTextLayout"
+                    android:backgroundTint="@android:color/transparent"
                     android:text="@string/ct_checklistagree" />
             </LinearLayout>
+            <androidx.core.widget.NestedScrollView
+                android:id="@+id/fourLayout"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_280sdp"
+                android:layout_marginBottom="@dimen/_4sdp"
+                android:orientation="vertical">
+
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <View
+                            android:layout_width="@dimen/_8sdp"
+                            android:layout_height="@dimen/_8sdp"/>
+                        <androidx.appcompat.widget.AppCompatTextView
+                            style="@style/checkWithTextLayout"
+                            android:layout_width="wrap_content"
+                            android:layout_marginLeft="@dimen/_8sdp"
+                            android:layout_height="wrap_content"
+                            android:text="i)" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            style="@style/titleBoxWithNoBg"
+                            android:text="@string/ct_checkone" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <View
+                            android:layout_width="@dimen/_8sdp"
+                            android:layout_height="@dimen/_8sdp"/>
+                        <androidx.appcompat.widget.AppCompatTextView
+                            style="@style/checkWithTextLayout"
+                            android:layout_width="wrap_content"
+                            android:layout_marginLeft="@dimen/_8sdp"
+                            android:layout_height="wrap_content"
+                            android:text="ii)" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            style="@style/titleBoxWithNoBg"
+                            android:text="@string/ct_checkthree" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <View
+                            android:layout_width="@dimen/_8sdp"
+                            android:layout_height="@dimen/_8sdp"/>
+                        <androidx.appcompat.widget.AppCompatTextView
+                            style="@style/checkWithTextLayout"
+                            android:layout_width="wrap_content"
+                            android:layout_marginLeft="@dimen/_8sdp"
+                            android:layout_height="wrap_content"
+                            android:text="iii)" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            style="@style/titleBoxWithNoBg"
+                            android:text="@string/ct_checkfour" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <View
+                            android:layout_width="@dimen/_8sdp"
+                            android:layout_height="@dimen/_8sdp"/>
+                        <androidx.appcompat.widget.AppCompatTextView
+                            style="@style/checkWithTextLayout"
+                            android:layout_width="wrap_content"
+                            android:layout_marginLeft="@dimen/_8sdp"
+                            android:layout_height="wrap_content"
+                            android:text="iv)" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            style="@style/titleBoxWithNoBg"
+                            android:text="@string/ct_checkfive" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <View
+                            android:layout_width="@dimen/_8sdp"
+                            android:layout_height="@dimen/_8sdp"/>
+                        <androidx.appcompat.widget.AppCompatTextView
+                            style="@style/checkWithTextLayout"
+                            android:layout_width="wrap_content"
+                            android:layout_marginLeft="@dimen/_8sdp"
+                            android:layout_height="wrap_content"
+                            android:text="v)" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            style="@style/titleBoxWithNoBg"
+                            android:text="@string/ct_checksix" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <View
+                            android:layout_width="@dimen/_8sdp"
+                            android:layout_height="@dimen/_8sdp"/>
+                        <androidx.appcompat.widget.AppCompatTextView
+                            style="@style/checkWithTextLayout"
+                            android:layout_width="wrap_content"
+                            android:layout_marginLeft="@dimen/_8sdp"
+                            android:layout_height="wrap_content"
+                            android:text="vi)" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            style="@style/titleBoxWithNoBg"
+                            android:text="@string/ct_checkseven" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <View
+                            android:layout_width="@dimen/_8sdp"
+                            android:layout_height="@dimen/_8sdp"/>
+                        <androidx.appcompat.widget.AppCompatTextView
+                            style="@style/checkWithTextLayout"
+                            android:layout_width="wrap_content"
+                            android:layout_marginLeft="@dimen/_8sdp"
+                            android:layout_height="wrap_content"
+                            android:text="vii)" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            style="@style/titleBoxWithNoBg"
+                            android:text="@string/ct_checkeight" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <View
+                            android:layout_width="@dimen/_8sdp"
+                            android:layout_height="@dimen/_8sdp"/>
+                        <androidx.appcompat.widget.AppCompatTextView
+                            style="@style/checkWithTextLayout"
+                            android:layout_width="wrap_content"
+                            android:layout_marginLeft="@dimen/_8sdp"
+                            android:layout_height="wrap_content"
+                            android:text="viii)" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            style="@style/titleBoxWithNoBg"
+                            android:text="@string/ct_checknine" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <View
+                            android:layout_width="@dimen/_8sdp"
+                            android:layout_height="@dimen/_8sdp"/>
+                        <androidx.appcompat.widget.AppCompatTextView
+                            style="@style/checkWithTextLayout"
+                            android:layout_width="wrap_content"
+                            android:layout_marginLeft="@dimen/_8sdp"
+                            android:layout_height="wrap_content"
+                            android:text="ix)" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            style="@style/titleBoxWithNoBg"
+                            android:text="@string/ct_checkten" />
+                    </LinearLayout>
+                </androidx.appcompat.widget.LinearLayoutCompat>
 
 
 
-        </LinearLayout>
-    </androidx.core.widget.NestedScrollView>
+            </androidx.core.widget.NestedScrollView>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/stepSubmit"
         android:layout_width="match_parent"

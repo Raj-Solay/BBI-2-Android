@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.bbi.bizbulls">
+    package="com.biz.bizbulls">
 
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
@@ -19,7 +19,7 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application
-        android:name=".MainApplication"
+        android:name="com.biz.bizbulls.MainApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -30,68 +30,68 @@
         android:theme="@style/Theme.BizBullsIndia"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".FranchisorServicesActivity"
+            android:name="com.biz.bizbulls.FranchisorServicesActivity"
             android:exported="false" />
         <activity
-            android:name=".KycListActivity"
+            android:name="com.biz.bizbulls.KycListActivity"
             android:exported="false" />
         <activity
-            android:name=".menu.AproveStatusActivity"
+            android:name="com.biz.bizbulls.menu.AproveStatusActivity"
             android:exported="false" />
         <activity
-            android:name=".FilterActivity"
+            android:name="com.biz.bizbulls.FilterActivity"
             android:exported="false" />
         <activity
-            android:name=".menu.FollowUsActivity"
+            android:name="com.biz.bizbulls.menu.FollowUsActivity"
             android:exported="false" />
         <activity
-            android:name=".menu.ReatingActivity"
+            android:name="com.biz.bizbulls.menu.ReatingActivity"
             android:exported="false" />
         <activity
-            android:name=".menu.ReferActivity"
+            android:name="com.biz.bizbulls.menu.ReferActivity"
             android:exported="false" />
         <activity
-            android:name=".menu.MyProfileActivity"
+            android:name="com.biz.bizbulls.menu.MyProfileActivity"
             android:exported="false" />
         <activity
-            android:name=".menu.MyReferralsActivity"
+            android:name="com.biz.bizbulls.menu.MyReferralsActivity"
             android:exported="false" />
         <activity
-            android:name=".menu.HelpActivity"
+            android:name="com.biz.bizbulls.menu.HelpActivity"
             android:exported="false" />
         <activity
-            android:name=".menu.MyWalletActivity"
+            android:name="com.biz.bizbulls.menu.MyWalletActivity"
             android:exported="false" />
         <activity
-            android:name=".menu.RegisterComplianActivity"
+            android:name="com.biz.bizbulls.menu.RegisterComplianActivity"
             android:exported="false" />
         <activity
-            android:name=".menu.TermsConditionActivity"
+            android:name="com.biz.bizbulls.menu.TermsConditionActivity"
             android:exported="false" />
         <activity
-            android:name=".menu.PrivacyPolicyActivity"
+            android:name="com.biz.bizbulls.menu.PrivacyPolicyActivity"
             android:exported="false" />
         <activity
-            android:name=".SetupOfficeActivity"
+            android:name="com.biz.bizbulls.SetupOfficeActivity"
             android:exported="false" />
         <activity
-            android:name=".OrderDetailActivity"
+            android:name="com.biz.bizbulls.OrderDetailActivity"
             android:exported="false" />
         <activity
-            android:name=".AddStaffDetailActivity"
+            android:name="com.biz.bizbulls.AddStaffDetailActivity"
             android:exported="false" />
         <activity
-            android:name=".FinabilityActivity"
+            android:name="com.biz.bizbulls.FinabilityActivity"
             android:exported="false" />
         <activity
-            android:name=".OfficeLocationMapsActivity"
+            android:name="com.biz.bizbulls.OfficeLocationMapsActivity"
             android:exported="false"
             android:label="@string/title_activity_office_location_maps" />
         <activity
-            android:name=".AgreementsStatusActivity"
+            android:name="com.biz.bizbulls.AgreementsStatusActivity"
             android:exported="false" />
         <activity
-            android:name=".SplashScreenActivity"
+            android:name="com.biz.bizbulls.SplashScreenActivity"
             android:exported="true"
             android:noHistory="true">
             <intent-filter>
@@ -101,52 +101,54 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".menu.NotificationActivity"
+            android:name="com.biz.bizbulls.menu.NotificationActivity"
             android:exported="false" />
         <activity
-            android:name=".menu.MyOfferActivity"
+            android:name="com.biz.bizbulls.menu.MyOfferActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".menu.AboutUsActivity"
+            android:name="com.biz.bizbulls.menu.AboutUsActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".SignupActivity"
+            android:name="com.biz.bizbulls.SignupActivity"
             android:exported="true"
             android:noHistory="true" />
         <activity
-            android:name=".DashboardActivity"
+            android:name="com.biz.bizbulls.DashboardActivity"
             android:exported="true"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
-            android:name=".ForgotPasswordActivity"
+            android:name="com.biz.bizbulls.ForgotPasswordActivity"
             android:exported="true"
             android:noHistory="true" />
         <activity
-            android:name=".CreateNewPasswordActivity"
+            android:name="com.biz.bizbulls.CreateNewPasswordActivity"
             android:exported="true"
             android:noHistory="true" />
         <activity
-            android:name=".LoginActivity"
+            android:name="com.biz.bizbulls.LoginActivity"
             android:exported="true"
             android:noHistory="true" />
         <activity
-            android:name=".ProjectInfoActivity"
+            android:name="com.biz.bizbulls.ProjectInfoActivity"
             android:exported="true"
             android:noHistory="true" />
         <activity
-            android:name=".ui.registrationforfo.FoRegistrationDashBoardActivity"
+            android:name="com.biz.bizbulls.ui.registrationforfo.FoRegistrationDashBoardActivity"
             android:exported="true"
             android:noHistory="true" />
         <activity
-            android:name=".ui.registrationforfo.FranchiseeRegistrationActivity"
+            android:name="com.biz.bizbulls.ui.registrationforfo.FranchiseeRegistrationActivity"
             android:exported="true" />
-        <activity android:name=".KycDocViewActivity" />
-        <activity android:name=".KycStatusViewActivity" />
+        <activity android:name="com.biz.bizbulls.KycDocViewActivity" />
+        <activity android:name="com.biz.bizbulls.KycStatusViewActivity" />
+        <activity android:name="com.biz.bizbulls.LocationDocViewActivity" />
+        <activity android:name="com.biz.bizbulls.RegisterUserListActivity" />
 
         <provider
             android:name="androidx.core.content.FileProvider"
-            android:authorities="com.bbi.bizbulls.fileProvider"
+            android:authorities="com.biz.bizbulls.fileProvider"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data

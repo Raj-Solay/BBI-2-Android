@@ -1,0 +1,36 @@
+package com.biz.bizbulls.menu
+
+import android.os.Bundle
+import android.view.View
+import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.biz.bizbulls.databinding.ActivityMyProfileBinding
+import com.biz.bizbulls.sharedpref.SharedPrefsManager
+import com.foldio.android.adapter.PaymentMethodAdapter
+import com.foldio.android.adapter.PaymentSettingAdapter
+
+
+class MyProfileActivity : AppCompatActivity() {
+    private val sharedPrefsHelper by lazy { SharedPrefsManager(this@MyProfileActivity) }
+    lateinit var binding:ActivityMyProfileBinding
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding=ActivityMyProfileBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        initView()
+    }
+   fun initView(){
+        binding?.customTitleLayout?.tvTitle?.setText("My Profile")
+        binding?.customTitleLayout?.ivBack?.setOnClickListener { onBackPressed() }
+       binding.llView.setOnClickListener { binding.llViewAll.visibility=View.VISIBLE }
+       binding.rcyPayment.setLayoutManager(LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL, false  )
+       )
+       var paymentMethodAdapter=PaymentMethodAdapter()
+       binding.rcyPayment.adapter=paymentMethodAdapter
+       var paymentSettingAdapter=PaymentSettingAdapter()
+       binding.rcyPaymentAll.adapter=paymentSettingAdapter
+       binding.txtfoname.text=sharedPrefsHelper.userName
+       binding.txtfomobile.text=sharedPrefsHelper.phone
+    }
+
+}

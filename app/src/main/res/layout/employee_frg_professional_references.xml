@@ -23,12 +23,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
-                android:background="@drawable/card"
-                android:padding="@dimen/_10sdp">
+                android:background="@drawable/card">
 
                 <ImageView
                     android:layout_width="@dimen/_18sdp"
                     android:layout_height="@dimen/_18sdp"
+                    android:visibility="gone"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="@dimen/_8sdp"
                     android:adjustViewBounds="true"
@@ -40,18 +40,17 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:paddingLeft="@dimen/_50sdp"
-                    android:paddingRight="@dimen/_10sdp">
+                    style="@style/formFrameLayoutSmall">
 
                     <androidx.appcompat.widget.AppCompatEditText
                         android:id="@+id/edtName"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        style="@style/formInput"
                         android:background="@null"
                         android:hint="Name"
                         android:lines="1"
                         android:maxLines="1"
-                        android:textSize="@dimen/_12sdp" />
+                         />
                 </FrameLayout>
 
             </FrameLayout>
@@ -64,13 +63,13 @@
                 android:layout_marginTop="@dimen/_8sdp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/_10sdp"
                 android:layout_gravity="bottom"
                 android:background="@drawable/card">
 
                 <ImageView
                     android:layout_width="@dimen/_18sdp"
                     android:layout_height="@dimen/_18sdp"
+                    android:visibility="gone"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="@dimen/_8sdp"
                     android:adjustViewBounds="true"
@@ -81,18 +80,17 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:paddingLeft="@dimen/_50sdp"
-                    android:paddingRight="@dimen/_10sdp">
+                    style="@style/formFrameLayoutSmall">
 
                     <androidx.appcompat.widget.AppCompatEditText
                         android:background="@null"
                         android:id="@+id/edtDesignation"
                         android:lines="1"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        style="@style/formInput"
                         android:hint="Designation"
                         android:maxLines="1"
-                        android:textSize="@dimen/_12sdp" />
+                       />
                 </FrameLayout>
 
             </FrameLayout>
@@ -103,13 +101,13 @@
                 android:layout_marginTop="@dimen/_8sdp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/_10sdp"
                 android:layout_gravity="bottom"
                 android:background="@drawable/card">
 
                 <ImageView
                     android:layout_width="@dimen/_18sdp"
                     android:layout_height="@dimen/_18sdp"
+                    android:visibility="gone"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="@dimen/_8sdp"
                     android:adjustViewBounds="true"
@@ -120,18 +118,17 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:paddingLeft="@dimen/_50sdp"
-                    android:paddingRight="@dimen/_10sdp">
+                    style="@style/formFrameLayoutSmall">
 
                     <androidx.appcompat.widget.AppCompatEditText
                         android:background="@null"
                         android:id="@+id/edtDepartment"
                         android:lines="1"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        style="@style/formInput"
                         android:hint="Department"
                         android:maxLines="1"
-                        android:textSize="@dimen/_12sdp" />
+                       />
                 </FrameLayout>
 
             </FrameLayout>
@@ -141,7 +138,6 @@
                 android:layout_marginTop="@dimen/_8sdp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/_10sdp"
                 android:layout_gravity="bottom"
                 android:background="@drawable/card">
 
@@ -152,21 +148,21 @@
                     android:layout_marginLeft="@dimen/_8sdp"
                     android:adjustViewBounds="true"
                     app:tint="@color/value"
+                    android:visibility="gone"
                     android:src="@drawable/ic_family_address" />
 
                 <FrameLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:paddingLeft="@dimen/_50sdp"
-                    android:paddingRight="@dimen/_10sdp">
+                    style="@style/formFrameLayoutSmall">
 
                     <androidx.appcompat.widget.AppCompatEditText
                         android:background="@null"
                         android:id="@+id/edtOrgWorking"
                         android:lines="1"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        style="@style/formInput"
                         android:hint="Organization Working"
                         android:maxLines="1"
                         android:textSize="@dimen/_12sdp" />
@@ -179,13 +175,13 @@
                 android:layout_marginTop="@dimen/_8sdp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/_10sdp"
                 android:layout_gravity="bottom"
                 android:background="@drawable/card">
 
                 <ImageView
                     android:layout_width="@dimen/_18sdp"
                     android:layout_height="@dimen/_18sdp"
+                    android:visibility="gone"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="@dimen/_8sdp"
                     android:adjustViewBounds="true"
@@ -196,18 +192,16 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:paddingLeft="@dimen/_50sdp"
-                    android:paddingRight="@dimen/_10sdp">
+                    style="@style/formFrameLayoutSmall">
 
                     <androidx.appcompat.widget.AppCompatEditText
                         android:background="@null"
                         android:id="@+id/edtPeriodContact"
                         android:lines="1"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        style="@style/formInput"
                         android:hint="Period of Contact"
-                        android:maxLines="1"
-                        android:textSize="@dimen/_12sdp" />
+                        android:maxLines="1" />
                 </FrameLayout>
 
             </FrameLayout>
@@ -216,7 +210,6 @@
                 android:layout_marginTop="@dimen/_8sdp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/_10sdp"
                 android:layout_gravity="bottom"
                 android:background="@drawable/card">
 
@@ -227,21 +220,21 @@
                     android:layout_marginLeft="@dimen/_8sdp"
                     android:adjustViewBounds="true"
                     app:tint="@color/value"
+                    android:visibility="gone"
                     android:src="@drawable/ic_contact" />
 
                 <FrameLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:paddingLeft="@dimen/_50sdp"
-                    android:paddingRight="@dimen/_10sdp">
+                    style="@style/formFrameLayoutSmall">
 
                     <androidx.appcompat.widget.AppCompatEditText
                         android:background="@null"
                         android:id="@+id/edtContactType"
                         android:lines="1"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        style="@style/formInput"
                         android:hint="Contact Type"
                         android:maxLines="1"
                         android:textSize="@dimen/_12sdp" />
@@ -253,7 +246,6 @@
                 android:layout_marginTop="@dimen/_8sdp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/_10sdp"
                 android:layout_gravity="bottom"
                 android:background="@drawable/card">
 
@@ -263,6 +255,7 @@
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="@dimen/_8sdp"
                     android:adjustViewBounds="true"
+                    android:visibility="gone"
                     app:tint="@color/value"
                     android:src="@drawable/ic_contact" />
 
@@ -270,19 +263,18 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:paddingLeft="@dimen/_50sdp"
-                    android:paddingRight="@dimen/_10sdp">
+                    style="@style/formFrameLayoutSmall">
 
                     <androidx.appcompat.widget.AppCompatEditText
                         android:background="@null"
                         android:id="@+id/edtOfficeNumber"
                         android:lines="1"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        style="@style/formInput"
                         android:hint="Office Number"
                         android:maxLines="1"
                         android:inputType="number"
-                        android:textSize="@dimen/_12sdp" />
+                         />
                 </FrameLayout>
 
             </FrameLayout>
@@ -291,7 +283,6 @@
                 android:layout_marginTop="@dimen/_8sdp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/_10sdp"
                 android:layout_gravity="bottom"
                 android:background="@drawable/card">
 
@@ -300,6 +291,7 @@
                     android:layout_height="@dimen/_18sdp"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="@dimen/_8sdp"
+                    android:visibility="gone"
                     android:adjustViewBounds="true"
                     app:tint="@color/value"
                     android:src="@drawable/ic_contact" />
@@ -308,19 +300,18 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:paddingLeft="@dimen/_50sdp"
-                    android:paddingRight="@dimen/_10sdp">
+                    style="@style/formFrameLayoutSmall">
 
                     <androidx.appcompat.widget.AppCompatEditText
                         android:background="@null"
                         android:id="@+id/edtPersonalContact"
                         android:lines="1"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        style="@style/formInput"
                         android:hint="Personal Contact"
                         android:maxLines="1"
                         android:inputType="number"
-                        android:textSize="@dimen/_12sdp" />
+                         />
                 </FrameLayout>
 
             </FrameLayout>
@@ -330,7 +321,6 @@
                 android:layout_marginTop="@dimen/_8sdp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/_10sdp"
                 android:layout_gravity="bottom"
                 android:background="@drawable/card">
 
@@ -339,19 +329,18 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical|top"
-                    android:paddingLeft="@dimen/_5sdp"
-                    android:paddingRight="@dimen/_5sdp">
+                    style="@style/formFrameLayoutSmall">
 
                     <androidx.appcompat.widget.AppCompatEditText
                         android:background="@null"
                         android:id="@+id/edtAddress"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        style="@style/formInput"
                         android:gravity="top"
                         android:hint="Address"
                         android:lines="4"
                         android:maxLines="4"
-                        android:textSize="@dimen/_12sdp" />
+                        />
                 </FrameLayout>
 
             </FrameLayout>
@@ -360,13 +349,13 @@
                 android:layout_marginTop="@dimen/_8sdp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/_10sdp"
                 android:layout_gravity="bottom"
                 android:background="@drawable/card">
 
                 <ImageView
                     android:layout_width="@dimen/_18sdp"
                     android:layout_height="@dimen/_18sdp"
+                    android:visibility="gone"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="@dimen/_8sdp"
                     android:adjustViewBounds="true"
@@ -377,19 +366,18 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:paddingLeft="@dimen/_50sdp"
-                    android:paddingRight="@dimen/_10sdp">
+                    style="@style/formFrameLayoutSmall">
 
                     <androidx.appcompat.widget.AppCompatEditText
                         android:background="@null"
                         android:id="@+id/edtMailId"
                         android:lines="1"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        style="@style/formInput"
                         android:hint="Mail Id (if any)"
                         android:maxLines="1"
                         android:inputType="textEmailAddress"
-                        android:textSize="@dimen/_12sdp" />
+                        />
                 </FrameLayout>
 
             </FrameLayout>
@@ -400,7 +388,7 @@
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/stepSubmit"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_45sdp"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_gravity="center"
         android:layout_marginStart="@dimen/_16sdp"

@@ -104,7 +104,7 @@
 
         <RelativeLayout style="@style/spinnerLayout">
 
-            <com.bbi.bizbulls.utils.CustomSpinner
+            <com.biz.bizbulls.utils.CustomSpinner
                 android:id="@+id/spnrFinancialAssistance"
                 style="@style/customSpinner"
                 android:entries="@array/typeOfIncome" />

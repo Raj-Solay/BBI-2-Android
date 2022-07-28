@@ -94,6 +94,17 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_10dp"
         android:paddingHorizontal="@dimen/_10dp"
+        android:visibility="visible"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+    <TextView
+        android:id="@+id/txtEmptyRecord"
+        android:textSize="@dimen/_14ssp"
+        android:visibility="gone"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="No Pending Approval Found"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
 </LinearLayout>
