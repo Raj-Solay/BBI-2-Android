@@ -86,7 +86,7 @@
                     android:layout_gravity="center_vertical"
                     style="@style/formFrameLayoutSmall">
 
-                    <com.bbi.bizbulls.utils.CustomSpinner
+                    <com.biz.bizbulls.utils.CustomSpinner
                         android:id="@+id/spnrRelationType"
                         style="@style/customSpinner"
                         android:entries="@array/relations" />

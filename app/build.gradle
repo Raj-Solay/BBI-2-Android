@@ -12,16 +12,21 @@ android {
     compileSdk 31
 
     defaultConfig {
-        applicationId "com.bbi.bizbulls"
+        applicationId "com.biz.bizbulls"
         minSdk 22
         targetSdk 31
-        versionCode 1
-        versionName "1.0"
+        versionCode 2
+        versionName "2.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildFeatures {
         viewBinding = true
+    }
+    lintOptions {
+        checkReleaseBuilds false
+        //If you want to continue even if errors found use following line
+        abortOnError false
     }
 
     buildTypes {
@@ -34,7 +39,7 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-    namespace 'com.bbi.bizbulls'
+    namespace 'com.biz.bizbulls'
     kotlinOptions {
         jvmTarget = '1.8'
     }

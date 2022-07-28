@@ -2,7 +2,7 @@
     <string name="app_name">Biz Bulls</string>
     <string name="loading">Please Wait……</string>
 
-    <string name="generalPrefPackageIdentifier">com.bbi.bizbulls.GeneralPrefs</string>
+    <string name="generalPrefPackageIdentifier">com.biz.bizbulls.GeneralPrefs</string>
     <string name="unsupported_property_type">Unsupported property type received in sharedPrefs</string>
     <!--     MENU -->
     <string name="makemoney">Make more money!</string>

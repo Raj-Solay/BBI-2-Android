@@ -84,7 +84,7 @@
                     android:layout_gravity="center_vertical"
                     style="@style/formFrameLayoutSmall">
 
-                    <com.bbi.bizbulls.utils.CustomSpinner
+                    <com.biz.bizbulls.utils.CustomSpinner
                         android:id="@+id/spnrOtherRelationType"
                         style="@style/customSpinner"
                         android:entries="@array/relations" />
@@ -125,7 +125,7 @@
                     android:layout_gravity="center_vertical"
                     style="@style/formFrameLayoutSmall">
 
-                    <com.bbi.bizbulls.utils.CustomSpinner
+                    <com.biz.bizbulls.utils.CustomSpinner
                         android:id="@+id/spnrOtherSex"
                         style="@style/customSpinner"
                         android:entries="@array/gender" />

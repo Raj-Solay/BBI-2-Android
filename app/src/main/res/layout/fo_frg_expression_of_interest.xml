@@ -157,7 +157,7 @@
                     android:layout_gravity="center_vertical"
                     style="@style/formFrameLayoutSmall">
 
-                    <com.bbi.bizbulls.utils.CustomSpinner
+                    <com.biz.bizbulls.utils.CustomSpinner
                         android:id="@+id/spnrState"
                         style="@style/customSpinnerLocation"/>
 
@@ -191,7 +191,7 @@
                     android:layout_gravity="center_vertical"
                     style="@style/formFrameLayoutSmall">
 
-                    <com.bbi.bizbulls.utils.CustomSpinner
+                    <com.biz.bizbulls.utils.CustomSpinner
                         android:id="@+id/spnrCity"
                         style="@style/customSpinnerLocation"/>
 
@@ -224,7 +224,7 @@
                     android:layout_gravity="center_vertical"
                     style="@style/formFrameLayoutSmall">
 
-                    <com.bbi.bizbulls.utils.CustomSpinner
+                    <com.biz.bizbulls.utils.CustomSpinner
                         android:id="@+id/spnrLocality"
                         style="@style/customSpinnerLocation"/>
 
@@ -296,7 +296,7 @@
                     android:layout_gravity="center_vertical"
                     style="@style/formFrameLayoutSmall">
 
-                    <com.bbi.bizbulls.utils.CustomSpinner
+                    <com.biz.bizbulls.utils.CustomSpinner
                         android:id="@+id/spnrFinancialAssistance"
                         style="@style/customSpinner"
                         android:entries="@array/financialAssistance"/>
@@ -454,7 +454,7 @@
                     android:layout_gravity="center_vertical"
                     style="@style/formFrameLayoutSmall">
 
-                    <com.bbi.bizbulls.utils.CustomSpinner
+                    <com.biz.bizbulls.utils.CustomSpinner
                         android:id="@+id/spnrBusinessPlaceType"
                         style="@style/customSpinner"
                         android:entries="@array/businessPlaceType"/>
