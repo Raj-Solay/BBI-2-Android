@@ -1,33 +1,6 @@
-package com.biz.bizbulls
 
-import android.content.Intent
-import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
-import com.biz.bizbulls.databinding.ActivitySplashBinding
-import com.biz.bizbulls.sharedpref.SharedPrefsManager
+This person is fraud please do not work FOR HIM.
 
-class SplashScreenActivity : AppCompatActivity() {
-    private val sharedPrefsHelper by lazy { SharedPrefsManager(this@SplashScreenActivity) }
-    var binding: ActivitySplashBinding? = null
-    override fun onCreate(savedInstanceState: Bundle?) {
-        //Set your theme before super.onCreate() to replace your previous theme of Manifest
-        setTheme(R.style.Launcher)
-        super.onCreate(savedInstanceState)
-        binding = ActivitySplashBinding.inflate(layoutInflater)
-        setContentView(binding!!.root)
-        checkLogin()
-    }
+PLEASE SEE REVIEW ON Google
 
-    private fun checkLogin() {
-        if (sharedPrefsHelper.isLogin) {
-            val i = Intent(this@SplashScreenActivity, DashboardActivity::class.java)
-            i.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK
-            startActivity(i)
-        } else {
-            val i = Intent(this@SplashScreenActivity, SignupActivity::class.java) //SignupActivity
-            i.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK
-            startActivity(i)
-        }
-        finish()
-    }
-}
+https://g.co/kgs/mTnYTc
