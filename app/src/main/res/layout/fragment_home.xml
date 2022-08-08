@@ -182,8 +182,8 @@
                             android:layout_alignParentLeft="true"
                             android:layout_marginStart="12dp"
                             android:layout_marginTop="@dimen/overrallspacing"
-                            android:gravity="center"
                             android:fontFamily="@font/source_semibold"
+                            android:gravity="center"
                             android:text="Franchising projects"
                             android:textColor="@color/orange_700"
                             android:textSize="@dimen/medium_font" />

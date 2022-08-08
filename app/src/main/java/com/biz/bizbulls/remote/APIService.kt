@@ -280,6 +280,13 @@ interface APIService {
         @Part image: MultipartBody.Part
     ): Call<AssetsRes>
 
+ @Multipart
+    @POST("/api/updateProfilePic")
+    fun updateProfilePic(
+        @Header("Authorization") token: String,
+        @Part image: MultipartBody.Part
+    ): Call<AssetsRes>
+
     @GET("/api/status")
     fun getStatus(@Header("Authorization") token: String): Call<StatusDataRes>
 
