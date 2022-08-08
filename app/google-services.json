@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "641404862697",
+    "project_id": "bbiandroid-f47a7",
+    "storage_bucket": "bbiandroid-f47a7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:641404862697:android:91f40a70deb8001c1bf078",
+        "android_client_info": {
+          "package_name": "com.biz.bizbulls"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "641404862697-6ktvu4ml5bmsmh9vgetfc1tp9q21407c.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.biz.bizbulls",
+            "certificate_hash": "3f1b74869c8bf56fc7c45c29cd02bd1669665d2c"
+          }
+        },
+        {
+          "client_id": "641404862697-913o6n60scc2juprdsf3eumhqf9dmac5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDBsd9ozHE_25q1Z4uyoG1tVJeeEDyw-EQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "641404862697-913o6n60scc2juprdsf3eumhqf9dmac5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
