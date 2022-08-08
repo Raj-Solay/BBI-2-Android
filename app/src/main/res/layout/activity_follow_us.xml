@@ -1,25 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".menu.FollowUsActivity">
-    <include
-        android:id="@+id/custom_title_layout"
-        layout="@layout/hader"
-        app:layout_constraintTop_toTopOf="@+id/posts" />
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/followed_recycler_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingHorizontal="@dimen/_10dp"
-        android:layout_marginBottom="10dp"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        android:listSelector="@android:color/transparent"
-        android:scrollbars="vertical"
-        android:transcriptMode="alwaysScroll"
-        android:visibility="visible" />
 
-</LinearLayout>
+This person is fraud please do not work FOR HIM.
+
+    PLEASE SEE REVIEW ON Google
+
+    https://g.co/kgs/mTnYTc
