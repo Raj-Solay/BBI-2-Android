@@ -7,19 +7,22 @@ import android.os.Bundle
 import android.text.method.HideReturnsTransformationMethod
 import android.text.method.PasswordTransformationMethod
 import android.view.View
+import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
+import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.biz.bizbulls.utils.MyProcessDialog
 import com.biz.bizbulls.data.signin.LoginResponse
 import com.biz.bizbulls.databinding.ActivityLoginBinding
 import com.biz.bizbulls.remote.RetrofitClient
 import com.biz.bizbulls.sharedpref.SharedPrefsManager
 import com.biz.bizbulls.utils.CommonUtils
+import com.biz.bizbulls.utils.MyProcessDialog
 import com.google.gson.JsonObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+
 
 class LoginActivity : AppCompatActivity(), View.OnClickListener {
     private val sharedPrefsHelper by lazy { SharedPrefsManager(this@LoginActivity) }
@@ -28,6 +31,8 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding!!.root)
+
+
         init()
     }
     fun hideKeyboard(activity: Activity) {

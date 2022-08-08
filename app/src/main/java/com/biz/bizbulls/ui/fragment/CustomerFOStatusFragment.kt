@@ -346,10 +346,10 @@ class CustomerFOStatusFragment : Fragment(), View.OnClickListener {
                     isCustomer = false
 
                     binding.apply {
-                        txtcustomerid.text = statusData?.number
+                        txtcustomerid.text = statusData?.regno
                         txtCustomerstatus.text = statusData?.customerStatus
                         txtcustomername.text = statusData?.customerName
-                        txtcustomeraddress.text = statusData?.businessName
+                        cmpName.text = statusData?.businessName
                         txtcustomertime.text = statusData?.date
                      //   txtStatusGmail.text = statusData?.
                         dates = statusData.siteVisit!!.dates as MutableList<String>

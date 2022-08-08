@@ -171,7 +171,7 @@ class FranchiseeRegistrationViewModel : ViewModel() {
         val sharedPrefsHelper by lazy { SharedPrefsManager(context) }
         var newUid = uid
         if(sharedPrefsHelper.userId.isNotEmpty()){
-            newUid = sharedPrefsHelper.userId
+         //   newUid = sharedPrefsHelper.userId
         }
         var call: Call<ResponseBody>? = null
         when (stepPosition) {

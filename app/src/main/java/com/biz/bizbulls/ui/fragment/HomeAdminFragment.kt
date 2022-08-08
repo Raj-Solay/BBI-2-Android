@@ -28,7 +28,6 @@ class HomeAdminFragment : Fragment() {
    private lateinit var imagesModel:ArrayList<String>
    lateinit var sharedPrefsManager: SharedPrefsManager
     var isAdminLog = false
-    var customerFOStatusFragment: CustomerFOStatusFragment? = null
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -52,13 +51,16 @@ class HomeAdminFragment : Fragment() {
         projectScopeView()
         referView()
 
+
+
+
         return binding.root
     }
 
     private fun loadServices() {
         binding.rvServices.setHasFixedSize(true)
         binding.rvServices.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-        val servicesAdapter = activity?.let { ServicesAdapter(it) }
+        val servicesAdapter = activity?.let { AdminUploadServiceAdapter(it) }
         binding.rvServices.adapter = servicesAdapter
 
         binding.recyclerleads.setHasFixedSize(true)

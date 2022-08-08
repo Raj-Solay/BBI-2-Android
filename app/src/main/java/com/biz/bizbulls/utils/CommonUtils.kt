@@ -41,6 +41,11 @@ object CommonUtils {
     const val  ACTION_TYPE_VIEW = 1
     const val  ACTION_TYPE_EDIT = 2
 
+    var CURRENT_FORM_SUBMISSION = ""
+    var COMPANY_CODE = ""
+    var IS_FINISH_ACTIVITY = true
+    const val BIZ_BULLS_INDIA_FORM = "Biz Bulls Franchising Pvt. Ltd."
+
     const val ADMIN_USERNAME = "admin@bizbullsindia.com"
     const val ADMIN_PASSWORD = "12345678"
 

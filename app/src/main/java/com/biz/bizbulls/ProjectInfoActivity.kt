@@ -41,6 +41,7 @@ class ProjectInfoActivity : AppCompatActivity(), View.OnClickListener {
                     startActivity(i)
                     finish()
                 }else{
+                    CommonUtils.CURRENT_FORM_SUBMISSION = CommonUtils.BIZ_BULLS_INDIA_FORM
                     val i = Intent(this@ProjectInfoActivity, FoRegistrationDashBoardActivity::class.java)
                     startActivity(i)
                     finish()
@@ -71,6 +72,7 @@ class ProjectInfoActivity : AppCompatActivity(), View.OnClickListener {
             .setPositiveButton(
                 R.string.yes,
                 DialogInterface.OnClickListener { dialog, which ->
+                    CommonUtils.CURRENT_FORM_SUBMISSION = CommonUtils.BIZ_BULLS_INDIA_FORM
                     val i = Intent(this@ProjectInfoActivity, FoRegistrationDashBoardActivity::class.java)
                     startActivity(i)
                     finish()

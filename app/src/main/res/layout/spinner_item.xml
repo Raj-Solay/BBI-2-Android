@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <TextView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/_50sdp"
+    android:layout_height="@dimen/_30ssp"
     android:gravity="left|center"
     android:paddingLeft="@dimen/_10sdp"
-    android:text="fdsfs"
+    android:text="Test"
+    android:maxLines="1"
     android:textColor="@color/black"
-    android:textSize="20sp">
+    android:textSize="@dimen/_12ssp">
 
 </TextView>

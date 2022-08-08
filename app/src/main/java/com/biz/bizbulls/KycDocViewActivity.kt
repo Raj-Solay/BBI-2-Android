@@ -32,9 +32,9 @@ class KycDocViewActivity : AppCompatActivity(),DocViewListener {
     private lateinit var userData  : PersonalUserAll.Data
     private var docList : List<ApprovalDocRes.Data> = arrayListOf()
     private var docListLocation : List<LocationApprovalRes.Data> = arrayListOf()
-    private var docListAgreement : List<AgreementsApprovalRes.Data> = arrayListOf()
+    private var docListAgreement : ArrayList<AgreementsApprovalRes.Data> = arrayListOf()
     private var docListStaff : List<StaffApprovalRes.Data> = arrayListOf()
-    private var docListLicense : List<StaffApprovalRes.Data> = arrayListOf()
+    private var docListLicense : List<LicenseApprovalRes.Data> = arrayListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -144,7 +144,12 @@ class KycDocViewActivity : AppCompatActivity(),DocViewListener {
                 response: Response<AgreementsApprovalRes>
             ) {
                 if (response.isSuccessful) {
-                    docListAgreement = response.body()?.data!!
+                    var tmpdocListAgreement = response.body()?.data!!
+                    tmpdocListAgreement.forEach {
+                        if(it.fileType != "third_party_agreement"){
+                            docListAgreement.add(it)
+                        }
+                    }
 
                     setAdapterAgreement(docListAgreement)
                 } else {
@@ -185,23 +190,23 @@ class KycDocViewActivity : AppCompatActivity(),DocViewListener {
     }
     fun getLicenseList(){
         MyProcessDialog.showProgressBar(this, 0)
-        val call: Call<AgreementsApprovalRes> =
-            RetrofitClient.getUrl().getPendingAgreement(sharedPrefsHelper.authToken,userData.userId.toString())
-        call.enqueue(object : Callback<AgreementsApprovalRes> {
+        val call: Call<LicenseApprovalRes> =
+            RetrofitClient.getUrl().getPendingLicense(sharedPrefsHelper.authToken,userData.userId.toString())
+        call.enqueue(object : Callback<LicenseApprovalRes> {
             override fun onResponse(
-                call: Call<AgreementsApprovalRes>,
-                response: Response<AgreementsApprovalRes>
+                call: Call<LicenseApprovalRes>,
+                response: Response<LicenseApprovalRes>
             ) {
                 if (response.isSuccessful) {
-                    /*docListLicense = response.body()?.data!!
-                    setAdapterLicense(docListLicense)*/
+                    docListLicense = response.body()?.data!!
+                    setAdapterLicense(docListLicense)
                 } else {
                     RetrofitClient.showResponseMessage(this@KycDocViewActivity, response.code())
                 }
                 MyProcessDialog.dismiss()
             }
 
-            override fun onFailure(call: Call<AgreementsApprovalRes>, t: Throwable) {
+            override fun onFailure(call: Call<LicenseApprovalRes>, t: Throwable) {
                 MyProcessDialog.dismiss()
                 RetrofitClient.showFailedMessage(this@KycDocViewActivity, t)
             }
@@ -258,7 +263,7 @@ class KycDocViewActivity : AppCompatActivity(),DocViewListener {
         }
     }
     var licenseApprovalAdapter : LicenseApprovalAdapter? = null
-    private fun setAdapterLicense(userList: List<AgreementsApprovalRes.Data>?) {
+    private fun setAdapterLicense(userList: List<LicenseApprovalRes.Data>) {
         licenseApprovalAdapter= LicenseApprovalAdapter(this,userList,this,approval_type)
         binding?.listDocuments!!.layoutManager = GridLayoutManager(this,1)
         binding?.listDocuments?.adapter = licenseApprovalAdapter
@@ -436,11 +441,11 @@ class KycDocViewActivity : AppCompatActivity(),DocViewListener {
         })
     }
 
-    override fun onDocView(data: ApprovalDocRes.Data?) {
+    override fun onDocView(data: ApprovalDocRes.Data?,isVerify : Boolean) {
         showDocDialog(data)
     }
 
-    override fun onDocLocationView(data: LocationApprovalRes.Data?) {
+    override fun onDocLocationView(data: LocationApprovalRes.Data?,isVerify : Boolean) {
        // showDocLocationDialog(data)
         docListLocation.forEach {
             if(it.id == data!!.id){
@@ -473,7 +478,7 @@ class KycDocViewActivity : AppCompatActivity(),DocViewListener {
         })
     }
 
-    override fun onDocAgreementView(data: AgreementsApprovalRes.Data?) {
+    override fun onDocAgreementView(data: AgreementsApprovalRes.Data?,isVerify : Boolean) {
         docListAgreement.forEach {
             if(it.id == data!!.id){
                 it.isApproved = !it.isApproved
@@ -505,7 +510,7 @@ class KycDocViewActivity : AppCompatActivity(),DocViewListener {
         })
     }
 
-    override fun onDocSetupView(data: StaffApprovalRes.Data?) {
+    override fun onDocSetupView(data: StaffApprovalRes.Data?,isVerify : Boolean) {
         docListStaff.forEach {
             if(it.id == data!!.id){
                 it.isApproved = !it.isApproved
@@ -517,6 +522,38 @@ class KycDocViewActivity : AppCompatActivity(),DocViewListener {
 
         val call: Call<ResponseBody> =
             RetrofitClient.getUrl().approvalStaff(sharedPrefsHelper.authToken,data!!.id.toString())
+        call.enqueue(object : Callback<ResponseBody> {
+            override fun onResponse(
+                call: Call<ResponseBody>,
+                response: Response<ResponseBody>
+            ) {
+                if (response.isSuccessful) {
+                    // finish()
+                } else {
+                    RetrofitClient.showResponseMessage(this@KycDocViewActivity, response.code())
+                }
+                MyProcessDialog.dismiss()
+            }
+
+            override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+                MyProcessDialog.dismiss()
+                RetrofitClient.showFailedMessage(this@KycDocViewActivity, t)
+            }
+        })
+    }
+
+    override fun onLicenseView(data: LicenseApprovalRes.Data?, isVerifyEvent: Boolean) {
+        docListLicense.forEach {
+            if(it.id == data!!.id){
+                it.isApproved = !it.isApproved
+            }
+        }
+        licenseApprovalAdapter?.notifyDataSetChanged()
+
+        MyProcessDialog.showProgressBar(this, 0)
+
+        val call: Call<ResponseBody> =
+            RetrofitClient.getUrl().approvalLicense(sharedPrefsHelper.authToken,data!!.id.toString())
         call.enqueue(object : Callback<ResponseBody> {
             override fun onResponse(
                 call: Call<ResponseBody>,

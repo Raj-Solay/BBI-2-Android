@@ -36,7 +36,10 @@ class AgreementApprovalAdapter(
             .placeholder(R.drawable.img_default)
             .into(holder.imgDocView)
         holder.txtVerify.setOnClickListener {
-            docViewListener.onDocAgreementView(userList!!.get(position))
+            docViewListener.onDocAgreementView(userList!!.get(position),true)
+        }
+        holder.txtReject.setOnClickListener {
+            docViewListener.onDocAgreementView(userList!!.get(position),false)
         }
         holder.imgDocView.setOnClickListener {
             showFullDialog(userList!!.get(position).fileName)
@@ -57,7 +60,7 @@ class AgreementApprovalAdapter(
         var imgDocView = itemView.findViewById(R.id.imgDocView) as ImageView
         var txtDocName = itemView.findViewById(R.id.txtDocName) as TextView
         var txtVerify = itemView.findViewById(R.id.txtVerify) as TextView
-       // var txtApproved = itemView.findViewById(R.id.txtApproved) as TextView
+        var txtReject = itemView.findViewById(R.id.txtReject) as TextView
 
     }
     fun showFullDialog( fileName: String?) {

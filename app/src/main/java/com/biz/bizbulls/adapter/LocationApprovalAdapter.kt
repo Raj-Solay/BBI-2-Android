@@ -127,10 +127,10 @@ class LocationApprovalAdapter(
 
 
         holder.txtVerify.setOnClickListener {
-            docViewListener.onDocLocationView(userListLocation!!.get(position))
+            docViewListener.onDocLocationView(userListLocation!!.get(position),true)
         }
         holder.txtReject.setOnClickListener {
-            docViewListener.onDocLocationView(userListLocation!!.get(position))
+            docViewListener.onDocLocationView(userListLocation!!.get(position),false)
         }
         /*if(userListLocation!!.get(position).isApproved *//*|| userListLocation!!.get(position).documentStatus == "1"*//*){
             holder.txtVerify.setText("Reject")
@@ -152,7 +152,6 @@ class LocationApprovalAdapter(
         var imgMap = itemView.findViewById(R.id.imgMap) as ImageView
         var txtDocName = itemView.findViewById(R.id.txtDocName) as TextView
         var txtVerify = itemView.findViewById(R.id.txtVerify) as TextView
-        var txtReject = itemView.findViewById(R.id.txtReject) as TextView
         var uploadImageOne = itemView.findViewById(R.id.uploadImageOne) as LinearLayout
         var uploadImageTwo = itemView.findViewById(R.id.uploadImageTwo) as LinearLayout
         var uploadImageThree = itemView.findViewById(R.id.uploadImageThree) as LinearLayout
@@ -163,7 +162,7 @@ class LocationApprovalAdapter(
         var imgThree = itemView.findViewById(R.id.imgpancard3) as ImageView
         var imgFour = itemView.findViewById(R.id.imgpancard4) as ImageView
         var imgFive = itemView.findViewById(R.id.imgpancard5) as ImageView
-       // var txtApproved = itemView.findViewById(R.id.txtApproved) as TextView
+        var txtReject = itemView.findViewById(R.id.txtReject) as TextView
 
     }
 

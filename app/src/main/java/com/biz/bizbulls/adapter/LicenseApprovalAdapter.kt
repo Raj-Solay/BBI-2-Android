@@ -11,12 +11,13 @@ import com.biz.bizbulls.DocViewListener
 import com.biz.bizbulls.KycDocViewActivity
 import com.biz.bizbulls.R
 import com.biz.bizbulls.model.AgreementsApprovalRes
+import com.biz.bizbulls.model.LicenseApprovalRes
 import com.biz.bizbulls.ui.FullImageViewDialog
 import com.squareup.picasso.Picasso
 
 class LicenseApprovalAdapter(
     var kycDocViewActivity: KycDocViewActivity,
-    var userList: List<AgreementsApprovalRes.Data>?,
+    var userList: List<LicenseApprovalRes.Data>?,
     var docViewListener: DocViewListener,
     var approval_type: Int
 ) :
@@ -31,23 +32,30 @@ class LicenseApprovalAdapter(
     }
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
-      holder.txtDocName.text = ""+userList!!.get(position).fileType
-        Picasso.get().load(userList!!.get(position).fileName)
-            .placeholder(R.drawable.img_default)
-            .into(holder.imgDocView)
-        holder.txtVerify.setOnClickListener {
-            docViewListener.onDocAgreementView(userList!!.get(position))
+        if(!userList!!.get(position).isApproved){
+            holder.txtDocName.text = "License"
+            Picasso.get().load(userList!!.get(position).photo)
+                .placeholder(R.drawable.img_default)
+                .into(holder.imgDocView)
+            holder.txtVerify.setOnClickListener {
+                docViewListener.onLicenseView(userList!!.get(position),true)
+            }
+            holder.txtReject.setOnClickListener {
+                docViewListener.onLicenseView(userList!!.get(position),false)
+            }
+            holder.txtVerify
+            holder.imgDocView.setOnClickListener {
+                showFullDialog(userList!!.get(position).photo)
+            }
         }
-        holder.imgDocView.setOnClickListener {
-            showFullDialog(userList!!.get(position).fileName)
-        }
-        if(userList!!.get(position).isApproved /*|| userListLocation!!.get(position).documentStatus == "1"*/){
+
+      /*  if(userList!!.get(position).isApproved *//*|| userListLocation!!.get(position).documentStatus == "1"*//*){
             holder.txtVerify.setText("Approved")
             holder.txtVerify.setBackgroundResource(R.drawable.button_green)
         }else{
             holder.txtVerify.setText("Verify")
             holder.txtVerify.setBackgroundResource(R.drawable.button)
-        }
+        }*/
 
     }
     override fun getItemCount(): Int {
@@ -57,7 +65,7 @@ class LicenseApprovalAdapter(
         var imgDocView = itemView.findViewById(R.id.imgDocView) as ImageView
         var txtDocName = itemView.findViewById(R.id.txtDocName) as TextView
         var txtVerify = itemView.findViewById(R.id.txtVerify) as TextView
-       // var txtApproved = itemView.findViewById(R.id.txtApproved) as TextView
+        var txtReject = itemView.findViewById(R.id.txtReject) as TextView
 
     }
     fun showFullDialog( fileName: String?) {

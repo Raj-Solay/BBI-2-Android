@@ -505,4 +505,16 @@ interface APIService {
         @Header("Authorization") token: String,@Path(value = "doc_id", encoded = true) userId: String
     ): Call<ResponseBody>
 
+    @GET("/api/me/license/pending/{lic_id}")
+    fun getPendingLicense(
+        @Header("Authorization") token: String,@Path(value = "lic_id", encoded = true) userId: String
+    ): Call<LicenseApprovalRes>
+
+    @POST("/api/me/license/approve/{lic_id}")
+    fun approvalLicense(
+        @Header("Authorization") token: String,@Path(value = "lic_id", encoded = true) userId: String
+    ): Call<ResponseBody>
+
+
+
 }

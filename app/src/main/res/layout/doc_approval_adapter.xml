@@ -45,7 +45,7 @@
             android:layout_gravity="center"
             android:orientation="horizontal">
             <TextView
-                android:id="@+id/txtVerify"
+                android:id="@+id/txtReject"
                 android:gravity="center"
                 android:layout_width="0dp"
                 android:layout_height="@dimen/_26sdp"
@@ -64,7 +64,7 @@
                 android:layout_width="0dp"
                 android:layout_height="@dimen/_56sdp"/>
             <TextView
-                android:id="@+id/txtReject"
+                android:id="@+id/txtVerify"
                 android:gravity="center"
                 android:layout_weight="1"
                 android:layout_width="0dp"

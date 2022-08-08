@@ -10,6 +10,10 @@ class StatusDataRes : Serializable {
     @Expose
     var businessName: String? = null
 
+    @SerializedName("regno")
+    @Expose
+    var regno: String? = null
+
     @SerializedName("customer_name")
     @Expose
     var customerName: String? = null

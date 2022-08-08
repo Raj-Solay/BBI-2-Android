@@ -46,7 +46,10 @@ class DocApprovalAdapter(
             .placeholder(R.drawable.img_default)
             .into(holder.imgDocView)
         holder.txtVerify.setOnClickListener {
-            docViewListener.onDocView(userList!!.get(position))
+            docViewListener.onDocView(userList!!.get(position),true)
+        }
+        holder.txtReject.setOnClickListener {
+            docViewListener.onDocView(userList!!.get(position),false)
         }
         if(userList!!.get(position).isApproved || userList!!.get(position).documentStatus == "1"){
             holder.txtVerify.setText("Approved")
@@ -63,7 +66,7 @@ class DocApprovalAdapter(
         var imgDocView = itemView.findViewById(R.id.imgDocView) as ImageView
         var txtDocName = itemView.findViewById(R.id.txtDocName) as TextView
         var txtVerify = itemView.findViewById(R.id.txtVerify) as TextView
-       // var txtApproved = itemView.findViewById(R.id.txtApproved) as TextView
+        var txtReject = itemView.findViewById(R.id.txtReject) as TextView
 
     }
 }

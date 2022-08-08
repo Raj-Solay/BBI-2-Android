@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="@dimen/widthbox"
-    android:layout_height="wrap_content"
-    android:layout_marginStart="@dimen/_12dp"
+    android:layout_width="@dimen/_56sdp"
+    android:layout_height="@dimen/_68sdp"
+    android:layout_marginStart="@dimen/_8sdp"
     android:layout_marginTop="@dimen/overrallspacing"
-    android:layout_marginEnd="@dimen/_12dp"
+    android:layout_marginEnd="@dimen/_8sdp"
     android:layout_marginBottom="@dimen/overrallspacing"
     android:gravity="top|center"
     android:orientation="vertical">
 
     <androidx.cardview.widget.CardView
-        android:layout_width="@dimen/cardsize"
-        android:layout_height="@dimen/cardsize"
+        android:layout_width="@dimen/_42sdp"
+        android:layout_height="@dimen/_42sdp"
         app:cardBackgroundColor="@color/light_orange"
-        app:cardCornerRadius="10dp"
+        app:cardCornerRadius="@dimen/_10sdp"
         app:cardElevation="3dp"
         app:cardMaxElevation="3dp">
 

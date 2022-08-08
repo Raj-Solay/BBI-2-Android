@@ -1,13 +1,11 @@
 package com.biz.bizbulls
 
-import com.biz.bizbulls.model.AgreementsApprovalRes
-import com.biz.bizbulls.model.ApprovalDocRes
-import com.biz.bizbulls.model.LocationApprovalRes
-import com.biz.bizbulls.model.StaffApprovalRes
+import com.biz.bizbulls.model.*
 
 interface DocViewListener {
-    fun onDocView(data: ApprovalDocRes.Data?)
-    fun onDocLocationView(data: LocationApprovalRes.Data?)
-    fun onDocAgreementView(data: AgreementsApprovalRes.Data?)
-    fun onDocSetupView(data: StaffApprovalRes.Data?)
+    fun onDocView(data: ApprovalDocRes.Data?, isVerifyEvent : Boolean)
+    fun onDocLocationView(data: LocationApprovalRes.Data?, isVerifyEvent : Boolean)
+    fun onDocAgreementView(data: AgreementsApprovalRes.Data?, isVerifyEvent : Boolean)
+    fun onDocSetupView(data: StaffApprovalRes.Data?, isVerifyEvent : Boolean)
+    fun onLicenseView(data: LicenseApprovalRes.Data?, isVerifyEvent : Boolean)
 }

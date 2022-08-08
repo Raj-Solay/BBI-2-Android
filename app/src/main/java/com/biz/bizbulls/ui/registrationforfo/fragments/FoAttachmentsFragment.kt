@@ -369,14 +369,19 @@ class FoAttachmentsFragment(private val stepPosition: Int, private var actionTyp
                     call: Call<AssetsRes>,
                     responseObject: Response<AssetsRes>) {
                 if (responseObject.code() == 201 || responseObject.code() == 200) {
-                    var assetReq = AssetUploadReq()
-                    var assetRes = responseObject.body()?.data
-                    //image/jpeg
-                    var fType = mimeType?.split("/")
-                    assetReq.mimeType = fType?.get(1).toString()
-                    assetReq.name = assetRes?.links!!.full.toString()
-                    assetReq.id = type.toString()
-                    uploadFileList.add(type - 1, assetReq)
+                    try{
+                        var assetReq = AssetUploadReq()
+                        var assetRes = responseObject.body()?.data
+                        //image/jpeg
+                        var fType = mimeType?.split("/")
+                        assetReq.mimeType = fType?.get(1).toString()
+                        assetReq.name = assetRes?.links!!.full.toString()
+                        assetReq.id = type.toString()
+                        uploadFileList.add(type - 1, assetReq)
+                    }catch (e :Exception){
+
+                    }
+
                 } else {
                     RetrofitClient.showResponseMessage(requireContext(), responseObject.code())
 

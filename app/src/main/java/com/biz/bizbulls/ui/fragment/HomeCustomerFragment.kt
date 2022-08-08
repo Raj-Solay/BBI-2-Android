@@ -77,11 +77,13 @@ class HomeCustomerFragment : Fragment() {
                     requireActivity().supportFragmentManager.beginTransaction()
                         .replace(R.id.flFragment, customerFOStatusFragment!!).commit()
                 }else{
+                    CommonUtils.CURRENT_FORM_SUBMISSION = CommonUtils.BIZ_BULLS_INDIA_FORM
                     val i = Intent(activity, ProjectInfoActivity::class.java)
                     startActivity(i)
                 }
 
             }else{
+                CommonUtils.CURRENT_FORM_SUBMISSION = CommonUtils.BIZ_BULLS_INDIA_FORM
                 val i = Intent(activity, ProjectInfoActivity::class.java)
                 startActivity(i)
             }

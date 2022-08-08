@@ -90,6 +90,7 @@ class DashboardActivity : AppCompatActivity(), View.OnClickListener {
         isAdminLogin = sharedPrefsHelper.isAdminLogin
         init()
 
+
         if(!isAdminLogin){
 
             // if(!CommonUtils.isRedirectToStatus){
@@ -177,6 +178,14 @@ class DashboardActivity : AppCompatActivity(), View.OnClickListener {
                             if(linearProgressbar != null){
                                 linearProgressbar!!.progress = progress.toInt()
                                 txtPercentageValue!!.setText(""+progress.toInt()+"%")
+                            }
+                            val menu = binding!!.bottomNavigationView.menu
+                            if(!isFormStatusComplted){
+                                menu.findItem(R.id.navigation_forevenue).isVisible = false
+                                menu.findItem(R.id.navigation_fohome).isVisible = false
+                            }else{
+                                menu.findItem(R.id.navigation_fohome).isVisible = true
+                                menu.findItem(R.id.navigation_forevenue).isVisible = true
                             }
                             MyProcessDialog.dismiss()
                         }
@@ -410,14 +419,17 @@ class DashboardActivity : AppCompatActivity(), View.OnClickListener {
                         supportFragmentManager.beginTransaction()
                             .replace(R.id.flFragment, customerFOStatusFragment!!).commit()
                     }else{
+                        CommonUtils.CURRENT_FORM_SUBMISSION = CommonUtils.BIZ_BULLS_INDIA_FORM
                         val i = Intent(this, FoRegistrationDashBoardActivity::class.java)
                         startActivity(i)
                     }
                 }else{
+                    CommonUtils.CURRENT_FORM_SUBMISSION = CommonUtils.BIZ_BULLS_INDIA_FORM
                     val i = Intent(this, FoRegistrationDashBoardActivity::class.java)
                     startActivity(i)
                 }
             }else{
+                CommonUtils.CURRENT_FORM_SUBMISSION = CommonUtils.BIZ_BULLS_INDIA_FORM
                 val i = Intent(this, FoRegistrationDashBoardActivity::class.java)
                 startActivity(i)
             }

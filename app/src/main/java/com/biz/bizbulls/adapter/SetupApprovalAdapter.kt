@@ -54,9 +54,11 @@ class SetupApprovalAdapter(
             .placeholder(R.drawable.img_default)
             .into(holder.imgResume)
         holder.txtVerify.setOnClickListener {
-            docViewListener.onDocSetupView(userList!!.get(position))
+            docViewListener.onDocSetupView(userList!!.get(position),true)
         }
-
+        holder.txtReject.setOnClickListener {
+            docViewListener.onDocSetupView(userList!!.get(position),false)
+        }
         holder.imgPhoto.setOnClickListener {
             showFullDialog(userList!!.get(position).photo)
         }
@@ -76,7 +78,7 @@ class SetupApprovalAdapter(
         var txtType = itemView.findViewById(R.id.txtType) as TextView
         var txtMobile = itemView.findViewById(R.id.txtMobile) as TextView
         var txtVerify = itemView.findViewById(R.id.txtVerify) as TextView
-       // var txtApproved = itemView.findViewById(R.id.txtApproved) as TextView
+        var txtReject = itemView.findViewById(R.id.txtReject) as TextView
 
     }
     fun showFullDialog( fileName: String?) {

@@ -555,4 +555,27 @@ By continuing to access or use Our Service after those revisions become effectiv
     <string name="Business_Networking">Business Networking</string>
     <string name="Business_Networking_text">A perfect business person can only understand the value of massive business network. As we deal with multiple types of industries, brands, vendors, partners from all across the country, we maintain a beautiful and long lasting relationship, which forms a huge business network and benefits each of our associate, massively and mutually. </string>
 
+    <string-array name="state_list_code">
+        <item>Bihar-BR</item>
+        <item>Jharkhand-JH</item>
+        <item>West Bengal-WB</item>
+        <item>Assam-AS</item>
+        <item>Chhattisgarh-CH</item>
+        <item>Orissa-OR</item>
+        <item>Gujarat-GJ</item>
+        <item>Rajasthan-RJ</item>
+        <item>Maharashtra-MH</item>
+        <item>Madhya Pradesh-MP</item>
+        <item>Punjab-PB</item>
+        <item>Haryana-HR</item>
+        <item>Himachal Pradesh/Uttarakhand-UT</item>
+        <item>Delhi-DL</item>
+        <item>Uttar Pradesh-UP</item>
+        <item>Tamilnadu-TN</item>
+        <item>Karnataka-KA</item>
+        <item>Kerala-KL</item>
+        <item>Andhra Pradesh-AR</item>
+        <item>Telangana-TG</item>
+    </string-array>
+
 </resources>

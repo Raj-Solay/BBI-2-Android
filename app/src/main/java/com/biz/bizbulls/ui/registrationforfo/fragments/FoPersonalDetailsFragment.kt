@@ -221,6 +221,8 @@ class FoPersonalDetailsFragment(private val stepPosition: Int, private var actio
     private fun sendPersonalDetail() {
         val params: MutableMap<String, String> = HashMap()
         val jsonObject = JsonObject()
+        jsonObject.addProperty("parent_company", CommonUtils.CURRENT_FORM_SUBMISSION)
+        jsonObject.addProperty("regno", "")
         jsonObject.addProperty("fullname", binding.edtfullname.text.toString())
         jsonObject.addProperty("fathersname", binding.edtfathername.text.toString())
         jsonObject.addProperty("mothersname", binding.edtmothersmaidensname.text.toString())

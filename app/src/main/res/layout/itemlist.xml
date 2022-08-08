@@ -1,29 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="@dimen/widthbox"
-    android:layout_height="@dimen/heightbox"
-    android:layout_marginStart="@dimen/_12dp"
+    android:layout_width="@dimen/_56sdp"
+    android:layout_height="@dimen/_68sdp"
+    android:layout_marginStart="@dimen/_8sdp"
     android:layout_marginTop="@dimen/overrallspacing"
-    android:layout_marginEnd="@dimen/_12sdp"
+    android:layout_marginEnd="@dimen/_8sdp"
     android:layout_marginBottom="@dimen/overrallspacing"
     android:gravity="center"
     android:orientation="vertical">
 
     <androidx.cardview.widget.CardView
-        android:layout_width="@dimen/cardsize"
-        android:layout_height="@dimen/cardsize"
+        android:layout_width="@dimen/_42sdp"
+        android:layout_height="@dimen/_42sdp"
         app:cardBackgroundColor="@color/light_orange"
-        app:cardCornerRadius="10dp"
-        app:cardElevation="3dp"
-        app:cardMaxElevation="3dp">
+        app:cardCornerRadius="@dimen/_10sdp"
+        app:cardElevation="@dimen/_3sdp"
+        app:cardMaxElevation="@dimen/_3sdp">
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/iv_top_small_card"
-            android:layout_width="40dp"
-            android:layout_height="53dp"
+            android:layout_width="@dimen/_40sdp"
+            android:layout_height="@dimen/_53sdp"
             android:layout_gravity="center"
-            android:padding="3dp"
+            android:padding="@dimen/_3sdp"
             android:scaleType="fitCenter"
             android:src="@drawable/biz_bulls" />
 
@@ -34,7 +34,7 @@
         style="@style/fontregular"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/minimumspacing"
+        android:layout_marginTop="@dimen/_12sdp"
         android:includeFontPadding="false"
         android:text="Food Delivery"
         android:fontFamily="@font/source_regular"
@@ -42,6 +42,6 @@
         android:textColor="@color/heading"
         android:ellipsize="end"
         android:maxLines="1"
-        android:textSize="@dimen/small_font" />
+        android:textSize="@dimen/_11ssp" />
 
 </LinearLayout>

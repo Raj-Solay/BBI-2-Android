@@ -113,6 +113,8 @@ class FoRegistrationDashBoardActivity : AppCompatActivity(), IFoRegistrationStep
             listSteps.add(Data(15,R.drawable.icn_family_details,"Leave & Holiday Requests","",0))
             listSteps.add(Data(16,R.drawable.icn_family_details,"Referral Details","",0))
 
+            listSteps.add(Data(11,R.drawable.icn_attachment,"Documents details","",0))
+
         }else{
             listSteps.add(Data(11,R.drawable.icn_attachment,"Attachment details","",0))
         }
