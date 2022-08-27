@@ -1,2 +1,1 @@
-# BBI-2-Android
-FO registration
+Such worst company please don't trust this company and  his director Raj solay he is fraud and cheater. He also played emotions and feelings of all employes that who is working with his company. It has deceived many people by doing this. It will not work. He should be punished so that he will not deceive anyone again.
